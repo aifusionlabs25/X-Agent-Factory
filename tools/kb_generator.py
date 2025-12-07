@@ -20,11 +20,11 @@ def generate_kb_content(template_data):
     Create a comprehensive Knowledge Base text file for an AI Agent named '{template_data['agent_name']}'.
     
     CONTEXT:
-    Vertical: {template_data['vertical']}
-    Tone: {template_data['voice_tone']}
+    Vertical: {template_data['vertical_name']}
+    Tone: {template_data['tone']}
     
     PROTOCOLS TO IMPLEMENT:
-    {json.dumps(template_data['core_protocols'], indent=2)}
+    {json.dumps(template_data.get('triage_protocol', {}), indent=2)}
     
     OUTPUT FORMAT:
     - Pure text, organized by headers.
@@ -52,10 +52,10 @@ def build_system_prompt(template_data, content_summary):
         master_prompt = f.read()
     
     filled_prompt = master_prompt.replace("{{AGENT_NAME}}", template_data['agent_name'])
-    filled_prompt = filled_prompt.replace("{{VERTICAL_NAME}}", template_data['vertical'])
-    filled_prompt = filled_prompt.replace("{{CONTEXT_DESCRIPTION}}", f"Automated triage for {template_data['vertical']} clinics.")
+    filled_prompt = filled_prompt.replace("{{VERTICAL_NAME}}", template_data['vertical_name'])
+    filled_prompt = filled_prompt.replace("{{CONTEXT_DESCRIPTION}}", f"Automated triage for {template_data['vertical_name']} clinics.")
     filled_prompt = filled_prompt.replace("{{PRIMARY_GOAL}}", "Efficient triage and appointment scheduling.")
-    filled_prompt = filled_prompt.replace("{{TONE_VOICE}}", template_data['voice_tone'])
+    filled_prompt = filled_prompt.replace("{{TONE_VOICE}}", template_data['tone'])
     
     return filled_prompt
 

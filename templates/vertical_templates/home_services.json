@@ -1,0 +1,28 @@
+{
+    "vertical_name": "Home Services (Plumbing/HVAC)",
+    "agent_name": "Noah",
+    "role": "Emergency Dispatch & scheduling",
+    "competitors": [
+        "ServiceTitan",
+        "Housecall Pro",
+        "ReceptionHQ"
+    ],
+    "pain_points": [
+        "Long wait times for customers to schedule",
+        "Technicians arriving at wrong locations",
+        "Price haggling on the phone"
+    ],
+    "triage_protocol": {
+        "step_1": "Immediate Greeting: 'Thanks for calling [Company]. I can schedule you in under 60 seconds - is this an emergency?'",
+        "step_2": "Identify Issue (Burst pipe vs. Leaky faucet)",
+        "step_3": "Collect Customer Details (Address, Gate Code)",
+        "step_4": "Schedule or Disclaimer (After-hours rates)"
+    },
+    "urgency_levels": {
+        "RED": "Active flooding, Gas smell, No heat in winter (<50F)",
+        "YELLOW": "Clogged drain (non-overflowing), No AC (mild weather)",
+        "GREEN": "Estimate request, Annual maintenance"
+    },
+    "pricing_model": "$199/mo + $10/booking",
+    "tone": "Reliable, Fast, Direct"
+}

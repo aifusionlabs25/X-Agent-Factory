@@ -1,54 +1,54 @@
 {
-    "generated_at": "2025-12-07T10:32:12.895561",
-    "scan_summary": "Scanned 4 sources.",
+    "generated_at": "2025-12-07T13:44:07.347313",
+    "scan_summary": "Scanned 4 sources via Llama 3.",
     "top_opportunities": [
         {
-            "id": "opp_5418",
-            "vertical": "Veterinary",
-            "pain_point": "I spend 2 hours a day just calling back clients to triage.",
-            "source": "r/Veterinary",
-            "tam_score": 9.9,
+            "pain_point": "Manual document review and analysis for legal discovery purposes is time-consuming, costly, and prone to human error.",
+            "source": "American Bar Association (ABA) Journal",
+            "tam_score": 8.5,
             "competitors": [
-                "VitusVet",
-                "PetDesk"
+                "Relativity",
+                "Corda"
             ],
-            "recommendation": "BUILD"
+            "recommendation": "BUILD",
+            "id": "140246",
+            "vertical": "Legal"
         },
         {
-            "id": "opp_9245",
-            "vertical": "Home Services",
-            "pain_point": "Dispatching is a nightmare. I need an AI to handle the phone.",
-            "source": "r/Plumbing",
-            "tam_score": 9.3,
+            "pain_point": "Streamlining Medical Record Management",
+            "source": "Industry forums, surveys, and interviews with veterinarians",
+            "tam_score": 8.4,
             "competitors": [
-                "ServiceTitan",
-                "Housecall Pro"
+                "Vetsource",
+                "CureMD"
             ],
-            "recommendation": "BUILD"
+            "recommendation": "BUILD",
+            "id": "140234",
+            "vertical": "Veterinary"
         },
         {
-            "id": "opp_4711",
-            "vertical": "Dental",
-            "pain_point": "No shows are killing my practice. We need automated reminders that people actually answer.",
-            "source": "r/Dentistry",
-            "tam_score": 7.6,
+            "pain_point": "Long wait times for customers to schedule and complete home services appointments, leading to frustration and potential loss of business.",
+            "source": "Industry Forums (e.g., Angie's List), Customer Reviews",
+            "tam_score": 7.5,
             "competitors": [
-                "Solutionreach",
-                "Lighthouse 360"
+                "TaskRabbit",
+                "Thumbtack"
             ],
-            "recommendation": "WAIT"
+            "recommendation": "BUILD",
+            "id": "140238",
+            "vertical": "Home Services"
         },
         {
-            "id": "opp_8571",
-            "vertical": "Legal",
-            "pain_point": "Why is it so hard to find a good lawyer? They never pick up.",
-            "source": "Twitter",
-            "tam_score": 6.1,
+            "pain_point": "Managing patient appointment schedules and reminders is time-consuming and prone to errors, resulting in delayed treatment and poor patient satisfaction.",
+            "source": "American Dental Association (ADA) Survey: 'Dental Practice Statistics'",
+            "tam_score": 7.5,
             "competitors": [
-                "Clio",
-                "MyCase"
+                "Henry Schein",
+                "Carestream"
             ],
-            "recommendation": "WAIT"
+            "recommendation": "BUILD",
+            "id": "140242",
+            "vertical": "Dental"
         }
     ]
 }

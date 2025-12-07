@@ -1,0 +1,35 @@
+🛠️ X Agent Factory: Command Cheat Sheet
+A quick reference guide for all the terminal commands used to build and manage the Factory.
+
+🧠 Ollama (AI Engine)
+Control the "Brain" on your RTX 5080.
+
+Command	Action	When to use
+ollama run llama3	Ignition. Starts the AI server and loads the model into VRAM.	Every time you start working on the Factory. Keep the window open (minimized).
+ollama pull llama3	Download. Fetches the latest Llama 3 model (4.7GB).	Only once (setup), or to update the model.
+taskkill /f /im ollama_app.exe	Emergency Stop. Instantly kills Ollama processes.	If it freezes, or you need VRAM for gaming/rendering immediately.
+🏗️ Node.js / Next.js (Dashboard)
+Control the "Factory Floor" (The UI).
+
+Command	Action	When to use
+npm run dev	Start Dev Server. Launches the Dashboard at localhost:3000.	When you want to see/edit the Dashboard UI.
+npm install	Install Parts. Downloads all libraries in 
+package.json
+.	After cloning a repo for the first time, or if missing dependencies.
+npm run build	Production Build. Compiles the app for speed.	Before deploying to Vercel (usually remote, but good for local checking).
+npx create-next-app@latest	New Project. Scaffolds a fresh Next.js app.	When starting a completely new web project from scratch.
+🔧 Git (Version Control)
+Save and Sync your work.
+
+Command	Action	When to use
+git clone <url>	Download. Copies a repository from Github to your PC.	When "Forge" creates a new repo and you need to review it.
+git status	Check. Shows what files have changed.	To see what work you (or Forge) have done before saving.
+git add .	Stage. Prepares all changes to be saved.	Step 1 of saving your work.
+git commit -m "message"	Save. Locks in your changes with a note.	Step 2 of saving your work.
+git push	Upload. Sends your saved changes to Github.	Step 3 of saving your work (so Forge can see it).
+🔎 Inspection / Debug
+Check if things are working.
+
+Command	Action	When to use
+curl localhost:11434	Ping AI. Checks if Ollama is listening.	If the Factory says "AI Offline" or errors out.
+node -v	Check Node. Shows installed Node.js version.	If you get weird installation errors (we want v18+).
