@@ -24,7 +24,7 @@ def generate_marketing_copy(agent_name, vertical, tone="Persuasive"):
     # 1. Load Sparkle (V2.0)
     sparkle_context = load_specialist("Sparkle")
     
-    print(f"✨ Sparkle: Dreaming up campaigns for '{agent_name}' ({vertical})...")
+    print(f"Sparkle: Drafting campaigns for '{agent_name}' ({vertical})...")
     
     # 2. Construct Prompt
     prompt = f"""
@@ -57,14 +57,14 @@ def generate_marketing_copy(agent_name, vertical, tone="Persuasive"):
         result = json.loads(data['response'])
         
         # Output Results
-        print("\n✨ SPARKLE'S CAMPAIGN:")
+        print("\nSPARKLE'S CAMPAIGN:")
         print(json.dumps(result, indent=2))
         
         # Save to file
         output_path = f"agents/{agent_name.lower()}_{vertical.lower().replace(' ', '_')}/marketing_campaign.json"
         with open(output_path, 'w', encoding='utf-8') as f:
             json.dump(result, f, indent=2)
-            print(f"\n✅ Campaign Saved: {output_path}")
+            print(f"\nCampaign Saved: {output_path}")
 
         return result
 
