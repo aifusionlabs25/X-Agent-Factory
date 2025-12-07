@@ -1,0 +1,54 @@
+{
+    "generated_at": "2025-12-07T09:00:29.568630",
+    "scan_summary": "Scanned 4 sources.",
+    "top_opportunities": [
+        {
+            "id": "opp_6485",
+            "vertical": "Veterinary",
+            "pain_point": "I spend 2 hours a day just calling back clients to triage.",
+            "source": "r/Veterinary",
+            "tam_score": 9.6,
+            "competitors": [
+                "VitusVet",
+                "PetDesk"
+            ],
+            "recommendation": "BUILD"
+        },
+        {
+            "id": "opp_4644",
+            "vertical": "Dental",
+            "pain_point": "No shows are killing my practice. We need automated reminders that people actually answer.",
+            "source": "r/Dentistry",
+            "tam_score": 7.7,
+            "competitors": [
+                "Solutionreach",
+                "Lighthouse 360"
+            ],
+            "recommendation": "WAIT"
+        },
+        {
+            "id": "opp_7929",
+            "vertical": "Legal",
+            "pain_point": "Why is it so hard to find a good lawyer? They never pick up.",
+            "source": "Twitter",
+            "tam_score": 6.6,
+            "competitors": [
+                "Clio",
+                "MyCase"
+            ],
+            "recommendation": "WAIT"
+        },
+        {
+            "id": "opp_4895",
+            "vertical": "Home Services",
+            "pain_point": "Dispatching is a nightmare. I need an AI to handle the phone.",
+            "source": "r/Plumbing",
+            "tam_score": 5.7,
+            "competitors": [
+                "ServiceTitan",
+                "Housecall Pro"
+            ],
+            "recommendation": "WAIT"
+        }
+    ]
+}

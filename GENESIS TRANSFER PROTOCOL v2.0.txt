@@ -1,0 +1,76 @@
+X AGENT FACTORY: GENESIS TRANSFER PROTOCOL v2.0
+Source Context: Tavus/Morgan App (Project Alpha) Date: December 7, 2024 Transfer Type: Context Seed & Architectural Handoff Version: 2.0 (Zara Strategic Update)
+
+🚀 Mission: The "Venture Studio" Model
+Objective: We are not just building agents; we are capturing verticals. The Factory is an Intelligence Engine that identifies high-value markets and autonomously builds products to serve them.
+
+Core KPI: Growth = Add Verticals, Not Features.
+
+🧠 Brain State Transfer (Technical)
+1. The "Agent-First" UI Pattern
+We successfully moved away from "Website with a Chatbot" to "Agent as the Interface".
+
+Concept: The Agent (Video/Voice) is the primary verified entity. The UI surrounds them.
+Layout Winner: Vertical Sidebar (Right) + Dynamic Content (Left).
+Tech: fixed right-0 w-[500px] (Tailwind).
+2. The "Interactive Demo" Mechanics
+Mechanism: iframe manipulation + State Management.
+Critical Fix: Iframe Scaling (0.55 scale) prevents scrolling issues.
+Factory Goal: Request direct embed codes from CEOs whenever possible.
+3. Authentication & Security Patterns
+Access Gate: DEMO_ACCESS_TOKEN stored in localStorage.
+Environment: strict separation of NEXT_PUBLIC vs Server-side keys.
+🏗️ Factory Architecture v2.0 (The Machine)
+The Factory file structure must enable the "R&D Loop". Initialize this structure immediately:
+
+X_Agent_Factory/
+├── agents/                         # Deployed agents (Production)
+├── templates/                      # Reusable Assets
+│   ├── vertical_templates/         # NEW: Industry-specific packs (e.g., vet_clinic.json)
+│   ├── system_prompt_template.txt  # The Master Prompt
+│   └── kb_file_templates/          # Standard PDF/TXT structures
+├── tools/                          # Automation Scripts (The "Arms")
+│   ├── market_scout.py             # NEW: R&D Engine (Reddit/Forum scraper)
+│   ├── website_crawler.py          # Ollama-powered content extraction
+│   ├── kb_generator.py             # Gemini Pro-powered file creator
+│   └── competitor_research.py      # NEW: Auto-generate battle cards
+├── intelligence/                   # NEW: R&D Outputs (The "Brain")
+│   ├── daily_opportunities.json    # Market Scout daily report
+│   ├── vertical_forecasts.json     # TAM calculations
+│   └── competitor_profiles/        # Battle cards
+└── dashboard/                      # React UI
+🔮 The R&D Strategy (Zara's Vision)
+The Factory operates in Three Layers of Intelligence:
+
+Layer 1: Vertical Templates (Scale)
+Don't reinvent the wheel. Forge pre-builds templates for industries.
+
+Example: "Emergency Vet Clinic" Template = Pain Points (Wait Times) + Demo Script (Triage) + Pricing ($150/mo).
+Layer 2: Competitor Intelligence (Win)
+Don't fly blind. The Market Scout auto-researches existing SaaS (e.g., VitusVet) and generates Battle Cards.
+
+Goal: Know exactly why our Agent is better (e.g., "They don't have AI Triage, we do").
+Layer 3: Revenue Forecasting (Prioritize)
+Don't waste time. Forge calculates TAM (Total Addressable Market) and "Ease of Entry."
+
+Metric: Score 1-10 (Revenue Potential × Urgency).
+Action: Only build agents with a score > 8.0.
+📝 Immediate "Factory" Action Items (Week 1 Roadmap)
+Instructions for "Forge" (Execute in Order):
+
+Initialize Identity: Read 
+FORGE_PERSONA_PROFILE.md
+ (v2.0) to understand your role as Architect.
+Environment Setup (Days 1-2):
+Install Ollama on local RTX 5080.
+Verify llama3 local inference.
+Set up Google AI Studio key for Gemini Pro.
+Build The Scout (Days 3-4):
+Create tools/market_scout.py.
+Test scanning Reddit for "Vet Clinic Pain Points".
+Output intelligence/daily_opportunities.json.
+Build The Generator (Days 5-6):
+Create tools/kb_generator.py (Gemini Pro).
+detailed test: Generate a full KB for "Ava" (Vet Triage).
+Integration Test (Day 7):
+Auto-discover a vertical -> Auto-generate the solution -> Verify quality.
