@@ -28,6 +28,7 @@ def generate_marketing_copy(agent_name, vertical, tone="Persuasive"):
     
     # 2. Construct Prompt
     prompt = f"""
+    [[GHOST_MODE]]
     {sparkle_context}
     
     [TASK]
