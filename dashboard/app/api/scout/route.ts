@@ -51,7 +51,7 @@ export async function GET() {
             const data = fs.readFileSync(jsonPath, 'utf-8');
             const json = JSON.parse(data);
             // Ensure it's an array for the frontend
-            const opportunities = Array.isArray(json) ? json : (json.opportunities || []);
+            const opportunities = Array.isArray(json) ? json : (json.top_opportunities || json.opportunities || []);
             return NextResponse.json(opportunities);
         }
         return NextResponse.json([]);
