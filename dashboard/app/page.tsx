@@ -69,10 +69,10 @@ export default function Home() {
             </div>
 
             <div className="space-y-2 font-mono text-sm text-slate-400">
-              <p>> Initializing Identity... [DONE]</p>
-              <p>> Ingesting Knowledge Base (v2)... [DONE]</p>
-              <p>> Synthesizing Voice Model (Tavus)... [PENDING]</p>
-              <p>> Calibrating UI Interface... [IN PROGRESS]</p>
+              <p>&gt; Initializing Identity... [DONE]</p>
+              <p>&gt; Ingesting Knowledge Base (v2)... [DONE]</p>
+              <p>&gt; Synthesizing Voice Model (Tavus)... [PENDING]</p>
+              <p>&gt; Calibrating UI Interface... [IN PROGRESS]</p>
             </div>
 
             <div className="mt-8 pt-8 border-t border-slate-700">
