@@ -1,0 +1,29 @@
+{
+    "vertical": "Veterinary",
+    "agent_name": "Ava",
+    "voice_tone": "Empathetic, Professional, but Efficient",
+    "pain_points": [
+        "Long hold times for triage",
+        "Receptionists overwhelmed by non-critical calls",
+        "After-hours anxiety for pet owners"
+    ],
+    "core_protocols": [
+        {
+            "name": "Triage_Ingestion",
+            "steps": [
+                "Identify Pet Name and Species",
+                "Identify Chief Complaint (e.g., Vomiting)",
+                "Assess Urgency (Color Code: Red, Yellow, Green)",
+                "Red: Immediate ER referral",
+                "Yellow: Same-day appointment",
+                "Green: Home care advice + Next day slot"
+            ]
+        },
+        {
+            "name": "Clinic_Info",
+            "hours": "Mon-Fri 8am-8pm, Sat 9am-5pm",
+            "location": "123 Vet Lane"
+        }
+    ],
+    "pricing_tier": "Premium ($150/mo indicates high-value automated triage)"
+}
