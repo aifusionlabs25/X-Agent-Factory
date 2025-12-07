@@ -48,33 +48,62 @@ def build_persona(vertical, agent_name):
         print(f"❌ Template not found for {vertical}")
         return
 
-    # 3. Architect System Prompt
-    prompt_request = f"""
+    # 3. Architect System Prompt (The Skeleton)
+    prompt_request_skeleton = f"""
     [INPUT DATA]
     Vertical: {template_data['vertical_name']}
     Agent Name: {template_data['agent_name']}
     Role: {template_data['role']}
-    Tone: {template_data['tone']}
-    Pain Points: {template_data['pain_points']}
     Protocols: {json.dumps(template_data.get('triage_protocol', {}))}
     
     [INSTRUCTION]
-    Design a 'System Prompt' for this agent. 
-    Use your [PrmptEngnrgExp] to ensure it adheres to the [PRMPTINJ] safety standards.
-    The output should be the raw system prompt text to quite literally 'program' the agent.
+    Design the 'System Prompt' (The Skeleton).
+    Focus ONLY on Logic, Guardrails, Step-by-step Protocols, and Safety.
+    Do not include fluff. Output raw text for the LLM.
     """
     
-    system_prompt_content = generate_with_gemini(troy_context, prompt_request)
+    skeleton_content = generate_with_gemini(troy_context, prompt_request_skeleton)
     
-    if system_prompt_content:
-        # Save
-        agent_dir = f"agents/{agent_name.lower()}_{vertical.lower().replace(' ', '_')}"
-        if not os.path.exists(agent_dir):
-            os.makedirs(agent_dir)
+    # 4. Architect Persona Context (The Soul)
+    prompt_request_soul = f"""
+    [INPUT DATA]
+    Vertical: {template_data['vertical_name']}
+    Agent Name: {template_data['agent_name']}
+    Tone: {template_data['tone']}
+    Pain Points: {template_data['pain_points']}
+    
+    [INSTRUCTION]
+    Design the 'Persona Context' (The Soul).
+    Focus ONLY on Vibe, Voice, Backstory, and deeply held beliefs.
+    This is for a Tavus Video Replica to 'act' the part.
+    """
+    
+    soul_content = generate_with_gemini(troy_context, prompt_request_soul)
+    
+    # Clean Parse & Save Both
+    agent_dir = f"agents/{agent_name.lower()}_{vertical.lower().replace(' ', '_')}"
+    if not os.path.exists(agent_dir):
+        os.makedirs(agent_dir)
+
+    # Save Skeleton
+    if skeleton_content:
+        clean_skeleton = skeleton_content
+        if "Troy Ready." in skeleton_content:
+             clean_skeleton = skeleton_content.split("Troy Ready.")[1].strip()
+        with open(f"{agent_dir}/system_prompt.txt", "w", encoding='utf-8') as f:
+            f.write(clean_skeleton.strip())
             
-        with open(f"{agent_dir}/system_prompt_v2.txt", "w", encoding='utf-8') as f:
-            f.write(system_prompt_content)
-        print(f"✅ Troy has forged the System Prompt: {agent_dir}/system_prompt_v2.txt")
+    # Save Soul
+    if soul_content:
+        clean_soul = soul_content
+        if "Troy Ready." in soul_content:
+             clean_soul = soul_content.split("Troy Ready.")[1].strip()
+        with open(f"{agent_dir}/persona_context.txt", "w", encoding='utf-8') as f:
+            f.write(clean_soul.strip())
+
+    print(f"✅ Troy has forged the Agent: {agent_dir}")
+    print(f"   💀 Skeleton: system_prompt.txt")
+    print(f"   👻 Soul: persona_context.txt")
 
 if __name__ == "__main__":
     if len(sys.argv) < 3:

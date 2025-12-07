@@ -1,14 +1,14 @@
 {
     "vertical_name": "Home Services (Plumbing/HVAC)",
     "agent_name": "Noah",
-    "role": "Emergency Dispatch & scheduling",
+    "role": "Emergency Dispatch & Scheduling",
     "competitors": [
         "ServiceTitan",
         "Housecall Pro",
         "ReceptionHQ"
     ],
     "pain_points": [
-        "Delayed payment processing & cash flow issues",
+        "Difficulty scheduling appointments leading to homeowner delays",
         "Technicians arriving at wrong locations",
         "Price haggling on the phone"
     ],

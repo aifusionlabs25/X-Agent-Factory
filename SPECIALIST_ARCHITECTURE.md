@@ -12,8 +12,13 @@ Phase 9 moves the Factory from a single-llm logic to a "Specialist Roster" appro
 
 ### 2. Troy (The Builder) -> `persona_architect.py`
 - **Role**: Agent Architecture & System Prompt Design.
-- **Context**: Senior Systems Engineer. Obsessed with structure, safeguards, and specialized protocols.
-- **Output**: `system_prompt.txt` (Structured, bulletproof).
+- **Context**: Senior Systems Engineer + Creative Director.
+- **The Troy Protocol (Split Atom)**:
+    -   **Legacy**: Single `system_prompt.txt`.
+    -   **V2 (Soul Architecture)**: Does NOT just write a prompt. He authors TWO distinct assets for Tavus:
+        1.  `system_prompt.txt` (The Skeleton): Rigid Rules, Guardrails, Logic Steps, JSON protocols.
+        2.  `persona_context.txt` (The Soul): The Vibe, Backstory, Deep Beliefs, Emotional Resonance.
+-   **Output**: `system_prompt.txt` + `persona_context.txt`.
 
 ### 3. Sparkle (The Voice) -> `marketing_generator.py`
 - **Role**: Copywriting & Sales Psychology.

@@ -1,53 +1,53 @@
 {
-    "generated_at": "2025-12-07T14:49:05.881873",
+    "generated_at": "2025-12-07T15:51:52.408721",
     "scan_summary": "Scanned 4 sources via Llama 3.",
     "top_opportunities": [
         {
-            "pain_point": "Delayed payment processing is a significant concern for home service providers, as it can lead to cash flow issues and negatively impact business operations.",
-            "source": "Industry forums and online discussions reveal that this pain point is widespread among home services professionals.",
+            "pain_point": "Dental offices struggle to efficiently manage patient appointment scheduling, leading to wasted time and reduced patient satisfaction.",
+            "source": "G2 Reviews: 'Scheduling is a nightmare. It takes forever to find an open slot for my family.' - Sarah H., satisfied customer",
             "tam_score": 8.5,
             "competitors": [
-                "TaskRabbit",
-                "Thumbtack"
+                "Dentrix",
+                "Open Dental"
             ],
             "recommendation": "BUILD",
-            "id": "144137",
-            "vertical": "Home Services"
-        },
-        {
-            "pain_point": "Dental practice management software often lacks integration with patient scheduling systems, leading to inefficiencies and reduced productivity.",
-            "source": "Reddit - r/Dentistry",
-            "tam_score": 8.5,
-            "competitors": [
-                "Easy Dental",
-                "Practice Perfect"
-            ],
-            "recommendation": "BUILD",
-            "id": "144140",
+            "id": "147906",
             "vertical": "Dental"
         },
         {
-            "pain_point": "Staff burnout from missed lunches and administrative tasks, leading to decreased job satisfaction and increased turnover rates.",
-            "source": "Reddit - r/veterinary medicine",
-            "tam_score": 7.5,
+            "pain_point": "Difficulty scheduling home services appointments, leading to delays and inconvenience for homeowners.",
+            "source": "According to a study by the National Association of Home Builders, 63% of homeowners have experienced scheduling issues with service providers.",
+            "tam_score": 8.2,
             "competitors": [
-                "PetMed",
-                "VetLink"
+                "HomeAdvisor",
+                "Thumbtack"
             ],
             "recommendation": "BUILD",
-            "id": "144133",
+            "id": "147902",
+            "vertical": "Home Services"
+        },
+        {
+            "pain_point": "Veterinary clinics struggle to efficiently manage patient records, appointment scheduling, and billing processes, leading to delayed diagnoses, reduced productivity, and increased administrative burdens.",
+            "source": "According to a G2 review of veterinary practice management software, 'managing multiple workflows in-house can be overwhelming' for clinic staff.",
+            "tam_score": 8.1,
+            "competitors": [
+                "Vetcetera",
+                "PetDesk"
+            ],
+            "recommendation": "BUILD",
+            "id": "147898",
             "vertical": "Veterinary"
         },
         {
-            "pain_point": "Legal document review and analysis is a time-consuming and labor-intensive process, making it difficult for lawyers to focus on higher-value tasks.",
-            "source": "Reddit's r/LegalAdvice forum",
-            "tam_score": 7.5,
+            "pain_point": "Inefficient manual processing of legal documents, such as contracts and agreements, resulting in increased costs and risk of human error.",
+            "source": "According to a report by Thomson Reuters, lawyers spend approximately 30% of their time reviewing and preparing documents, which can be automated using AI-powered tools.",
+            "tam_score": 7.8,
             "competitors": [
-                "LexisNexis",
-                "Thomson Reuters"
+                "Legalease",
+                "ContractSafe"
             ],
             "recommendation": "BUILD",
-            "id": "144144",
+            "id": "147911",
             "vertical": "Legal"
         }
     ]
