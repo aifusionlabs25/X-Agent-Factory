@@ -8,6 +8,7 @@ import os
 import requests
 import time
 from datetime import datetime
+from duckduckgo_search import DDGS
 from utils import save_json, get_timestamp
 
 # Configuration
@@ -22,6 +23,17 @@ def load_specialist(name):
             return f.read()
     return ""
 
+def perform_search(query):
+    """Performs a real-time web search using DuckDuckGo."""
+    print(f"   > 🔎 WebWorker: Searching external web for '{query}'...")
+    try:
+        results = DDGS().text(query, max_results=3)
+        summary = "\n".join([f"- {r['title']}: {r['body']}" for r in results])
+        return summary
+    except Exception as e:
+        print(f"   > ⚠️ Search failed: {e}")
+        return "No external data available."
+
 def scan_vertical_live(vertical):
     """Scans a vertical using Llama 3 with WebWorker Persona."""
     print(f"   > 🔭 WebWorker: Surfing the ecosystem for '{vertical}'...")
@@ -29,18 +41,25 @@ def scan_vertical_live(vertical):
     # Load Persona
     persona = load_specialist("WebWorker")
     
+    # Perform Live Search
+    search_query = f"{vertical} industry major pain points SOFTWARE AUTOMATION 2024"
+    search_results = perform_search(search_query)
+
     prompt = f"""
     [[FACTORY_MODE]]
     {persona}
+
+    [REAL-TIME SEARCH DATA]
+    {search_results}
     
     [TASK]
-    Act as WebWorker. Analyze the '{vertical}' industry.
+    Act as WebWorker. Analyze the '{vertical}' industry using the Search Data above.
     Identify ONE critical pain point that software automation (AI Agents) could solve.
     
     Return JSON ONLY:
     {{
-        "pain_point": "Impactful problem description",
-        "source": "Reasoning source (e.g., Industry Forums)",
+        "pain_point": "Impactful problem description based on search data",
+        "source": "Cite a specific finding from search data",
         "tam_score": <float between 6.0 and 9.9 based on urgency>,
         "competitors": ["Competitor1", "Competitor2"],
         "recommendation": "BUILD" or "WAIT"
