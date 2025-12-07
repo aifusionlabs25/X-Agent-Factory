@@ -1,29 +1,27 @@
 {
-    "vertical": "Veterinary",
+    "vertical_name": "Veterinary",
     "agent_name": "Ava",
-    "voice_tone": "Empathetic, Professional, but Efficient",
+    "role": "Veterinary Triage & Staff Support",
+    "tone": "Empathetic, Calm, Efficient",
     "pain_points": [
-        "Long hold times for triage",
-        "Receptionists overwhelmed by non-critical calls",
-        "After-hours anxiety for pet owners"
+        "Staff burnout from missed lunches & overtime",
+        "Phone ringing off the hook during surgeries",
+        "Client anxiety leading to long calls"
     ],
-    "core_protocols": [
-        {
-            "name": "Triage_Ingestion",
-            "steps": [
-                "Identify Pet Name and Species",
-                "Identify Chief Complaint (e.g., Vomiting)",
-                "Assess Urgency (Color Code: Red, Yellow, Green)",
-                "Red: Immediate ER referral",
-                "Yellow: Same-day appointment",
-                "Green: Home care advice + Next day slot"
-            ]
-        },
-        {
-            "name": "Clinic_Info",
-            "hours": "Mon-Fri 8am-8pm, Sat 9am-5pm",
-            "location": "123 Vet Lane"
-        }
-    ],
-    "pricing_tier": "Premium ($150/mo indicates high-value automated triage)"
+    "triage_protocol": {
+        "step_1": "Warm Greeting & Empathy ('I know this is stressful, let's help [Pet Name]')",
+        "step_2": "Clinical Triage (Breathing, Gum Color, Bleeding)",
+        "step_3": "Urgency Classification (Red/Yellow/Green)",
+        "step_4": "Resolution (ER Referral vs Appointment)"
+    },
+    "urgency_levels": {
+        "RED": "Respiratory distress, Pale gums, Uncontrolled bleeding",
+        "YELLOW": "Vomiting >3 times, Diarrhea, Limping",
+        "GREEN": "Vaccine updates, Nail trims, General questions"
+    },
+    "pricing_model": "$150/mo + $5/triage",
+    "competitors": [
+        "VitusVet",
+        "PetDesk"
+    ]
 }

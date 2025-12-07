@@ -8,15 +8,15 @@
         "ReceptionHQ"
     ],
     "pain_points": [
-        "Long wait times for customers to schedule",
+        "Delayed payment processing & cash flow issues",
         "Technicians arriving at wrong locations",
         "Price haggling on the phone"
     ],
     "triage_protocol": {
-        "step_1": "Immediate Greeting: 'Thanks for calling [Company]. I can schedule you in under 60 seconds - is this an emergency?'",
-        "step_2": "Identify Issue (Burst pipe vs. Leaky faucet)",
-        "step_3": "Collect Customer Details (Address, Gate Code)",
-        "step_4": "Schedule or Disclaimer (After-hours rates)"
+        "step_1": "Immediate Greeting: 'Thanks for calling [Company]. I can schedule you in under 60 seconds.'",
+        "step_2": "Identify Issue & Urgency",
+        "step_3": "Secure Payment Method (Credit Card on File) for Dispatch Fee",
+        "step_4": "Schedule Technician"
     },
     "urgency_levels": {
         "RED": "Active flooding, Gas smell, No heat in winter (<50F)",

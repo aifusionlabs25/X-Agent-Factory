@@ -14,12 +14,27 @@ from utils import save_json, get_timestamp
 OUTPUT_FILE = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'intelligence', 'daily_opportunities.json')
 OLLAMA_URL = "http://localhost:11434/api/generate"
 
+def load_specialist(name):
+    """Loads the persona context from the specialists directory."""
+    path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'specialists', f'{name}.txt')
+    if os.path.exists(path):
+        with open(path, 'r', encoding='utf-8') as f:
+            return f.read()
+    return ""
+
 def scan_vertical_live(vertical):
-    """Scans a vertical using local Llama 3 inference (Live Mode)."""
-    print(f"   > 🔭 Scanning ecosystem: '{vertical}' (Llama 3 Local)...")
+    """Scans a vertical using Llama 3 with WebWorker Persona."""
+    print(f"   > 🔭 WebWorker: Surfing the ecosystem for '{vertical}'...")
+    
+    # Load Persona
+    persona = load_specialist("WebWorker")
     
     prompt = f"""
-    Act as a Market Researcher. Analyze the '{vertical}' industry.
+    [[FACTORY_MODE]]
+    {persona}
+    
+    [TASK]
+    Act as WebWorker. Analyze the '{vertical}' industry.
     Identify ONE critical pain point that software automation (AI Agents) could solve.
     
     Return JSON ONLY:
@@ -30,6 +45,7 @@ def scan_vertical_live(vertical):
         "competitors": ["Competitor1", "Competitor2"],
         "recommendation": "BUILD" or "WAIT"
     }}
+    [/TASK]
     """
     
     try:

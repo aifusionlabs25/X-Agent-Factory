@@ -1,54 +1,54 @@
 {
-    "generated_at": "2025-12-07T13:44:07.347313",
+    "generated_at": "2025-12-07T14:49:05.881873",
     "scan_summary": "Scanned 4 sources via Llama 3.",
     "top_opportunities": [
         {
-            "pain_point": "Manual document review and analysis for legal discovery purposes is time-consuming, costly, and prone to human error.",
-            "source": "American Bar Association (ABA) Journal",
+            "pain_point": "Delayed payment processing is a significant concern for home service providers, as it can lead to cash flow issues and negatively impact business operations.",
+            "source": "Industry forums and online discussions reveal that this pain point is widespread among home services professionals.",
             "tam_score": 8.5,
-            "competitors": [
-                "Relativity",
-                "Corda"
-            ],
-            "recommendation": "BUILD",
-            "id": "140246",
-            "vertical": "Legal"
-        },
-        {
-            "pain_point": "Streamlining Medical Record Management",
-            "source": "Industry forums, surveys, and interviews with veterinarians",
-            "tam_score": 8.4,
-            "competitors": [
-                "Vetsource",
-                "CureMD"
-            ],
-            "recommendation": "BUILD",
-            "id": "140234",
-            "vertical": "Veterinary"
-        },
-        {
-            "pain_point": "Long wait times for customers to schedule and complete home services appointments, leading to frustration and potential loss of business.",
-            "source": "Industry Forums (e.g., Angie's List), Customer Reviews",
-            "tam_score": 7.5,
             "competitors": [
                 "TaskRabbit",
                 "Thumbtack"
             ],
             "recommendation": "BUILD",
-            "id": "140238",
+            "id": "144137",
             "vertical": "Home Services"
         },
         {
-            "pain_point": "Managing patient appointment schedules and reminders is time-consuming and prone to errors, resulting in delayed treatment and poor patient satisfaction.",
-            "source": "American Dental Association (ADA) Survey: 'Dental Practice Statistics'",
-            "tam_score": 7.5,
+            "pain_point": "Dental practice management software often lacks integration with patient scheduling systems, leading to inefficiencies and reduced productivity.",
+            "source": "Reddit - r/Dentistry",
+            "tam_score": 8.5,
             "competitors": [
-                "Henry Schein",
-                "Carestream"
+                "Easy Dental",
+                "Practice Perfect"
             ],
             "recommendation": "BUILD",
-            "id": "140242",
+            "id": "144140",
             "vertical": "Dental"
+        },
+        {
+            "pain_point": "Staff burnout from missed lunches and administrative tasks, leading to decreased job satisfaction and increased turnover rates.",
+            "source": "Reddit - r/veterinary medicine",
+            "tam_score": 7.5,
+            "competitors": [
+                "PetMed",
+                "VetLink"
+            ],
+            "recommendation": "BUILD",
+            "id": "144133",
+            "vertical": "Veterinary"
+        },
+        {
+            "pain_point": "Legal document review and analysis is a time-consuming and labor-intensive process, making it difficult for lawyers to focus on higher-value tasks.",
+            "source": "Reddit's r/LegalAdvice forum",
+            "tam_score": 7.5,
+            "competitors": [
+                "LexisNexis",
+                "Thomson Reuters"
+            ],
+            "recommendation": "BUILD",
+            "id": "144144",
+            "vertical": "Legal"
         }
     ]
 }
