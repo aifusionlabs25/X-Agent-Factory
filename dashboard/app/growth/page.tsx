@@ -164,6 +164,56 @@ export default function GrowthPage() {
         return "⚙️ Manual Ops";
     };
 
+    const downloadCSV = () => {
+        if (leads.length === 0) return;
+
+        const headers = [
+            'Business Name',
+            'URL',
+            'Nova Score',
+            'Pain Signal',
+            'Suggested Template',
+            'Deal Size MRR',
+            'Priority',
+            'Approach',
+            'Demo Link',
+            'Email Subject',
+            'Outreach Hook'
+        ];
+
+        const rows = leads.map(lead => [
+            lead.title || '',
+            lead.href || '',
+            lead.nova_score || '',
+            getPainSignal(lead.nova_reason),
+            lead.suggested_template || '',
+            lead.deal_size || '',
+            lead.enriched?.nova?.final_priority || '',
+            lead.enriched?.fin?.recommended_approach || '',
+            lead.demoLink ? `${window.location.origin}${lead.demoLink}` : '',
+            lead.enriched?.sparkle?.email_subject || '',
+            selectedEntry?.outreach_hook || ''
+        ]);
+
+        const csvContent = [
+            headers.join(','),
+            ...rows.map(row => row.map(cell => `"${String(cell).replace(/"/g, '""')}"`).join(','))
+        ].join('\n');
+
+        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+        const link = document.createElement('a');
+        const url = URL.createObjectURL(blob);
+        link.setAttribute('href', url);
+        link.setAttribute('download', `leads_${selectedEntry?.sub_vertical?.replace(/\s+/g, '_') || 'export'}_${new Date().toISOString().split('T')[0]}.csv`);
+        link.style.visibility = 'hidden';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
+        setLogs(prev => prev + `\n📥 Exported ${leads.length} leads to CSV.`);
+    };
+
+
     const formatCurrency = (num: number) => {
         if (num >= 1000000000) return `$${(num / 1000000000).toFixed(1)}B`;
         if (num >= 1000000) return `$${(num / 1000000).toFixed(1)}M`;
@@ -178,10 +228,21 @@ export default function GrowthPage() {
                     <h1 className="text-3xl font-bold text-slate-800 tracking-tight">📈 GROWTH ENGINE</h1>
                     <p className="text-slate-500 font-mono text-sm">GUIDED HUNT | MARKET ATLAS POWERED | {atlas.length} VERTICALS LOADED</p>
                 </div>
-                <Link href="/" className="px-4 py-2 bg-slate-200 hover:bg-slate-300 rounded text-slate-700 text-sm font-bold">
-                    ← DASHBOARD
-                </Link>
+                <div className="flex gap-3">
+                    {leads.length > 0 && (
+                        <button
+                            onClick={downloadCSV}
+                            className="px-4 py-2 bg-green-600 hover:bg-green-500 rounded text-white text-sm font-bold"
+                        >
+                            📥 Download CSV ({leads.length})
+                        </button>
+                    )}
+                    <Link href="/" className="px-4 py-2 bg-slate-200 hover:bg-slate-300 rounded text-slate-700 text-sm font-bold">
+                        ← DASHBOARD
+                    </Link>
+                </div>
             </header>
+
 
             <div className="grid grid-cols-1 xl:grid-cols-5 gap-6">
                 {/* Atlas Selector - Left Panel */}
