@@ -9,10 +9,12 @@ interface ServiceStatus {
     model?: string;
     minutes_used?: number;
     minutes_remaining?: number;
+    replicas_count?: number;
     characters_used?: number;
     characters_limit?: number;
     voice?: string;
 }
+
 
 interface StatusData {
     timestamp: string;
@@ -238,16 +240,21 @@ export default function UsagePage() {
                             />
                             <div className="flex-1 space-y-2">
                                 <div className="flex justify-between text-sm">
-                                    <span className="text-slate-400">Minutes Used</span>
-                                    <span className="text-white font-mono">{status?.services.tavus.minutes_used || 0}</span>
+                                    <span className="text-slate-400">Replicas</span>
+                                    <span className="text-white font-mono">{(status?.services.tavus as any)?.replicas_count || 0}</span>
                                 </div>
                                 <div className="flex justify-between text-sm">
-                                    <span className="text-slate-400">Remaining</span>
-                                    <span className="text-green-400 font-mono">{status?.services.tavus.minutes_remaining || 0}</span>
+                                    <span className="text-slate-400">Latency</span>
+                                    <span className="text-green-400 font-mono">{status?.services.tavus.latency || 0}ms</span>
+                                </div>
+                                <div className="flex justify-between text-sm">
+                                    <span className="text-slate-400">Minutes</span>
+                                    <span className="text-white font-mono">{status?.services.tavus.minutes_used || 0} / {(status?.services.tavus.minutes_used || 0) + (status?.services.tavus.minutes_remaining || 1000)}</span>
                                 </div>
                             </div>
                         </div>
                     </div>
+
 
                     {/* ElevenLabs */}
                     <div className="bg-slate-800/50 backdrop-blur rounded-2xl border border-slate-700 p-6">
