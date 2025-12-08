@@ -100,6 +100,34 @@ export default function GrowthPage() {
                         if (saveData.success) {
                             setLogs(prev => prev + `\n✅ Saved to: ${saveData.jsonPath}`);
                             showToast(`📁 Saved ${saveData.leadCount} leads to ${saveData.filename}`);
+
+                            // PHASE 2: Trigger Orchestrator → Email Report
+                            setLogs(prev => prev + `\n\n🏭 TRIGGERING ORCHESTRATOR...`);
+                            setLogs(prev => prev + `\n   > Processing leads...`);
+                            setLogs(prev => prev + `\n   > Generating report...`);
+                            setLogs(prev => prev + `\n   > Sending email to aifusionlabs@gmail.com...`);
+
+                            try {
+                                const orchRes = await fetch('/api/orchestrate', {
+                                    method: 'POST',
+                                    headers: { 'Content-Type': 'application/json' },
+                                    body: JSON.stringify({ filename: saveData.filename })
+                                });
+                                const orchData = await orchRes.json();
+
+                                if (orchData.success) {
+                                    if (orchData.emailSent) {
+                                        setLogs(prev => prev + `\n✅ REPORT EMAILED TO ALPHA!`);
+                                        showToast(`📧 Report emailed to aifusionlabs@gmail.com!`);
+                                    } else {
+                                        setLogs(prev => prev + `\n✅ Report generated (check inbox)`);
+                                    }
+                                } else {
+                                    setLogs(prev => prev + `\n⚠️ Orchestrator: ${orchData.error}`);
+                                }
+                            } catch (orchErr: any) {
+                                setLogs(prev => prev + `\n⚠️ Orchestrator error: ${orchErr.message}`);
+                            }
                         } else {
                             setLogs(prev => prev + `\n⚠️ Save failed: ${saveData.error}`);
                         }
