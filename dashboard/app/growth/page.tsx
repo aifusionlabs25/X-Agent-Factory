@@ -50,6 +50,13 @@ export default function GrowthPage() {
         setLogs(`📋 Selected: ${entry.sub_vertical}\n💡 Pain: ${entry.pain_point}\n🎯 TAM: ${entry.tam_us.toLocaleString()} | MRR: $${entry.deal_size_mrr}\n🔍 Auto-Query: "${query}"`);
     };
 
+    const [toast, setToast] = useState<string | null>(null);
+
+    const showToast = (message: string) => {
+        setToast(message);
+        setTimeout(() => setToast(null), 5000);
+    };
+
     const handleHunt = async () => {
         if (!customQuery && !selectedEntry) return;
         setLoading(true);
@@ -75,6 +82,31 @@ export default function GrowthPage() {
                 }));
                 setLeads(enrichedLeads);
                 setLogs(prev => prev + `\n✅ Scout Complete. Found ${enrichedLeads.length} qualified leads.`);
+
+                // AUTO-SAVE: Save results to JSON + CSV
+                if (enrichedLeads.length > 0) {
+                    setLogs(prev => prev + `\n💾 Saving results...`);
+                    try {
+                        const saveRes = await fetch('/api/save-hunt', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                vertical: searchQuery,
+                                leads: enrichedLeads
+                            })
+                        });
+                        const saveData = await saveRes.json();
+
+                        if (saveData.success) {
+                            setLogs(prev => prev + `\n✅ Saved to: ${saveData.jsonPath}`);
+                            showToast(`📁 Saved ${saveData.leadCount} leads to ${saveData.filename}`);
+                        } else {
+                            setLogs(prev => prev + `\n⚠️ Save failed: ${saveData.error}`);
+                        }
+                    } catch (saveErr: any) {
+                        setLogs(prev => prev + `\n⚠️ Save error: ${saveErr.message}`);
+                    }
+                }
             } else {
                 setLogs(prev => prev + `\n❌ Error: ${data.error || 'Unknown error'}`);
             }
@@ -84,6 +116,7 @@ export default function GrowthPage() {
             setLoading(false);
         }
     };
+
 
     const handleGenerateAgent = async (lead: any) => {
         if (!confirm(`Generate Demo X Agent for ${lead.title}?\n\nTemplate: ${lead.suggested_template}\nThis will:\n1. Enrich lead (WebWorker + Nova + Fin + Sparkle)\n2. Spider their website\n3. Build a custom demo`)) return;
@@ -234,12 +267,20 @@ export default function GrowthPage() {
     };
 
     return (
-        <div className="p-8 max-w-[1800px] mx-auto">
+        <div className="p-8 max-w-[1800px] mx-auto relative">
+            {/* Toast Notification */}
+            {toast && (
+                <div className="fixed top-4 right-4 z-50 bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg animate-pulse">
+                    {toast}
+                </div>
+            )}
+
             <header className="mb-6 flex justify-between items-center">
                 <div>
                     <h1 className="text-3xl font-bold text-slate-800 tracking-tight">📈 GROWTH ENGINE</h1>
                     <p className="text-slate-500 font-mono text-sm">GUIDED HUNT | MARKET ATLAS POWERED | {atlas.length} VERTICALS LOADED</p>
                 </div>
+
                 <div className="flex gap-3">
                     {leads.length > 0 && (
                         <button
