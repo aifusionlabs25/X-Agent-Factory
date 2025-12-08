@@ -86,12 +86,52 @@ export default function GrowthPage() {
     };
 
     const handleGenerateAgent = async (lead: any) => {
-        if (!confirm(`Generate Demo X Agent for ${lead.title}?\n\nTemplate: ${lead.suggested_template}\nThis will spider their website and build a custom demo.`)) return;
-
-        setLogs(prev => prev + `\n🚀 Ingesting Client: ${lead.title}...`);
+        if (!confirm(`Generate Demo X Agent for ${lead.title}?\n\nTemplate: ${lead.suggested_template}\nThis will:\n1. Enrich lead (WebWorker + Nova + Fin + Sparkle)\n2. Spider their website\n3. Build a custom demo`)) return;
 
         let slug = lead.title.toLowerCase();
         slug = slug.replace(/[^a-z0-9\s]/g, '').trim().replace(/\s+/g, '_').slice(0, 50);
+
+        // STAGE 1: ENRICHMENT
+        setLogs(prev => prev + `\n\n🔬 ENRICHMENT PIPELINE STARTED`);
+        setLogs(prev => prev + `\n   > 🕷️ WebWorker: Spidering...`);
+
+        try {
+            const enrichRes = await fetch('/api/enrich', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    url: lead.href,
+                    title: lead.title,
+                    pain: selectedEntry?.pain_point || '',
+                    demo: ''
+                })
+            });
+            const enrichData = await enrichRes.json();
+
+            if (enrichData.success && enrichData.enriched) {
+                const e = enrichData.enriched;
+                setLogs(prev => prev + `\n   > 💠 Nova: Priority ${e.nova?.final_priority || 'N/A'}`);
+                setLogs(prev => prev + `\n   > 💼 Fin: ${e.fin?.recommended_approach || 'N/A'}`);
+                setLogs(prev => prev + `\n   > ✨ Sparkle: "${e.sparkle?.email_subject || 'Copy ready'}"`);
+
+                // Update lead with enriched data
+                setLeads(prevLeads => prevLeads.map(l =>
+                    l.href === lead.href ? {
+                        ...l,
+                        enriched: e,
+                        priority: e.nova?.final_priority,
+                        approach: e.fin?.recommended_approach
+                    } : l
+                ));
+            } else {
+                setLogs(prev => prev + `\n   ⚠️ Enrichment partial: ${enrichData.message || 'Check logs'}`);
+            }
+        } catch (e: any) {
+            setLogs(prev => prev + `\n   ⚠️ Enrichment error: ${e.message}`);
+        }
+
+        // STAGE 2: INGEST
+        setLogs(prev => prev + `\n\n🚀 INGESTING CLIENT: ${lead.title}...`);
 
         try {
             const res = await fetch('/api/ingest', {
