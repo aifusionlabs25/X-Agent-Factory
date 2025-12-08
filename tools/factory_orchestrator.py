@@ -246,6 +246,24 @@ def process_hunt_file(filepath):
     print(f"   📊 Summary: {len(a_tier)} A-tier | {len(b_tier)} B-tier | {len(c_tier)} C-tier")
     print(f"   💰 Estimated MRR: ${total_mrr:,}")
     
+    # Send Email Report
+    try:
+        from email_sender import send_batch_report
+        batch_name = f"{vertical.upper().replace(' ', '_')}_BATCH_{datetime.now().strftime('%Y%m%d')}"
+        print(f"\n   📧 Sending email report to aifusionlabs@gmail.com...")
+        result = send_batch_report(
+            batch_name=batch_name,
+            vertical=vertical,
+            leads=leads,
+            to_email="aifusionlabs@gmail.com"
+        )
+        if result:
+            print(f"   ✅ Email sent! Batch: {batch_name}")
+        else:
+            print(f"   ⚠️ Email not sent (check RESEND_API_KEY)")
+    except Exception as e:
+        print(f"   ⚠️ Email error: {e}")
+    
     # Mark as processed
     mark_as_processed(filepath)
     
