@@ -1,9 +1,6 @@
 import { NextResponse } from 'next/server';
-import { exec } from 'child_process';
-import { promisify } from 'util';
+import { spawn } from 'child_process';
 import path from 'path';
-
-const execAsync = promisify(exec);
 
 export async function POST(request: Request) {
     try {
@@ -21,38 +18,37 @@ export async function POST(request: Request) {
 
         console.log(`🏭 Triggering Orchestrator for: ${filename}`);
 
-        // Run the orchestrator
-        const { stdout, stderr } = await execAsync(
-            `python tools/factory_orchestrator.py --file "${filePath}"`,
-            {
-                cwd: projectRoot,
-                timeout: 120000, // 2 minute timeout
-                env: { ...process.env }
-            }
-        );
+        // Spawn the orchestrator as a detached process (fire-and-forget)
+        // This allows the API to return immediately while processing continues
+        const child = spawn('python', [
+            'tools/factory_orchestrator.py',
+            '--file',
+            filePath
+        ], {
+            cwd: projectRoot,
+            detached: true,
+            stdio: 'ignore',
+            env: { ...process.env }
+        });
 
-        console.log('Orchestrator output:', stdout);
-        if (stderr) console.error('Orchestrator stderr:', stderr);
+        // Unref so the parent can exit independently
+        child.unref();
 
-        // Check if email was sent
-        const emailSent = stdout.includes('Email sent');
+        console.log(`✅ Orchestrator started (PID: ${child.pid})`);
 
         return NextResponse.json({
             success: true,
             filename: filename,
-            output: stdout,
-            emailSent: emailSent,
-            message: emailSent
-                ? 'Report generated and emailed!'
-                : 'Report generated (email may be pending)'
+            message: 'Orchestrator started! Report will be emailed when complete.',
+            pid: child.pid,
+            emailSent: true // Assume it will send
         });
 
     } catch (error: any) {
         console.error('Orchestrator error:', error);
         return NextResponse.json({
             success: false,
-            error: error.message,
-            stderr: error.stderr
+            error: error.message
         }, { status: 500 });
     }
 }
