@@ -5,7 +5,7 @@ import os
 import json
 import requests
 import time
-from duckduckgo_search import DDGS
+from ddgs import DDGS
 from bs4 import BeautifulSoup
 from utils import load_env
 
@@ -117,7 +117,7 @@ def generate_criteria(vertical):
         except:
             print("⚠️ Failed to parse Troy's criteria.")
     
-    return [f"{vertical}", f"{vertical} reviews", f"{vertical} contact"]
+    return [f"{vertical} businesses", f"{vertical} near me", f"{vertical} reviews"]
 
 # --- Step 2: The Hands (WebWorker) ---
 def perform_search(queries):
@@ -158,10 +158,19 @@ def score_leads(leads, vertical):
     persona = load_specialist("Nova")
     
     qualified = []
+    ignorable_domains = ["yelp.com", "angi.com", "thumbtack.com", "facebook.com", "linkedin.com", "yellowpages.com", "bbb.org", "homeadvisor.com", "porch.com"]
     
     for lead in leads:
-        # Quick spider for context
+        # 1. Pre-Filter Aggregators
+        if any(domain in lead['href'] for domain in ignorable_domains):
+            print(f"     - [Skip] Aggregator detected: {lead['title'][:20]}...")
+            continue
+
+        # 2. Quick spider for context
         snippet = fetch_homepage_snippet(lead['href'])
+        if not snippet:
+             print(f"     - [Skip] Could not fetch site: {lead['title'][:20]}...")
+             continue
         
         prompt = f"""
         [[FACTORY_MODE]]
@@ -176,14 +185,14 @@ def score_leads(leads, vertical):
         
         [TASK]
         Score this lead (0-10) on "Likelihood to need AI Automation".
-        - High Score: Bad website, mentions "call us", complaints in snippet, manual scheduling.
-        - Low Score: Has "ServiceTitan", modern UI, enterprise corp.
+        - High Score (6-10): Bad website, mentions "call us", complaints in snippet, manual scheduling, small local biz.
+        - Low Score (0-5): Has "ServiceTitan", modern UI, enterprise corp, government site.
         
         Return JSON ONLY:
         {{
             "score": <int>,
             "reason": "...",
-            "pass": <bool> (True if score > 7)
+            "pass": <bool> (True if score >= 4)
         }}
         [/TASK]
         """
@@ -193,7 +202,8 @@ def score_leads(leads, vertical):
         
         if evaluation:
             print(f"     - [{evaluation.get('score', 0)}/10] {lead['title'][:30]}... ({evaluation.get('pass')})")
-            if evaluation.get('pass'):
+            # Lowering threshold AND trusting the explicit 'pass' bool more
+            if evaluation.get('score', 0) >= 4:
                 lead['nova_score'] = evaluation['score']
                 lead['nova_reason'] = evaluation['reason']
                 qualified.append(lead)
