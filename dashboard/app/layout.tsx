@@ -14,14 +14,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="bg-slate-50 text-slate-900 antialiased flex">
-        {/* Main Content Area (Dynamic) - Adjusted width to account for fixed sidebar */}
-        <main className="flex-1 min-h-screen mr-[500px] transition-all duration-300">
+      <body className="bg-slate-50 text-slate-900 antialiased">
+        {/* Main Content Area - Full width now, sidebar controlled per-page */}
+        <main className="min-h-screen transition-all duration-300">
           {children}
         </main>
-
-        {/* Fixed Right Sidebar */}
-        <AgentSidebar />
       </body>
     </html>
   );

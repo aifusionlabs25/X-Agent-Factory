@@ -8,28 +8,15 @@ const execPromise = util.promisify(exec);
 
 export async function POST(req: Request) {
     try {
-        const { vertical, forceRescan } = await req.json();
+        const { vertical } = await req.json();
 
         if (!vertical) {
             return NextResponse.json({ error: 'Vertical is required' }, { status: 400 });
         }
 
-        const safeVertical = vertical.toLowerCase().replace(/ /g, '_');
-        const cwd = path.join(process.cwd(), '..');
-        const resultsPath = path.join(cwd, 'intelligence', 'leads', `${safeVertical}_qualified.json`);
-
-        if (!forceRescan && fs.existsSync(resultsPath)) {
-            const stats = fs.statSync(resultsPath);
-            const now = new Date().getTime();
-            // Reuse cache if younger than 1 hour
-            if (now - stats.mtimeMs < 3600000) {
-                const resultsData = fs.readFileSync(resultsPath, 'utf-8');
-                const leads = JSON.parse(resultsData);
-                return NextResponse.json({ success: true, leads, logs: "Loaded from Cache (Fresh)" });
-            }
-        }
-
         const command = `python tools/prospect_scout.py "${vertical}"`;
+        const cwd = path.join(process.cwd(), '..'); // Assuming dashboard is in dashboard/ dir
+
         // Execute the Python script
         const { stdout, stderr } = await execPromise(command, { cwd });
         console.log("Scout Output:", stdout);
@@ -38,7 +25,10 @@ export async function POST(req: Request) {
             console.warn("Scout Stderr:", stderr);
         }
 
-        // Read the results file (Re-reading in case script updated it)
+        // Read the results file
+        const safeVertical = vertical.toLowerCase().replace(/ /g, '_');
+        const resultsPath = path.join(cwd, 'intelligence', 'leads', `${safeVertical}_qualified.json`);
+
         if (fs.existsSync(resultsPath)) {
             const resultsData = fs.readFileSync(resultsPath, 'utf-8');
             const leads = JSON.parse(resultsData);
