@@ -41,6 +41,10 @@ export default function GrowthPage() {
 
         setLogs(prev => prev + `\n🚀 Ingesting Client: ${lead.title}...`);
 
+        // Generate slug from title
+        let slug = lead.title.toLowerCase();
+        slug = slug.replace(/[^a-z0-9\s]/g, '').trim().replace(/\s+/g, '_').slice(0, 50);
+
         try {
             const res = await fetch('/api/ingest', {
                 method: 'POST',
@@ -50,7 +54,11 @@ export default function GrowthPage() {
             const data = await res.json();
 
             if (data.success) {
-                setLogs(prev => prev + `\n✅ Demo Agent Ready! Knowledge Base Created.`);
+                const demoLink = `/demo/${slug}`;
+                setLogs(prev => prev + `\n✅ Demo Agent Ready!\n📎 Demo Link: ${window.location.origin}${demoLink}`);
+                setLeads(prevLeads => prevLeads.map(l =>
+                    l.href === lead.href ? { ...l, demoLink } : l
+                ));
             } else {
                 setLogs(prev => prev + `\n❌ Ingest Failed: ${data.error}`);
             }
