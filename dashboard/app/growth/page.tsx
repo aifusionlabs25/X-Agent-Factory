@@ -200,18 +200,30 @@ export default function GrowthPage() {
             ...rows.map(row => row.map(cell => `"${String(cell).replace(/"/g, '""')}"`).join(','))
         ].join('\n');
 
+        // Build filename from hunt terms
+        const huntTerms = customQuery || selectedEntry?.sub_vertical || 'export';
+        const sanitizedName = huntTerms
+            .toLowerCase()
+            .replace(/[^a-z0-9\s]/g, '')
+            .trim()
+            .replace(/\s+/g, '_')
+            .slice(0, 50);
+        const dateStr = new Date().toISOString().split('T')[0];
+        const filename = `hunt_${sanitizedName}_${dateStr}.csv`;
+
         const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
         const link = document.createElement('a');
         const url = URL.createObjectURL(blob);
         link.setAttribute('href', url);
-        link.setAttribute('download', `leads_${selectedEntry?.sub_vertical?.replace(/\s+/g, '_') || 'export'}_${new Date().toISOString().split('T')[0]}.csv`);
+        link.setAttribute('download', filename);
         link.style.visibility = 'hidden';
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
 
-        setLogs(prev => prev + `\n📥 Exported ${leads.length} leads to CSV.`);
+        setLogs(prev => prev + `\n📥 Exported ${leads.length} leads to: ${filename}`);
     };
+
 
 
     const formatCurrency = (num: number) => {
