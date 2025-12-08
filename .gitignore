@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+
+# Environment variables (KEEP SECRET)
+.env
+.env.local
+.env.production
+
+# IDE
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build
+dist/
+build/
+.next/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Test artifacts
+test_email.html
+
+# Processed files tracker
+intelligence/leads/.processed
