@@ -201,9 +201,11 @@ def score_leads(leads, vertical):
         evaluation = generate_with_ollama(persona, prompt)
         
         if evaluation:
-            # Safely extract score with explicit None handling
-            score = evaluation.get('score')
-            if score is None:
+            # Safely extract score with type coercion
+            raw_score = evaluation.get('score')
+            try:
+                score = int(raw_score) if raw_score is not None else 0
+            except (ValueError, TypeError):
                 score = 0
             
             print(f"     - [{score}/10] {lead['title'][:30]}... ({evaluation.get('pass')})")
@@ -215,6 +217,7 @@ def score_leads(leads, vertical):
                 qualified.append(lead)
         else:
             print(f"     - [?] {lead['title'][:30]}... (Skipped)")
+
 
 
     return qualified
