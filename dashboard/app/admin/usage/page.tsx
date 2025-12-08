@@ -3,25 +3,41 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 
+interface GeminiUsage {
+    total_calls: number;
+    total_input_tokens: number;
+    total_output_tokens: number;
+    total_tokens: number;
+    estimated_cost_usd: number;
+    successful_calls: number;
+    failed_calls: number;
+}
+
+interface TavusUsage {
+    total_calls: number;
+    total_minutes: number;
+    total_seconds: number;
+    completed_calls: number;
+    active_calls: number;
+}
+
 interface ServiceStatus {
     status: string;
     latency?: number;
     model?: string;
-    minutes_used?: number;
-    minutes_remaining?: number;
     replicas_count?: number;
     characters_used?: number;
     characters_limit?: number;
     voice?: string;
+    usage?: GeminiUsage | TavusUsage;
 }
-
 
 interface StatusData {
     timestamp: string;
     services: {
         ollama: ServiceStatus;
-        gemini: ServiceStatus;
-        tavus: ServiceStatus;
+        gemini: ServiceStatus & { usage?: GeminiUsage };
+        tavus: ServiceStatus & { usage?: TavusUsage };
         elevenlabs: ServiceStatus;
     };
 }
@@ -46,7 +62,7 @@ export default function UsagePage() {
 
     useEffect(() => {
         fetchStatus();
-        const interval = setInterval(fetchStatus, 60000); // Auto-refresh every 60s
+        const interval = setInterval(fetchStatus, 60000);
         return () => clearInterval(interval);
     }, []);
 
@@ -73,52 +89,15 @@ export default function UsagePage() {
     };
 
     const getHealthLevel = (used: number, total: number) => {
+        if (total === 0) return { color: 'bg-slate-500', label: 'N/A', emoji: '⚪' };
         const pct = (used / total) * 100;
         if (pct >= 90) return { color: 'bg-red-500', label: 'CRITICAL', emoji: '🔴' };
         if (pct >= 70) return { color: 'bg-yellow-500', label: 'LOW', emoji: '🟡' };
         return { color: 'bg-green-500', label: 'OK', emoji: '🟢' };
     };
 
-    const CircularGauge = ({ used, total, label, color }: { used: number; total: number; label: string; color: string }) => {
-        const pct = Math.min((used / total) * 100, 100);
-        const circumference = 2 * Math.PI * 45;
-        const offset = circumference - (pct / 100) * circumference;
-
-        return (
-            <div className="relative w-32 h-32">
-                <svg className="transform -rotate-90 w-32 h-32">
-                    <circle
-                        cx="64"
-                        cy="64"
-                        r="45"
-                        stroke="currentColor"
-                        strokeWidth="10"
-                        fill="transparent"
-                        className="text-slate-700"
-                    />
-                    <circle
-                        cx="64"
-                        cy="64"
-                        r="45"
-                        stroke="currentColor"
-                        strokeWidth="10"
-                        fill="transparent"
-                        strokeDasharray={circumference}
-                        strokeDashoffset={offset}
-                        className={color.replace('bg-', 'text-')}
-                        strokeLinecap="round"
-                    />
-                </svg>
-                <div className="absolute inset-0 flex flex-col items-center justify-center">
-                    <span className="text-2xl font-bold text-white">{Math.round(pct)}%</span>
-                    <span className="text-xs text-slate-400">{label}</span>
-                </div>
-            </div>
-        );
-    };
-
     const ProgressBar = ({ used, total, label }: { used: number; total: number; label: string }) => {
-        const pct = Math.min((used / total) * 100, 100);
+        const pct = total > 0 ? Math.min((used / total) * 100, 100) : 0;
         const health = getHealthLevel(used, total);
 
         return (
@@ -137,13 +116,19 @@ export default function UsagePage() {
         );
     };
 
+    const formatNumber = (num: number) => {
+        if (num >= 1000000) return `${(num / 1000000).toFixed(2)}M`;
+        if (num >= 1000) return `${(num / 1000).toFixed(1)}K`;
+        return num.toString();
+    };
+
     return (
         <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-8">
             <header className="mb-8 flex justify-between items-center max-w-6xl mx-auto">
                 <div>
                     <h1 className="text-3xl font-bold text-white tracking-tight">⚙️ SYSTEM STATUS</h1>
                     <p className="text-slate-400 font-mono text-sm">
-                        API HEALTH | USAGE MONITORING | AUTO-REFRESH: 60s
+                        API HEALTH | LOCAL USAGE TRACKING | AUTO-REFRESH: 60s
                     </p>
                 </div>
                 <div className="flex items-center gap-4">
@@ -192,7 +177,7 @@ export default function UsagePage() {
                         </div>
                     </div>
 
-                    {/* Gemini */}
+                    {/* Gemini with Local Tracking */}
                     <div className="bg-slate-800/50 backdrop-blur rounded-2xl border border-slate-700 p-6">
                         <div className="flex items-center justify-between mb-4">
                             <h2 className="text-lg font-bold text-white flex items-center gap-2">
@@ -211,14 +196,25 @@ export default function UsagePage() {
                                 <span className="text-slate-400">API Latency</span>
                                 <span className="text-green-400 font-mono">{status?.services.gemini.latency || 0}ms</span>
                             </div>
-                            <div className="flex justify-between text-sm">
-                                <span className="text-slate-400">Est. MTD Cost</span>
-                                <span className="text-yellow-400 font-mono">~$2.50</span>
+                            <div className="border-t border-slate-700 pt-3 mt-3">
+                                <p className="text-xs text-slate-500 mb-2">📊 Local Usage Tracking</p>
+                                <div className="flex justify-between text-sm">
+                                    <span className="text-slate-400">Total Calls</span>
+                                    <span className="text-white font-mono">{status?.services.gemini.usage?.total_calls || 0}</span>
+                                </div>
+                                <div className="flex justify-between text-sm">
+                                    <span className="text-slate-400">Tokens Used</span>
+                                    <span className="text-white font-mono">{formatNumber((status?.services.gemini.usage as GeminiUsage)?.total_tokens || 0)}</span>
+                                </div>
+                                <div className="flex justify-between text-sm">
+                                    <span className="text-slate-400">Est. Cost</span>
+                                    <span className="text-yellow-400 font-mono">${(status?.services.gemini.usage as GeminiUsage)?.estimated_cost_usd?.toFixed(4) || '0.0000'}</span>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    {/* Tavus */}
+                    {/* Tavus with Local Tracking */}
                     <div className="bg-slate-800/50 backdrop-blur rounded-2xl border border-slate-700 p-6">
                         <div className="flex items-center justify-between mb-4">
                             <h2 className="text-lg font-bold text-white flex items-center gap-2">
@@ -228,33 +224,36 @@ export default function UsagePage() {
                                 {getStatusEmoji(status?.services.tavus.status || 'unknown')} {status?.services.tavus.status?.toUpperCase()}
                             </span>
                         </div>
-                        <div className="flex items-center gap-6">
-                            <CircularGauge
-                                used={status?.services.tavus.minutes_used || 0}
-                                total={(status?.services.tavus.minutes_used || 0) + (status?.services.tavus.minutes_remaining || 1000)}
-                                label="Used"
-                                color={getHealthLevel(
-                                    status?.services.tavus.minutes_used || 0,
-                                    (status?.services.tavus.minutes_used || 0) + (status?.services.tavus.minutes_remaining || 1000)
-                                ).color}
-                            />
-                            <div className="flex-1 space-y-2">
+                        <div className="space-y-3">
+                            <div className="flex justify-between text-sm">
+                                <span className="text-slate-400">Replicas</span>
+                                <span className="text-white font-mono">{status?.services.tavus.replicas_count || 0}</span>
+                            </div>
+                            <div className="flex justify-between text-sm">
+                                <span className="text-slate-400">Latency</span>
+                                <span className="text-green-400 font-mono">{status?.services.tavus.latency || 0}ms</span>
+                            </div>
+                            <div className="border-t border-slate-700 pt-3 mt-3">
+                                <p className="text-xs text-slate-500 mb-2">📊 Local Usage Tracking</p>
                                 <div className="flex justify-between text-sm">
-                                    <span className="text-slate-400">Replicas</span>
-                                    <span className="text-white font-mono">{(status?.services.tavus as any)?.replicas_count || 0}</span>
+                                    <span className="text-slate-400">Total Calls</span>
+                                    <span className="text-white font-mono">{(status?.services.tavus.usage as TavusUsage)?.total_calls || 0}</span>
                                 </div>
                                 <div className="flex justify-between text-sm">
-                                    <span className="text-slate-400">Latency</span>
-                                    <span className="text-green-400 font-mono">{status?.services.tavus.latency || 0}ms</span>
+                                    <span className="text-slate-400">Minutes Used</span>
+                                    <span className="text-white font-mono">{(status?.services.tavus.usage as TavusUsage)?.total_minutes || 0}</span>
                                 </div>
                                 <div className="flex justify-between text-sm">
-                                    <span className="text-slate-400">Minutes</span>
-                                    <span className="text-white font-mono">{status?.services.tavus.minutes_used || 0} / {(status?.services.tavus.minutes_used || 0) + (status?.services.tavus.minutes_remaining || 1000)}</span>
+                                    <span className="text-slate-400">Completed</span>
+                                    <span className="text-green-400 font-mono">{(status?.services.tavus.usage as TavusUsage)?.completed_calls || 0}</span>
+                                </div>
+                                <div className="flex justify-between text-sm">
+                                    <span className="text-slate-400">Active</span>
+                                    <span className="text-yellow-400 font-mono">{(status?.services.tavus.usage as TavusUsage)?.active_calls || 0}</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-
 
                     {/* ElevenLabs */}
                     <div className="bg-slate-800/50 backdrop-blur rounded-2xl border border-slate-700 p-6">
@@ -274,7 +273,11 @@ export default function UsagePage() {
                             />
                             <div className="flex justify-between text-sm">
                                 <span className="text-slate-400">Active Voice</span>
-                                <span className="text-white font-mono">{status?.services.elevenlabs.voice || 'Rachel'}</span>
+                                <span className="text-white font-mono">{status?.services.elevenlabs.voice || 'N/A'}</span>
+                            </div>
+                            <div className="flex justify-between text-sm">
+                                <span className="text-slate-400">Latency</span>
+                                <span className="text-green-400 font-mono">{status?.services.elevenlabs.latency || 0}ms</span>
                             </div>
                         </div>
                     </div>
@@ -283,7 +286,7 @@ export default function UsagePage() {
 
             {/* Footer */}
             <footer className="text-center text-slate-500 text-xs mt-12">
-                Last updated: {lastUpdate?.toLocaleTimeString() || 'Never'} | Auto-refresh in 60s
+                Last updated: {lastUpdate?.toLocaleTimeString() || 'Never'} | Auto-refresh in 60s | 📊 Usage data is self-reported from local logs
             </footer>
         </div>
     );
