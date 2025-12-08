@@ -63,9 +63,14 @@ export default function Home() {
 
   return (
     <div className="p-8">
-      <header className="mb-8">
-        <h1 className="text-3xl font-bold text-slate-800 tracking-tight">🏗️ X AGENT FACTORY</h1>
-        <p className="text-slate-500 font-mono">SYSTEM STATUS: ONLINE | PHASE: 4 (INTEGRATION)</p>
+      <header className="mb-8 flex justify-between items-end">
+        <div>
+          <h1 className="text-3xl font-bold text-slate-800 tracking-tight">🏗️ X AGENT FACTORY</h1>
+          <p className="text-slate-500 font-mono">SYSTEM STATUS: ONLINE | PHASE: 4 (INTEGRATION)</p>
+        </div>
+        <Link href="/growth" className="bg-blue-600 hover:bg-blue-500 text-white px-6 py-2 rounded-lg font-bold transition-colors">
+          🚀 LAUNCH HUNTER
+        </Link>
       </header>
 
       {/* KPIs */}

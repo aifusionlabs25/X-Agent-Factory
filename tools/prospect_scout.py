@@ -32,17 +32,33 @@ def generate_with_gemini(persona_context, prompt):
         "contents": [{"parts": [{"text": full_prompt}]}]
     }
     
-    try:
-        response = requests.post(
-            f"{GEMINI_URL}?key={api_key}",
-            json=payload,
-            headers={"Content-Type": "application/json"}
-        )
-        response.raise_for_status()
-        return response.json()['candidates'][0]['content']['parts'][0]['text']
-    except Exception as e:
-        print(f"❌ Gemini Error: {e}")
-        return None
+    # Retry Loop (3 attempts)
+    max_retries = 3
+    for attempt in range(max_retries):
+        try:
+            response = requests.post(
+                f"{GEMINI_URL}?key={api_key}",
+                json=payload,
+                headers={"Content-Type": "application/json"}
+            )
+            
+            # If 429 (Too Many Requests), raise status to trigger except block
+            if response.status_code == 429:
+                print(f"   ⚠️ Gemini Rate Limit (429). Waiting {2 * (attempt + 1)}s...")
+                time.sleep(2 * (attempt + 1))
+                continue
+                
+            response.raise_for_status()
+            return response.json()['candidates'][0]['content']['parts'][0]['text']
+            
+        except Exception as e:
+            print(f"   ⚠️ Gemini Attempt {attempt+1}/{max_retries} failed: {e}")
+            if attempt < max_retries - 1:
+                time.sleep(2)
+            else:
+                print("❌ Gemini failed after max retries.")
+                return None
+    return None
 
 def generate_with_ollama(persona_context, prompt, model="llama3"):
     full_prompt = f"{persona_context}\n\n{prompt}"
@@ -101,7 +117,7 @@ def generate_criteria(vertical):
         except:
             print("⚠️ Failed to parse Troy's criteria.")
     
-    return [f"{vertical} businesses in Denver", f"{vertical} companies with bad reviews"]
+    return [f"{vertical}", f"{vertical} reviews", f"{vertical} contact"]
 
 # --- Step 2: The Hands (WebWorker) ---
 def perform_search(queries):
@@ -112,12 +128,12 @@ def perform_search(queries):
         for q in queries:
             print(f"     ...searching: '{q}'")
             try:
-                # Get top 5 results per query
-                search_res = list(ddgs.text(q, max_results=5))
+                # Get top 10 results per query
+                search_res = list(ddgs.text(q, max_results=10))
                 for r in search_res:
                     r['query_source'] = q
                     results.append(r)
-                time.sleep(1) # Polite delay
+                time.sleep(2) # Polite delay
             except Exception as e:
                 print(f"     ⚠️ Search error: {e}")
                 

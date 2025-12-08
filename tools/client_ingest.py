@@ -30,17 +30,29 @@ def generate_with_gemini(persona_context, prompt):
         "contents": [{"parts": [{"text": full_prompt}]}]
     }
     
-    try:
-        response = requests.post(
-            f"{GEMINI_URL}?key={api_key}",
-            json=payload,
-            headers={"Content-Type": "application/json"}
-        )
-        response.raise_for_status()
-        return response.json()['candidates'][0]['content']['parts'][0]['text']
-    except Exception as e:
-        print(f"❌ Gemini Error: {e}")
-        return None
+    # Retry Loop (3 attempts)
+    max_retries = 3
+    for attempt in range(max_retries):
+        try:
+            response = requests.post(
+                f"{GEMINI_URL}?key={api_key}",
+                json=payload,
+                headers={"Content-Type": "application/json"}
+            )
+            
+            if response.status_code == 429:
+                print(f"   ⚠️ Gemini Rate Limit (429). Waiting {2 * (attempt + 1)}s...")
+                time.sleep(2 * (attempt + 1))
+                continue
+                
+            response.raise_for_status()
+            return response.json()['candidates'][0]['content']['parts'][0]['text']
+        except Exception as e:
+            print(f"   ⚠️ Gemini Attempt {attempt+1}/{max_retries} failed: {e}")
+            if attempt < max_retries - 1:
+                time.sleep(2)
+            else:
+                return None
 
 def fetch_website_content(url):
     print(f"   > 🕸️  Spidering: {url}")
