@@ -68,10 +68,16 @@ export default function Home() {
           <h1 className="text-3xl font-bold text-slate-800 tracking-tight">🏗️ X AGENT FACTORY</h1>
           <p className="text-slate-500 font-mono">SYSTEM STATUS: ONLINE | PHASE: 4 (INTEGRATION)</p>
         </div>
-        <Link href="/growth" className="bg-blue-600 hover:bg-blue-500 text-white px-6 py-2 rounded-lg font-bold transition-colors">
-          🚀 LAUNCH HUNTER
-        </Link>
+        <div className="flex gap-3">
+          <Link href="/admin/usage" className="bg-slate-700 hover:bg-slate-600 text-white px-4 py-2 rounded-lg font-bold transition-colors text-sm">
+            ⚙️ System Status
+          </Link>
+          <Link href="/growth" className="bg-blue-600 hover:bg-blue-500 text-white px-6 py-2 rounded-lg font-bold transition-colors">
+            🚀 LAUNCH HUNTER
+          </Link>
+        </div>
       </header>
+
 
       {/* KPIs */}
       <div className="grid grid-cols-4 gap-6 mb-8">
