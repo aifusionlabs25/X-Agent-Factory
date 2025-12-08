@@ -82,7 +82,7 @@ export default function GrowthPage() {
                                 value={vertical}
                                 onChange={(e) => setVertical(e.target.value)}
                                 placeholder="e.g. Plumbers in Austin"
-                                className="flex-1 p-3 border border-slate-300 rounded-lg text-sm"
+                                className="flex-1 p-3 border border-slate-300 rounded-lg text-sm text-slate-800"
                             />
                             <button
                                 onClick={handleHunt}
@@ -107,7 +107,7 @@ export default function GrowthPage() {
                 <div className="lg:col-span-2">
                     <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
                         <div className="p-4 border-b border-slate-200 bg-slate-50">
-                            <h3 className="text-sm font-bold text-slate-700 uppercase">Qualified Leads (Score &gt; 7)</h3>
+                            <h3 className="text-sm font-bold text-slate-700 uppercase">Qualified Leads (Score &gt; 4)</h3>
                         </div>
 
                         {leads.length === 0 ? (
