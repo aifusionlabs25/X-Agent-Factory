@@ -201,14 +201,21 @@ def score_leads(leads, vertical):
         evaluation = generate_with_ollama(persona, prompt)
         
         if evaluation:
-            print(f"     - [{evaluation.get('score', 0)}/10] {lead['title'][:30]}... ({evaluation.get('pass')})")
+            # Safely extract score with explicit None handling
+            score = evaluation.get('score')
+            if score is None:
+                score = 0
+            
+            print(f"     - [{score}/10] {lead['title'][:30]}... ({evaluation.get('pass')})")
+            
             # Lowering threshold AND trusting the explicit 'pass' bool more
-            if evaluation.get('score', 0) >= 4:
-                lead['nova_score'] = evaluation['score']
-                lead['nova_reason'] = evaluation['reason']
+            if score >= 4:
+                lead['nova_score'] = score
+                lead['nova_reason'] = evaluation.get('reason', 'No reason provided')
                 qualified.append(lead)
         else:
             print(f"     - [?] {lead['title'][:30]}... (Skipped)")
+
 
     return qualified
 
