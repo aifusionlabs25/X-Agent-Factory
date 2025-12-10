@@ -1,33 +1,41 @@
-# Dependencies
-node_modules/
-__pycache__/
-*.pyc
-
-# Environment variables (KEEP SECRET)
+# Secrets (Absolute Highest Priority)
 .env
 .env.local
+.env.*.local
 .env.production
+.env.test
+
+# Python
+__pycache__/
+*.pyc
+venv/
+.pytest_cache/
+
+# Node
+node_modules/
+.next/
+dist/
+build/
+coverage/
+
+# X Agent Factory Data
+intelligence/leads/
+intelligence/emails/
+!intelligence/leads/.processed
+!intelligence/reports/
+# Note: Reports are currently kept in repo for demo purposes, 
+# but in prod you might want to ignore them:
+# intelligence/reports/
+
+# OS
+.DS_Store
+Thumbs.db
 
 # IDE
 .vscode/
 *.swp
 *.swo
 
-# OS
-.DS_Store
-Thumbs.db
-
-# Build
-dist/
-build/
-.next/
-
 # Logs
 *.log
 npm-debug.log*
-
-# Test artifacts
-test_email.html
-
-# Processed files tracker
-intelligence/leads/.processed

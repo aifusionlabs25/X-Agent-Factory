@@ -2,18 +2,13 @@ import json
 import os
 from datetime import datetime
 
-def load_env(filepath='.env.local'):
-    """Simple .env loader."""
-    if not os.path.exists(filepath):
-        return
-    with open(filepath, 'r', encoding='utf-8') as f:
-        for line in f:
-            if '=' in line and not line.startswith('#'):
-                key, value = line.strip().split('=', 1)
-                key = key.replace('\0', '')
-                value = value.strip('"').strip("'").replace('\0', '')
-                if key and value:
-                    os.environ[key] = value
+def load_env():
+    """Load environment variables using python-dotenv."""
+    from dotenv import load_dotenv
+    # Try loading .env first, then .env.local
+    load_dotenv('.env')
+    load_dotenv('.env.local')  # Does not override existing
+
 
 def load_json(filepath):
     """Loads a JSON file safely."""
