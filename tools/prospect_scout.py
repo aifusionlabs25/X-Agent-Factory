@@ -37,9 +37,13 @@ def generate_with_gemini(persona_context, prompt):
     for attempt in range(max_retries):
         try:
             response = requests.post(
-                f"{GEMINI_URL}?key={api_key}",
+                GEMINI_URL,
                 json=payload,
-                headers={"Content-Type": "application/json"}
+                headers={
+                    "Content-Type": "application/json",
+                    "x-goog-api-key": api_key
+                },
+                timeout=30
             )
             
             # If 429 (Too Many Requests), raise status to trigger except block
