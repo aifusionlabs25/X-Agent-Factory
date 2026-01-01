@@ -4,32 +4,32 @@
 **From:** Command (Alpha)
 **Status:** 🟥 TOP PRIORITY
 
-## 1. The Strategic Pivot: "Boutique Bolt-On"
-We are discontinuing generic lead generation. Our new operational model is **"The GoDeskless/Morgan Model."**
+## 1. THE UNIVERSAL FACTORY PROTOCOL
+**CRITICAL PIVOT:** The Factory has been scrubbed of "Vertical Bias." We no longer assume "HVAC" or "Vets."
+We are now a **Universal Bolt-On Engine.**
 
-**The Logic:**
-We do not sell "AI." We sell **Field Service Autonomy**.
-We target high-friction industries where human error in the field causes massive revenue bleed. Our solution is a **video/audio 'bolt-on'** (The Morgan Persona) that acts as the "Closer" or the "Field Expert" for their technicians.
+## 2. Your New Objective: Find the Friction
+The Factory is blind. **You are the eyes.**
+We do not care *what* the industry is. We only care *if* there is Friction.
 
-## 2. Your New Objective: Low-Hanging Fruit
-You are to abandon general tech prospecting. Your sensors must now retarget to industries with **Physical Field Workforce Friction.**
+**The Signal:**
+*   **High-Volume Field Workforce?** (Yes = Proceed)
+*   **Legacy Software Complaints?** (Yes = Proceed)
+*   **"Truck Roll" Bleed?** (Yes = Proceed)
 
-**Primary Targets:**
-1.  **EV Charging Networks** (Technicians struggling with mixed hardware/software).
-2.  **HVAC / MEP** (Complex diagnostics, high failure rate).
-3.  **Solar / Renewables** (Installation errors, permit data friction).
+## 3. The Hand-Off Format (The Dossier)
+Troy (The Builder) has been reprogrammed. He will **REFUSE** to build without a structured Dossier.
+You must provide intelligence in this JSON format:
+```json
+{
+  "industry": "Commercial Solar",
+  "role": "VP of Operations",
+  "pain_point": "Inverters failing inspection due to wrong firmware",
+  "software": "ServiceTitan / Procore"
+}
+```
 
-**The Signal to Hunt For:**
-*   Companies complaining about "Technician Efficiency" or "Truck Rolls."
-*   Reviews mentioning "Multiple visits to fix one issue."
-*   "Field Service Management" software keywords.
-
-## 3. Operational Directives
-*   **Repo Access:** You now have access to the `COMMAND/` module in this repository.
-*   **Tools:** utilize `vault_query.py` to check `KnowledgeVault` before initiating wide-net searches.
-*   **Reporting:** All enriched leads must be fed into the `save_json` pipeline to trigger the Librarian's auto-indexing.
-
-**Execute immediately.**
+**Execute immediately. Find the friction, any friction.**
 
 ---
 *End of Briefing*
