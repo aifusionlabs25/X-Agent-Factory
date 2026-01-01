@@ -103,7 +103,7 @@ def rank_lead_priority(lead, vertical_context=""):
     [/TASK]
     """
     
-    return generate_with_ollama(persona, prompt)
+    return generate_with_ollama(persona, prompt, model="qwen2.5:32b")
 
 def generate_email_draft(lead, pain_point=""):
     """Use Sparkle to generate email draft."""
