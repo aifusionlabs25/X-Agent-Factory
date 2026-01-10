@@ -1,0 +1,82 @@
+[
+  {
+    "id": "research_1766125399098_q5gue6hlg",
+    "agent": "luna_veterinary",
+    "query": "pet poison control toxic foods dogs cats chocolate xylitol grapes raisins onion garlic antifreeze\nwhen to go emergency vet urgent symptoms dog cat life threatening signs\ndog cat vomiting diarrhea lethargy not eating when serious vet visit\npet first aid bleeding wounds cuts burns choking CPR emergency home care\ndog bloat symptoms seizures difficulty breathing collapse unresponsive emergency\ncat urinary blockage straining symptoms emergency male cat not peeing\npuppy kitten sick symptoms emergency when to call vet young pet\nafter hours vet care pet emergency overnight animal hospital triage",
+    "sources": [
+      "Veterinary symptom databases",
+      "Pet triage protocols",
+      "ASPCA poison control",
+      "Emergency vet guidelines"
+    ],
+    "status": "error",
+    "progress": 0,
+    "documentsFound": 0,
+    "startedAt": "2025-12-19T06:23:19.098Z",
+    "config": {
+      "max_depth": 3,
+      "max_pages": 100
+    },
+    "error": "Command failed: python \"C:\\AI Fusion Labs\\Tavus\\API\\X Agent Factory\\tools\\deep_researcher.py\" --job-id \"research_1766125399098_q5gue6hlg\" --query \"pet poison control toxic foods dogs cats chocolate xylitol grapes raisins onion garlic antifreeze\nwhen to go emergency vet urgent symptoms dog cat life threatening signs\ndog cat vomiting diarrhea lethargy not eating when serious vet visit\npet first aid bleeding wounds cuts burns choking CPR emergency home care\ndog bloat symptoms seizures difficulty breathing collapse unresponsive emergency\ncat urinary blockage straining symptoms emergency male cat not peeing\npuppy kitten sick symptoms emergency when to call vet young pet\nafter hours vet care pet emergency overnight animal hospital triage\" --agent \"luna_veterinary\" --max-depth 3 --max-pages 100 --output \"C:\\AI Fusion Labs\\Tavus\\API\\X Agent Factory\\intelligence\\research\\research_1766125399098_q5gue6hlg\"\nusage: deep_researcher.py [-h] --job-id JOB_ID --query QUERY --agent AGENT\r\n                          --output OUTPUT [--max-depth MAX_DEPTH]\r\n                          [--max-pages MAX_PAGES]\r\ndeep_researcher.py: error: the following arguments are required: --agent, --output\r\n"
+  },
+  {
+    "id": "research_1766124163116_ldtfrzrfo",
+    "agent": "luna_veterinary",
+    "query": "Veterinary / After-Hours Pet Triage triage protocols symptoms emergency care",
+    "sources": [
+      "Veterinary symptom databases",
+      "Pet triage protocols",
+      "ASPCA poison control",
+      "Emergency vet guidelines"
+    ],
+    "status": "complete",
+    "progress": 100,
+    "documentsFound": 101,
+    "startedAt": "2025-12-19T06:02:43.116Z",
+    "config": {
+      "max_depth": 3,
+      "max_pages": 100
+    },
+    "completedAt": "2025-12-19T06:07:34.720Z"
+  },
+  {
+    "id": "research_1766124000969_51effm69j",
+    "agent": "luna_veterinary",
+    "query": "Veterinary / After-Hours Pet Triage triage protocols symptoms emergency care",
+    "sources": [
+      "Veterinary symptom databases",
+      "Pet triage protocols",
+      "ASPCA poison control",
+      "Emergency vet guidelines"
+    ],
+    "status": "error",
+    "progress": 0,
+    "documentsFound": 0,
+    "startedAt": "2025-12-19T06:00:00.969Z",
+    "config": {
+      "max_depth": 3,
+      "max_pages": 100
+    },
+    "error": "Command failed: python \"C:\\AI Fusion Labs\\Tavus\\API\\X Agent Factory\\tools\\deep_researcher.py\" --job-id \"research_1766124000969_51effm69j\" --query \"Veterinary / After-Hours Pet Triage triage protocols symptoms emergency care\" --agent \"luna_veterinary\" --max-depth 3 --max-pages 100 --output \"C:\\AI Fusion Labs\\Tavus\\API\\X Agent Factory\\intelligence\\research\\research_1766124000969_51effm69j\"\nTraceback (most recent call last):\r\n  File \"C:\\AI Fusion Labs\\Tavus\\API\\X Agent Factory\\tools\\deep_researcher.py\", line 266, in main\r\n    researcher.run()\r\n  File \"C:\\AI Fusion Labs\\Tavus\\API\\X Agent Factory\\tools\\deep_researcher.py\", line 202, in run\r\n    self.log(f\"\\U0001f680 Starting Deep Research\")\r\n  File \"C:\\AI Fusion Labs\\Tavus\\API\\X Agent Factory\\tools\\deep_researcher.py\", line 71, in log\r\n    print(f\"[{timestamp}] {message}\")\r\n  File \"C:\\Users\\AI Fusion Labs\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\encodings\\cp1252.py\", line 19, in encode\r\n    return codecs.charmap_encode(input,self.errors,encoding_table)[0]\r\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\nUnicodeEncodeError: 'charmap' codec can't encode character '\\U0001f680' in position 11: character maps to <undefined>\r\n\r\nDuring handling of the above exception, another exception occurred:\r\n\r\nTraceback (most recent call last):\r\n  File \"C:\\AI Fusion Labs\\Tavus\\API\\X Agent Factory\\tools\\deep_researcher.py\", line 274, in <module>\r\n    main()\r\n  File \"C:\\AI Fusion Labs\\Tavus\\API\\X Agent Factory\\tools\\deep_researcher.py\", line 269, in main\r\n    print(f\"\\u274c Fatal error: {e}\")\r\n  File \"C:\\Users\\AI Fusion Labs\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\encodings\\cp1252.py\", line 19, in encode\r\n    return codecs.charmap_encode(input,self.errors,encoding_table)[0]\r\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\nUnicodeEncodeError: 'charmap' codec can't encode character '\\u274c' in position 0: character maps to <undefined>\r\n"
+  },
+  {
+    "id": "research_1766123703465_5z2m9wph5",
+    "agent": "luna_veterinary",
+    "query": "Veterinary / After-Hours Pet Triage triage protocols symptoms emergency care\nveterinary pet triage symptoms emergency\npet poison control toxic foods dogs cats\nwhen to take pet to emergency vet\npet first aid home care",
+    "sources": [
+      "Veterinary symptom databases",
+      "Pet triage protocols",
+      "ASPCA poison control",
+      "Emergency vet guidelines"
+    ],
+    "status": "error",
+    "progress": 0,
+    "documentsFound": 0,
+    "startedAt": "2025-12-19T05:55:03.465Z",
+    "config": {
+      "max_depth": 3,
+      "max_pages": 100
+    },
+    "error": "Command failed: python \"C:\\AI Fusion Labs\\Tavus\\API\\X Agent Factory\\tools\\deep_researcher.py\" --job-id \"research_1766123703465_5z2m9wph5\" --query \"Veterinary / After-Hours Pet Triage triage protocols symptoms emergency care\nveterinary pet triage symptoms emergency\npet poison control toxic foods dogs cats\nwhen to take pet to emergency vet\npet first aid home care\" --agent \"luna_veterinary\" --max-depth 3 --max-pages 100 --output \"C:\\AI Fusion Labs\\Tavus\\API\\X Agent Factory\\intelligence\\research\\research_1766123703465_5z2m9wph5\"\nusage: deep_researcher.py [-h] --job-id JOB_ID --query QUERY --agent AGENT\r\n                          --output OUTPUT [--max-depth MAX_DEPTH]\r\n                          [--max-pages MAX_PAGES]\r\ndeep_researcher.py: error: the following arguments are required: --agent, --output\r\n"
+  }
+]
