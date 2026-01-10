@@ -1,0 +1,177 @@
+{
+    "_meta": {
+        "description": "Cartesia TTS Configuration for X Agents (Sonic-3)",
+        "format": "Wrap phoneme in <<>> with | separators, no whitespace",
+        "created": "2025-12-18",
+        "updated": "2025-12-18",
+        "docs": {
+            "pronunciations": "https://docs.cartesia.ai/build-with-cartesia/sonic-3/custom-pronunciations",
+            "volume_speed_emotion": "https://docs.cartesia.ai/build-with-cartesia/sonic-3/volume-speed-emotion",
+            "ssml": "https://docs.cartesia.ai/build-with-cartesia/sonic-3/ssml-tags"
+        }
+    },
+    "tts_controls": {
+        "speed": {
+            "range": [
+                0.6,
+                1.5
+            ],
+            "default": 1.0,
+            "notes": "1.0 = normal, <1 = slower, >1 = faster"
+        },
+        "volume": {
+            "range": [
+                0.5,
+                2.0
+            ],
+            "default": 1.0,
+            "notes": "1.0 = normal loudness"
+        },
+        "emotions": {
+            "positive": [
+                "excited",
+                "happy",
+                "enthusiastic",
+                "elated",
+                "euphoric",
+                "triumphant",
+                "amazed",
+                "surprised",
+                "content",
+                "peaceful",
+                "serene",
+                "calm",
+                "grateful",
+                "affectionate",
+                "proud",
+                "confident"
+            ],
+            "neutral": [
+                "neutral",
+                "curious",
+                "anticipation",
+                "mysterious",
+                "contemplative",
+                "determined"
+            ],
+            "negative": [
+                "angry",
+                "mad",
+                "outraged",
+                "frustrated",
+                "agitated",
+                "disgusted",
+                "contempt",
+                "sarcastic",
+                "ironic"
+            ],
+            "sad": [
+                "sad",
+                "dejected",
+                "melancholic",
+                "disappointed",
+                "hurt",
+                "guilty",
+                "bored",
+                "tired",
+                "rejected",
+                "nostalgic",
+                "wistful",
+                "apologetic",
+                "resigned"
+            ],
+            "anxious": [
+                "anxious",
+                "panicked",
+                "alarmed",
+                "scared",
+                "hesitant",
+                "insecure",
+                "confused"
+            ],
+            "social": [
+                "flirtatious",
+                "joking/comedic",
+                "sympathetic",
+                "trust",
+                "skeptical",
+                "distant"
+            ]
+        },
+        "nonverbalisms": [
+            "[laughter]"
+        ],
+        "ssml_examples": {
+            "speed": "<speed ratio=\"1.5\"/> I speak quickly now.",
+            "volume": "<volume ratio=\"1.5\"/> And I can be loud!",
+            "emotion": "<emotion value=\"excited\" /> This is amazing!"
+        }
+    },
+    "emotive_voices": {
+        "notes": "Voices tagged as 'Emotive' that support emotion controls",
+        "male": [
+            {
+                "name": "Leo",
+                "id": "0834f3df-e650-4766-a20c-5a93a43aa6e3"
+            },
+            {
+                "name": "Jace",
+                "id": "6776173b-fd72-460d-89b3-d85812ee518d"
+            },
+            {
+                "name": "Kyle",
+                "id": "c961b81c-a935-4c17-bfb3-ba2239de8c2f"
+            },
+            {
+                "name": "Gavin",
+                "id": "f4a3a8e4-694c-4c45-9ca0-27caf97901b5"
+            }
+        ],
+        "female": [
+            {
+                "name": "Maya",
+                "id": "cbaf8084-f009-4838-a096-07ee2e6612b1"
+            },
+            {
+                "name": "Tessa",
+                "id": "6ccbfb76-1fc6-48f7-b71d-91ac6298247b"
+            },
+            {
+                "name": "Dana",
+                "id": "cc00e582-ed66-4004-8336-0175b85c85f6"
+            },
+            {
+                "name": "Marian",
+                "id": "26403c37-80c1-4a1a-8692-540551ca2ae5"
+            }
+        ]
+    },
+    "pronunciations": [
+        {
+            "text": "GoDeskless",
+            "phoneme": "<<ɡ|ə|ˈ|d|ɛ|s|k|l|ə|s>>",
+            "notes": "go-DESK-less"
+        },
+        {
+            "text": "HVAC",
+            "phoneme": "<<ˈ|h|v|æ|k>>",
+            "notes": "H-vack (industry standard)"
+        },
+        {
+            "text": "SaaS",
+            "phoneme": "<<ˈ|s|ɑ|s>>",
+            "notes": "sauce"
+        },
+        {
+            "text": "ServiceTitan",
+            "phoneme": "<<ˈ|s|ɝ|v|ɪ|s|ɛ|t|ɪ|t|ə|n>>",
+            "notes": "service-TITAN"
+        }
+    ],
+    "todo_pronunciations": [
+        "Housecall Pro",
+        "Jobber",
+        "ETAs",
+        "ROI"
+    ]
+}
