@@ -18,41 +18,21 @@ def load_specialist(name):
             return f.read()
     return ""
 
-def generate_with_gemini(persona_context, prompt):
-    api_key = os.environ.get("GOOGLE_API_KEY")
-    if not api_key:
-        print("❌ Error: GOOGLE_API_KEY not found.")
-        return None
-
+def generate_with_ollama(persona_context, prompt):
     full_prompt = f"{persona_context}\n\n{prompt}"
     
-    payload = {
-        "contents": [{"parts": [{"text": full_prompt}]}]
-    }
-    
-    # Retry Loop (3 attempts)
-    max_retries = 3
-    for attempt in range(max_retries):
-        try:
-            response = requests.post(
-                f"{GEMINI_URL}?key={api_key}",
-                json=payload,
-                headers={"Content-Type": "application/json"}
-            )
-            
-            if response.status_code == 429:
-                print(f"   ⚠️ Gemini Rate Limit (429). Waiting {2 * (attempt + 1)}s...")
-                time.sleep(2 * (attempt + 1))
-                continue
-                
-            response.raise_for_status()
-            return response.json()['candidates'][0]['content']['parts'][0]['text']
-        except Exception as e:
-            print(f"   ⚠️ Gemini Attempt {attempt+1}/{max_retries} failed: {e}")
-            if attempt < max_retries - 1:
-                time.sleep(2)
-            else:
-                return None
+    try:
+        response = requests.post(OLLAMA_URL, json={
+            "model": "llama3",
+            "prompt": full_prompt,
+            "stream": False
+        })
+        response.raise_for_status()
+        data = response.json()
+        return data['response']
+    except Exception as e:
+        print(f"❌ Ollama Error: {e}")
+        return None
 
 def fetch_website_content(url):
     print(f"   > 🕸️  Spidering: {url}")
@@ -165,9 +145,9 @@ def format_kb_with_troy(client_data):
     [/TASK]
     """
     
-    return generate_with_gemini(persona, prompt)
+    return generate_with_ollama(persona, prompt)
 
-def ingest_client(url):
+def ingest_client(url, output_dir=None):
     load_env()
     print(f"🚀 Client Ingest Started: {url}")
     
@@ -185,11 +165,12 @@ def ingest_client(url):
     kb_content = format_kb_with_troy(client_data)
     
     # 4. Save
-    biz_name = client_data.get('business_name', 'client').replace(' ', '_').lower()
-    # Sanitize filename
-    biz_name = "".join([c for c in biz_name if c.isalnum() or c=='_'])
+    if not output_dir:
+        biz_name = client_data.get('business_name', 'client').replace(' ', '_').lower()
+        # Sanitize filename
+        biz_name = "".join([c for c in biz_name if c.isalnum() or c=='_'])
+        output_dir = f"ingested_clients/{biz_name}"
     
-    output_dir = f"ingested_clients/{biz_name}"
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
         
@@ -223,6 +204,7 @@ def ingest_client(url):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Client Ingest Tool")
     parser.add_argument("url", help="Client Website URL")
+    parser.add_argument("--output_dir", help="Output directory", default=None)
     args = parser.parse_args()
     
-    ingest_client(args.url)
+    ingest_client(args.url, args.output_dir)

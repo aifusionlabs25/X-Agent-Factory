@@ -1,5 +1,6 @@
 import json
 import os
+import re
 from datetime import datetime
 
 def load_env():
@@ -8,7 +9,6 @@ def load_env():
     # Try loading .env first, then .env.local
     load_dotenv('.env')
     load_dotenv('.env.local')  # Does not override existing
-
 
 def load_json(filepath):
     """Loads a JSON file safely."""
@@ -46,3 +46,48 @@ def get_timestamp():
 def ensure_directory(path):
     """Ensures a directory exists."""
     os.makedirs(path, exist_ok=True)
+
+def extract_json_from_text(text):
+    """
+    Robustly extracts JSON object or array from a string polluted with conversational text.
+    Handles ```json blocks and raw { } structures.
+    """
+    if not text:
+        return None
+        
+    # 1. Try to find a code block first (Most reliable)
+    code_block_pattern = r"```(?:json)?\s*([\s\S]*?)\s*```"
+    match = re.search(code_block_pattern, text, re.IGNORECASE)
+    if match:
+        try:
+            return json.loads(match.group(1))
+        except:
+            pass # Fallthrough if block contents aren't valid JSON
+
+    # 2. Try to find the first outer-most JSON object {...}
+    # This regex balances braces to some extent, but a simple greedy match often works for LLM output
+    # if we assume the JSON is the largest block.
+    
+    # Simple brace finding: Find first { and last }
+    start_brace = text.find('{')
+    end_brace = text.rfind('}')
+    
+    if start_brace != -1 and end_brace != -1 and end_brace > start_brace:
+        json_str = text[start_brace : end_brace + 1]
+        try:
+            return json.loads(json_str)
+        except:
+            pass
+            
+    # 3. Try to find the first array [...]
+    start_bracket = text.find('[')
+    end_bracket = text.rfind(']')
+    
+    if start_bracket != -1 and end_bracket != -1 and end_bracket > start_bracket:
+        json_str = text[start_bracket : end_bracket + 1]
+        try:
+            return json.loads(json_str)
+        except:
+            pass
+
+    return None

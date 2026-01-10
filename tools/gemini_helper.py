@@ -1,63 +1,90 @@
 """
-Gemini API Helper with Usage Logging
-All Gemini calls should go through this helper to track usage.
+Gemini Helper -> OLLAMA Helper (Local Compute Version)
+Redirects all 'Cloud' requests to the fast, local RTX 5080.
 """
 import os
-import requests
 import time
+import json
+import datetime
+import requests
+from pathlib import Path
 from usage_logger import log_gemini_call, estimate_tokens
 
-GEMINI_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent"
+# --- CONFIGURATION ---
+# We keep the variable names compatible, but they point to LOCALHOST.
+MODEL_NAME = "llama3"
+API_URL = "http://localhost:11434/api/generate"
+FORENSIC_LOG_DIR = Path("intelligence/forensic_logs")
 
-def call_gemini(prompt: str, persona_context: str = "", max_retries: int = 3) -> str | None:
-    """
-    Make a Gemini API call with automatic usage logging.
-    Returns the response text or None on failure.
-    """
-    api_key = os.environ.get("GOOGLE_API_KEY")
-    if not api_key:
-        print("❌ Error: GOOGLE_API_KEY not found.")
-        return None
+# Ensure log dir exists
+FORENSIC_LOG_DIR.mkdir(parents=True, exist_ok=True)
 
-    full_prompt = f"{persona_context}\n\n{prompt}" if persona_context else prompt
+def log_forensic(context: str, prompt: str, response_object: dict, start_time: float):
+    """
+    Saves the full prompt and response to a JSON file for debugging.
+    """
+    duration = time.time() - start_time
+    timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+    filename = FORENSIC_LOG_DIR / f"log_{timestamp}_{context}.json"
     
-    payload = {
-        "contents": [{"parts": [{"text": full_prompt}]}]
+    log_entry = {
+        "timestamp": timestamp,
+        "context": context,
+        "model": MODEL_NAME,
+        "duration_seconds": round(duration, 2),
+        "input": {
+            "prompt": prompt
+        },
+        "output": response_object
     }
     
-    # Estimate input tokens
-    input_tokens = estimate_tokens(full_prompt)
+    try:
+        with open(filename, "w", encoding="utf-8") as f:
+            json.dump(log_entry, f, indent=2, ensure_ascii=False)
+    except Exception as e:
+        print(f"⚠️ Forensic Log Failed: {e}")
+
+def call_gemini(prompt: str, persona_context: str = "", context_label: str = "generic", max_retries: int = 3) -> str | None:
+    """
+    Acts as a drop-in replacement for the Google API, but uses OLLAMA.
+    """
+    full_prompt = f"{persona_context}\n\n{prompt}" if persona_context else prompt
     
+    # Ollama API Payload
+    payload = {
+        "model": MODEL_NAME,
+        "prompt": full_prompt,
+        "stream": False,
+        "options": {
+            "temperature": 0.7,
+            "num_ctx": 4096 
+        }
+    }
+    
+    # Estimate input tokens (rough)
+    input_tokens = estimate_tokens(full_prompt)
+    start_time = time.time()
+
     for attempt in range(max_retries):
         try:
-            response = requests.post(
-                f"{GEMINI_URL}?key={api_key}",
-                json=payload,
-                headers={"Content-Type": "application/json"},
-                timeout=30
-            )
-            
-            if response.status_code == 429:
-                print(f"   ⚠️ Gemini Rate Limit (429). Waiting {2 * (attempt + 1)}s...")
-                time.sleep(2 * (attempt + 1))
-                continue
-                
+            # Call Localhost
+            response = requests.post(API_URL, json=payload, timeout=60)
             response.raise_for_status()
             
             result = response.json()
-            response_text = result['candidates'][0]['content']['parts'][0]['text']
             
-            # Estimate output tokens and log
+            # Forensic Log
+            log_forensic(context_label, full_prompt, result, start_time)
+            
+            # Parse Text (Ollama format is simple)
+            response_text = result.get('response', '')
+            
+            # Estimate output tokens
             output_tokens = estimate_tokens(response_text)
             
-            # Try to get actual token counts from response if available
-            usage_metadata = result.get('usageMetadata', {})
-            if usage_metadata:
-                input_tokens = usage_metadata.get('promptTokenCount', input_tokens)
-                output_tokens = usage_metadata.get('candidatesTokenCount', output_tokens)
-            
+            # Usage Log (Fake 'success' for compatibility)
             log_gemini_call(
-                model="gemini-2.0-flash-exp",
+                model=MODEL_NAME,
                 input_tokens=input_tokens,
                 output_tokens=output_tokens,
                 success=True
@@ -66,18 +93,11 @@ def call_gemini(prompt: str, persona_context: str = "", max_retries: int = 3) ->
             return response_text
             
         except Exception as e:
-            print(f"   ⚠️ Gemini Attempt {attempt+1}/{max_retries} failed: {e}")
+            print(f"   ⚠️ Ollama Attempt {attempt+1}/{max_retries} failed: {e}")
             if attempt < max_retries - 1:
-                time.sleep(2)
+                time.sleep(1) # Local is fast, no need for long backoff
             else:
-                # Log failed attempt
-                log_gemini_call(
-                    model="gemini-2.0-flash-exp",
-                    input_tokens=input_tokens,
-                    output_tokens=0,
-                    success=False
-                )
-                print("❌ Gemini failed after max retries.")
+                log_gemini_call(MODEL_NAME, input_tokens, 0, False)
                 return None
     
     return None

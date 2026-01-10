@@ -7,3 +7,4 @@ httpx
 json5
 resend
 pdfplumber
+google-generative-ai>=0.8.0

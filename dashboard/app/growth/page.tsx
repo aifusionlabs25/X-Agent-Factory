@@ -81,6 +81,10 @@ export default function GrowthPage() {
                     deal_size: selectedEntry?.deal_size_mrr || 1000
                 }));
                 setLeads(enrichedLeads);
+                // Display Server Logs (Python Output)
+                if (data.logs) {
+                    setLogs(prev => prev + `\n\n🐍 FACTORY OUTPUT:\n${data.logs}`);
+                }
                 setLogs(prev => prev + `\n✅ Scout Complete. Found ${enrichedLeads.length} qualified leads.`);
 
                 // AUTO-SAVE: Save results to JSON + CSV
@@ -198,16 +202,50 @@ export default function GrowthPage() {
             const res = await fetch('/api/ingest', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ url: lead.href })
+                body: JSON.stringify({ url: lead.href, slug })
             });
             const data = await res.json();
 
             if (data.success) {
-                const demoLink = `/demo/${slug}`;
-                setLogs(prev => prev + `\n✅ Demo Agent Ready!\n📎 Demo Link: ${window.location.origin}${demoLink}`);
-                setLeads(prevLeads => prevLeads.map(l =>
-                    l.href === lead.href ? { ...l, demoLink } : l
-                ));
+                setLogs(prev => prev + `\n✅ Knowledge Base Ingested!`);
+
+                // STAGE 3: BUILD (Architect)
+                setLogs(prev => prev + `\n\n🏗️ ARCHITECT: Building Agent Persona...`);
+
+                // Extract Agent Name from template (e.g. "Ava (Triage)" -> "Ava") or default to "Nova"
+                let agentName = "Nova";
+                if (lead.suggested_template) {
+                    agentName = lead.suggested_template.split(' ')[0];
+                }
+
+                try {
+                    const buildRes = await fetch('/api/build', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            vertical: lead.vertical || 'Business',
+                            agent_name: agentName,
+                            slug
+                        })
+                    });
+                    const buildData = await buildRes.json();
+
+                    if (buildData.success) {
+                        setLogs(prev => prev + `\n✅ Agent "System Prompt" & "Soul" Created!`);
+
+                        const demoLink = `/demo/${slug}`;
+                        setLogs(prev => prev + `\n✨ ALL SYSTEMS GO!\n📎 Demo Link: ${window.location.origin}${demoLink}`);
+
+                        setLeads(prevLeads => prevLeads.map(l =>
+                            l.href === lead.href ? { ...l, demoLink } : l
+                        ));
+                    } else {
+                        setLogs(prev => prev + `\n❌ Build Failed: ${buildData.error}`);
+                    }
+                } catch (e: any) {
+                    setLogs(prev => prev + `\n❌ Build Network Error: ${e.message}`);
+                }
+
             } else {
                 setLogs(prev => prev + `\n❌ Ingest Failed: ${data.error}`);
             }
@@ -310,6 +348,9 @@ export default function GrowthPage() {
                 </div>
 
                 <div className="flex gap-3">
+                    <Link href="/strategy" className="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 rounded text-white text-sm font-bold shadow-lg shadow-indigo-900/50 flex items-center gap-2">
+                        ⚔️ WAR ROOM
+                    </Link>
                     {leads.length > 0 && (
                         <button
                             onClick={downloadCSV}
@@ -318,6 +359,9 @@ export default function GrowthPage() {
                             📥 Download CSV ({leads.length})
                         </button>
                     )}
+                    <Link href="/leads" className="px-4 py-2 bg-purple-600 hover:bg-purple-500 rounded text-white text-sm font-bold shadow-lg shadow-purple-900/50">
+                        🗄️ VIEW DB
+                    </Link>
                     <Link href="/" className="px-4 py-2 bg-slate-200 hover:bg-slate-300 rounded text-slate-700 text-sm font-bold">
                         ← DASHBOARD
                     </Link>
@@ -491,6 +535,6 @@ export default function GrowthPage() {
                     )}
                 </div>
             </div>
-        </div>
+        </div >
     );
 }

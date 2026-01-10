@@ -30,6 +30,10 @@ sys.path.insert(0, os.path.dirname(__file__))
 from utils import load_env
 from contact_enricher import enrich_contact
 from email_generator import generate_outreach_email, save_email_template
+from db_manager import init_db, upsert_lead
+
+# Initialize DB on startup
+init_db()
 
 # Configuration
 LEADS_DIR = Path(__file__).parent.parent / "intelligence" / "leads"
@@ -88,16 +92,21 @@ def rank_lead_priority(lead, vertical_context=""):
     Vertical: {vertical_context}
     
     [TASK]
-    Assign a final priority ranking:
-    - A = Hot lead, contact immediately
-    - B = Warm lead, follow up within 1 week
-    - C = Cold lead, nurture or skip
+    Analyze the business and assign a priority.
+    
+    CRITICAL: You must extract specific Sales Intelligence (BD) signals.
+    1. Hook: A punchy opening line for an email (e.g. "Saw your 5-star reviews but noticed the broken booking link").
+    2. Pain Point: The specific problem they have (e.g. "Manual scheduling", "Generic website").
+    3. Sales Angle: How we pitch our agent (e.g. "24/7 Receptionist", "After-hours triage").
     
     Return JSON ONLY:
     {{
         "priority": "A" or "B" or "C",
-        "reason": "1 sentence why",
-        "best_time_to_call": "Morning/Afternoon/Evening",
+        "reason": "1 sentence justification",
+        "hook": "The opening line",
+        "pain_point": "The detected problem",
+        "sales_angle": "The strategy",
+        "decision_maker": "Likely owner name (or 'Owner')",
         "urgency_score": <1-10>
     }}
     [/TASK]
@@ -190,10 +199,12 @@ def process_hunt_file(filepath):
             lead['priority'] = priority_data.get('priority', 'B')
             lead['priority_reason'] = priority_data.get('reason', '')
             lead['urgency'] = priority_data.get('urgency_score', 5)
+            lead['sales_intel'] = priority_data # SAVE ALL INTEL TO DB
         else:
             lead['priority'] = 'B'
             lead['priority_reason'] = 'Default ranking'
             lead['urgency'] = 5
+            lead['sales_intel'] = {}
         
         # Sort into tiers
         if lead['priority'] == 'A':
@@ -218,6 +229,12 @@ def process_hunt_file(filepath):
             total_mrr += 1000
         else:
             total_mrr += 500
+        
+        # Save to Database
+        lead['vertical'] = vertical
+        lead['location'] = "Unknown" # Parser improvement for later
+        print(f"      > 💾 DB: Saving lead to factory.db...")
+        upsert_lead(lead)
         
         # Small delay to not overwhelm Ollama
         time.sleep(0.5)
@@ -250,12 +267,13 @@ def process_hunt_file(filepath):
     try:
         from email_sender import send_batch_report
         batch_name = f"{vertical.upper().replace(' ', '_')}_BATCH_{datetime.now().strftime('%Y%m%d')}"
-        print(f"\n   📧 Sending email report to aifusionlabs@gmail.com...")
+        admin_email = os.environ.get("FACTORY_ADMIN_EMAIL", "aifusionlabs@gmail.com")
+        print(f"\n   📧 Sending email report to {admin_email}...")
         result = send_batch_report(
             batch_name=batch_name,
             vertical=vertical,
             leads=leads,
-            to_email="aifusionlabs@gmail.com"
+            to_email=admin_email
         )
         if result:
             print(f"   ✅ Email sent! Batch: {batch_name}")

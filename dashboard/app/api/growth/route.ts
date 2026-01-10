@@ -14,7 +14,7 @@ export async function POST(req: Request) {
             return NextResponse.json({ error: 'Vertical is required' }, { status: 400 });
         }
 
-        const command = `python tools/prospect_scout.py "${vertical}"`;
+        const command = `py -3.11 tools/prospect_scout.py "${vertical}"`;
         const cwd = path.join(process.cwd(), '..'); // Assuming dashboard is in dashboard/ dir
 
         // Execute the Python script
@@ -26,13 +26,13 @@ export async function POST(req: Request) {
         }
 
         // Read the results file
-        const safeVertical = vertical.toLowerCase().replace(/ /g, '_');
+        const safeVertical = vertical.trim().toLowerCase().replace(/ /g, '_');
         const resultsPath = path.join(cwd, 'intelligence', 'leads', `${safeVertical}_qualified.json`);
 
         if (fs.existsSync(resultsPath)) {
             const resultsData = fs.readFileSync(resultsPath, 'utf-8');
             const leads = JSON.parse(resultsData);
-            return NextResponse.json({ success: true, leads, logs: stdout });
+            return NextResponse.json({ success: true, leads, logs: stdout + (stderr ? `\n⚠️ STDERR:\n${stderr}` : '') });
         } else {
             return NextResponse.json({ success: false, error: "Results file not found.", logs: stdout });
         }

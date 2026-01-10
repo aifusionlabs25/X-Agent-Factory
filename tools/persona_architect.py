@@ -2,7 +2,43 @@ import sys
 sys.stdout.reconfigure(encoding='utf-8')
 import os
 import argparse
+import json
 from utils import load_env, load_json
+import requests
+
+# Configuration
+load_env()
+
+# --- STYLE GUIDELINES (The "Morgan Protocol") ---
+# Injected into every Agent Skeleton to ensure high quality.
+STYLE_INJECTION = """
+[CRITICAL CONFIGURATION]
+You must enforce the following Style Guidelines in the System Prompt:
+1. **NO FILLERS**: Ban phrases like 'Got it', 'Sure thing', 'I understand'.
+2. **CONCISENESS**: Limit responses to 2-3 sentences unless explaining complex concepts.
+3. **PRONUNCIATION**: If the word 'live' refers to real-time, pronounce it 'l-eye-v'.
+4. **NAME USAGE**: Use the user's name ONLY in the Greeting and Goodbye. Never in between.
+"""
+
+def generate_with_ollama(prompt, persona_context, context_label=""):
+    """Generates content using local Ollama instance."""
+    print(f"   🧠 Llama 3 Thinking ({context_label})...")
+    OLLAMA_URL = "http://localhost:11434/api/generate"
+    
+    full_prompt = f"{persona_context}\n\n{prompt}"
+    
+    try:
+        response = requests.post(OLLAMA_URL, json={
+            "model": "llama3",
+            "prompt": full_prompt,
+            "stream": False
+        })
+        response.raise_for_status()
+        data = response.json()
+        return data['response']
+    except Exception as e:
+        print(f"❌ Ollama Error: {e}")
+        return None
 
 def load_specialist(name):
     """Loads the persona context for a specialist."""
@@ -12,30 +48,8 @@ def load_specialist(name):
             return f.read()
     return f"You are {name}, an expert Systems Architect."
 
-import requests
-import json
-
-# Configuration
-load_env()
-API_KEY = os.getenv("GOOGLE_API_KEY")
-
-def generate_with_gemini(system_prompt, user_message):
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={API_KEY}"
-    payload = {
-        "contents": [
-            {"role": "user", "parts": [{"text": system_prompt + "\n\n" + user_message}]} 
-        ]
-    }
-    try:
-        response = requests.post(url, json=payload)
-        response.raise_for_status()
-        return response.json()['candidates'][0]['content']['parts'][0]['text']
-    except Exception as e:
-        print(f"❌ Gemini Error: {e}")
-        return None
-
-def build_persona(vertical, agent_name):
-    # 1. Load Troy
+def build_persona(vertical, agent_name, output_dir=None):
+    # 1. Load Troy (The Architect)
     troy_context = load_specialist("Troy")
     
     print(f"🏗️ Troy: Architecting system prompt for '{agent_name}' ({vertical})...")
@@ -59,10 +73,18 @@ def build_persona(vertical, agent_name):
     [INSTRUCTION]
     Design the 'System Prompt' (The Skeleton).
     Focus ONLY on Logic, Guardrails, Step-by-step Protocols, and Safety.
+    
+    {STYLE_INJECTION}
+    
     Do not include fluff. Output raw text for the LLM.
     """
     
-    skeleton_content = generate_with_gemini(troy_context, prompt_request_skeleton)
+    # Using local Llama 3
+    skeleton_content = generate_with_ollama(
+        prompt=prompt_request_skeleton, 
+        persona_context=troy_context,
+        context_label=f"architect_skeleton_{agent_name}"
+    )
     
     # 4. Architect Persona Context (The Soul)
     prompt_request_soul = f"""
@@ -76,12 +98,22 @@ def build_persona(vertical, agent_name):
     Design the 'Persona Context' (The Soul).
     Focus ONLY on Vibe, Voice, Backstory, and deeply held beliefs.
     This is for a Tavus Video Replica to 'act' the part.
+    Ensure the tone aligns with: {template_data['tone']}
     """
     
-    soul_content = generate_with_gemini(troy_context, prompt_request_soul)
+    # Using local Llama 3
+    soul_content = generate_with_ollama(
+        prompt=prompt_request_soul, 
+        persona_context=troy_context,
+        context_label=f"architect_soul_{agent_name}"
+    )
     
     # Clean Parse & Save Both
-    agent_dir = f"agents/{agent_name.lower()}_{vertical.lower().replace(' ', '_')}"
+    if output_dir:
+        agent_dir = output_dir
+    else:
+        agent_dir = f"agents/{agent_name.lower()}_{vertical.lower().replace(' ', '_')}"
+
     if not os.path.exists(agent_dir):
         os.makedirs(agent_dir)
 
@@ -106,7 +138,11 @@ def build_persona(vertical, agent_name):
     print(f"   👻 Soul: persona_context.txt")
 
 if __name__ == "__main__":
-    if len(sys.argv) < 3:
-        print("Usage: python persona_architect.py <vertical> <agent_name>")
-    else:
-        build_persona(sys.argv[1], sys.argv[2])
+    parser = argparse.ArgumentParser(description="Persona Architect Tool")
+    parser.add_argument("vertical", help="Industry Vertical (e.g. Veterinarian)")
+    parser.add_argument("agent_name", help="Agent Name (e.g. Ava)")
+    parser.add_argument("--output_dir", help="Output directory", default=None)
+    
+    args = parser.parse_args()
+    
+    build_persona(args.vertical, args.agent_name, args.output_dir)

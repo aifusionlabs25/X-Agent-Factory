@@ -69,6 +69,9 @@ export default function Home() {
           <p className="text-slate-500 font-mono">SYSTEM STATUS: ONLINE | PHASE: 4 (INTEGRATION)</p>
         </div>
         <div className="flex gap-3">
+          <Link href="/research" className="bg-purple-600 hover:bg-purple-500 text-white px-4 py-2 rounded-lg font-bold transition-colors text-sm">
+            🔬 RESEARCH LAB
+          </Link>
           <Link href="/admin/usage" className="bg-slate-700 hover:bg-slate-600 text-white px-4 py-2 rounded-lg font-bold transition-colors text-sm">
             ⚙️ System Status
           </Link>

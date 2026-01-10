@@ -3,16 +3,18 @@ sys.stdout.reconfigure(encoding='utf-8')
 import argparse
 import os
 import json
-import requests
 import time
-from ddgs import DDGS
+import warnings
+# Suppress the "backend='api' is deprecated" warning because it's the only one that works.
+warnings.filterwarnings("ignore", category=UserWarning, module="duckduckgo_search")
+warnings.filterwarnings("ignore", category=RuntimeWarning, module="duckduckgo_search")
+# Replaced DDG with Google
+from googlesearch import search
 from bs4 import BeautifulSoup
-from utils import load_env
+from utils import load_env, extract_json_from_text
+from gemini_helper import call_gemini
 
-# Configuration
-OLLAMA_URL = "http://localhost:11434/api/generate"
-GEMINI_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent"
-
+# --- Step 1: The Brain (Troy) ---
 def load_specialist(name):
     path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'specialists', f'{name}.txt')
     if os.path.exists(path):
@@ -20,129 +22,77 @@ def load_specialist(name):
             return f.read()
     return ""
 
-def generate_with_gemini(persona_context, prompt):
-    api_key = os.environ.get("GOOGLE_API_KEY")
-    if not api_key:
-        print("❌ Error: GOOGLE_API_KEY not found.")
-        return None
-
-    full_prompt = f"{persona_context}\n\n{prompt}"
-    
-    payload = {
-        "contents": [{"parts": [{"text": full_prompt}]}]
-    }
-    
-    # Retry Loop (3 attempts)
-    max_retries = 3
-    for attempt in range(max_retries):
-        try:
-            response = requests.post(
-                GEMINI_URL,
-                json=payload,
-                headers={
-                    "Content-Type": "application/json",
-                    "x-goog-api-key": api_key
-                },
-                timeout=30
-            )
-            
-            # If 429 (Too Many Requests), raise status to trigger except block
-            if response.status_code == 429:
-                print(f"   ⚠️ Gemini Rate Limit (429). Waiting {2 * (attempt + 1)}s...")
-                time.sleep(2 * (attempt + 1))
-                continue
-                
-            response.raise_for_status()
-            return response.json()['candidates'][0]['content']['parts'][0]['text']
-            
-        except Exception as e:
-            print(f"   ⚠️ Gemini Attempt {attempt+1}/{max_retries} failed: {e}")
-            if attempt < max_retries - 1:
-                time.sleep(2)
-            else:
-                print("❌ Gemini failed after max retries.")
-                return None
-    return None
-
-def generate_with_ollama(persona_context, prompt, model="llama3"):
-    full_prompt = f"{persona_context}\n\n{prompt}"
-    try:
-        response = requests.post(OLLAMA_URL, json={
-            "model": model,
-            "prompt": full_prompt,
-            "stream": False,
-            "format": "json"
-        })
-        response.raise_for_status()
-        data = response.json()
-        return json.loads(data['response'])
-    except Exception as e:
-        print(f"❌ Ollama Error: {e}")
-        return None
-
-# --- Step 1: The Brain (Troy) ---
 def generate_criteria(vertical):
     print(f"   > 🏗️  Troy: Designing search criteria for '{vertical}'...")
     persona = load_specialist("Troy")
     
+    # One-Shot Prompt (Morgan Protocol)
     prompt = f"""
-    [[FACTORY_MODE]]
-    {persona}
-    
     [TASK]
-    Generate 5 targeted DuckDuckGo search queries to find small-to-mid-sized businesses in the '{vertical}' industry.
-    Focus on signals that indicate they need automation:
-    - "Bad reviews" or "Complaint"
-    - "Schedule appointment" (to find booking pages)
-    - "Contact us" 
-    - Specific location based queries (e.g. "Plumbers in [City] waiting list") -> Use generic placeholders like "in Denver" or "in Austin" for this demo.
+    Generate 5 targeted Google search queries to find small-to-mid-sized businesses in the '{vertical}' industry.
+    Focus on keywords that reveal them, NOT full sentences.
     
-    Return JSON ONLY:
+    [EXAMPLE OUTPUT]
     {{
-        "queries": ["query1", "query2", ...]
+        "queries": [
+            "Plumbers Phoenix bad reviews",
+            "Emergency plumbing Denver",
+            "Plumbing contact form",
+            "Schedule plumbing online",
+            "Local plumber complaint"
+        ]
     }}
+    
+    [INSTRUCTION]
+    Return VALID JSON ONLY. No markdown formatted blocks. Use SHORT KEYWORDS.
     [/TASK]
     """
     
-    response = generate_with_gemini(persona, prompt)
-    if response:
-        # Clean parse
-        clean_json = response
-        if "```" in response:
-            parts = response.split("```")
-            clean_json = parts[1]
-            if clean_json.startswith("json"):
-                clean_json = clean_json[4:].strip()
-        elif "Troy Ready." in response:
-             clean_json = response.split("Troy Ready.")[1].strip()
-             
-        try:
-            return json.loads(clean_json)['queries']
-        except:
-            print("⚠️ Failed to parse Troy's criteria.")
+    response = call_gemini(prompt, persona_context=persona, context_label="scout_criteria")
     
+    if response:
+        # Robust Parsing (Updated for Llama 3)
+        data = extract_json_from_text(response)
+        if data and 'queries' in data:
+            # Clean queries (Strip brackets/quotes that Llama might hallucinate)
+            cleaned_queries = [q.strip("[]\"' ") for q in data['queries']]
+            return cleaned_queries
+        else:
+            print(f"⚠️ Failed to parse Troy's criteria (Raw len: {len(response)}).")
+
+    # Fallback
+    print("   ⚠️ Troy failed. Using generic fallback queries.")
     return [f"{vertical} businesses", f"{vertical} near me", f"{vertical} reviews"]
+
+# Replaced Manual Scraper with DDGS (backend='api' verified working)
+from ddgs import DDGS
 
 # --- Step 2: The Hands (WebWorker) ---
 def perform_search(queries):
     results = []
-    print(f"   > 🔎 WebWorker: Executing {len(queries)} search strategies...")
+    print(f"   > 🔎 WebWorker: Executing {len(queries)} search strategies (via DDG API)...")
     
-    with DDGS() as ddgs:
-        for q in queries:
-            print(f"     ...searching: '{q}'")
-            try:
-                # Get top 10 results per query
-                search_res = list(ddgs.text(q, max_results=10))
+    for q in queries:
+        print(f"     ...searching: '{q}'")
+        try:
+            # Verified working backend: 'api' (Legacy but reliable)
+            with DDGS() as ddgs:
+                search_res = list(ddgs.text(q, backend='api', max_results=5))
+                
+                print(f"     -> Hits: {len(search_res)}")
                 for r in search_res:
-                    r['query_source'] = q
-                    results.append(r)
-                time.sleep(2) # Polite delay
-            except Exception as e:
-                print(f"     ⚠️ Search error: {e}")
+                    results.append({
+                        'title': r.get('title', 'Unknown Title'),
+                        'href': r.get('href', ''),
+                        'body': r.get('body', ''),
+                        'query_source': q
+                    })
+                time.sleep(1) # Polite delay
+        except Exception as e:
+            print(f"     ⚠️ Search error: {e}")
                 
     # Deduplicate by URL
-    unique_results = {r['href']: r for r in results}.values()
+    unique_results = {r.get('href'): r for r in results if r.get('href')}.values()
     print(f"     > Found {len(unique_results)} unique leads.")
     return list(unique_results)
 
@@ -157,6 +107,8 @@ def fetch_homepage_snippet(url):
         return ""
 
 # --- Step 3: The Filter (Nova) ---
+import requests
+
 def score_leads(leads, vertical):
     print(f"   > 💠 Nova: Scoring {len(leads)} leads for Quality & Automation Fit...")
     persona = load_specialist("Nova")
@@ -167,62 +119,62 @@ def score_leads(leads, vertical):
     for lead in leads:
         # 1. Pre-Filter Aggregators
         if any(domain in lead['href'] for domain in ignorable_domains):
-            print(f"     - [Skip] Aggregator detected: {lead['title'][:20]}...")
             continue
 
         # 2. Quick spider for context
         snippet = fetch_homepage_snippet(lead['href'])
-        if not snippet:
-             print(f"     - [Skip] Could not fetch site: {lead['title'][:20]}...")
+        
+        # If we have no snippet and no body, it's a dead lead
+        if not snippet and not lead.get('body'):
              continue
+             
+        # Use body as fallback snippet if fetch failed
+        if not snippet:
+            snippet = lead.get('body', '')
         
+        # One-Shot Prompt for Nova
         prompt = f"""
-        [[FACTORY_MODE]]
-        {persona}
-        
         [LEAD DATA]
         Vertical: {vertical}
         Title: {lead['title']}
         URL: {lead['href']}
-        Snippet: {lead['body']}
+        Snippet: {lead.get('body', '')}
         Homepage Preview: {snippet}
         
         [TASK]
         Score this lead (0-10) on "Likelihood to need AI Automation".
-        - High Score (6-10): Bad website, mentions "call us", complaints in snippet, manual scheduling, small local biz.
-        - Low Score (0-5): Has "ServiceTitan", modern UI, enterprise corp, government site.
         
-        Return JSON ONLY:
+        [EXAMPLE OUTPUT]
         {{
-            "score": <int>,
-            "reason": "...",
-            "pass": <bool> (True if score >= 4)
+            "score": 8,
+            "reason": "Site mentions 'Call for appointment' and has no booking widget.",
+            "pass": true
         }}
+        
+        Return VALID JSON ONLY.
         [/TASK]
         """
         
-        # Using Llama 3 for speed/cost on the "Factory Floor"
-        evaluation = generate_with_ollama(persona, prompt)
+        # Using Local Llama
+        response = call_gemini(prompt, persona_context=persona, context_label="nova_score")
         
-        if evaluation:
-            # Safely extract score with type coercion
-            raw_score = evaluation.get('score')
-            try:
-                score = int(raw_score) if raw_score is not None else 0
-            except (ValueError, TypeError):
-                score = 0
+        if response:
+            evaluation = extract_json_from_text(response)
             
-            print(f"     - [{score}/10] {lead['title'][:30]}... ({evaluation.get('pass')})")
-            
-            # Lowering threshold AND trusting the explicit 'pass' bool more
-            if score >= 4:
-                lead['nova_score'] = score
-                lead['nova_reason'] = evaluation.get('reason', 'No reason provided')
-                qualified.append(lead)
-        else:
-            print(f"     - [?] {lead['title'][:30]}... (Skipped)")
-
-
+            if evaluation:
+                try:
+                    score = int(evaluation.get('score', 0))
+                    
+                    print(f"     - [{score}/10] {lead['title'][:30]}... ({evaluation.get('pass')})")
+                    
+                    if score >= 5: # Threshold
+                        lead['nova_score'] = score
+                        lead['nova_reason'] = evaluation.get('reason', 'No reason provided')
+                        qualified.append(lead)
+                except:
+                     print(f"     - [?] Failed to parse score for {lead['title'][:15]}...")
+            else:
+                 print(f"     - [?] Failed to parse JSON for {lead['title'][:15]}...")
 
     return qualified
 

@@ -7,14 +7,21 @@ const execPromise = util.promisify(exec);
 
 export async function POST(req: Request) {
     try {
-        const { url } = await req.json();
+        const { url, slug } = await req.json();
 
         if (!url) {
             return NextResponse.json({ error: 'URL is required' }, { status: 400 });
         }
 
         // Run client_ingest.py
-        const command = `python tools/client_ingest.py "${url}"`;
+        let command = `python tools/client_ingest.py "${url}"`;
+
+        // Enforce Unified Agent Schema path
+        if (slug) {
+            const outputDir = `intelligence/agents/${slug}`;
+            command += ` --output_dir "${outputDir}"`;
+        }
+
         const cwd = path.join(process.cwd(), '..');
 
         // This might take a while (spidering + LLM), so we await it.
