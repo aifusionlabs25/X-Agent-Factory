@@ -19,13 +19,24 @@ build/
 coverage/
 
 # X Agent Factory Data
-intelligence/leads/
+# Ignore generated lead/email artifacts, but keep the .processed marker
+intelligence/leads/*
 intelligence/emails/
 !intelligence/leads/.processed
-!intelligence/reports/
-# Note: Reports are currently kept in repo for demo purposes, 
-# but in prod you might want to ignore them:
+
+# Reports are currently kept in repo for demo purposes.
+# (Leave reports unignored unless you later decide otherwise.)
 # intelligence/reports/
+
+# Factory runtime outputs (keep local, not versioned)
+intelligence/factory.db*
+intelligence/usage/
+intelligence/forensic_logs/
+intelligence/research/
+intelligence/missions/
+
+# Big artifacts
+*.wav
 
 # OS
 .DS_Store
