@@ -1,0 +1,125 @@
+# DuckDuckGo Email Protection Beta Now Open to All!
+Source: https://spreadprivacy.com/protect-your-inbox-with-duckduckgo-email-protection/
+----------------------------------------
+
+We’ve removed the waitlist for DuckDuckGo Email Protection, making the beta open for everyone to try. Get your @duck.com email address today!
+DuckDuckGo Email Protection is a free email forwarding service that removes multiple types of hidden email trackers
+and
+lets you create unlimited unique private email addresses on the fly – without switching email providers or apps.
+We’ve also added new features like Link Tracking Protection that helps prevent tracking in email links, Smarter Encryption that helps with unencrypted email links, and the ability to reply directly from your Duck Addresses.
+Signing up is easy: In the DuckDuckGo mobile app (
+iOS
+/
+Android
+), upgrade to the latest version, and then open Settings and select Email Protection. On desktop, navigate to
+duckduckgo.com/email
+while using a DuckDuckGo browser extension (
+Firefox
+/
+Chrome
+/
+Edge
+/
+Brave
+)
+or DuckDuckGo for Mac (
+beta
+).
+Email Protection beta makes it easy for you to get your very own @duck.com email address!
+Why Block Email Trackers or Hide Your Email Address?
+Have you ever entered your email for a loyalty program or coupon and started getting emails from companies you didn’t subscribe to? Or noticed ads following you around after clicking on an email link? You’re not alone! There are multiple ways companies can use your email to track you, target you with ads, and influence what you see online. They can even share your personal information with third parties – all without your knowledge.
+Companies embed trackers in images and links within email messages, letting them collect information like
+when
+you’ve opened a message,
+where
+you were when you opened it, and
+what device
+you were using. In our closed
+Email Protection beta
+, we found that approximately 85% of beta testers’ emails contained hidden email trackers! Very sneaky. Companies can use this information to build a profile about you.
+Email trackers can collect information like when  you’ve opened a message, where you were when you opened it, and what device you were using.
+And because your email addresses are connected to so much of what you do online – making purchases, using social media, and more – tracking companies can also effectively use your personal email address as a profiling identifier. In fact, many companies are so hungry for your personal email address that they’ll actually pull it from online forms
+you haven’t even submitted yet
+! Beyond sending you more emails, companies often upload your email address to Facebook and Google to target you with creepy ads across apps and websites.
+Reintroducing DuckDuckGo Email Protection (Beta)
+DuckDuckGo Email Protection is a free email forwarding service that removes multiple types of hidden email trackers
+and
+lets you create unlimited unique private email addresses on the fly. You can use Email Protection with your current email provider and app – no need to update your contacts or juggle multiple accounts. Email Protection works seamlessly in the background to deliver your more-private emails right to your inbox.
+In our closed Email Protection beta, we found that approximately 85% of beta testers’ emails contained hidden email trackers.
+Signing up for Email Protection gives you the ability to create Duck Addresses. There are two  types that help protect your email privacy:
+Personal Duck Address
+(example: name@duck.com): Any emails sent here will be stripped of email trackers on our block list and then forwarded to whatever personal email address you provide, arriving at your regular inbox. Within forwarded emails, we’ll tell you how many trackers we’ve removed, what company appears to be behind them, and other helpful information.
+Unique Private Duck Addresses
+(example: avtzqdr@duck.com): When you are browsing different websites, DuckDuckGo automatically detects email fields so you have the option to generate a unique private Duck Address for additional protection against email address profiling. Just like your personal Duck Address, private Duck Addresses also forward privacy-enhanced emails to your personal inbox. Using a new private Duck Address every time you’re asked to submit an email address makes it much harder for companies to track you. They can also be individually deactivated at any time, for example if you start receiving spam to one of them.
+Many users have loved the Email Protection beta so far, with millions of more-private emails being forwarded weekly. It’s email privacy, simplified – and we’re thrilled to open the beta for everyone to try it out!
+Updates to DuckDuckGo Email Protection
+Since
+launching DuckDuckGo Email Protection
+into private waitlist beta, we’ve been continuously making improvements based on feedback.
+Link Tracking Protection:
+In addition to blocking trackers in images, scripts, and other media directly embedded in emails, we can now detect and remove a growing number of the trackers embedded in email links.
+How this helps
+: Say you click on an email link to check out a new pair of shoes. Who you are (in the form of your email address or other identifiers) can be embedded in that link and then sent to other companies from the loaded shoe retailer website to follow you around the web. Link Tracking Protection helps protect against this scenario.
+Smarter Encryption:
+We’ve started using the same
+Smarter Encryption
+(HTTPS Upgrading) that’s at work in our
+search engine
+and
+apps
+to upgrade insecure (unencrypted, HTTP) links in emails to secure (encrypted, HTTPS) links when they’re on our upgradable list.
+How this helps:
+If you click on an email link that starts with
+http://
+, the connection to the website is unencrypted; everything you do on that website is then vulnerable to onlookers, from the specific pages you visit to the terms you search. But when the address starts with
+https://
+(with an s at the end), the Internet connection to the website is
+encrypted
+. If anyone – like your Internet service provider or a Wi-Fi snooper – is trying to spy on you, all they’ll see is the domain you’re visiting.
+Replying from your Duck Addresses:
+You can now reply to emails from all your Duck Addresses. When you get an email to a Duck Address, you can just hit ‘Reply,’ type your message, and send it off. Your email will then be delivered from your Duck Address instead of your personal address.
+How this helps:
+Say you’re moving and want to request a price quote, but you don’t want the moving company to have your personal email address. You can communicate back and forth using a private Duck Address instead of your personal address.
+Note: Although we’re hiding as much personal information as we can, DuckDuckGo doesn’t create the message itself, so we can’t guarantee the email will not include your forwarding address or any other personal identifier.
+Self-Service Dashboard:
+Want to update your forwarding address? Or even delete your account? You can now make changes to your Duck account whenever you want, saving you time and effort.
+Our new self-service dashboard makes it easier for you to make changes to your Duck Address.
+How People are Using Email Protection
+Wondering how this feature works in the real world? Here’s what our beta testers had to say:
+“Very useful for sites which need an email address for shopping, particularly those where I have no need to contact the website outside of an online contact form.”
+“...the best part is that I can deactivate randomized email address anytime if anyone spams."
+“I'm reluctant to sign up for anything, but now I have signed up for a newsletter that I would not have [otherwise], and it has been really great.”
+“Sometimes when I don't trust a shopping site or have to give an email to some site that I am concerned will spam me, I use the private address.”
+“Spelling out a long email to someone in person or over the phone is always a hassle. My old email address was 20+ characters all-in, and now I just have to say ‘[name]@duck.com.’”
+Getting Started
+Email Protection is supported in the DuckDuckGo Privacy Browser for
+iOS
+and
+Android
+, DuckDuckGo for Mac (
+beta
+), and DuckDuckGo Privacy Essentials browser extensions for
+Firefox
+,
+Chrome
+,
+Edge
+, and
+Brave
+.
+Mobile:
+On the latest version of the DuckDuckGo app, open Settings > Email Protection to get started.
+Desktop:
+Using the latest versions of the DuckDuckGo extension or DuckDuckGo for Mac (
+beta
+), navigate to
+https://duckduckgo.com/email
+.
+Once you follow the steps to create your personal Duck Address, you’re all set to start using it right away! And while browsing, look for Dax the Duck (our mascot) to help you autofill your personal Duck Address or generate a private Duck Address for you on the fly.
+Like all our features, DuckDuckGo Email Protection will never track you. We believe that your emails are none of our business! When your Duck Addresses receive an email, we immediately apply our tracking protections and then forward it to you, never saving it on our systems. Sender information, subject lines...we don’t track any of it. (Learn more in our
+Email Protection Privacy Policy and Terms of Service
+.)
+Additionally, we are committed to Email Protection for the long term, so you can feel confident about using your Duck Addresses. During the private beta, we’ve been shoring up our backend systems to support millions of users. And as we move out of beta, we'll also be incorporating our email tracker dataset into our open source
+Tracker Radar
+.
+So give Email Protection a try and let us know what you think! We look forward to helping you protect your inbox.

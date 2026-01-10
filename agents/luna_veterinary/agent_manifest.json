@@ -1,0 +1,53 @@
+{
+    "agent_id": "luna_veterinary",
+    "agent_name": "Dr. Luna",
+    "version": "1.0",
+    "created": "2025-12-18",
+    "vertical": "Veterinary / After-Hours Pet Triage",
+    "status": "deployed_testing",
+    "tavus": {
+        "persona_id": "p506036d4c62",
+        "persona_name": "Luna Vet triage",
+        "replica_id": "rd3ba0f30551",
+        "replica_name": "Olivia - Doctor",
+        "created_at": "2025-12-18T21:47:00"
+    },
+    "layers": {
+        "llm": {
+            "model": "tavus-gpt-oss",
+            "speculative_inference": true
+        },
+        "perception": {
+            "model": "Raven-0",
+            "ambient_awareness_queries": [],
+            "perception_tools": []
+        },
+        "stt": {
+            "engine": "Tavus Advanced",
+            "pause_sensitivity": "Medium",
+            "interrupt_sensitivity": "Medium",
+            "smart_turn_detection": true
+        },
+        "tts": {
+            "provider": "cartesia",
+            "model": "sonic-3",
+            "voice_id": null,
+            "default_emotion": "calm"
+        }
+    },
+    "files": {
+        "system_prompt": "Luna_System_Prompt_v1.txt",
+        "persona_context": "Luna_Persona_Context_v1.txt",
+        "knowledge_base": null
+    },
+    "placeholders": {
+        "CLINIC_NAME": "[CLINIC NAME]",
+        "EMERGENCY_VET_NAME": "[EMERGENCY VET NAME]",
+        "VET_NAME": "[VET NAME]"
+    },
+    "council_review": {
+        "troy": "approved",
+        "marcus": "approved",
+        "sparkle": "approved"
+    }
+}

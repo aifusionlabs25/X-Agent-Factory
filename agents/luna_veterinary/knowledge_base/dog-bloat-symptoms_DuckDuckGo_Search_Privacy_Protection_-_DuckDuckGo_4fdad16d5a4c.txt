@@ -1,0 +1,6 @@
+Title: DuckDuckGo Search Privacy Protection - DuckDuckGo Help Pages
+Source: https://duckduckgo.com/duckduckgo-help-pages/search-privacy
+Topic: dog-bloat-symptoms
+==================================================
+
+DuckDuckGo Help Pages DuckDuckGo Search Privacy Protection DuckDuckGo Search protects your privacy and offers the key features you expect from a search engine. Unlike other search engines, we believe the best way to protect your personal information from hackers, scammers, and privacy-invasive companies is to stop it from being collected at all. So, our search engine never tracks you. And because the connection between you and DuckDuckGo Search is encrypted, your internet provider can’t see the searches you make on DuckDuckGo either.

@@ -1,0 +1,107 @@
+# Intestinal Blockage in Cats | PetMD
+Source: https://www.petmd.com/cat/conditions/digestive/c_ct_gastrointestinal_obstruction
+----------------------------------------
+
+By
+Michael Kearley, DVM
+. Reviewed by
+Veronica Higgs, DVM
+Updated
+Sep. 26, 2022
+In This Article
+Summary
+View 6 More
++
+What Is Intestinal Blockage in Cats?
+An intestinal blockage (obstruction) is a common emergency condition that occurs when there is a partial or complete blockage of the intestines that prevents solids or liquids from passing through.
+Gastrointestinal obstruction and intestinal blockage are medical terms that are often used interchangeably for the same condition. However, while a gastrointestinal (GI) obstruction could include an intestinal blockage, the reverse is not true, as an intestinal blockage applies only to the intestines and GI applies to the entire digestive tract (the stomach and small and large intestines).
+Normally, the GI tract undergoes a process called peristalsis, where food and contents are pushed from the stomach to the small intestines, then to the large intestines, into the colon, and out of the rectum and anus. When an obstruction occurs, nothing can pass through. As a result, contents can be backed up into the stomach and your cat may vomit.
+GI obstruction is a surgical emergency. Left untreated, it can result in the death of your cat. If you believe your cat has an intestinal or GI blockage, contact your local emergency veterinarian immediately.
+Symptoms of Intestinal Blockage in Cats
+Cats diagnosed with a GI obstruction are
+most often brought to the vet for vomiting and lack of appetite
+. Other symptoms may include:
+Abdominal pain
+Diarrhea
+Failure to pass stool
+Straining to defecate
+Lethargy
+Changes in behavior (increase in hiding)
+Weight loss
+It’s important to mention to your veterinarian if your cat has a habit of playing with string or getting into the garbage—or if you’ve witnessed your cat chewing and/or swallowing something inappropriate.
+As cats tend to ingest string and similar items while playing with them, these objects have been known to become lodged under the tongue. If you or your veterinarian notice something under the tongue, or if you notice material protruding from your cat’s rectum, do not pull on it! It is often tethered elsewhere and can cause more harm if you attempt to remove it.
+Causes of Intestinal Blockage in Cats
+GI obstruction can result from a variety of causes, and an obstruction can be partial, linear, or complete:
+A partial obstruction
+of the GI tract is usually seen with small foreign objects, such as small toys or pieces of cloth, making their way through the intestines. Signs are generally less noticeable, and medical management, including hospitalization for IV fluids to help the item pass, may be an option in these cases.
+In a linear obstruction
+, a linear foreign body is ingested, something string-like. But instead of passing through the intestines, one end of the object/string becomes stuck. This often happens when one end becomes lodged under the tongue. When one end becomes stuck, the intestines still try to move around the free end. This movement (peristalsis) causes a bunching effect (plication) of the intestines around the string. The longer the string is present, the greater the chance that the string can cut through the intestines, causing tears (perforations) that result in intestinal contents spilling into the abdominal cavity. This can lead to life-threatening inflammation and an infection called
+peritonitis
+.
+Complete obstructions
+can occur when large objects or multiple small objects have been swallowed and there is a complete lack of passage of stomach or intestinal contents down the tract. Symptoms usually present quickly and severely.
+Whether partial, linear, or complete obstruction is noted, the underlying cause may be due to the following:
+Ingestion of foreign objects, most commonly string, yarn, dental floss, hair ties, or rubber bands
+Intussusception (an uncommon telescoping of one intestine into itself), which can occur secondary to parasites, infection (such as
+FIP
+), tumors, or foreign-body ingestion
+Certain types of GI cancer
+Pyloric stenosis
+, usually seen as a congenital condition where the pylorus (the part of the stomach that connects to the small intestine) is narrowed, limiting the passage of food
+Intestinal entrapment or hernias
+Partial, linear, or complete blockages can prevent the absorption of nutrients and water from the intestines, resulting in dehydration and electrolyte imbalances. Even more dangerous if not treated quickly, the foreign body creating the blockage can put pressure on the intestinal wall (or even cut through the wall as noted above with linear foreign bodies), causing tissue death (necrosis) and bowel rupture with life-threatening consequences.
+How Veterinarians Diagnose Intestinal Blockage in Cats
+Your veterinarian will start with a physical examination to palpate the abdomen for pain or evidence of masses/foreign bodies/intussusception. In young or thin cats, the vet may be able to palpate the actual obstruction itself. But often the cat is too large or the obstruction too small to palpate it directly in an exam.
+If no blockage is detected on physical examination but the vet is still concerned there may be one, they will likely perform an abdominal x-ray. If the blockage is a foreign object, particularly if it contains metal, it may be visible on an x-ray. However, if the obstruction is from a string, yarn, or one of the other causes such as a tumor, it may not be directly visible. An “obstructive” gas pattern may be seen where the intestines next to the obstruction are dilated with air or fluid that cannot get through. Linear foreign bodies may show plicated or bunched intestines.
+If the x-ray is inconclusive or your vet is looking for additional information prior to recommending surgery, they may perform an abdominal ultrasound. The ultrasound is useful at visualizing foreign bodies (including linear foreign bodies) but will also provide more information if a tumor or intussusception is suspected. Bloodwork will likely also be recommended to rule out other causes of the symptoms and to assess hydration and electrolytes.
+Treatment of Intestinal Blockage in Cats
+Based on the type and cause of obstruction present, your cat may require one of the following treatments:
+Induced vomiting:
+Depending on the foreign body and when your cat ate it, sometimes vomiting can be immediately induced to recover the foreign object and prevent the intestinal blockage from occurring. However, medications used to induce vomiting in cats are not always reliable, and cats can have complications such as
+aspiration pneumonia
+associated with inducing vomiting.
+Endoscopy:
+If your cat has eaten a foreign object that is still in the stomach and attempts by the vet to force vomiting are unsuccessful, they may suggest endoscopy. This involves using a camera to pass down the throat to visualize and retrieve the foreign object, avoiding obstruction and surgery.
+If your cat eats a linear object (string, yarn) or other small foreign body (toy, hairband) and it does not become lodged somewhere higher in the gastrointestinal tract (under tongue, in stomach), there is a chance it can pass in their stool. However, if any foreign object (linear or otherwise) becomes stuck and creates an intestinal blockage, surgery will be needed to locate and remove the blockage.
+Surgery:
+Most commonly, intestinal blockage will require surgery. The veterinarian will perform exploratory surgery (laparotomy) under general anesthesia to find the cause of the intestinal obstruction. If the obstruction was caused by a foreign body, an incision will be made into the intestines (enterotomy) to remove the object. In the case of linear foreign bodies, sometimes several enterotomies are needed to remove the entire length of the object.
+Unfortunately, if there was severe damage to the intestines, compromised sections of intestines may need to be removed (resection and anastomosis). If the obstruction was caused by one of the other causes (not a foreign body), the surgeon would relieve the obstruction and determine the best course of action, which may include repairing a hernia or removing a tumor. Surgery is not without risks, but for many cases, it poses the best chance at a successful outcome. Be sure to discuss what the risks could be with your veterinarian.
+Supportive care:
+Your cat will be given IV fluids (to rehydrate them) and administered medications for nausea and pain. Often, cats in recovery from major abdominal surgery will sometimes not eat even after the obstruction has been successfully removed. In some cases, they will need a temporary feeding tube to help provide nutritional support while they heal. Your veterinarian will discuss the best course of action for your pet.
+Recovery and Management of Intestinal Blockage in Cats
+Diagnosing and treating intestinal blockages as soon as possible is key to achieving the best outcome and minimizing complications such as damage to the intestines, intestine rupture, leakage, or peritonitis). If your cat is diagnosed with an intestinal blockage and surgery is needed, it should be performed as soon as possible.
+If sections of the intestine must be removed, the likelihood of complications increases, but your cat may still have a good prognosis overall. If the underlying cause of the obstruction is due to cancer or anything other than a foreign body obstruction, the prognosis is lower and would depend on the extent and severity of the condition.
+Most cats will need to remain hospitalized for 1-2 days after surgery on IV fluids with medications for pain and sometimes appetite stimulation. The typical criteria for being discharged is as long as the cat is eating, there is no vomiting, and the cat is fever-free. Once at home, the recovery for most abdominal surgeries includes 10-14 days of rest and restricted activity. The incision site is checked frequently for swelling and for signs of infection such as discharge, odor, redness, and pain. The cat’s overall behavior and willingness to eat and drink must also be monitored.
+If any problems are noted, reach out to your veterinarian to have your cat reexamined. Adhere to the vet’s directions about diet and medications.
+Most cats make a complete recovery, but prognosis can vary based on the cause of the intestinal blockage. If your cat had an obstruction due to a foreign body ingestion, you must be vigilant to prevent reoccurrence. Access to trash, hair ties, string, and other objects must be restricted. If a tumor is identified as the cause of the blockage, a sample can be submitted to a lab to help determine the type of tumor and a prognosis.
+Intestinal Blockage in Cats FAQs
+How long can a cat survive with a blockage?
+Cats with a partial obstruction often survive longer than those with a complete obstruction, although timing is variable. If your pet has any of the clinical signs associated with intestinal blockage, especially vomiting, lack of appetite, or straining to defecate with no stool produced, it is important that you seek veterinary care immediately. If a cat is diagnosed with an intestinal blockage, surgery is then recommended as soon as possible.
+Can a cat pass an intestinal blockage?
+Sometimes, yes. If the blockage is secondary to a small foreign body the pet ingested and is only causing partial obstruction, the object can often pass through the gastrointestinal tract in the stool. IV or subcutaneous fluid therapy may be recommended to ease dehydration and help the object pass. Also, x-rays may be used to track the progress of the object as it moves through. However, complete blockage can occur along with trauma to the GI tract while waiting for the object to pass; always discuss options with your veterinarian.
+Featured Image: iStock.com/nakleyschikova
+WRITTEN BY
+Michael Kearley, DVM
+Veterinarian
+Dr. Michael Kearley graduated from the University of Florida College of Veterinary Medicine in 2013. He graduated with a certificate in...
+Help us make PetMD better
+Was this article helpful?
+Yes
+No
+Related Articles
+Lack of Intestinal Motility in Cats
+PetMD Editorial
+Caring for Your Cat After Intestinal Blockage Surgery
+Katie Grzyb, DVM
+Clotting Deficiency (Liver Related) in Cats
+PetMD Editorial
+15 Kitten-Proofing To-Do’s Before Bringing a Kitten Home
+PetMD Editorial
+Can Cats Eat Corn?
+Sandra C. Mitchell, DVM, DABVP
+Twisted Spleen in Cats
+PetMD Editorial
+Subscribe to Our Newsletter
+Sign up for weekly pet health tips and insights from our veterinarians.
+Email Address
+Subscribe

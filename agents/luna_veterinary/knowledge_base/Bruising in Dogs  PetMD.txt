@@ -1,0 +1,113 @@
+# Bruising in Dogs | PetMD
+Source: https://www.petmd.com/dog/symptoms/bruising-in-dogs
+----------------------------------------
+
+By
+Katie Grzyb, DVM
+Published
+May 19, 2023
+Bruising is caused by ruptured blood vessels that lead to discoloration of the skin from the underlying hemorrhage. Most commonly, bruising is secondary to trauma to the tissue and tends to be self-limiting (resolve on its own without treatment).
+But sometimes a bruise isn’t so straightforward. Sometimes hemorrhage occurs spontaneously with no known trauma, which is concerning for disorders of the clotting (or coagulation) system in the body. Normal blood clotting should stop this. But when the body’s clotting system malfunctions, spontaneous bleeding or a lack of blood clotting can happen, which can have severe or even fatal side effects.
+Coagulation system disorders include:
+Clotting abnormalities
+Decreased platelets in the body (a normal white blood cell made by the bone marrow that helps form blood clots)
+Defective platelets
+Severe overreaction of the body’s proteins (termed disseminated intravascular coagulation, or DIC)
+What Does a Bruise on a Dog Look Like?
+Bruising ranges in shape and size depending on location and the underlying cause. Bruises can appear in two different ways:
+Petechia:
+Pinpoint, stippled, red-to-purplish bruising of the skin or other mucous membranes, such as the gums
+Ecchymoses:
+Larger, blotchy bruises that are dark red or purple
+Both petechia and ecchymoses can be found anywhere on the body, especially when they’re caused by trauma. The most common places for initial spontaneous bleeding are on the:
+Gums
+Belly
+Armpit or inguinal regions
+Whites of the eyes
+Ears
+What To Do if Your Dog Has a Bruise
+If you don’t know what caused your dog’s bruise, have them evaluated by a veterinarian to make certain there are no signs of internal bleeding. This is especially important if you notice any other symptoms along with the bruising, such as:
+Weakness
+Trouble breathing
+Pale gums
+Collapse
+Severe lethargy
+Neurologic signs (wobbly gait,
+seizures
+, tremors, etc.)
+A veterinarian should evaluate spontaneous bruising or bleeding as soon as possible. This may mean bringing your dog to an emergency veterinary hospital after hours or when your primary care veterinarian is not available. Because we cannot be certain about progression without diagnostic testing,
+spontaneous bleeding is considered a medical emergency.
+What Causes a Bruise on a Dog?
+Causes of bruising in dogs are extensive and include:
+Trauma
+Post-operative redness or bruising:
+Mild, self-limiting bruising is usually normal after surgery. If the bruise spreads, swells, oozes, is painful, or does not show improvement within 72 hours, this can be a sign of something more concerning.
+Immune-mediated thrombocytopenia (ITP):
+This is a condition where an overreactive immune system leads to destruction of the body’s platelets. It can be idiopathic in cause—or caused by secondary issues such as certain drugs,
+cancers
+, or
+tick-borne diseases
+.
+Bone marrow suppression causing low platelet counts:
+This usually occurs secondary to cancers or drugs, specifically
+chemotherapy
+.
+Rodenticide (rat poison):
+Most
+rat poisons
+on the market cause malfunction of the platelets, which leads to systemic bleeding and eventually death.
+Congenital disorders that cause platelet malfunctions.
+Congenital or acquired disorders that cause coagulation disorders/deficiencies
+, such as
+Von Willebrand disease
+or Hemophilia A.
+How Vets Diagnose Bruises in Dogs
+Diagnosis starts with a complete medical history and physical examination. This history can ascertain whether there is history of trauma or toxin ingestion, review current medications, and check for other systemic diseases that can lead to bruising/bleeding.
+A physical examination helps investigate locations and presentation of bruising on the skin or mucous membranes. It also assesses for internal bleeding or other abnormal findings, such as
+tumors
+or
+heart murmurs/arrhythmias
+.
+Diagnostic testing may include the following:
+Full blood work and urine testing
+Blood smear under the microscope to manually count platelets
+Blood clotting testing (PT/PTT)
+Buccal mucosal bleeding time (BMBT): This test evaluates platelet ability to form a blood clot. A small incision is made in the gums, and blood clotting time is assessed.
+Chest and abdomen X-rays to assess for signs of cancer,
+liver disease
+, or foreign material
+Abdominal ultrasound to assess for systemic disease and/or cancer
+Infectious disease testing, including viral testing and tick-borne testing
+Von Willebrand factor testing: Seen most commonly in
+Dobermans
+, this condition often leads to spontaneous bleeding due to clotting factor deficiencies.
+Bone marrow aspirates/biopsies are performed to evaluate if the bone marrow is producing platelets, and/or if any obvious cancerous or immune-mediated processes are evident.
+Treatment for Dog Bruises
+There is no specific therapy for bruising in dogs; treatment is dependent on cause. Bruising secondary to mild to moderate trauma may require no treatment. But bruising due to clotting deficiencies may require hospitalization, whole blood transfusions, plasma transfusions, steroid therapy, and more intensive treatments. Bruising secondary to infections, such as tick-borne diseases, is treated with appropriate antibiotic therapy.
+In general, if your dog has a bruise spreading locally (or to other parts of the body) and is not improving after 72 hours—or the bruising is paired with other systemic signs such as pale gums, weakness, not eating, vomiting, collapse, trouble breathing and/or lethargy—it’s important to get a veterinary assessment ASAP, even if that means an emergency visit.
+Featured Image: Adobe/Seventyfour
+WRITTEN BY
+Katie Grzyb, DVM
+Veterinarian
+Dr. Katie Grzyb received her Doctorate of Veterinary Medicine from Ross University in 2009. She continued her clinical training at...
+Help us make PetMD better
+Was this article helpful?
+Yes
+No
+Related Articles
+Immune-Mediated Thrombocytopenia (ITP) in Dogs
+Barri J. Morrison, DVM
+6 Types of Bacteria That Can Affect Your Pet
+Jennifer Coates, DVM
+Cuts and Bruises on Dogs
+PetMD Editorial
+Autoimmune Disease in Dogs
+Michael Kearley, DVM
+Muscle Tears in Dogs
+Megan Keller, DVM
+Blood Related Deficiencies in Dogs
+PetMD Editorial
+Subscribe to Our Newsletter
+Sign up for weekly pet health tips and insights from our veterinarians.
+Email Address
+Subscribe
