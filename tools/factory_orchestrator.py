@@ -482,16 +482,31 @@ A: We offer a {dossier['offer']['type'].lower()} - {dossier['offer']['details']}
 """
     return kb
 
-def build_agent_from_dossier(dossier_path):
+def load_acip_preamble():
+    """Load ACIP security preamble from vendored file."""
+    acip_path = Path(__file__).parent.parent / "security" / "acip" / "ACIP_v1_full.md"
+    if acip_path.exists():
+        with open(acip_path, 'r', encoding='utf-8') as f:
+            return f.read()
+    return ""
+
+
+def build_agent_from_dossier(dossier_path, enable_acip=False):
     """
     Phase 12: Build agent artifacts from a validated dossier.
     Returns True on success, False on failure.
+    
+    Args:
+        dossier_path: Path to the dossier JSON file
+        enable_acip: If True, generate ACIP-hardened system prompt
     """
     from schema_validator import validate_dossier
     
     print(f"\n{'='*60}")
     print(f"🏭 FACTORY ORCHESTRATOR - BUILD AGENT MODE")
     print(f"   Dossier: {dossier_path}")
+    if enable_acip:
+        print(f"   🛡️ ACIP: ENABLED")
     print(f"{'='*60}\n")
     
     # 1. Validate Dossier
@@ -528,6 +543,15 @@ def build_agent_from_dossier(dossier_path):
     with open(system_prompt_path, 'w', encoding='utf-8') as f:
         f.write(system_prompt)
     print(f"   ✅ system_prompt.txt ({len(system_prompt)} bytes)")
+    
+    # ACIP-hardened system prompt (Phase 17)
+    if enable_acip:
+        acip_preamble = load_acip_preamble()
+        acip_prompt = acip_preamble + "\n\n---\n\n" + system_prompt
+        acip_prompt_path = output_dir / "system_prompt_with_acip.txt"
+        with open(acip_prompt_path, 'w', encoding='utf-8') as f:
+            f.write(acip_prompt)
+        print(f"   ✅ system_prompt_with_acip.txt ({len(acip_prompt)} bytes)")
     
     # KB Seed
     kb_seed = generate_kb_seed_from_dossier(dossier)
@@ -608,19 +632,21 @@ def main():
     parser.add_argument("--watch", action="store_true", help="Watch mode (future)")
     parser.add_argument("--reprocess", action="store_true", help="Reprocess all hunt files")
     parser.add_argument("--build-agent", dest="build_agent", metavar="DOSSIER", help="Build agent from dossier JSON (Phase 12)")
+    parser.add_argument("--acip", action="store_true", help="Enable ACIP prompt-injection hardening (Phase 17)")
     parser.add_argument("--no-log", action="store_true", help="Disable run logging")
     args = parser.parse_args()
     
     # --- BUILD-AGENT MODE (Phase 12) ---
     if args.build_agent:
         if args.no_log:
-            success = build_agent_from_dossier(args.build_agent)
+            success = build_agent_from_dossier(args.build_agent, enable_acip=args.acip)
         else:
             from run_logger import RunLogger
-            with RunLogger("factory_orchestrator", {"mode": "build-agent", "dossier": args.build_agent}) as run:
-                success = build_agent_from_dossier(args.build_agent)
+            with RunLogger("factory_orchestrator", {"mode": "build-agent", "dossier": args.build_agent, "acip": args.acip}) as run:
+                success = build_agent_from_dossier(args.build_agent, enable_acip=args.acip)
                 run.set_output("success", success)
                 run.set_output("dossier_path", args.build_agent)
+                run.set_output("acip_enabled", args.acip)
         sys.exit(0 if success else 1)
     
     if args.reprocess:

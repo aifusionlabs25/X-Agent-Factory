@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "client_slug": "nexgen_hvac",
-  "generated_at": "2026-01-18T19:51:33.527347Z",
+  "generated_at": "2026-01-18T20:20:26.765123Z",
   "input_dossier_path": "C:\\AI Fusion Labs\\X AGENTS\\X Agent Factory\\ingested_clients\\example_domain\\dossier.json",
   "input_dossier_sha256": "9d46c0a860d310d25a3722b91e299a7641f806a6590166658189a2871f466240",
   "artifacts": [
