@@ -1,0 +1,40 @@
+name: UBS Quality Gate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  ubs-scan:
+    name: Ultimate Bug Scanner
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Install UBS (Ultimate Bug Scanner)
+        run: |
+          curl -fsSL "https://raw.githubusercontent.com/Dicklesworthstone/ultimate_bug_scanner/master/install.sh?$(date +%s)" | bash -s -- --non-interactive
+      
+      - name: Run UBS Scan
+        run: |
+          # Add UBS to PATH (installer puts it in ~/.local/bin)
+          export PATH="$HOME/.local/bin:$PATH"
+          
+          # Run scan on key directories
+          echo "🔬 Running Ultimate Bug Scanner..."
+          ubs . --fail-on-warning --ci
+        continue-on-error: false
+      
+      - name: Upload Scan Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ubs-scan-report
+          path: |
+            ubs-report.txt
+            ubs-report.json
+          if-no-files-found: ignore
