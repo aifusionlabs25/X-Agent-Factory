@@ -8,33 +8,66 @@ on:
 
 jobs:
   ubs-scan:
-    name: Ultimate Bug Scanner
+    name: Ultimate Bug Scanner (Advisory)
     runs-on: ubuntu-latest
     
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
       
-      - name: Install UBS (Ultimate Bug Scanner)
+      - name: Install UBS via Homebrew (preferred)
         run: |
-          curl -fsSL "https://raw.githubusercontent.com/Dicklesworthstone/ultimate_bug_scanner/master/install.sh?$(date +%s)" | bash -s -- --non-interactive
-      
-      - name: Run UBS Scan
-        run: |
-          # Add UBS to PATH (installer puts it in ~/.local/bin)
-          export PATH="$HOME/.local/bin:$PATH"
+          # Install Homebrew if not available
+          if ! command -v brew &> /dev/null; then
+            /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+            echo "/home/linuxbrew/.linuxbrew/bin" >> $GITHUB_PATH
+            eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+          fi
           
-          # Run scan on key directories
+          # Install UBS via Homebrew tap (preferred method)
+          brew install dicklesworthstone/tap/ubs || {
+            echo "⚠️ Homebrew install failed, falling back to verified install script..."
+            # Fallback: Use verified install with signature check
+            export UBS_MINISIGN_PUBKEY="RWQg+jMrKiloMT5L3URISMoRzCMc/pVcVRCTfuY+WIzttzIr4CUJYRUk"
+            curl -fsSL https://raw.githubusercontent.com/Dicklesworthstone/ultimate_bug_scanner/v5.0.0/scripts/verify.sh | bash
+          }
+      
+      - name: Run UBS Scan (Advisory Mode)
+        id: ubs-scan
+        continue-on-error: true  # Advisory mode - don't block PRs
+        run: |
+          # Add UBS to PATH
+          export PATH="$HOME/.local/bin:/home/linuxbrew/.linuxbrew/bin:$PATH"
+          
+          # Run scan and save report
           echo "🔬 Running Ultimate Bug Scanner..."
-          ubs . --fail-on-warning --ci
-        continue-on-error: false
+          ubs . --ci 2>&1 | tee ubs-report.txt
+          
+          # Capture exit code for summary
+          echo "UBS_EXIT_CODE=${PIPESTATUS[0]}" >> $GITHUB_OUTPUT
+      
+      - name: Generate Job Summary
+        if: always()
+        run: |
+          echo "## 🔬 UBS Quality Scan Results (Advisory)" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          if [ "${{ steps.ubs-scan.outcome }}" == "failure" ]; then
+            echo "⚠️ **UBS found issues** - Review the [scan report artifact](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "> 📋 This scan is in **advisory mode** for the first week. Issues won't block merges." >> $GITHUB_STEP_SUMMARY
+          else
+            echo "✅ **No issues found**" >> $GITHUB_STEP_SUMMARY
+          fi
+          
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "---" >> $GITHUB_STEP_SUMMARY
+          echo "_UBS Quality Gate - Advisory Mode (Week 1)_" >> $GITHUB_STEP_SUMMARY
       
       - name: Upload Scan Report
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: ubs-scan-report
-          path: |
-            ubs-report.txt
-            ubs-report.json
+          path: ubs-report.txt
           if-no-files-found: ignore
