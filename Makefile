@@ -56,6 +56,21 @@ cm-client:
 	@echo "🧠 Building memory pack for: $(slug)"
 	@python tools/memory_builder.py --client $(slug)
 
+# Agent Mail: Start server (Docker)
+agent-mail-up:
+	@echo "📬 Starting Agent Mail server..."
+	@docker run -d --name agent-mail -p 8025:8025 ghcr.io/dicklesworthstone/mcp-agent-mail || echo "Container may already be running"
+
+# Agent Mail: Stop server
+agent-mail-down:
+	@echo "📬 Stopping Agent Mail server..."
+	@docker stop agent-mail && docker rm agent-mail || echo "Container not running"
+
+# Agent Mail: Health check
+agent-mail-ping:
+	@echo "📬 Checking Agent Mail health..."
+	@python tools/agent_mail_client.py
+
 # Install dependencies
 install:
 	pip install -r requirements.txt

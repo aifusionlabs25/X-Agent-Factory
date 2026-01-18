@@ -82,6 +82,9 @@ class RunLogger:
         # Write all logs
         self._write_logs()
         
+        # Send Agent Mail notification (advisory, no-op if not configured)
+        self._send_agent_mail_notification()
+        
         # Don't suppress exceptions
         return False
     
@@ -168,6 +171,26 @@ class RunLogger:
         
         summary += f"\n---\n_Run ID: {self.run_id}_\n"
         return summary
+    
+    def _send_agent_mail_notification(self):
+        """Send advisory notification to Agent Mail (if configured)."""
+        try:
+            from agent_mail_client import notify_build_complete, notify_failure
+            
+            if self.success:
+                # Notify build complete
+                client_slug = self.outputs.get("client_slug", "unknown")
+                artifacts = list(self.outputs.keys())
+                manifest_hash = self.outputs.get("manifest_hash", "")
+                notify_build_complete(client_slug, artifacts, manifest_hash)
+            else:
+                # Notify failure
+                error = self.errors[0] if self.errors else "Unknown error"
+                notify_failure(self.run_id, error, self.tool_name)
+        except ImportError:
+            pass  # Agent mail client not available
+        except Exception:
+            pass  # Silently fail - advisory only
 
 
 class TeeWriter:
