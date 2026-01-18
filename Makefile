@@ -1,17 +1,19 @@
 # X Agent Factory Makefile
 # Common development tasks
 
-.PHONY: help test ubs install lint clean
+.PHONY: help test ubs install lint clean cass-index cass-search
 
 # Default target
 help:
 	@echo "X Agent Factory - Available targets:"
-	@echo "  make test      - Run all pytest tests"
-	@echo "  make ubs       - Run UBS quality scan"
-	@echo "  make ubs-info  - Run UBS scan (info only, no failure)"
-	@echo "  make install   - Install Python dependencies"
-	@echo "  make lint      - Run basic linting"
-	@echo "  make clean     - Clean generated files"
+	@echo "  make test        - Run all pytest tests"
+	@echo "  make ubs         - Run UBS quality scan"
+	@echo "  make ubs-info    - Run UBS scan (info only, no failure)"
+	@echo "  make cass-index  - Index runs/ directory with CASS"
+	@echo "  make cass-search - Search runs/ (usage: make cass-search q='query')"
+	@echo "  make install     - Install Python dependencies"
+	@echo "  make lint        - Run basic linting"
+	@echo "  make clean       - Clean generated files"
 
 # Run all tests
 test:
@@ -31,6 +33,16 @@ ubs-info:
 ubs-report:
 	@echo "🔬 Running Ultimate Bug Scanner with report..."
 	@python tools/qa_ubs.py --report
+
+# CASS: Index runs/ directory
+cass-index:
+	@echo "🔍 Indexing runs/ with CASS..."
+	@cass index runs/ --output .cass_index
+
+# CASS: Search runs/
+cass-search:
+	@echo "🔍 Searching runs/ for: $(q)"
+	@cass search "$(q)" --index .cass_index
 
 # Install dependencies
 install:

@@ -608,11 +608,19 @@ def main():
     parser.add_argument("--watch", action="store_true", help="Watch mode (future)")
     parser.add_argument("--reprocess", action="store_true", help="Reprocess all hunt files")
     parser.add_argument("--build-agent", dest="build_agent", metavar="DOSSIER", help="Build agent from dossier JSON (Phase 12)")
+    parser.add_argument("--no-log", action="store_true", help="Disable run logging")
     args = parser.parse_args()
     
     # --- BUILD-AGENT MODE (Phase 12) ---
     if args.build_agent:
-        success = build_agent_from_dossier(args.build_agent)
+        if args.no_log:
+            success = build_agent_from_dossier(args.build_agent)
+        else:
+            from run_logger import RunLogger
+            with RunLogger("factory_orchestrator", {"mode": "build-agent", "dossier": args.build_agent}) as run:
+                success = build_agent_from_dossier(args.build_agent)
+                run.set_output("success", success)
+                run.set_output("dossier_path", args.build_agent)
         sys.exit(0 if success else 1)
     
     if args.reprocess:

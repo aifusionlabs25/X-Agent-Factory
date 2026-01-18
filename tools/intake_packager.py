@@ -263,7 +263,7 @@ def build_intake_notes(metadata, dossier, inferred_fields, unknown_fields):
     return notes
 
 
-def run_intake(url, extra_urls=None):
+def run_intake(url, extra_urls=None, run_logger=None):
     """Main intake pipeline."""
     print(f"\n{'='*60}")
     print(f"📥 INTAKE PACKAGER")
@@ -303,7 +303,9 @@ def run_intake(url, extra_urls=None):
     
     if not metadata:
         print("❌ Failed to fetch any pages.")
-        return False
+        if run_logger:
+            run_logger.error("Failed to fetch any pages")
+        return False, None
     
     combined_content = "\n\n---\n\n".join(all_content)
     
@@ -314,6 +316,12 @@ def run_intake(url, extra_urls=None):
     output_dir.mkdir(parents=True, exist_ok=True)
     extracted_dir.mkdir(parents=True, exist_ok=True)
     print(f"\n📁 Output: {output_dir}")
+    
+    # Log to run_logger
+    if run_logger:
+        run_logger.set_output("client_slug", client_slug)
+        run_logger.set_output("output_dir", str(output_dir))
+        run_logger.log(f"Client slug: {client_slug}")
     
     # Step 3: Build source bundle
     print("\n📝 Step 2: Building source bundle...")
@@ -356,6 +364,9 @@ def run_intake(url, extra_urls=None):
         json.dump(dossier, f, indent=2)
     print(f"   ✅ dossier.json")
     
+    if run_logger:
+        run_logger.set_output("dossier_path", str(dossier_path))
+    
     # Step 5: Save sources
     sources_path = output_dir / "sources.json"
     with open(sources_path, 'w', encoding='utf-8') as f:
@@ -374,8 +385,13 @@ def run_intake(url, extra_urls=None):
     valid, error = validate_dossier(str(dossier_path))
     if not valid:
         print(f"❌ Validation Failed: {error}")
-        return False
+        if run_logger:
+            run_logger.error(f"Schema validation failed: {error}")
+        return False, client_slug
     print("   ✅ Dossier is schema-compliant.")
+    
+    if run_logger:
+        run_logger.log("Dossier validated successfully")
     
     # Summary
     print(f"\n{'='*60}")
@@ -386,7 +402,7 @@ def run_intake(url, extra_urls=None):
     print(f"\n   Next: python tools/factory_orchestrator.py --build-agent {dossier_path}")
     print(f"{'='*60}\n")
     
-    return True
+    return True, client_slug
 
 
 def main():
@@ -394,15 +410,26 @@ def main():
     parser.add_argument("--url", required=True, help="Primary prospect website URL")
     parser.add_argument("--extra-url", action="append", dest="extra_urls", help="Additional URLs to scrape")
     parser.add_argument("--llm", choices=["ollama"], help="(Future) Use LLM for enhanced inference")
+    parser.add_argument("--no-log", action="store_true", help="Disable run logging")
     
     args = parser.parse_args()
     
     if args.llm:
         print("⚠️ LLM mode not yet implemented. Using heuristic inference.")
     
-    success = run_intake(args.url, args.extra_urls)
+    # Run with logging
+    if args.no_log:
+        success, _ = run_intake(args.url, args.extra_urls)
+    else:
+        from run_logger import RunLogger
+        with RunLogger("intake_packager", {"url": args.url, "extra_urls": args.extra_urls or []}) as run:
+            success, client_slug = run_intake(args.url, args.extra_urls, run_logger=run)
+            if client_slug:
+                run.set_output("client_slug", client_slug)
+    
     sys.exit(0 if success else 1)
 
 
 if __name__ == "__main__":
     main()
+
