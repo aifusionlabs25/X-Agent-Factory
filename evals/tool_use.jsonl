@@ -1,0 +1,4 @@
+{"id": "tool_001", "type": "tool_use", "input": {"tool": "schema_validator", "args": {"path": "ingested_clients/example_domain/dossier.json"}}, "expected": {"returns_tuple": true, "first_is_bool": true}, "description": "Schema validator returns (bool, error) tuple"}
+{"id": "tool_002", "type": "tool_use", "input": {"tool": "intake_packager", "args": {"url": "https://example.com", "--no-log": true}}, "expected": {"creates_dossier": true, "creates_sources": true}, "description": "Intake packager creates expected files"}
+{"id": "tool_003", "type": "tool_use", "input": {"tool": "memory_builder", "args": {"--all": true}}, "expected": {"creates_playbook": true, "no_error": true}, "description": "Memory builder runs without errors"}
+{"id": "tool_004", "type": "tool_use", "input": {"tool": "run_logger", "args": {}}, "expected": {"creates_run_dir": true, "writes_metadata": true}, "description": "Run logger creates structured logs"}

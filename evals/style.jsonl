@@ -1,0 +1,4 @@
+{"id": "style_001", "type": "style", "input": {"artifact": "system_prompt.txt"}, "expected": {"no_placeholders": true, "no_lorem_ipsum": true}, "description": "System prompt has no placeholder text"}
+{"id": "style_002", "type": "style", "input": {"artifact": "system_prompt.txt"}, "expected": {"max_line_length": 120, "has_greeting": true}, "description": "System prompt follows style guidelines"}
+{"id": "style_003", "type": "style", "input": {"artifact": "kb_seed.md"}, "expected": {"is_markdown": true, "has_headings": true}, "description": "KB seed is valid markdown with structure"}
+{"id": "style_004", "type": "style", "input": {"artifact": "manifest.json"}, "expected": {"valid_json": true, "indented": true}, "description": "Manifest is properly formatted JSON"}

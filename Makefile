@@ -101,6 +101,21 @@ api-register-one:
 	@echo "📋 Registering API: $(name)..."
 	@python tools/api_registrar.py --name $(name)
 
+# Evals: Run all evaluations
+eval:
+	@echo "🧪 Running all evaluations..."
+	@python tools/eval_runner.py
+
+# Evals: Run security suite only
+eval-security:
+	@echo "🧪 Running security evaluations..."
+	@python tools/eval_runner.py --suite security_injection
+
+# Evals: CI mode (JSON output)
+eval-ci:
+	@echo "🧪 Running evaluations in CI mode..."
+	@python tools/eval_runner.py --ci
+
 # Install dependencies
 install:
 	pip install -r requirements.txt

@@ -1,0 +1,68 @@
+name: Agent Evals
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  evals:
+    name: Agent Eval Harness (Advisory)
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install pytest
+      
+      - name: Build sample agent (for functional evals)
+        run: |
+          python tools/factory_orchestrator.py --build-agent ingested_clients/example_domain/dossier.json --no-log
+        continue-on-error: true
+      
+      - name: Run evaluations (Advisory Mode)
+        id: evals
+        continue-on-error: true  # Advisory mode for week 1
+        run: |
+          python tools/eval_runner.py --ci
+      
+      - name: Generate Job Summary
+        if: always()
+        run: |
+          echo "## 🧪 Agent Eval Harness Results (Advisory)" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          if [ -f "eval-report.json" ]; then
+            PASSED=$(python -c "import json; print(json.load(open('eval-report.json'))['total_passed'])")
+            FAILED=$(python -c "import json; print(json.load(open('eval-report.json'))['total_failed'])")
+            echo "| Metric | Count |" >> $GITHUB_STEP_SUMMARY
+            echo "|--------|-------|" >> $GITHUB_STEP_SUMMARY
+            echo "| ✅ Passed | $PASSED |" >> $GITHUB_STEP_SUMMARY
+            echo "| ❌ Failed | $FAILED |" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "⚠️ No eval report generated" >> $GITHUB_STEP_SUMMARY
+          fi
+          
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "> 📋 This eval run is in **advisory mode**. Failures won't block merges." >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "---" >> $GITHUB_STEP_SUMMARY
+          echo "_Agent Eval Harness - Phase 21_" >> $GITHUB_STEP_SUMMARY
+      
+      - name: Upload Eval Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: eval-report
+          path: eval-report.json
+          if-no-files-found: ignore
