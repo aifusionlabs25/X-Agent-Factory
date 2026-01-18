@@ -1,0 +1,27 @@
+{
+    "schema_version": "1.0",
+    "client_profile": {
+        "name": "NexGen HVAC",
+        "industry": "Commercial HVAC",
+        "region": "Austin, TX",
+        "url": "https://nexgenhvac.com"
+    },
+    "target_audience": {
+        "role": "Facility Manager",
+        "sector": "Large Commercial Buildings",
+        "pain_points": [
+            "Emergency repair costs blowing up the budget",
+            "Tenants complaining about inconsistent temperatures",
+            "Vendors overcharging for simple filter changes"
+        ]
+    },
+    "value_proposition": {
+        "core_benefit": "Predictive maintenance AI that catches failures before they happen",
+        "metric_proof": "Save 20% on annual maintenance contracts",
+        "software_integration": "Building Management Systems (Trane/Carrier)"
+    },
+    "offer": {
+        "type": "Demo",
+        "details": "Free energy audit and system health check"
+    }
+}

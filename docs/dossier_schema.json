@@ -1,0 +1,130 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://aifusionlabs.com/schemas/dossier.json",
+    "title": "X Agent Factory - Client Dossier",
+    "description": "Standard input contract for initializing a new X-Agent.",
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+        "schema_version",
+        "client_profile",
+        "target_audience",
+        "value_proposition",
+        "offer"
+    ],
+    "properties": {
+        "schema_version": {
+            "type": "string",
+            "const": "1.0",
+            "description": "Version of the schema, pinned to ensures backward compatibility."
+        },
+        "client_profile": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "name",
+                "industry",
+                "region",
+                "url"
+            ],
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "minLength": 2,
+                    "description": "Name of the client company we are building the agent FOR."
+                },
+                "industry": {
+                    "type": "string",
+                    "minLength": 3,
+                    "description": "Specific vertical (e.g., 'Commercial Solar', not just 'Solar')."
+                },
+                "region": {
+                    "type": "string",
+                    "minLength": 2,
+                    "description": "Geographic focus (e.g., 'Austin, TX' or 'Nationwide')."
+                },
+                "url": {
+                    "type": "string",
+                    "format": "uri",
+                    "minLength": 5,
+                    "description": "Website URL for knowledge base extraction."
+                }
+            }
+        },
+        "target_audience": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "role",
+                "sector",
+                "pain_points"
+            ],
+            "properties": {
+                "role": {
+                    "type": "string",
+                    "minLength": 2,
+                    "description": "Job title of the prospect (e.g., 'VP of Operations')."
+                },
+                "sector": {
+                    "type": "string",
+                    "minLength": 2,
+                    "description": "Sector of the prospect (e.g., 'Commercial Real Estate')."
+                },
+                "pain_points": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                        "type": "string",
+                        "minLength": 5
+                    },
+                    "description": "List of specific friction points this audience faces."
+                }
+            }
+        },
+        "value_proposition": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "core_benefit",
+                "metric_proof",
+                "software_integration"
+            ],
+            "properties": {
+                "core_benefit": {
+                    "type": "string",
+                    "minLength": 5,
+                    "description": "The primary value driver (e.g., 'Automated firmware updates')."
+                },
+                "metric_proof": {
+                    "type": "string",
+                    "minLength": 2,
+                    "description": "Quantifiable outcome (e.g., 'Reduce truck rolls by 40%')."
+                },
+                "software_integration": {
+                    "type": "string",
+                    "description": "Tech stack we integrate with (e.g., 'ServiceTitan', 'Procore')."
+                }
+            }
+        },
+        "offer": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "type",
+                "details"
+            ],
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "minLength": 2,
+                    "description": "Type of CTA (e.g., 'Pilot', 'Demo', 'Audit')."
+                },
+                "details": {
+                    "type": "string",
+                    "minLength": 5,
+                    "description": "Specifics of the offer (e.g., '30-day free trial')."
+                }
+            }
+        }
+    }
+}
