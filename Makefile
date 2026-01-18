@@ -71,6 +71,21 @@ agent-mail-ping:
 	@echo "📬 Checking Agent Mail health..."
 	@python tools/agent_mail_client.py
 
+# UMCP: Start server (Docker)
+umcp-up:
+	@echo "🔌 Starting UMCP Tool Bus..."
+	@docker run -d --name umcp -p 8026:8026 ghcr.io/dicklesworthstone/ultimate-mcp-server || echo "Container may already be running"
+
+# UMCP: Stop server
+umcp-down:
+	@echo "🔌 Stopping UMCP Tool Bus..."
+	@docker stop umcp && docker rm umcp || echo "Container not running"
+
+# UMCP: Health check
+umcp-ping:
+	@echo "🔌 Checking UMCP health..."
+	@python tools/umcp_client.py
+
 # Install dependencies
 install:
 	pip install -r requirements.txt

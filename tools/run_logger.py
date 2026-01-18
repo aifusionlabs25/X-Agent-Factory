@@ -60,6 +60,10 @@ class RunLogger:
         sys.stderr = TeeWriter(self._original_stderr, self._stderr_capture)
         
         self.log(f"Run started: {self.tool_name}")
+        
+        # Check UMCP status (advisory, no-op if not configured)
+        self._record_umcp_status()
+        
         return self
     
     def __exit__(self, exc_type, exc_val, exc_tb):
@@ -189,6 +193,21 @@ class RunLogger:
                 notify_failure(self.run_id, error, self.tool_name)
         except ImportError:
             pass  # Agent mail client not available
+        except Exception:
+            pass  # Silently fail - advisory only
+    
+    def _record_umcp_status(self):
+        """Record UMCP Tool Bus status (advisory, no-op if not configured)."""
+        try:
+            from umcp_client import get_umcp_status
+            
+            status = get_umcp_status()
+            if status.get("connected"):
+                self.log(f"UMCP connected: {status['tool_count']} tools, namespaces: {status.get('namespaces', [])}")
+                self.set_output("umcp_connected", True)
+                self.set_output("umcp_tool_count", status['tool_count'])
+        except ImportError:
+            pass  # UMCP client not available
         except Exception:
             pass  # Silently fail - advisory only
 
