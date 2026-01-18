@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0",
+  "client_profile": {
+    "name": "AcmeSolar - Commercial Solar Solutions",
+    "industry": "Solar",
+    "region": "TBD",
+    "url": "https://acmesolar.com"
+  },
+  "target_audience": {
+    "role": "Decision Maker",
+    "sector": "Solar",
+    "pain_points": [
+      "Unclear ROI on solar investment",
+      "Complex permitting and installation process",
+      "Concerns about system reliability"
+    ]
+  },
+  "value_proposition": {
+    "core_benefit": "Streamlined solar operations",
+    "metric_proof": "TBD - Requires discovery call",
+    "software_integration": "TBD"
+  },
+  "offer": {
+    "type": "Demo",
+    "details": "Free consultation and needs assessment"
+  }
+}

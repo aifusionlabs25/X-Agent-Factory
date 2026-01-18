@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "client_slug": "acmesolar_commercial_solar_solutions",
+  "generated_at": "2026-01-18T19:32:36.305170Z",
+  "input_dossier_path": "C:\\AI Fusion Labs\\X AGENTS\\X Agent Factory\\ingested_clients\\acmesolar_commercial_solar_solutions\\dossier.json",
+  "input_dossier_sha256": "0986086ced13815b7158fba7a1677b130465de4b9ec4a398492d7f380b453e1f",
+  "artifacts": [
+    {
+      "path": "system_prompt.txt",
+      "sha256": "2b982a31fdfd4e38cb707a48f49ddde00977ecfc91bffac2db6994824a010aff",
+      "bytes": 1184
+    },
+    {
+      "path": "kb_seed.md",
+      "sha256": "1b2633026f173fb6630261bf25158890149b04b9afaaea9ce6a2fd77681a3e27",
+      "bytes": 914
+    },
+    {
+      "path": "tavus_pack\\README.md",
+      "sha256": "6bc4d9e5bd0933641bfbc06833965c7389fc8715ce8108fc86c275f650de50d4",
+      "bytes": 457
+    }
+  ]
+}
