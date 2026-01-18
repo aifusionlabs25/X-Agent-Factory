@@ -1,7 +1,7 @@
 # X Agent Factory Makefile
 # Common development tasks
 
-.PHONY: help test ubs install lint clean cass-index cass-search
+.PHONY: help test ubs install lint clean cass-index cass-search cm-build cm-client
 
 # Default target
 help:
@@ -11,6 +11,8 @@ help:
 	@echo "  make ubs-info    - Run UBS scan (info only, no failure)"
 	@echo "  make cass-index  - Index runs/ directory with CASS"
 	@echo "  make cass-search - Search runs/ (usage: make cass-search q='query')"
+	@echo "  make cm-build    - Build all memory packs"
+	@echo "  make cm-client   - Build single client memory pack (usage: make cm-client slug='name')"
 	@echo "  make install     - Install Python dependencies"
 	@echo "  make lint        - Run basic linting"
 	@echo "  make clean       - Clean generated files"
@@ -43,6 +45,16 @@ cass-index:
 cass-search:
 	@echo "🔍 Searching runs/ for: $(q)"
 	@cass search "$(q)" --index .cass_index
+
+# CM: Build all memory packs
+cm-build:
+	@echo "🧠 Building all memory packs..."
+	@python tools/memory_builder.py --all
+
+# CM: Build single client memory pack
+cm-client:
+	@echo "🧠 Building memory pack for: $(slug)"
+	@python tools/memory_builder.py --client $(slug)
 
 # Install dependencies
 install:

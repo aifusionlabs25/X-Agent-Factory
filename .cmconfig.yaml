@@ -1,0 +1,36 @@
+# CM (cass_memory_system) Configuration
+# Project-level configuration for memory pack generation
+
+version: "1.0"
+
+# Data sources
+sources:
+  runs: ./runs
+  agents: ./agents
+  ingested_clients: ./ingested_clients
+
+# Output location
+output:
+  memory_dir: ./memory
+  global_dir: ./memory/global
+  clients_dir: ./memory/clients
+
+# Memory pack settings
+memory_packs:
+  # Global artifacts
+  global:
+    - factory_playbook.md
+    - gotchas.md
+  
+  # Per-client artifacts
+  client:
+    - memory_pack.md
+    - build_notes.md
+
+# Index settings (for CASS integration)
+index:
+  path: ./.cass_index
+  include:
+    - "run_metadata.json"
+    - "run_summary.md"
+    - "*.log"
