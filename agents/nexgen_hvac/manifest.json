@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "client_slug": "nexgen_hvac",
+  "generated_at": "2026-01-18T19:18:01.652095Z",
+  "input_dossier_path": "C:\\AI Fusion Labs\\X AGENTS\\X Agent Factory\\ingested_clients\\example_domain\\dossier.json",
+  "input_dossier_sha256": "9d46c0a860d310d25a3722b91e299a7641f806a6590166658189a2871f466240",
+  "artifacts": [
+    {
+      "path": "system_prompt.txt",
+      "sha256": "652b3293f07ff2a5b057bae3a0ea64de137b3da25d747faddf8b78a2f94198a0",
+      "bytes": 1296
+    },
+    {
+      "path": "kb_seed.md",
+      "sha256": "e210994b08d293ec69427778d402576817d2256b920247affbb4238ea6abcf20",
+      "bytes": 1049
+    },
+    {
+      "path": "tavus_pack\\README.md",
+      "sha256": "68e76fca2f433520488606a29c3bf61b1b378229fa4d136da9ffd7ac0ec3fc73",
+      "bytes": 405
+    }
+  ]
+}

@@ -2,24 +2,31 @@
 Factory Orchestrator
 Watches for new hunt results and processes them through the full pipeline.
 
-Pipeline:
+Pipeline (Hunt Mode):
 1. Detect new *_qualified.json files
 2. Run Contact Enricher on each lead
 3. Run Nova for final priority ranking (A/B/C)
 4. Run Sparkle to draft emails for A-tier leads
 5. Compile Markdown report
 
+Pipeline (Build-Agent Mode):
+1. Validate dossier against JSON Schema
+2. Generate deterministic agent artifacts (system_prompt, kb_seed, tavus_pack)
+3. Create manifest.json with SHA256 hashes
+
 Usage:
-    python tools/factory_orchestrator.py                    # Process all unprocessed files
-    python tools/factory_orchestrator.py --file <path>      # Process specific file
-    python tools/factory_orchestrator.py --watch            # Watch mode (future)
+    python tools/factory_orchestrator.py                         # Process all unprocessed hunt files
+    python tools/factory_orchestrator.py --file <path>           # Process specific hunt file
+    python tools/factory_orchestrator.py --build-agent <dossier> # Build agent from dossier (Phase 12)
 """
 import sys
 sys.stdout.reconfigure(encoding='utf-8')
 import os
+import re
 import json
 import time
 import glob
+import hashlib
 import argparse
 from datetime import datetime
 from pathlib import Path
@@ -215,30 +222,12 @@ def process_hunt_file(filepath):
             if email_data:
                 lead['email_draft'] = email_data
 
-        # 4. BOLT-ON ENGINEER ACTIVATION (The Assembler)
-        # If the lead has 'vertical' or 'why_fit' (Grok format), trigger assembly.
-        if 'vertical' in lead or 'why_fit' in lead:
-            print(f"      > 🔩 Bolt-On Engineer: Assembling Agent...")
-            dossier = {
-                "industry": lead.get('vertical', 'General'),
-                "role": "Decision Maker", # Defaulting for now
-                "pain_point": lead.get('why_fit', 'Operational Friction'),
-                "software": lead.get('company_name', 'Legacy Tech')
-            }
-            
-            # Save temporary dossier
-            temp_dossier_path = Path(__file__).parent.parent / "temp_dossier.json"
-            with open(temp_dossier_path, 'w', encoding='utf-8') as df:
-                json.dump(dossier, df, indent=4)
-            
-            # Call the Engineer
-            import subprocess
-            bolt_on_script = Path(__file__).parent / "bolt_on_engineer.py"
-            subprocess.run(["python", str(bolt_on_script), str(temp_dossier_path)], check=False)
-            
-            # Cleanup
-            if temp_dossier_path.exists():
-                temp_dossier_path.unlink()
+        # 4. BOLT-ON ENGINEER ACTIVATION (DISABLED - Phase 12)
+        # Legacy stub disabled. Use --build-agent mode instead.
+        # if 'vertical' in lead or 'why_fit' in lead:
+        #     print(f"      > 🔩 Bolt-On Engineer: Assembling Agent...")
+        #     ... (code removed for deterministic baseline)
+        pass  # Placeholder for future bolt-on activation via explicit flag
         
         # Estimate MRR
         score = lead.get('nova_score', 5)
@@ -389,14 +378,242 @@ def find_unprocessed_files():
     all_files = glob.glob(pattern)
     return [f for f in all_files if f not in processed]
 
+# =============================================================================
+# PHASE 12: BUILD-AGENT MODE (Deterministic Agent Generation)
+# =============================================================================
+
+def compute_client_slug(name):
+    """Convert client name to a URL-safe slug."""
+    slug = name.lower().strip()
+    slug = re.sub(r'[^\w\s-]', '', slug)  # Remove punctuation
+    slug = re.sub(r'[\s_-]+', '_', slug)  # Replace spaces/hyphens with underscores
+    return slug
+
+def compute_file_hash(filepath):
+    """Compute SHA256 hash of a file."""
+    sha256 = hashlib.sha256()
+    with open(filepath, 'rb') as f:
+        for chunk in iter(lambda: f.read(8192), b''):
+            sha256.update(chunk)
+    return sha256.hexdigest()
+
+def generate_system_prompt_from_dossier(dossier):
+    """Generate a deterministic system prompt from dossier fields."""
+    cp = dossier['client_profile']
+    ta = dossier['target_audience']
+    vp = dossier['value_proposition']
+    offer = dossier['offer']
+    
+    pain_points_str = "\n".join(f"  - {p}" for p in ta['pain_points'])
+    
+    prompt = f"""# {cp['name']} - AI Sales Development Representative
+
+## Identity
+You are a professional AI SDR for {cp['name']}, specializing in {cp['industry']}.
+Your region focus is: {cp['region']}.
+
+## Target Audience
+- **Role**: {ta['role']}
+- **Sector**: {ta['sector']}
+- **Key Pain Points**:
+{pain_points_str}
+
+## Value Proposition
+**Core Benefit**: {vp['core_benefit']}
+**Proof Point**: {vp['metric_proof']}
+**Integration**: {vp['software_integration']}
+
+## Offer
+**Type**: {offer['type']}
+**Details**: {offer['details']}
+
+## Behavioral Guidelines
+1. Be conversational, professional, and concise.
+2. Lead with pain points relevant to the prospect's role.
+3. Ask qualifying questions before pitching.
+4. Always end with a clear call-to-action related to the offer.
+5. Never make up information not provided in this prompt.
+
+## Guardrails
+- Do not discuss competitors negatively.
+- Do not make promises beyond the stated offer.
+- If asked about pricing, defer to the human team.
+- If the prospect is not a fit, politely disengage.
+"""
+    return prompt
+
+def generate_kb_seed_from_dossier(dossier):
+    """Generate a deterministic knowledge base seed from dossier fields."""
+    cp = dossier['client_profile']
+    ta = dossier['target_audience']
+    vp = dossier['value_proposition']
+    
+    kb = f"""# Knowledge Base: {cp['name']}
+
+## Company Overview
+- **Name**: {cp['name']}
+- **Industry**: {cp['industry']}
+- **Region**: {cp['region']}
+- **Website**: {cp['url']}
+
+## Target Audience Profile
+- **Decision Maker Role**: {ta['role']}
+- **Target Sector**: {ta['sector']}
+
+## Common Pain Points
+"""
+    for i, pain in enumerate(ta['pain_points'], 1):
+        kb += f"{i}. {pain}\n"
+    
+    kb += f"""
+## Our Solution
+**Core Benefit**: {vp['core_benefit']}
+
+**Proof of Value**: {vp['metric_proof']}
+
+**Technology Integration**: Works with {vp['software_integration']}
+
+## Frequently Asked Questions
+Q: What makes {cp['name']} different?
+A: We focus on {vp['core_benefit'].lower()}, with proven results: {vp['metric_proof']}.
+
+Q: How do we get started?
+A: We offer a {dossier['offer']['type'].lower()} - {dossier['offer']['details']}.
+"""
+    return kb
+
+def build_agent_from_dossier(dossier_path):
+    """
+    Phase 12: Build agent artifacts from a validated dossier.
+    Returns True on success, False on failure.
+    """
+    from schema_validator import validate_dossier
+    
+    print(f"\n{'='*60}")
+    print(f"🏭 FACTORY ORCHESTRATOR - BUILD AGENT MODE")
+    print(f"   Dossier: {dossier_path}")
+    print(f"{'='*60}\n")
+    
+    # 1. Validate Dossier
+    print("📋 Step 1: Validating dossier...")
+    valid, error = validate_dossier(dossier_path)
+    if not valid:
+        print(f"❌ Validation Failed: {error}")
+        return False
+    print("   ✅ Dossier is valid.")
+    
+    # 2. Load Dossier
+    with open(dossier_path, 'r', encoding='utf-8') as f:
+        dossier = json.load(f)
+    
+    # 3. Compute client slug
+    client_name = dossier['client_profile']['name']
+    client_slug = compute_client_slug(client_name)
+    print(f"   📛 Client Slug: {client_slug}")
+    
+    # 4. Create output directory
+    agents_root = Path(__file__).parent.parent / "agents"
+    output_dir = agents_root / client_slug
+    output_dir.mkdir(parents=True, exist_ok=True)
+    tavus_dir = output_dir / "tavus_pack"
+    tavus_dir.mkdir(parents=True, exist_ok=True)
+    print(f"   📁 Output: {output_dir}")
+    
+    # 5. Generate Artifacts (Deterministic, No LLM)
+    print("\n🔧 Step 2: Generating artifacts...")
+    
+    # System Prompt
+    system_prompt = generate_system_prompt_from_dossier(dossier)
+    system_prompt_path = output_dir / "system_prompt.txt"
+    with open(system_prompt_path, 'w', encoding='utf-8') as f:
+        f.write(system_prompt)
+    print(f"   ✅ system_prompt.txt ({len(system_prompt)} bytes)")
+    
+    # KB Seed
+    kb_seed = generate_kb_seed_from_dossier(dossier)
+    kb_seed_path = output_dir / "kb_seed.md"
+    with open(kb_seed_path, 'w', encoding='utf-8') as f:
+        f.write(kb_seed)
+    print(f"   ✅ kb_seed.md ({len(kb_seed)} bytes)")
+    
+    # Tavus Pack (Placeholder README)
+    tavus_readme = f"""# Tavus Deployment Pack: {client_name}
+
+## Contents
+This folder contains assets for deploying the agent to Tavus.
+
+## Required Files (To Be Added)
+- persona_video.mp4 (or link to Tavus replica)
+- voice_config.json (ElevenLabs voice ID)
+- branding_assets/ (logo, colors)
+
+## Deployment Command
+```
+python tools/deploy_agent.py --agent {client_slug}
+```
+
+Generated by X Agent Factory - Phase 12
+"""
+    tavus_readme_path = tavus_dir / "README.md"
+    with open(tavus_readme_path, 'w', encoding='utf-8') as f:
+        f.write(tavus_readme)
+    print(f"   ✅ tavus_pack/README.md")
+    
+    # 6. Build Manifest
+    print("\n📜 Step 3: Generating manifest...")
+    
+    # Compute input dossier hash
+    dossier_hash = compute_file_hash(dossier_path)
+    
+    # Collect artifact info
+    artifacts = []
+    for artifact_path in [system_prompt_path, kb_seed_path, tavus_readme_path]:
+        rel_path = artifact_path.relative_to(output_dir)
+        artifacts.append({
+            "path": str(rel_path),
+            "sha256": compute_file_hash(artifact_path),
+            "bytes": artifact_path.stat().st_size
+        })
+    
+    manifest = {
+        "schema_version": dossier.get("schema_version", "1.0"),
+        "client_slug": client_slug,
+        "generated_at": datetime.utcnow().isoformat() + "Z",
+        "input_dossier_path": str(Path(dossier_path).resolve()),
+        "input_dossier_sha256": dossier_hash,
+        "artifacts": artifacts
+    }
+    
+    manifest_path = output_dir / "manifest.json"
+    with open(manifest_path, 'w', encoding='utf-8') as f:
+        json.dump(manifest, f, indent=2)
+    print(f"   ✅ manifest.json")
+    
+    # 7. Summary
+    print(f"\n{'='*60}")
+    print(f"✅ BUILD COMPLETE")
+    print(f"   Agent: {client_slug}")
+    print(f"   Output: {output_dir}")
+    print(f"   Artifacts: {len(artifacts)}")
+    print(f"{'='*60}\n")
+    
+    return True
+
+
 def main():
     load_env()
     
     parser = argparse.ArgumentParser(description="Factory Orchestrator")
-    parser.add_argument("--file", help="Process a specific file")
+    parser.add_argument("--file", help="Process a specific hunt file")
     parser.add_argument("--watch", action="store_true", help="Watch mode (future)")
-    parser.add_argument("--reprocess", action="store_true", help="Reprocess all files")
+    parser.add_argument("--reprocess", action="store_true", help="Reprocess all hunt files")
+    parser.add_argument("--build-agent", dest="build_agent", metavar="DOSSIER", help="Build agent from dossier JSON (Phase 12)")
     args = parser.parse_args()
+    
+    # --- BUILD-AGENT MODE (Phase 12) ---
+    if args.build_agent:
+        success = build_agent_from_dossier(args.build_agent)
+        sys.exit(0 if success else 1)
     
     if args.reprocess:
         # Clear processed log
