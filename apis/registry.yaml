@@ -1,0 +1,65 @@
+# API Registry
+# Source of truth for OpenAPI specs that can be registered with UMCP
+# Only APIs listed here can be registered (allowlist-only security model)
+
+version: "1.0"
+updated: "2026-01-18"
+
+apis:
+  # Tavus Video API
+  - name: tavus
+    description: "Tavus AI Video API - Create personalized videos"
+    openapi: https://api.tavus.io/openapi.yaml
+    local: apis/specs/tavus.yaml  # Pinned local copy
+    enabled: true
+    tool_prefix: tavus
+    auth_env: TAVUS_API_KEY
+    auth_header: x-api-key
+    allow_ops:
+      - "/v2/videos"
+      - "/v2/conversations"
+      - "/v2/replicas"
+  
+  # ElevenLabs Voice API
+  - name: elevenlabs
+    description: "ElevenLabs Text-to-Speech API"
+    openapi: https://api.elevenlabs.io/openapi.json
+    local: apis/specs/elevenlabs.yaml
+    enabled: true
+    tool_prefix: elevenlabs
+    auth_env: ELEVENLABS_API_KEY
+    auth_header: xi-api-key
+    allow_ops:
+      - "/v1/text-to-speech"
+      - "/v1/voices"
+  
+  # Salesforce API (disabled by default)
+  - name: salesforce
+    description: "Salesforce CRM API"
+    local: apis/specs/salesforce.yaml
+    enabled: false
+    tool_prefix: salesforce
+    auth_env: SALESFORCE_ACCESS_TOKEN
+    auth_header: Authorization
+    notes: "Requires OAuth flow - configure separately"
+
+# Security Settings
+security:
+  # Only register APIs from this allowlist
+  allowlist_only: true
+  
+  # Require local pinned spec (if false, can use remote URLs)
+  require_local_spec: false
+  
+  # Hash verification for local specs
+  verify_hashes: true
+  
+  # Parameter name sanitization
+  sanitize_params: true
+  
+  # Reject specs with these patterns in parameter names
+  reject_patterns:
+    - "\\x00"  # Null bytes
+    - "\\u0000"  # Unicode null
+    - "__proto__"  # Prototype pollution
+    - "constructor"

@@ -86,10 +86,25 @@ umcp-ping:
 	@echo "🔌 Checking UMCP health..."
 	@python tools/umcp_client.py
 
+# API Registration: Register all enabled APIs
+api-register:
+	@echo "📋 Registering all enabled APIs..."
+	@python tools/api_registrar.py --all
+
+# API Registration: List registry status
+api-list:
+	@echo "📋 Listing API registry..."
+	@python tools/api_registrar.py --list
+
+# API Registration: Register single API
+api-register-one:
+	@echo "📋 Registering API: $(name)..."
+	@python tools/api_registrar.py --name $(name)
+
 # Install dependencies
 install:
 	pip install -r requirements.txt
-	pip install pytest jsonschema trafilatura beautifulsoup4 requests
+	pip install pytest jsonschema trafilatura beautifulsoup4 requests pyyaml
 
 # Basic linting
 lint:
