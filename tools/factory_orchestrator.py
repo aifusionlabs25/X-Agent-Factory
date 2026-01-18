@@ -23,6 +23,7 @@ import glob
 import argparse
 from datetime import datetime
 from pathlib import Path
+from tqdm import tqdm
 
 # Add tools to path
 sys.path.insert(0, os.path.dirname(__file__))
@@ -172,9 +173,14 @@ def process_hunt_file(filepath):
     c_tier = []
     total_mrr = 0
     
-    # Process each lead
-    for i, lead in enumerate(leads):
-        print(f"\n   [{i+1}/{total_leads}] {lead.get('title', 'Unknown')[:40]}...")
+    # Process each lead using tqdm HUD
+    # for i, lead in enumerate(leads):
+    #     print(f"\n   [{i+1}/{total_leads}] {lead.get('title', 'Unknown')[:40]}...")
+
+    pbar = tqdm(leads, desc="Processing Leads", unit="lead")
+    for lead in pbar:
+        current_target = lead.get('company_name', lead.get('title', 'Unknown'))
+        pbar.set_description(f"Processing: {current_target[:30]}")
         
         # 1. Contact Enricher (stub)
         domain = extract_domain(lead.get('href', ''))
@@ -203,12 +209,36 @@ def process_hunt_file(filepath):
         else:
             c_tier.append(lead)
         
-        # 3. Sparkle Email Draft (A-tier only)
         if lead['priority'] == 'A':
             print(f"      > ✨ Sparkle: Drafting email...")
             email_data = generate_email_draft(lead, lead.get('nova_reason', ''))
             if email_data:
                 lead['email_draft'] = email_data
+
+        # 4. BOLT-ON ENGINEER ACTIVATION (The Assembler)
+        # If the lead has 'vertical' or 'why_fit' (Grok format), trigger assembly.
+        if 'vertical' in lead or 'why_fit' in lead:
+            print(f"      > 🔩 Bolt-On Engineer: Assembling Agent...")
+            dossier = {
+                "industry": lead.get('vertical', 'General'),
+                "role": "Decision Maker", # Defaulting for now
+                "pain_point": lead.get('why_fit', 'Operational Friction'),
+                "software": lead.get('company_name', 'Legacy Tech')
+            }
+            
+            # Save temporary dossier
+            temp_dossier_path = Path(__file__).parent.parent / "temp_dossier.json"
+            with open(temp_dossier_path, 'w', encoding='utf-8') as df:
+                json.dump(dossier, df, indent=4)
+            
+            # Call the Engineer
+            import subprocess
+            bolt_on_script = Path(__file__).parent / "bolt_on_engineer.py"
+            subprocess.run(["python", str(bolt_on_script), str(temp_dossier_path)], check=False)
+            
+            # Cleanup
+            if temp_dossier_path.exists():
+                temp_dossier_path.unlink()
         
         # Estimate MRR
         score = lead.get('nova_score', 5)

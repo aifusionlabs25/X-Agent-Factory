@@ -4,6 +4,10 @@
 **From:** Command (Alpha)
 **Status:** 🟥 TOP PRIORITY
 
+# ⚠️ CRITICAL: VERTICAL-SPECIFIC MODE IS DEPRECATED
+The "Morgan/GoDeskless" era was the **Prototype Phase**. We have now shifted to **Production Phase**.
+Any instructions referring to "HVAC", "Veterinary", or "Legal" as default targets are **NULL AND VOID**.
+
 ## 1. THE UNIVERSAL FACTORY PROTOCOL
 **CRITICAL PIVOT:** The Factory has been scrubbed of "Vertical Bias." We no longer assume "HVAC" or "Vets."
 We are now a **Universal Bolt-On Engine.**
