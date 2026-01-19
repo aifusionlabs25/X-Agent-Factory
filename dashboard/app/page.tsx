@@ -53,6 +53,12 @@ export default function Home() {
   const [deployToStaging, setDeployToStaging] = useState(false);
   const [expertMode, setExpertMode] = useState(false);
   const [buildKb, setBuildKb] = useState(true);
+
+  // Delete Agent State
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+  const [agentToDelete, setAgentToDelete] = useState<string | null>(null);
+  const [isDeleting, setIsDeleting] = useState(false);
+
   useEffect(() => {
     fetchState();
     fetchAgents();
@@ -211,6 +217,38 @@ export default function Home() {
     if (diffMins < 60) return `${diffMins}m ago`;
     if (diffHours < 24) return `${diffHours}h ago`;
     return `${diffDays}d ago`;
+  };
+
+  const handleDeleteAgent = async () => {
+    if (!agentToDelete) return;
+
+    setIsDeleting(true);
+    addLog(`🗑️ Deleting agent: ${agentToDelete}...`);
+
+    try {
+      const res = await fetch(`/api/agents/${agentToDelete}`, {
+        method: 'DELETE',
+      });
+      const data = await res.json();
+
+      if (res.ok) {
+        addLog(`✅ Agent ${agentToDelete} deleted successfully.`);
+        // Reset selection if we deleted the selected agent
+        if (selectedAgent === agentToDelete) {
+          setSelectedAgent('');
+        }
+        await fetchAgents();
+        await fetchState();
+      } else {
+        addLog(`❌ Failed to delete agent: ${data.error}`);
+      }
+    } catch (e: any) {
+      addLog(`❌ Delete error: ${e.message}`);
+    } finally {
+      setIsDeleting(false);
+      setShowDeleteConfirm(false);
+      setAgentToDelete(null);
+    }
   };
 
   return (
@@ -428,22 +466,37 @@ export default function Home() {
               {/* Agent Selector */}
               <div className="mb-4">
                 <label className="text-xs font-bold text-slate-400 uppercase block mb-2">Select Agent</label>
-                <select
-                  value={selectedAgent}
-                  onChange={(e) => setSelectedAgent(e.target.value)}
-                  disabled={deploying || agents.length === 0}
-                  className="w-full p-2 rounded bg-slate-800 text-white border border-slate-600 text-sm"
-                >
-                  {agents.length === 0 ? (
-                    <option value="">No agents available</option>
-                  ) : (
-                    agents.map((agent) => (
-                      <option key={agent.slug} value={agent.slug}>
-                        {agent.expert_mode ? '⚡ ' : ''}{agent.name || agent.slug} {agent.deployed ? '✅' : '⏳'}
-                      </option>
-                    ))
-                  )}
-                </select>
+                <div className="flex gap-2">
+                  <select
+                    value={selectedAgent}
+                    onChange={(e) => setSelectedAgent(e.target.value)}
+                    disabled={deploying || agents.length === 0}
+                    className="flex-1 p-2 rounded bg-slate-800 text-white border border-slate-600 text-sm"
+                  >
+                    {agents.length === 0 ? (
+                      <option value="">No agents available</option>
+                    ) : (
+                      agents.map((agent) => (
+                        <option key={agent.slug} value={agent.slug}>
+                          {agent.expert_mode ? '⚡ ' : ''}{agent.name || agent.slug} {agent.deployed ? '✅' : '⏳'}
+                        </option>
+                      ))
+                    )}
+                  </select>
+                  <button
+                    onClick={() => {
+                      if (selectedAgent) {
+                        setAgentToDelete(selectedAgent);
+                        setShowDeleteConfirm(true);
+                      }
+                    }}
+                    disabled={!selectedAgent || deploying}
+                    className="bg-red-900/50 hover:bg-red-900 text-red-200 p-2 rounded border border-red-800 transition-colors disabled:opacity-50"
+                    title="Delete Agent"
+                  >
+                    🗑️
+                  </button>
+                </div>
               </div>
 
               <button
@@ -484,6 +537,38 @@ export default function Home() {
           </div>
         </section>
       </div>
+
+      {/* Delete Confirmation Modal */}
+      {showDeleteConfirm && (
+        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
+          <div className="bg-slate-900 border border-red-600 rounded-xl max-w-md w-full p-6 shadow-2xl">
+            <h3 className="text-xl font-bold text-white mb-2 flex items-center gap-2">
+              ⚠️ Confirm Deletion
+            </h3>
+            <p className="text-slate-300 mb-6">
+              Are you sure you want to delete <span className="font-mono text-white bg-slate-800 px-1 rounded">{agentToDelete}</span>?
+              <br /><br />
+              This will permanently remove the agent files. This action cannot be undone.
+            </p>
+            <div className="flex justify-end gap-3">
+              <button
+                onClick={() => setShowDeleteConfirm(false)}
+                disabled={isDeleting}
+                className="px-4 py-2 rounded text-slate-300 hover:bg-slate-800 transition-colors font-bold"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleDeleteAgent}
+                disabled={isDeleting}
+                className="bg-red-600 hover:bg-red-500 text-white px-4 py-2 rounded font-bold transition-colors flex items-center gap-2"
+              >
+                {isDeleting ? 'Deleting...' : '🗑️ Yes, Delete'}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
