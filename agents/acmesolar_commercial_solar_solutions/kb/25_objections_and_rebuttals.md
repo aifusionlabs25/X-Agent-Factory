@@ -1,3 +1,3 @@
 # Objections
 
-*No specific data found in intake dossier for Objections.*
+*Common objections and how to address them.*

@@ -1,3 +1,3 @@
 # Competitors
 
-*No specific data found in intake dossier for Competitors.*
+*Competitive positioning and differentiation.*

@@ -1,15 +1,15 @@
 {
-  "00_overview.md": "16bc26f626caaac2e7db94b7b453cd7573bf38563d3ac39c78b859a1cc5b44b8",
-  "05_ICP_and_personas.md": "d62eb208de1ac30f6187171ffb84fe087bdf326c5c139a02e9ec80911e478e2e",
-  "10_services_and_offerings.md": "1edaa9a4faf56abe9eaf3ccf21f231a658f99b7baa61720be8074359dfe080e8",
-  "15_pricing_and_packages.md": "0ace9dd7d394eeb00bb906b40c5f83afb2969606411e336559769e3090aee0c1",
-  "20_FAQ.md": "17dababd5f8aa518dc51166dba95482440d3b9739b82d707161e24ad5fdfb9c6",
-  "25_objections_and_rebuttals.md": "466b85d6183959331de49a2e12a60ea6c3c40444ea566e6da579c1df9109f7b0",
-  "30_competitors_and_positioning.md": "feb8f8fb115d41b296b9c30afdef6f36a9d9339bad70f6a68f131874fd4f44cf",
-  "35_integrations_and_stack.md": "6d00a4f674c1f22b072b1c83e9e053e343b844cb5e7dc63cd9988c51954dcacd",
-  "40_process_and_workflows.md": "b87a64e66a390669daf22f463ff6b24523d80b4e3b4f98d8c2f06a816bd7f758",
-  "45_compliance_and_security.md": "14d051147a326cb1b83eb7cc5710d077318464d15336e8b282f4f1932481a46c",
-  "50_case_studies_and_proof.md": "3ad1fceafa53b751811a2485d4b5d3667f660a0076038c895dd6d0d54c6c0894",
-  "55_contact_next_steps.md": "fece05e505d1ea20461d7c391898dd767490cc5fe136d86c009054efc8ca50eb",
-  "index.json": "cabc9903d57aa44bfd8c9c18999129624541a3011c07e2f2fdad4a167181259a"
+  "00_overview.md": "16e6ee53ff20a64ca3ddf6c4b43efabf02fa987ea022c8e255d89a4bc12debc4",
+  "05_ICP_and_personas.md": "f9b830545f89bac5716697edb58feaed72fae80c9e4613272dfdc5e167dfd85d",
+  "10_services_and_offerings.md": "fa80f66ea6d743316ff097e4f65a803f555a835ed3d62fbb19f278e7692271d8",
+  "15_pricing_and_packages.md": "37b4399f620fe9d31c74631ddaa0d8c57f2fa2c961ae60f99c6a6b442300dc23",
+  "20_FAQ.md": "1c0fa9ca30bf43b6d4b3106f671e72498d04f73997447759744bd2e240642a6c",
+  "25_objections_and_rebuttals.md": "3b39514db5720908c470920c3ce9a2a1f3707214b2187af01d79d4e65598969c",
+  "30_competitors_and_positioning.md": "f64874e8b97cf4ed7a720fa88ed563dba966f1db3cdab02c97989d276adae3ad",
+  "35_integrations_and_stack.md": "ce3b6d469f655337671cde160d3284e698e0ceacc073d4ad31362753a1effeb6",
+  "40_process_and_workflows.md": "ce9f8569539a47f2e82ede169d2fa48082ab10dc6fd066533a5fe9166dc3d71f",
+  "45_compliance_and_security.md": "1fa75d0fb2283e057737d666b8a9a24d5caec4dc87167c8887ef537af5f90fcf",
+  "50_case_studies_and_proof.md": "97b825087c7ecca376b4da9d60fd222342a43b7f4254682e53848f0d9ff82985",
+  "55_contact_next_steps.md": "128ae75ad69a9cd2dde042129bae5f6afb9a27b205187ca86e7f6d3feaeb7142",
+  "index.json": "cf3bb17642f1f9a882f1224b2b41f35c20288678b5638df0f135b03ebce0ab73"
 }
