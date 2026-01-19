@@ -26,6 +26,11 @@ env:
   TAVUS_API_KEY: ${{ secrets.TAVUS_API_KEY }}
   ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
 
+# Explicit permissions for GITHUB_TOKEN
+permissions:
+  contents: write
+  actions: read
+
 jobs:
   intake-build-deploy:
     runs-on: ubuntu-latest
@@ -34,8 +39,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          # Use PAT_TOKEN for push access (default GITHUB_TOKEN is read-only)
-          token: ${{ secrets.PAT_TOKEN }}
+          # Use default GITHUB_TOKEN with write permissions declared above
+          persist-credentials: true
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
