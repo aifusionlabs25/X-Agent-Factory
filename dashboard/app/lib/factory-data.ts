@@ -12,6 +12,21 @@ const FACTORY_REPO = process.env.FACTORY_REPO || 'aifusionlabs25/X-Agent-Factory
 const FACTORY_BRANCH = process.env.FACTORY_BRANCH || 'main';
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 
+import fs from 'fs';
+import path from 'path';
+
+function getLocalFactoryPath(subdir: string): string | null {
+    // Try relative to dashboard (cwd = dashboard)
+    let target = path.join(process.cwd(), '..', subdir);
+    if (fs.existsSync(target)) return target;
+
+    // Try current (cwd = root)
+    target = path.join(process.cwd(), subdir);
+    if (fs.existsSync(target)) return target;
+
+    return null;
+}
+
 interface FetchOptions {
     cache?: RequestCache;
     revalidate?: number;
@@ -151,6 +166,7 @@ export interface AgentManifest {
     artifacts?: { path: string; sha256: string; bytes: number }[];
     tavus_replica_id?: string;
     deployed?: boolean;
+    expert_mode?: boolean;
 }
 
 export interface AgentSummary {
@@ -160,6 +176,7 @@ export interface AgentSummary {
     created_at: string;
     deployed_env?: string;
     deployed_at?: string;
+    expert_mode?: boolean;
 }
 
 export interface DeploymentRecord {
@@ -175,6 +192,56 @@ export interface DeploymentRecord {
 }
 
 export async function getAgents(): Promise<AgentSummary[]> {
+    // 1. Try Local Filesystem First (Fastest/Newest)
+    const localAgentsPath = getLocalFactoryPath('agents');
+    if (localAgentsPath) {
+        try {
+            const localAgents: AgentSummary[] = [];
+            const entries = fs.readdirSync(localAgentsPath, { withFileTypes: true });
+
+            for (const entry of entries) {
+                if (entry.isDirectory()) {
+                    const manifestPath = path.join(localAgentsPath, entry.name, 'manifest.json');
+                    if (fs.existsSync(manifestPath)) {
+                        try {
+                            const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf-8'));
+
+                            // Check deployment
+                            const deployPath = path.join(localAgentsPath, entry.name, 'deployment.json');
+                            let deployment = null;
+                            if (fs.existsSync(deployPath)) {
+                                deployment = JSON.parse(fs.readFileSync(deployPath, 'utf-8'));
+                            }
+
+                            const isDeployed = (deployment?.success === true) ||
+                                manifest.deployed ||
+                                !!manifest.tavus_replica_id;
+
+                            localAgents.push({
+                                slug: manifest.client_slug || entry.name,
+                                name: manifest.client_slug?.replace(/_/g, ' ').replace(/\b\w/g, (c: string) => c.toUpperCase()) || entry.name,
+                                deployed: isDeployed,
+                                created_at: manifest.generated_at || '',
+                                deployed_env: deployment?.env,
+                                deployed_at: deployment?.deployed_at,
+                                expert_mode: manifest.expert_mode
+                            });
+                        } catch (e) {
+                            console.warn(`[factory-data] Failed to parse manifest for ${entry.name}`, e);
+                        }
+                    }
+                }
+            }
+            // Sort by created_at desc
+            return localAgents.sort((a, b) => {
+                return (new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
+            });
+        } catch (e) {
+            console.error('[factory-data] Local agents scan failed:', e);
+        }
+    }
+
+    // 2. Fallback to GitHub API (Original Logic)
     // First try to fetch agents_index.json (if it exists)
     const index = await fetchRawJson<{ agents: AgentSummary[] }>('agents/agents_index.json');
 
@@ -202,6 +269,7 @@ export async function getAgents(): Promise<AgentSummary[]> {
                 created_at: manifest.generated_at || '',
                 deployed_env: deployment?.env,
                 deployed_at: deployment?.deployed_at,
+                expert_mode: manifest.expert_mode,
             });
         }
     }

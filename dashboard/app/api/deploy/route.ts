@@ -1,4 +1,7 @@
 import { NextResponse } from 'next/server';
+import path from 'path';
+import dotenv from 'dotenv';
+dotenv.config({ path: path.resolve(process.cwd(), '.env.local') });
 
 export const runtime = 'nodejs'; // Ensure not edge runtime
 

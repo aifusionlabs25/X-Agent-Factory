@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import { getAgents } from '../../lib/factory-data';
 
+export const dynamic = 'force-dynamic';
+
 /**
  * GET /api/agents
  * Lists deployed agents from X-Agent-Factory

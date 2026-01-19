@@ -1,4 +1,9 @@
 import { NextResponse } from 'next/server';
+import path from 'path';
+import dotenv from 'dotenv';
+
+// Force load .env.local
+dotenv.config({ path: path.resolve(process.cwd(), '.env.local') });
 
 /**
  * POST /api/new-prospect
@@ -12,7 +17,7 @@ import { NextResponse } from 'next/server';
 export async function POST(request: Request) {
     try {
         const body = await request.json();
-        const { url, deployEnv = 'off' } = body;
+        const { url, deployEnv = 'off', expertMode = false, buildKb = false } = body;
 
         // Validate URL
         if (!url) {
@@ -58,7 +63,9 @@ export async function POST(request: Request) {
                 ref: FACTORY_BRANCH,
                 inputs: {
                     url: url,
-                    deploy_env: deployEnv,
+                    deploy_env: deployEnv || 'off',
+                    expert_mode: expertMode ? 'true' : 'false',
+                    kb_builder: buildKb ? 'true' : 'false',
                 },
             }),
         });

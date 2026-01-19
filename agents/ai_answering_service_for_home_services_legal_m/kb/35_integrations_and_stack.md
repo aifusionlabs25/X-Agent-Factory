@@ -1,4 +1,0 @@
-# Integrations
-
-## Software Integration
-TBD
