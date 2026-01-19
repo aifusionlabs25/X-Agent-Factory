@@ -1,6 +1,7 @@
 # New Prospect Pipeline
 # Triggered from Dashboard via workflow_dispatch
 # URL -> Intake -> Build -> Security Eval -> Deploy (optional)
+# v1.1: Added failure-stage reporting and network retries
 
 name: New Prospect Pipeline
 
@@ -35,11 +36,14 @@ jobs:
   intake-build-deploy:
     runs-on: ubuntu-latest
     
+    outputs:
+      failure_stage: ${{ steps.failure_report.outputs.stage }}
+      failure_reason: ${{ steps.failure_report.outputs.reason }}
+    
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          # Use default GITHUB_TOKEN with write permissions declared above
           persist-credentials: true
           fetch-depth: 0
 
@@ -53,11 +57,37 @@ jobs:
           pip install -r requirements.txt
           pip install pytest trafilatura beautifulsoup4 requests jsonschema pyyaml
 
+      # ============================================
+      # STEP 1: INTAKE (with retry for network issues)
+      # ============================================
       - name: Step 1 - Intake Spider and Package
         id: intake
+        continue-on-error: true
         run: |
+          echo "::group::Intake Spider"
           echo "Spidering: ${{ inputs.url }}"
-          python tools/intake_packager.py --url "${{ inputs.url }}" --output intake_output.json --no-log
+          
+          # Retry logic for network fetch (2 attempts with backoff)
+          MAX_RETRIES=2
+          RETRY_DELAY=10
+          
+          for attempt in $(seq 1 $MAX_RETRIES); do
+            echo "Attempt $attempt of $MAX_RETRIES"
+            if python tools/intake_packager.py --url "${{ inputs.url }}" --output intake_output.json --no-log; then
+              echo "intake_success=true" >> $GITHUB_OUTPUT
+              break
+            else
+              if [ $attempt -lt $MAX_RETRIES ]; then
+                echo "Retrying in ${RETRY_DELAY}s..."
+                sleep $RETRY_DELAY
+                RETRY_DELAY=$((RETRY_DELAY * 2))
+              else
+                echo "intake_success=false" >> $GITHUB_OUTPUT
+                echo "intake_error=Network/Parse failure after $MAX_RETRIES attempts" >> $GITHUB_OUTPUT
+                exit 1
+              fi
+            fi
+          done
           
           # Extract slug from output
           SLUG=$(python -c "import json; print(json.load(open('intake_output.json'))['slug'])")
@@ -66,17 +96,67 @@ jobs:
           echo "slug=$SLUG" >> $GITHUB_OUTPUT
           echo "dossier_path=$DOSSIER_PATH" >> $GITHUB_OUTPUT
           echo "Intake complete: $SLUG"
+          echo "::endgroup::"
 
+      - name: Check Intake Result
+        if: steps.intake.outcome == 'failure'
+        run: |
+          echo "FAILURE_STAGE=intake" >> $GITHUB_ENV
+          echo "FAILURE_REASON=fetch_parse_error" >> $GITHUB_ENV
+          echo "❌ INTAKE FAILED: Could not fetch or parse ${{ inputs.url }}"
+          exit 1
+
+      # ============================================
+      # STEP 2: BUILD AGENT (with retry)
+      # ============================================
       - name: Step 2 - Build Agent
         id: build
+        continue-on-error: true
         run: |
+          echo "::group::Build Agent"
           echo "Building agent for: ${{ steps.intake.outputs.slug }}"
-          python tools/factory_orchestrator.py --build-agent "${{ steps.intake.outputs.dossier_path }}" --no-log
+          
+          # Retry logic for build (1 retry for transient AI API issues)
+          MAX_RETRIES=2
+          RETRY_DELAY=5
+          
+          for attempt in $(seq 1 $MAX_RETRIES); do
+            echo "Attempt $attempt of $MAX_RETRIES"
+            if python tools/factory_orchestrator.py --build-agent "${{ steps.intake.outputs.dossier_path }}" --no-log; then
+              echo "build_success=true" >> $GITHUB_OUTPUT
+              break
+            else
+              if [ $attempt -lt $MAX_RETRIES ]; then
+                echo "Retrying in ${RETRY_DELAY}s..."
+                sleep $RETRY_DELAY
+                RETRY_DELAY=$((RETRY_DELAY * 2))
+              else
+                echo "build_success=false" >> $GITHUB_OUTPUT
+                echo "build_error=Build failed after $MAX_RETRIES attempts" >> $GITHUB_OUTPUT
+                exit 1
+              fi
+            fi
+          done
+          
           echo "Agent built"
+          echo "::endgroup::"
 
+      - name: Check Build Result
+        if: steps.build.outcome == 'failure'
+        run: |
+          echo "FAILURE_STAGE=build" >> $GITHUB_ENV
+          echo "FAILURE_REASON=build_error" >> $GITHUB_ENV
+          echo "❌ BUILD FAILED"
+          exit 1
+
+      # ============================================
+      # STEP 3: SECURITY GATE (NO RETRIES - hard gate)
+      # ============================================
       - name: Step 3 - Security Evaluation HARD GATE
         id: security
+        continue-on-error: true
         run: |
+          echo "::group::Security Evaluation"
           echo "Running security evaluation..."
           python tools/eval_runner.py --suite security_injection --ci
           
@@ -84,22 +164,45 @@ jobs:
           PASSED=$(python -c "import json; r=json.load(open('eval-report.json')); print(r['total_failed'])")
           
           if [ "$PASSED" != "0" ]; then
+            echo "security_success=false" >> $GITHUB_OUTPUT
+            echo "security_failed_count=$PASSED" >> $GITHUB_OUTPUT
             echo "SECURITY GATE FAILED: $PASSED tests failed"
-            echo "Deployment blocked - fix security issues first"
             exit 1
           fi
           
+          echo "security_success=true" >> $GITHUB_OUTPUT
           echo "Security: 12/12 PASS"
+          echo "::endgroup::"
 
-      - name: Step 4 - Deploy to Staging
-        if: ${{ inputs.deploy_env != 'off' }}
+      - name: Check Security Result
+        if: steps.security.outcome == 'failure'
         run: |
+          echo "FAILURE_STAGE=security" >> $GITHUB_ENV
+          echo "FAILURE_REASON=security_gate_failed" >> $GITHUB_ENV
+          echo "❌ SECURITY GATE FAILED - NO RETRY ALLOWED"
+          echo "Deployment blocked - fix security issues before retrying"
+          exit 1
+
+      # ============================================
+      # STEP 4: DEPLOY (optional)
+      # ============================================
+      - name: Step 4 - Deploy to Staging
+        if: ${{ inputs.deploy_env != 'off' && steps.security.outcome == 'success' }}
+        run: |
+          echo "::group::Deploy"
           echo "Deploying to: ${{ inputs.deploy_env }}"
           python tools/deployer.py --deploy "agents/${{ steps.intake.outputs.slug }}" --env "${{ inputs.deploy_env }}" --no-log
           echo "Deployed"
+          echo "::endgroup::"
 
+      # ============================================
+      # STEP 5: COMMIT (with retry for push conflicts)
+      # ============================================
       - name: Step 5 - Commit Results
+        id: commit
+        continue-on-error: true
         run: |
+          echo "::group::Commit Results"
           git config user.name "X Agent Factory Bot"
           git config user.email "factory-bot@aifusionlabs.ai"
           
@@ -109,15 +212,69 @@ jobs:
           # Check if there are changes to commit
           if git diff --staged --quiet; then
             echo "No changes to commit"
+            echo "commit_success=true" >> $GITHUB_OUTPUT
           else
-            git commit -m "New Agent: ${{ steps.intake.outputs.slug }} from ${{ inputs.url }}"
-            git push origin main
-            echo "Changes committed and pushed"
+            # Retry push with pull-rebase for conflicts
+            MAX_RETRIES=2
+            for attempt in $(seq 1 $MAX_RETRIES); do
+              echo "Push attempt $attempt of $MAX_RETRIES"
+              git commit -m "New Agent: ${{ steps.intake.outputs.slug }} from ${{ inputs.url }}" || true
+              if git push origin main; then
+                echo "commit_success=true" >> $GITHUB_OUTPUT
+                echo "Changes committed and pushed"
+                break
+              else
+                if [ $attempt -lt $MAX_RETRIES ]; then
+                  echo "Push failed, pulling with rebase..."
+                  git pull --rebase origin main
+                else
+                  echo "commit_success=false" >> $GITHUB_OUTPUT
+                  exit 1
+                fi
+              fi
+            done
           fi
+          echo "::endgroup::"
 
-      - name: Summary
+      - name: Check Commit Result
+        if: steps.commit.outcome == 'failure'
         run: |
-          echo "## Pipeline Complete" >> $GITHUB_STEP_SUMMARY
+          echo "FAILURE_STAGE=push" >> $GITHUB_ENV
+          echo "FAILURE_REASON=push_403_or_conflict" >> $GITHUB_ENV
+          echo "❌ PUSH FAILED"
+          exit 1
+
+      # ============================================
+      # FAILURE REPORT (runs on any failure)
+      # ============================================
+      - name: Failure Report
+        id: failure_report
+        if: failure()
+        run: |
+          echo "stage=${FAILURE_STAGE:-unknown}" >> $GITHUB_OUTPUT
+          echo "reason=${FAILURE_REASON:-unknown}" >> $GITHUB_OUTPUT
+          
+          echo "## ❌ Pipeline Failed" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Field | Value |" >> $GITHUB_STEP_SUMMARY
+          echo "|:------|:------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Stage | ${FAILURE_STAGE:-unknown} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Reason | ${FAILURE_REASON:-unknown} |" >> $GITHUB_STEP_SUMMARY
+          echo "| URL | ${{ inputs.url }} |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Failure Categories" >> $GITHUB_STEP_SUMMARY
+          echo "- **intake**: fetch_parse_error, timeout" >> $GITHUB_STEP_SUMMARY
+          echo "- **build**: build_error, api_timeout" >> $GITHUB_STEP_SUMMARY
+          echo "- **security**: security_gate_failed (NO RETRY)" >> $GITHUB_STEP_SUMMARY
+          echo "- **push**: push_403_or_conflict" >> $GITHUB_STEP_SUMMARY
+
+      # ============================================
+      # SUCCESS SUMMARY
+      # ============================================
+      - name: Summary
+        if: success()
+        run: |
+          echo "## ✅ Pipeline Complete" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "| Step | Status |" >> $GITHUB_STEP_SUMMARY
           echo "|:-----|:-------|" >> $GITHUB_STEP_SUMMARY
