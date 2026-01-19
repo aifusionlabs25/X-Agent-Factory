@@ -1,14 +1,14 @@
 # Source Bundle: AI Answering Service for Home Services, Legal, & Medical | ZyraTalk
 
 **Domain:** zyratalk.com
-**Scraped:** 2026-01-19T16:30:29.655735Z
+**Scraped:** 2026-01-19T16:48:49.698866Z
 
 ## Page Summary
 Discover ZyraTalk, the only AI customer service solution you need. Automate conversations for any question, anywhere, anytime. Increase leads, improve customer support, and streamline the hiring process. Try our playground and be mind blown. Sign up for free and customize your own website.
 
 ---
 
-## Source: https://www.zyratalk.com/
+## Source: https://www.zyratalk.com
 
 # Turn Missed Calls Into Revenue Opportunities
 

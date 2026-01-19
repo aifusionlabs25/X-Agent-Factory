@@ -1,9 +1,9 @@
 {
   "schema_version": "1.0",
   "client_slug": "ai_answering_service_for_home_services_legal_m",
-  "generated_at": "2026-01-19T16:30:29.991661Z",
+  "generated_at": "2026-01-19T16:48:49.967284Z",
   "input_dossier_path": "/home/runner/work/X-Agent-Factory/X-Agent-Factory/ingested_clients/ai_answering_service_for_home_services_l/dossier.json",
-  "input_dossier_sha256": "0ef7dec71175d3ec243702e20266bc621c7499f099fd6e79d370406e381897a3",
+  "input_dossier_sha256": "317130ea3b0041516deb82c8d29b43255a4a03b730a2d20815a24fdaff068807",
   "artifacts": [
     {
       "path": "system_prompt.txt",
@@ -12,8 +12,8 @@
     },
     {
       "path": "kb_seed.md",
-      "sha256": "5b85ed822c16d88ef424b40d58eae24fb82381e592404229e35a35d07d168fb6",
-      "bytes": 940
+      "sha256": "305a7d13ac294c29f2b055829cc7b1c0b940e569742261dc3011bb992468c41a",
+      "bytes": 939
     },
     {
       "path": "tavus_pack/README.md",
@@ -24,6 +24,6 @@
   "has_kb_library": true,
   "kb_stats": {
     "file_count": 12,
-    "generated_at": "2026-01-19T16:30:31.045358"
+    "generated_at": "2026-01-19T16:48:50.552493"
   }
 }
