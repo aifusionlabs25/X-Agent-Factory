@@ -148,10 +148,10 @@ jobs:
             fi
           done
           
-          # Detect actual agent folder created (find NEWEST by modification time, not alphabetically)
-          ACTUAL_SLUG=$(ls -dt agents/*/ 2>/dev/null | head -1 | xargs basename)
+          # Derive agent_slug from dossier (same logic as factory_orchestrator.compute_client_slug)
+          ACTUAL_SLUG=$(python -c "import json, re; d=json.load(open('${{ steps.intake.outputs.dossier_path }}')); n=d.get('client_profile',{}).get('name',''); s=re.sub(r'[\s_-]+','_',re.sub(r'[^\w\s-]','',n.lower().strip())); print(s)")
           if [ -z "$ACTUAL_SLUG" ]; then
-            echo "❌ No agent folder found after build!"
+            echo "❌ Could not derive agent slug from dossier!"
             exit 1
           fi
           echo "agent_slug=$ACTUAL_SLUG" >> $GITHUB_OUTPUT
