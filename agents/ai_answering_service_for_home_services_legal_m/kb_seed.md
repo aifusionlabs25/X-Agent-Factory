@@ -4,7 +4,7 @@
 - **Name**: AI Answering Service for Home Services, Legal, & M
 - **Industry**: HVAC
 - **Region**: TBD
-- **Website**: https://www.zyratalk.com
+- **Website**: https://www.zyratalk.com/
 
 ## Target Audience Profile
 - **Decision Maker Role**: Decision Maker
