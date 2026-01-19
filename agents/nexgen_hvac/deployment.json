@@ -1,0 +1,17 @@
+{
+  "env": "staging",
+  "deployed_at": "2026-01-19T02:32:26.532597Z",
+  "success": true,
+  "external_ids": {
+    "tavus_replica_id": "dry_run_nexgen_hvac_staging",
+    "conversation_url": "https://tavus.io/demo/dry_run_staging"
+  },
+  "artifacts_deployed": [
+    "system_prompt.txt",
+    "kb_seed.md",
+    "tavus_pack\\README.md"
+  ],
+  "manifest_hash": "4e586bb86bd0c7cf",
+  "run_id": null,
+  "dry_run": true
+}

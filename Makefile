@@ -116,6 +116,21 @@ eval-ci:
 	@echo "🧪 Running evaluations in CI mode..."
 	@python tools/eval_runner.py --ci
 
+# Deploy: Deploy an agent to staging
+deploy:
+	@echo "🚀 Deploying agent: $(slug) to $(env)..."
+	@python tools/deployer.py --deploy agents/$(slug) --env $(env)
+
+# Deploy: Dry-run deployment
+deploy-dry:
+	@echo "🚀 Dry-run deploy: $(slug)..."
+	@python tools/deployer.py --deploy agents/$(slug) --dry-run
+
+# Deploy: List agent deployment status
+deploy-list:
+	@echo "📦 Listing agent deployment status..."
+	@python tools/deployer.py --list
+
 # Install dependencies
 install:
 	pip install -r requirements.txt
