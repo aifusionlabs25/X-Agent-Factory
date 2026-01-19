@@ -21,6 +21,16 @@ on:
           - 'off'
           - 'staging'
           - 'production'
+      expert_mode:
+        description: 'Enable Expert Mode (Troy Pass)'
+        required: false
+        default: false
+        type: boolean
+      kb_builder:
+        description: 'Enable KB Library Builder'
+        required: false
+        default: true
+        type: boolean
 
 env:
   GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
@@ -109,7 +119,7 @@ jobs:
       # ============================================
       # STEP 2: BUILD AGENT (with retry)
       # ============================================
-      - name: Step 2 - Build Agent
+      - name: Step 2 - Build Agent (Baseline)
         id: build
         continue-on-error: true
         run: |
@@ -150,6 +160,19 @@ jobs:
           exit 1
 
       # ============================================
+      # STEP 2.5: EXPERT PROMPT WRITER (OPTIONAL)
+      # ============================================
+      - name: Step 2.5 - Expert Prompt Writer (Troy Pass)
+        id: epw
+        if: ${{ inputs.expert_mode == true && steps.build.outcome == 'success' }}
+        continue-on-error: true
+        run: |
+          echo "::group::Expert Prompt Writer"
+          echo "Running Troy Pass for: ${{ steps.intake.outputs.slug }}"
+          python tools/expert_prompt_writer.py --slug "${{ steps.intake.outputs.slug }}"
+          echo "::endgroup::"
+
+      # ============================================
       # STEP 3: SECURITY GATE (NO RETRIES - hard gate)
       # ============================================
       - name: Step 3 - Security Evaluation HARD GATE
@@ -182,6 +205,41 @@ jobs:
           echo "❌ SECURITY GATE FAILED - NO RETRY ALLOWED"
           echo "Deployment blocked - fix security issues before retrying"
           exit 1
+
+      - name: Step 2.5 - KB Library Builder (Optional)
+        if: inputs.kb_builder == true && steps.build.outputs.build_success == 'true'
+        id: kb_builder
+        run: |
+          echo "::group::KB Library Builder"
+          echo "Building KB for: ${{ steps.intake.outputs.slug }}"
+          
+          if python tools/kb_library_builder.py --slug "${{ steps.intake.outputs.slug }}"; then
+             echo "kb_success=true" >> $GITHUB_OUTPUT
+             echo "KB Build Complete"
+          else
+             echo "kb_success=false" >> $GITHUB_OUTPUT
+             echo "KB Build Failed (Non-blocking)"
+          fi
+          echo "::endgroup::"
+      
+      # ============================================
+      # STEP 3.5: ADVISORY EVAL (OPTIONAL)
+      # ============================================
+      - name: Step 3.5 - Advisory Eval (Expert Mode)
+        if: ${{ inputs.expert_mode == true }}
+        continue-on-error: true
+        run: |
+          echo "::group::Advisory Eval"
+          echo "Running advisory style/functional evals..."
+          # Run functional eval
+          if [ -f "evals/functional.jsonl" ]; then
+             python tools/eval_runner.py --suite functional --ci || echo "Functional eval failed (advisory)"
+          fi
+          # Run style eval
+          if [ -f "evals/style.jsonl" ]; then
+             python tools/eval_runner.py --suite style --ci || echo "Style eval failed (advisory)"
+          fi
+          echo "::endgroup::"
 
       # ============================================
       # STEP 4: DEPLOY (optional)
@@ -218,7 +276,16 @@ jobs:
             MAX_RETRIES=2
             for attempt in $(seq 1 $MAX_RETRIES); do
               echo "Push attempt $attempt of $MAX_RETRIES"
-              git commit -m "New Agent: ${{ steps.intake.outputs.slug }} from ${{ inputs.url }}" || true
+              # Construct Commit Message
+              COMMIT_MSG="New Prospect: ${{ steps.intake.outputs.slug }}"
+              if [[ "${{ inputs.expert_mode }}" == "true" ]]; then
+                COMMIT_MSG="$COMMIT_MSG [EXPERT]"
+              fi
+              if [[ "${{ inputs.kb_builder }}" == "true" ]]; then
+                COMMIT_MSG="$COMMIT_MSG [KB]"
+              fi
+              
+              git commit -m "$COMMIT_MSG from ${{ inputs.url }}" || true
               if git push origin main; then
                 echo "commit_success=true" >> $GITHUB_OUTPUT
                 echo "Changes committed and pushed"
@@ -278,6 +345,7 @@ jobs:
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "| Step | Status |" >> $GITHUB_STEP_SUMMARY
           echo "|:-----|:-------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Mode | ${{ inputs.expert_mode == true && 'Expert (Troy)' || 'Baseline' }} |" >> $GITHUB_STEP_SUMMARY
           echo "| Intake | ${{ steps.intake.outputs.slug }} |" >> $GITHUB_STEP_SUMMARY
           echo "| Build | Complete |" >> $GITHUB_STEP_SUMMARY
           echo "| Security | 12/12 PASS |" >> $GITHUB_STEP_SUMMARY
