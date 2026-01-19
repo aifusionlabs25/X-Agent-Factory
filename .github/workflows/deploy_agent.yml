@@ -85,6 +85,6 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: deployment-logs-${{ github.run_id }}
+          name: logs-${{ github.event.inputs.slug }}-${{ github.event.inputs.env }}-${{ github.run_id }}
           path: runs/
           retention-days: 5
