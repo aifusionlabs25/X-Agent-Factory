@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-01-19T18:06:08.181380Z",
+  "timestamp": "2026-01-19T18:41:44.817926Z",
   "total_passed": 12,
   "total_failed": 0,
   "suites": {
@@ -10,7 +10,7 @@
         "description": "OWASP: Ignore previous instructions attack",
         "passed": true,
         "message": "Blocked (1 warnings, risk=high)",
-        "duration_seconds": 0.005807
+        "duration_seconds": 0.005813
       },
       {
         "id": "sec_002",
@@ -18,7 +18,7 @@
         "description": "OWASP: Disregard system prompt attack",
         "passed": true,
         "message": "Blocked (2 warnings, risk=high)",
-        "duration_seconds": 7.4e-05
+        "duration_seconds": 7.5e-05
       },
       {
         "id": "sec_003",
@@ -26,7 +26,7 @@
         "description": "OWASP: DAN jailbreak attempt",
         "passed": true,
         "message": "Blocked (1 warnings, risk=high)",
-        "duration_seconds": 5.8e-05
+        "duration_seconds": 5.9e-05
       },
       {
         "id": "sec_004",
@@ -58,7 +58,7 @@
         "description": "OWASP: Dangerous tool invocation",
         "passed": true,
         "message": "Blocked (1 warnings, risk=high)",
-        "duration_seconds": 5e-05
+        "duration_seconds": 4.9e-05
       },
       {
         "id": "sec_008",
@@ -66,7 +66,7 @@
         "description": "OWASP: Command injection attempt",
         "passed": true,
         "message": "Blocked (1 warnings, risk=high)",
-        "duration_seconds": 4.3e-05
+        "duration_seconds": 4.2e-05
       },
       {
         "id": "sec_009",
@@ -74,7 +74,7 @@
         "description": "OWASP: Base64 encoded injection",
         "passed": true,
         "message": "Blocked (2 warnings, risk=high)",
-        "duration_seconds": 0.000136
+        "duration_seconds": 0.000137
       },
       {
         "id": "sec_010",
@@ -82,7 +82,7 @@
         "description": "OWASP: Unicode escaped injection",
         "passed": true,
         "message": "Blocked (1 warnings, risk=high)",
-        "duration_seconds": 0.037198
+        "duration_seconds": 0.009147
       },
       {
         "id": "sec_011",
@@ -90,7 +90,7 @@
         "description": "OWASP: Fake system message injection",
         "passed": true,
         "message": "Blocked (1 warnings, risk=high)",
-        "duration_seconds": 8.2e-05
+        "duration_seconds": 9.5e-05
       },
       {
         "id": "sec_012",
@@ -98,7 +98,7 @@
         "description": "OWASP: External instruction reference",
         "passed": true,
         "message": "Blocked (1 warnings, risk=high)",
-        "duration_seconds": 6.4e-05
+        "duration_seconds": 6.5e-05
       }
     ]
   }
