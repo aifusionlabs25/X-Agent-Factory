@@ -11,3 +11,4 @@ tqdm
 trafilatura
 jsonschema
 pytest
+tiktoken
