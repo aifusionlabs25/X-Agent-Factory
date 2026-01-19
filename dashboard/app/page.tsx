@@ -19,11 +19,24 @@ interface FactoryState {
   opportunities: Opportunity[];
 }
 
+interface WorkflowStatus {
+  id: number;
+  status: string;
+  html_url: string;
+}
+
 export default function Home() {
   const [state, setState] = useState<FactoryState | null>(null);
   const [loading, setLoading] = useState(true);
   const [deploying, setDeploying] = useState(false);
   const [logs, setLogs] = useState<string[]>([]);
+
+  // New Prospect state
+  const [prospectUrl, setProspectUrl] = useState('');
+  const [prospectProcessing, setProspectProcessing] = useState(false);
+  const [prospectStatus, setProspectStatus] = useState<string | null>(null);
+  const [workflowInfo, setWorkflowInfo] = useState<WorkflowStatus | null>(null);
+  const [deployToStaging, setDeployToStaging] = useState(false);
 
   useEffect(() => {
     fetchState();
@@ -38,6 +51,51 @@ export default function Home() {
     } catch (e) {
       console.error("Failed to fetch factory state", e);
       setLoading(false);
+    }
+  };
+
+  const handleNewProspect = async () => {
+    if (!prospectUrl.trim()) {
+      setProspectStatus('Please enter a URL');
+      return;
+    }
+
+    setProspectProcessing(true);
+    setProspectStatus('Triggering workflow...');
+    setWorkflowInfo(null);
+    addLog(`🎯 New Prospect: ${prospectUrl}`);
+
+    try {
+      const res = await fetch('/api/new-prospect', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          url: prospectUrl,
+          deployEnv: deployToStaging ? 'staging' : 'off'
+        })
+      });
+      const data = await res.json();
+
+      if (data.success) {
+        setProspectStatus('Workflow started!');
+        addLog(`✅ Workflow triggered`);
+        if (data.workflow) {
+          setWorkflowInfo(data.workflow);
+          addLog(`📋 Run ID: ${data.workflow.id}`);
+        }
+        // Clear input after success
+        setProspectUrl('');
+        // Refresh state after a delay
+        setTimeout(fetchState, 5000);
+      } else {
+        setProspectStatus(`Error: ${data.error}`);
+        addLog(`❌ Error: ${data.error}`);
+      }
+    } catch (e: any) {
+      setProspectStatus(`Error: ${e.message}`);
+      addLog(`❌ Error: ${e.message}`);
+    } finally {
+      setProspectProcessing(false);
     }
   };
 
@@ -104,6 +162,60 @@ export default function Home() {
         </div>
       </header>
 
+      {/* NEW PROSPECT CARD */}
+      <div className="bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl p-6 mb-8 text-white">
+        <h2 className="text-lg font-bold mb-4">✨ NEW PROSPECT</h2>
+        <div className="flex gap-4 items-end">
+          <div className="flex-1">
+            <label className="text-xs font-bold uppercase opacity-80 block mb-2">Prospect Website URL</label>
+            <input
+              type="url"
+              value={prospectUrl}
+              onChange={(e) => setProspectUrl(e.target.value)}
+              placeholder="https://example.com"
+              disabled={prospectProcessing}
+              className="w-full p-3 rounded-lg text-slate-800 text-sm font-mono disabled:opacity-50"
+            />
+          </div>
+          <div className="flex items-center gap-3">
+            <label className="flex items-center gap-2 text-sm cursor-pointer">
+              <input
+                type="checkbox"
+                checked={deployToStaging}
+                onChange={(e) => setDeployToStaging(e.target.checked)}
+                disabled={prospectProcessing}
+                className="w-4 h-4"
+              />
+              Deploy to Staging
+            </label>
+            <button
+              onClick={handleNewProspect}
+              disabled={prospectProcessing || !prospectUrl.trim()}
+              className={`px-6 py-3 rounded-lg font-bold transition-all ${prospectProcessing || !prospectUrl.trim()
+                  ? 'bg-white/30 cursor-not-allowed'
+                  : 'bg-white text-purple-600 hover:bg-purple-100'
+                }`}
+            >
+              {prospectProcessing ? '⏳ Processing...' : '🚀 Create Agent'}
+            </button>
+          </div>
+        </div>
+        {prospectStatus && (
+          <div className="mt-3 text-sm font-mono opacity-90">
+            {prospectStatus}
+            {workflowInfo && (
+              <a
+                href={workflowInfo.html_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ml-2 underline hover:no-underline"
+              >
+                View on GitHub →
+              </a>
+            )}
+          </div>
+        )}
+      </div>
 
       {/* KPIs */}
       <div className="grid grid-cols-4 gap-6 mb-8">
@@ -184,7 +296,7 @@ export default function Home() {
           <div className="bg-slate-900 rounded-xl p-6 text-white min-h-[300px] flex flex-col">
             <div className="flex items-center justify-between mb-6">
               <h3 className="font-mono font-bold text-green-400">FACTORY CONSOLE</h3>
-              <span className={`w-2 h-2 rounded-full ${deploying ? 'bg-yellow-500 animate-ping' : 'bg-green-500'}`}></span>
+              <span className={`w-2 h-2 rounded-full ${deploying || prospectProcessing ? 'bg-yellow-500 animate-ping' : 'bg-green-500'}`}></span>
             </div>
 
             <div className="space-y-2 font-mono text-sm text-slate-400 flex-1 overflow-y-auto max-h-[200px]">
@@ -194,7 +306,7 @@ export default function Home() {
               {logs.map((log, i) => (
                 <p key={i} className="break-words">{log}</p>
               ))}
-              {deploying && <p className="animate-pulse">&gt; Processing...</p>}
+              {(deploying || prospectProcessing) && <p className="animate-pulse">&gt; Processing...</p>}
             </div>
 
             <div className="mt-8 pt-8 border-t border-slate-700">
@@ -212,4 +324,5 @@ export default function Home() {
     </div>
   );
 }
+
 

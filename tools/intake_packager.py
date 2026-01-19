@@ -409,6 +409,7 @@ def main():
     parser = argparse.ArgumentParser(description="Intake Packager - Source to Dossier")
     parser.add_argument("--url", required=True, help="Primary prospect website URL")
     parser.add_argument("--extra-url", action="append", dest="extra_urls", help="Additional URLs to scrape")
+    parser.add_argument("--output", help="Write result JSON to this file (for CI/workflows)")
     parser.add_argument("--llm", choices=["ollama"], help="(Future) Use LLM for enhanced inference")
     parser.add_argument("--no-log", action="store_true", help="Disable run logging")
     
@@ -419,7 +420,7 @@ def main():
     
     # Run with logging
     if args.no_log:
-        success, _ = run_intake(args.url, args.extra_urls)
+        success, client_slug = run_intake(args.url, args.extra_urls)
     else:
         from run_logger import RunLogger
         with RunLogger("intake_packager", {"url": args.url, "extra_urls": args.extra_urls or []}) as run:
@@ -427,9 +428,23 @@ def main():
             if client_slug:
                 run.set_output("client_slug", client_slug)
     
+    # Write output JSON if requested (for CI/workflows)
+    if args.output and success and client_slug:
+        dossier_path = INGESTED_DIR / client_slug / "dossier.json"
+        output_data = {
+            "success": success,
+            "slug": client_slug,
+            "dossier_path": str(dossier_path),
+            "url": args.url
+        }
+        with open(args.output, 'w', encoding='utf-8') as f:
+            json.dump(output_data, f, indent=2)
+        print(f"📄 Result written to: {args.output}")
+    
     sys.exit(0 if success else 1)
 
 
 if __name__ == "__main__":
     main()
+
 

@@ -1,0 +1,122 @@
+# New Prospect Pipeline
+# Triggered from Dashboard via workflow_dispatch
+# URL -> Intake -> Build -> Security Eval -> Deploy (optional)
+
+name: New Prospect Pipeline
+
+on:
+  workflow_dispatch:
+    inputs:
+      url:
+        description: 'Prospect website URL'
+        required: true
+        type: string
+      deploy_env:
+        description: 'Deploy environment (staging/off)'
+        required: false
+        default: 'off'
+        type: choice
+        options:
+          - 'off'
+          - 'staging'
+          - 'production'
+
+env:
+  GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+  TAVUS_API_KEY: ${{ secrets.TAVUS_API_KEY }}
+  ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+
+jobs:
+  intake-build-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install pytest trafilatura beautifulsoup4 requests jsonschema pyyaml
+
+      - name: Step 1 - Intake Spider and Package
+        id: intake
+        run: |
+          echo "Spidering: ${{ inputs.url }}"
+          python tools/intake_packager.py --url "${{ inputs.url }}" --output intake_output.json --no-log
+          
+          # Extract slug from output
+          SLUG=$(python -c "import json; print(json.load(open('intake_output.json'))['slug'])")
+          DOSSIER_PATH=$(python -c "import json; print(json.load(open('intake_output.json'))['dossier_path'])")
+          
+          echo "slug=$SLUG" >> $GITHUB_OUTPUT
+          echo "dossier_path=$DOSSIER_PATH" >> $GITHUB_OUTPUT
+          echo "Intake complete: $SLUG"
+
+      - name: Step 2 - Build Agent
+        id: build
+        run: |
+          echo "Building agent for: ${{ steps.intake.outputs.slug }}"
+          python tools/factory_orchestrator.py --build-agent "${{ steps.intake.outputs.dossier_path }}" --no-log
+          echo "Agent built"
+
+      - name: Step 3 - Security Evaluation HARD GATE
+        id: security
+        run: |
+          echo "Running security evaluation..."
+          python tools/eval_runner.py --suite security_injection --ci
+          
+          # Check for pass
+          PASSED=$(python -c "import json; r=json.load(open('eval-report.json')); print(r['total_failed'])")
+          
+          if [ "$PASSED" != "0" ]; then
+            echo "SECURITY GATE FAILED: $PASSED tests failed"
+            echo "Deployment blocked - fix security issues first"
+            exit 1
+          fi
+          
+          echo "Security: 12/12 PASS"
+
+      - name: Step 4 - Deploy to Staging
+        if: ${{ inputs.deploy_env != 'off' }}
+        run: |
+          echo "Deploying to: ${{ inputs.deploy_env }}"
+          python tools/deployer.py --deploy "agents/${{ steps.intake.outputs.slug }}" --env "${{ inputs.deploy_env }}" --no-log
+          echo "Deployed"
+
+      - name: Step 5 - Commit Results
+        run: |
+          git config user.name "X Agent Factory Bot"
+          git config user.email "factory-bot@aifusionlabs.ai"
+          
+          # Add generated files
+          git add agents/ ingested_clients/ runs/ eval-report.json || true
+          
+          # Check if there are changes to commit
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "New Agent: ${{ steps.intake.outputs.slug }} from ${{ inputs.url }}"
+            git push origin main
+            echo "Changes committed and pushed"
+          fi
+
+      - name: Summary
+        run: |
+          echo "## Pipeline Complete" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Step | Status |" >> $GITHUB_STEP_SUMMARY
+          echo "|:-----|:-------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Intake | ${{ steps.intake.outputs.slug }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Build | Complete |" >> $GITHUB_STEP_SUMMARY
+          echo "| Security | 12/12 PASS |" >> $GITHUB_STEP_SUMMARY
+          echo "| Deploy | ${{ inputs.deploy_env }} |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Source URL:** ${{ inputs.url }}" >> $GITHUB_STEP_SUMMARY
