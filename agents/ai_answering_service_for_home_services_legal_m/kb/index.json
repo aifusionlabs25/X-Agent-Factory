@@ -9,15 +9,15 @@
         "tone_voice"
       ],
       "source_urls": [
-        "https://zyratalk.com/"
+        "https://www.zyratalk.com/"
       ],
       "summary": "Core Overview extracted from dossier.",
       "provenance": "safe_summary",
       "chunk_meta": {
-        "approx_tokens": 85,
+        "approx_tokens": 89,
         "chunk_strategy": "heading_semantic"
       },
-      "file_hash": "e5fe83dbef0ed902971932d1cf54500ee4dd2bf4727ab8bfd0f230bda4b204c7"
+      "file_hash": "07415e74711124f1ec88d5b38a7c02dfebb23fc2801e4413130414bf5d9ba980"
     },
     {
       "path": "kb/05_ICP_and_personas.md",
@@ -27,7 +27,7 @@
         "discovery"
       ],
       "source_urls": [
-        "https://zyratalk.com/"
+        "https://www.zyratalk.com/"
       ],
       "summary": "Core ICP extracted from dossier.",
       "provenance": "safe_summary",
@@ -44,7 +44,7 @@
         "offerings"
       ],
       "source_urls": [
-        "https://zyratalk.com/"
+        "https://www.zyratalk.com/"
       ],
       "summary": "Core Services extracted from dossier.",
       "provenance": "safe_summary",
@@ -61,7 +61,7 @@
         "pricing"
       ],
       "source_urls": [
-        "https://zyratalk.com/"
+        "https://www.zyratalk.com/"
       ],
       "summary": "Core Pricing extracted from dossier.",
       "provenance": "safe_summary",
@@ -78,7 +78,7 @@
         "faq"
       ],
       "source_urls": [
-        "https://zyratalk.com/"
+        "https://www.zyratalk.com/"
       ],
       "summary": "Core FAQ extracted from dossier.",
       "provenance": "safe_summary",
@@ -96,7 +96,7 @@
         "discovery"
       ],
       "source_urls": [
-        "https://zyratalk.com/"
+        "https://www.zyratalk.com/"
       ],
       "summary": "Core Objections extracted from dossier.",
       "provenance": "safe_summary",
@@ -113,7 +113,7 @@
         "competitors"
       ],
       "source_urls": [
-        "https://zyratalk.com/"
+        "https://www.zyratalk.com/"
       ],
       "summary": "Core Competitors extracted from dossier.",
       "provenance": "safe_summary",
@@ -130,7 +130,7 @@
         "integrations"
       ],
       "source_urls": [
-        "https://zyratalk.com/"
+        "https://www.zyratalk.com/"
       ],
       "summary": "Core Integrations extracted from dossier.",
       "provenance": "safe_summary",
@@ -148,7 +148,7 @@
         "support_process"
       ],
       "source_urls": [
-        "https://zyratalk.com/"
+        "https://www.zyratalk.com/"
       ],
       "summary": "Core Process extracted from dossier.",
       "provenance": "safe_summary",
@@ -166,7 +166,7 @@
         "policies"
       ],
       "source_urls": [
-        "https://zyratalk.com/"
+        "https://www.zyratalk.com/"
       ],
       "summary": "Core Compliance extracted from dossier.",
       "provenance": "safe_summary",
@@ -183,7 +183,7 @@
         "proof"
       ],
       "source_urls": [
-        "https://zyratalk.com/"
+        "https://www.zyratalk.com/"
       ],
       "summary": "Core Case Studies extracted from dossier.",
       "provenance": "safe_summary",
@@ -201,7 +201,7 @@
         "locations"
       ],
       "source_urls": [
-        "https://zyratalk.com/"
+        "https://www.zyratalk.com/"
       ],
       "summary": "Core Contact extracted from dossier.",
       "provenance": "safe_summary",
@@ -219,7 +219,7 @@
   },
   "build_metadata": {
     "slug": "ai_answering_service_for_home_services_legal_m",
-    "generated_at": "2026-01-19T16:24:12.621854",
+    "generated_at": "2026-01-19T16:28:24.964785",
     "tool_version": "1.1.0"
   }
 }

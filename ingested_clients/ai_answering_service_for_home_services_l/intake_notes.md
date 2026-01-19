@@ -1,7 +1,7 @@
 # Intake Notes: AI Answering Service for Home Services, Legal, & M
 
-**Processed:** 2026-01-19T16:24:11.432111Z
-**Source URL:** https://zyratalk.com/
+**Processed:** 2026-01-19T16:28:23.963751Z
+**Source URL:** https://www.zyratalk.com/
 
 ## Inferred Fields (from scrape)
 - **client_profile.name**: From page title: AI Answering Service for Home Services, Legal, & Medical | ZyraTalk
