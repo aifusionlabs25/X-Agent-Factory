@@ -1,0 +1,225 @@
+{
+  "files": [
+    {
+      "path": "kb/00_overview.md",
+      "title": "Overview",
+      "tags": [
+        "company_overview",
+        "offerings",
+        "tone_voice"
+      ],
+      "source_urls": [
+        "https://www.google.com/"
+      ],
+      "summary": "Core Overview extracted from dossier.",
+      "provenance": "safe_summary",
+      "chunk_meta": {
+        "approx_tokens": 62,
+        "chunk_strategy": "heading_semantic"
+      },
+      "file_hash": "8dfec0c90f710205fe57e19dbce844205ba99fe715af5eca4bafdaa91f19880a"
+    },
+    {
+      "path": "kb/05_ICP_and_personas.md",
+      "title": "ICP",
+      "tags": [
+        "icp",
+        "discovery"
+      ],
+      "source_urls": [
+        "https://www.google.com/"
+      ],
+      "summary": "Core ICP extracted from dossier.",
+      "provenance": "safe_summary",
+      "chunk_meta": {
+        "approx_tokens": 86,
+        "chunk_strategy": "heading_semantic"
+      },
+      "file_hash": "660ec50b7b7774d98c9ec1deb24adbe4abc618c730b5488cbecec8f7400fa1cc"
+    },
+    {
+      "path": "kb/10_services_and_offerings.md",
+      "title": "Services",
+      "tags": [
+        "offerings"
+      ],
+      "source_urls": [
+        "https://www.google.com/"
+      ],
+      "summary": "Core Services extracted from dossier.",
+      "provenance": "safe_summary",
+      "chunk_meta": {
+        "approx_tokens": 52,
+        "chunk_strategy": "heading_semantic"
+      },
+      "file_hash": "5322549e043796b3a5a1242f5546696aa43fd769014c8da651b73af53ed14adc"
+    },
+    {
+      "path": "kb/15_pricing_and_packages.md",
+      "title": "Pricing",
+      "tags": [
+        "pricing"
+      ],
+      "source_urls": [
+        "https://www.google.com/"
+      ],
+      "summary": "Core Pricing extracted from dossier.",
+      "provenance": "safe_summary",
+      "chunk_meta": {
+        "approx_tokens": 35,
+        "chunk_strategy": "heading_semantic"
+      },
+      "file_hash": "37b4399f620fe9d31c74631ddaa0d8c57f2fa2c961ae60f99c6a6b442300dc23"
+    },
+    {
+      "path": "kb/20_FAQ.md",
+      "title": "FAQ",
+      "tags": [
+        "faq"
+      ],
+      "source_urls": [
+        "https://www.google.com/"
+      ],
+      "summary": "Core FAQ extracted from dossier.",
+      "provenance": "safe_summary",
+      "chunk_meta": {
+        "approx_tokens": 9,
+        "chunk_strategy": "heading_semantic"
+      },
+      "file_hash": "1c0fa9ca30bf43b6d4b3106f671e72498d04f73997447759744bd2e240642a6c"
+    },
+    {
+      "path": "kb/25_objections_and_rebuttals.md",
+      "title": "Objections",
+      "tags": [
+        "objections",
+        "discovery"
+      ],
+      "source_urls": [
+        "https://www.google.com/"
+      ],
+      "summary": "Core Objections extracted from dossier.",
+      "provenance": "safe_summary",
+      "chunk_meta": {
+        "approx_tokens": 13,
+        "chunk_strategy": "heading_semantic"
+      },
+      "file_hash": "3b39514db5720908c470920c3ce9a2a1f3707214b2187af01d79d4e65598969c"
+    },
+    {
+      "path": "kb/30_competitors_and_positioning.md",
+      "title": "Competitors",
+      "tags": [
+        "competitors"
+      ],
+      "source_urls": [
+        "https://www.google.com/"
+      ],
+      "summary": "Core Competitors extracted from dossier.",
+      "provenance": "safe_summary",
+      "chunk_meta": {
+        "approx_tokens": 11,
+        "chunk_strategy": "heading_semantic"
+      },
+      "file_hash": "f64874e8b97cf4ed7a720fa88ed563dba966f1db3cdab02c97989d276adae3ad"
+    },
+    {
+      "path": "kb/35_integrations_and_stack.md",
+      "title": "Integrations",
+      "tags": [
+        "integrations"
+      ],
+      "source_urls": [
+        "https://www.google.com/"
+      ],
+      "summary": "Core Integrations extracted from dossier.",
+      "provenance": "safe_summary",
+      "chunk_meta": {
+        "approx_tokens": 10,
+        "chunk_strategy": "heading_semantic"
+      },
+      "file_hash": "ce3b6d469f655337671cde160d3284e698e0ceacc073d4ad31362753a1effeb6"
+    },
+    {
+      "path": "kb/40_process_and_workflows.md",
+      "title": "Process",
+      "tags": [
+        "workflow",
+        "support_process"
+      ],
+      "source_urls": [
+        "https://www.google.com/"
+      ],
+      "summary": "Core Process extracted from dossier.",
+      "provenance": "safe_summary",
+      "chunk_meta": {
+        "approx_tokens": 9,
+        "chunk_strategy": "heading_semantic"
+      },
+      "file_hash": "ce9f8569539a47f2e82ede169d2fa48082ab10dc6fd066533a5fe9166dc3d71f"
+    },
+    {
+      "path": "kb/45_compliance_and_security.md",
+      "title": "Compliance",
+      "tags": [
+        "compliance",
+        "policies"
+      ],
+      "source_urls": [
+        "https://www.google.com/"
+      ],
+      "summary": "Core Compliance extracted from dossier.",
+      "provenance": "safe_summary",
+      "chunk_meta": {
+        "approx_tokens": 10,
+        "chunk_strategy": "heading_semantic"
+      },
+      "file_hash": "1fa75d0fb2283e057737d666b8a9a24d5caec4dc87167c8887ef537af5f90fcf"
+    },
+    {
+      "path": "kb/50_case_studies_and_proof.md",
+      "title": "Case Studies",
+      "tags": [
+        "proof"
+      ],
+      "source_urls": [
+        "https://www.google.com/"
+      ],
+      "summary": "Core Case Studies extracted from dossier.",
+      "provenance": "safe_summary",
+      "chunk_meta": {
+        "approx_tokens": 14,
+        "chunk_strategy": "heading_semantic"
+      },
+      "file_hash": "97b825087c7ecca376b4da9d60fd222342a43b7f4254682e53848f0d9ff82985"
+    },
+    {
+      "path": "kb/55_contact_next_steps.md",
+      "title": "Contact",
+      "tags": [
+        "next_steps",
+        "locations"
+      ],
+      "source_urls": [
+        "https://www.google.com/"
+      ],
+      "summary": "Core Contact extracted from dossier.",
+      "provenance": "safe_summary",
+      "chunk_meta": {
+        "approx_tokens": 35,
+        "chunk_strategy": "heading_semantic"
+      },
+      "file_hash": "128ae75ad69a9cd2dde042129bae5f6afb9a27b205187ca86e7f6d3feaeb7142"
+    }
+  ],
+  "coverage": {
+    "total_files": 12,
+    "required_topics_met": 12,
+    "missing_topics": []
+  },
+  "build_metadata": {
+    "slug": "google",
+    "generated_at": "2026-01-19T16:05:14.900291",
+    "tool_version": "1.1.0"
+  }
+}

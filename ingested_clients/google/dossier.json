@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0",
+  "client_profile": {
+    "name": "Google",
+    "industry": "General Services",
+    "region": "TBD",
+    "url": "https://www.google.com/"
+  },
+  "target_audience": {
+    "role": "Decision Maker",
+    "sector": "General Services",
+    "pain_points": [
+      "Operational inefficiencies impacting productivity",
+      "Difficulty finding reliable service providers",
+      "High costs for reactive maintenance"
+    ]
+  },
+  "value_proposition": {
+    "core_benefit": "Streamlined general services operations",
+    "metric_proof": "TBD - Requires discovery call",
+    "software_integration": "TBD"
+  },
+  "offer": {
+    "type": "Demo",
+    "details": "Free consultation and needs assessment"
+  }
+}

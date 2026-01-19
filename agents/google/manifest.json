@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0",
+  "client_slug": "google",
+  "generated_at": "2026-01-19T16:05:13.892639Z",
+  "input_dossier_path": "/home/runner/work/X-Agent-Factory/X-Agent-Factory/ingested_clients/google/dossier.json",
+  "input_dossier_sha256": "252298add72fab2cda7998179af0cb4aaaaa625d5a9b6cbb52a4f396f041b5f1",
+  "artifacts": [
+    {
+      "path": "system_prompt.txt",
+      "sha256": "e4663e40c322168bc948f367681f3c22f83cffd8099a4c348715c994ca7e9ccb",
+      "bytes": 1140
+    },
+    {
+      "path": "kb_seed.md",
+      "sha256": "bc4c2f9b7ed53caf1dd63a1304d948acc953563c3e1de711260f4b19e0ee493b",
+      "bytes": 856
+    },
+    {
+      "path": "tavus_pack/README.md",
+      "sha256": "a0118713b2aefd0ccd545e442636194b07500eb51fc2b2096994b2f50f6b0596",
+      "bytes": 379
+    }
+  ],
+  "has_kb_library": true,
+  "kb_stats": {
+    "file_count": 12,
+    "generated_at": "2026-01-19T16:05:14.900826"
+  }
+}
