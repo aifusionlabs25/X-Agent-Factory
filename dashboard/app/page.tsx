@@ -19,6 +19,13 @@ interface FactoryState {
   opportunities: Opportunity[];
 }
 
+interface Agent {
+  slug: string;
+  name: string;
+  deployed: boolean;
+  deployment_date?: string;
+}
+
 interface WorkflowStatus {
   id: number;
   status: string;
@@ -31,6 +38,11 @@ export default function Home() {
   const [deploying, setDeploying] = useState(false);
   const [logs, setLogs] = useState<string[]>([]);
 
+  // Agent list state
+  const [agents, setAgents] = useState<Agent[]>([]);
+  const [selectedAgent, setSelectedAgent] = useState<string>('');
+  const [deployWorkflow, setDeployWorkflow] = useState<WorkflowStatus | null>(null);
+
   // New Prospect state
   const [prospectUrl, setProspectUrl] = useState('');
   const [prospectProcessing, setProspectProcessing] = useState(false);
@@ -40,6 +52,7 @@ export default function Home() {
 
   useEffect(() => {
     fetchState();
+    fetchAgents();
   }, []);
 
   const fetchState = async () => {
@@ -51,6 +64,25 @@ export default function Home() {
     } catch (e) {
       console.error("Failed to fetch factory state", e);
       setLoading(false);
+    }
+  };
+
+  const fetchAgents = async () => {
+    try {
+      const res = await fetch('/api/agents');
+      const data = await res.json();
+      if (data.success && data.agents) {
+        setAgents(data.agents);
+        // Auto-select the most recent undeployed agent if available
+        const pending = data.agents.filter((a: Agent) => !a.deployed);
+        if (pending.length > 0) {
+          setSelectedAgent(pending[0].slug);
+        } else if (data.agents.length > 0) {
+          setSelectedAgent(data.agents[0].slug);
+        }
+      }
+    } catch (e) {
+      console.error('Failed to fetch agents', e);
     }
   };
 
@@ -99,21 +131,35 @@ export default function Home() {
     }
   };
 
-  const handleDeploy = async (agentName: string) => {
+  const handleDeploy = async () => {
+    if (!selectedAgent) {
+      addLog('❌ Please select an agent first');
+      return;
+    }
+
     setDeploying(true);
-    addLog(`Initiating deployment for ${agentName}...`);
+    setDeployWorkflow(null);
+    addLog(`🚀 Dispatching deploy workflow for: ${selectedAgent}...`);
 
     try {
       const res = await fetch('/api/deploy', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ agentName })
+        body: JSON.stringify({ slug: selectedAgent, env: 'staging' })
       });
       const data = await res.json();
 
       if (data.success) {
-        addLog(`✅ Deployment Successful!`);
-        addLog(data.logs);
+        addLog(`✅ Deploy workflow queued!`);
+        if (data.workflow) {
+          setDeployWorkflow(data.workflow);
+          addLog(`📋 Run ID: ${data.workflow.id}`);
+        }
+        // Refresh agents list after a delay
+        setTimeout(() => {
+          fetchAgents();
+          fetchState();
+        }, 5000);
       } else {
         addLog(`❌ Deployment Failed: ${data.error}`);
       }
@@ -192,8 +238,8 @@ export default function Home() {
               onClick={handleNewProspect}
               disabled={prospectProcessing || !prospectUrl.trim()}
               className={`px-6 py-3 rounded-lg font-bold transition-all ${prospectProcessing || !prospectUrl.trim()
-                  ? 'bg-white/30 cursor-not-allowed'
-                  : 'bg-white text-purple-600 hover:bg-purple-100'
+                ? 'bg-white/30 cursor-not-allowed'
+                : 'bg-white text-purple-600 hover:bg-purple-100'
                 }`}
             >
               {prospectProcessing ? '⏳ Processing...' : '🚀 Create Agent'}
@@ -310,13 +356,45 @@ export default function Home() {
             </div>
 
             <div className="mt-8 pt-8 border-t border-slate-700">
+              {/* Agent Selector */}
+              <div className="mb-4">
+                <label className="text-xs font-bold text-slate-400 uppercase block mb-2">Select Agent</label>
+                <select
+                  value={selectedAgent}
+                  onChange={(e) => setSelectedAgent(e.target.value)}
+                  disabled={deploying || agents.length === 0}
+                  className="w-full p-2 rounded bg-slate-800 text-white border border-slate-600 text-sm"
+                >
+                  {agents.length === 0 ? (
+                    <option value="">No agents available</option>
+                  ) : (
+                    agents.map((agent) => (
+                      <option key={agent.slug} value={agent.slug}>
+                        {agent.name || agent.slug} {agent.deployed ? '✅' : '⏳'}
+                      </option>
+                    ))
+                  )}
+                </select>
+              </div>
+
               <button
-                onClick={() => handleDeploy('NewAgent')}
-                disabled={deploying}
-                className={`w-full font-bold py-3 rounded flex items-center justify-center gap-2 transition-colors ${deploying ? 'bg-slate-700 cursor-not-allowed text-slate-400' : 'bg-blue-600 hover:bg-blue-500 text-white'}`}
+                onClick={handleDeploy}
+                disabled={deploying || !selectedAgent}
+                className={`w-full font-bold py-3 rounded flex items-center justify-center gap-2 transition-colors ${deploying || !selectedAgent ? 'bg-slate-700 cursor-not-allowed text-slate-400' : 'bg-blue-600 hover:bg-blue-500 text-white'}`}
               >
                 {deploying ? '🚀 DEPLOYING...' : '🚀 DEPLOY TO STAGING'}
               </button>
+
+              {deployWorkflow && (
+                <a
+                  href={deployWorkflow.html_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block mt-2 text-center text-xs text-blue-400 hover:underline"
+                >
+                  View deploy workflow →
+                </a>
+              )}
             </div>
           </div>
         </section>

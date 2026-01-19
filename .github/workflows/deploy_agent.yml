@@ -1,0 +1,76 @@
+# Deploy Agent Workflow
+# Triggered from Dashboard via workflow_dispatch
+# Deploys built agents to Tavus
+
+name: Deploy Agent
+
+on:
+  workflow_dispatch:
+    inputs:
+      slug:
+        description: "Agent slug (folder name under agents/)"
+        required: true
+      env:
+        description: "Deploy environment"
+        required: true
+        default: "staging"
+
+env:
+  GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+  TAVUS_API_KEY: ${{ secrets.TAVUS_API_KEY }}
+  ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+
+# Explicit permissions for GITHUB_TOKEN
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      - name: Validate agent exists
+        run: |
+          AGENT_PATH="agents/${{ github.event.inputs.slug }}"
+          if [ ! -d "$AGENT_PATH" ]; then
+            echo "❌ Agent not found: $AGENT_PATH"
+            exit 1
+          fi
+          echo "✅ Agent found: $AGENT_PATH"
+
+      - name: Deploy Agent
+        run: |
+          python tools/deployer.py --deploy "agents/${{ github.event.inputs.slug }}" --env "${{ github.event.inputs.env }}"
+
+      - name: Commit deployment record
+        run: |
+          AGENT_PATH="agents/${{ github.event.inputs.slug }}"
+          git config user.name "X Agent Factory Bot"
+          git config user.email "actions@github.com"
+          
+          # Add deployment.json if it exists
+          if [ -f "$AGENT_PATH/deployment.json" ]; then
+            git add "$AGENT_PATH/deployment.json"
+            git commit -m "Deploy: ${{ github.event.inputs.slug }} to ${{ github.event.inputs.env }}" || echo "No changes to commit"
+            git push
+            echo "✅ Deployment record committed"
+          else
+            echo "⚠️ No deployment.json found, skipping commit"
+          fi
