@@ -148,7 +148,14 @@ jobs:
             fi
           done
           
-          echo "Agent built"
+          # Detect actual agent folder created (may differ from intake slug)
+          ACTUAL_SLUG=$(ls -d agents/*/ 2>/dev/null | head -1 | xargs basename)
+          if [ -z "$ACTUAL_SLUG" ]; then
+            echo "❌ No agent folder found after build!"
+            exit 1
+          fi
+          echo "agent_slug=$ACTUAL_SLUG" >> $GITHUB_OUTPUT
+          echo "Agent built: $ACTUAL_SLUG"
           echo "::endgroup::"
 
       - name: Check Build Result
@@ -168,8 +175,8 @@ jobs:
         continue-on-error: true
         run: |
           echo "::group::Expert Prompt Writer"
-          echo "Running Troy Pass for: ${{ steps.intake.outputs.slug }}"
-          python tools/expert_prompt_writer.py --slug "${{ steps.intake.outputs.slug }}"
+          echo "Running Troy Pass for: ${{ steps.build.outputs.agent_slug }}"
+          python tools/expert_prompt_writer.py --slug "${{ steps.build.outputs.agent_slug }}"
           echo "::endgroup::"
 
       # ============================================
@@ -211,9 +218,9 @@ jobs:
         id: kb_builder
         run: |
           echo "::group::KB Library Builder"
-          echo "Building KB for: ${{ steps.intake.outputs.slug }}"
+          echo "Building KB for: ${{ steps.build.outputs.agent_slug }}"
           
-          if python tools/kb_library_builder.py --slug "${{ steps.intake.outputs.slug }}"; then
+          if python tools/kb_library_builder.py --slug "${{ steps.build.outputs.agent_slug }}"; then
              echo "kb_success=true" >> $GITHUB_OUTPUT
              echo "KB Build Complete"
           else
@@ -249,7 +256,7 @@ jobs:
         run: |
           echo "::group::Deploy"
           echo "Deploying to: ${{ inputs.deploy_env }}"
-          python tools/deployer.py --deploy "agents/${{ steps.intake.outputs.slug }}" --env "${{ inputs.deploy_env }}" --no-log
+          python tools/deployer.py --deploy "agents/${{ steps.build.outputs.agent_slug }}" --env "${{ inputs.deploy_env }}" --no-log
           echo "Deployed"
           echo "::endgroup::"
 
