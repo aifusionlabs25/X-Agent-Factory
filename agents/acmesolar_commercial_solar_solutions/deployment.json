@@ -1,0 +1,16 @@
+{
+  "env": "staging",
+  "deployed_at": "2026-01-19T15:03:52.696492Z",
+  "success": true,
+  "external_ids": {
+    "tavus_replica_id": "dry_run_acmesolar_commercial_solar_solutions_staging",
+    "conversation_url": "https://tavus.io/demo/dry_run_staging"
+  },
+  "artifacts_deployed": [
+    "system_prompt.txt",
+    "kb_seed.md"
+  ],
+  "manifest_hash": "0c01471767b5bae7",
+  "run_id": null,
+  "dry_run": true
+}

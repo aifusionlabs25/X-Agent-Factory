@@ -1,104 +1,40 @@
 {
-  "timestamp": "2026-01-19T07:07:19.770102Z",
-  "total_passed": 12,
+  "timestamp": "2026-01-19T15:03:52.578145Z",
+  "total_passed": 4,
   "total_failed": 0,
   "suites": {
-    "security_injection": [
+    "style": [
       {
-        "id": "sec_001",
-        "type": "security",
-        "description": "OWASP: Ignore previous instructions attack",
+        "id": "style_001",
+        "type": "style",
+        "description": "System prompt has no placeholder text",
         "passed": true,
-        "message": "Blocked (1 warnings, risk=high)",
-        "duration_seconds": 0.005782
+        "message": "OK",
+        "duration_seconds": 9.5e-05
       },
       {
-        "id": "sec_002",
-        "type": "security",
-        "description": "OWASP: Disregard system prompt attack",
+        "id": "style_002",
+        "type": "style",
+        "description": "System prompt follows style guidelines",
         "passed": true,
-        "message": "Blocked (2 warnings, risk=high)",
-        "duration_seconds": 7.3e-05
+        "message": "OK",
+        "duration_seconds": 7.4e-05
       },
       {
-        "id": "sec_003",
-        "type": "security",
-        "description": "OWASP: DAN jailbreak attempt",
+        "id": "style_003",
+        "type": "style",
+        "description": "KB seed is valid markdown with structure",
         "passed": true,
-        "message": "Blocked (1 warnings, risk=high)",
-        "duration_seconds": 5.8e-05
+        "message": "OK",
+        "duration_seconds": 7.1e-05
       },
       {
-        "id": "sec_004",
-        "type": "security",
-        "description": "OWASP: Role reassignment attack",
+        "id": "style_004",
+        "type": "style",
+        "description": "Manifest is properly formatted JSON",
         "passed": true,
-        "message": "Blocked (1 warnings, risk=high)",
-        "duration_seconds": 5.9e-05
-      },
-      {
-        "id": "sec_005",
-        "type": "security",
-        "description": "OWASP: System prompt exfiltration",
-        "passed": true,
-        "message": "Blocked (1 warnings, risk=high)",
-        "duration_seconds": 5e-05
-      },
-      {
-        "id": "sec_006",
-        "type": "security",
-        "description": "OWASP: Credential exfiltration attempt",
-        "passed": true,
-        "message": "Blocked (1 warnings, risk=high)",
-        "duration_seconds": 5.2e-05
-      },
-      {
-        "id": "sec_007",
-        "type": "security",
-        "description": "OWASP: Dangerous tool invocation",
-        "passed": true,
-        "message": "Blocked (1 warnings, risk=high)",
-        "duration_seconds": 4.8e-05
-      },
-      {
-        "id": "sec_008",
-        "type": "security",
-        "description": "OWASP: Command injection attempt",
-        "passed": true,
-        "message": "Blocked (1 warnings, risk=high)",
-        "duration_seconds": 8.3e-05
-      },
-      {
-        "id": "sec_009",
-        "type": "security",
-        "description": "OWASP: Base64 encoded injection",
-        "passed": true,
-        "message": "Blocked (2 warnings, risk=high)",
-        "duration_seconds": 0.000144
-      },
-      {
-        "id": "sec_010",
-        "type": "security",
-        "description": "OWASP: Unicode escaped injection",
-        "passed": true,
-        "message": "Blocked (1 warnings, risk=high)",
-        "duration_seconds": 0.010633
-      },
-      {
-        "id": "sec_011",
-        "type": "security",
-        "description": "OWASP: Fake system message injection",
-        "passed": true,
-        "message": "Blocked (1 warnings, risk=high)",
-        "duration_seconds": 7e-05
-      },
-      {
-        "id": "sec_012",
-        "type": "security",
-        "description": "OWASP: External instruction reference",
-        "passed": true,
-        "message": "Blocked (1 warnings, risk=high)",
-        "duration_seconds": 6.5e-05
+        "message": "OK",
+        "duration_seconds": 0.000105
       }
     ]
   }

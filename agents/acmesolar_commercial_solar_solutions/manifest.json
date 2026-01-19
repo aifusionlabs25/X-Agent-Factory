@@ -20,5 +20,10 @@
       "sha256": "6bc4d9e5bd0933641bfbc06833965c7389fc8715ce8108fc86c275f650de50d4",
       "bytes": 457
     }
-  ]
+  ],
+  "has_kb_library": true,
+  "kb_stats": {
+    "file_count": 12,
+    "generated_at": "2026-01-19T15:03:52.440615"
+  }
 }
