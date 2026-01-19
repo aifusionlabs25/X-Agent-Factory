@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import WorkflowProgress from "./components/WorkflowProgress";
 
 interface Opportunity {
   vertical: string;
@@ -24,6 +25,7 @@ interface Agent {
   name: string;
   deployed: boolean;
   deployment_date?: string;
+  expert_mode?: boolean;
 }
 
 interface WorkflowStatus {
@@ -49,7 +51,8 @@ export default function Home() {
   const [prospectStatus, setProspectStatus] = useState<string | null>(null);
   const [workflowInfo, setWorkflowInfo] = useState<WorkflowStatus | null>(null);
   const [deployToStaging, setDeployToStaging] = useState(false);
-
+  const [expertMode, setExpertMode] = useState(false);
+  const [buildKb, setBuildKb] = useState(true);
   useEffect(() => {
     fetchState();
     fetchAgents();
@@ -103,8 +106,10 @@ export default function Home() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           url: prospectUrl,
-          deployEnv: deployToStaging ? 'staging' : 'off'
-        })
+          deployEnv: deployToStaging ? 'staging' : 'off',
+          expertMode: expertMode,
+          buildKb: buildKb,
+        }),
       });
       const data = await res.json();
 
@@ -174,6 +179,25 @@ export default function Home() {
     setLogs(prev => [...prev, `> ${msg}`]);
   };
 
+  const handleOpenFolder = async (slug?: string) => {
+    try {
+      const path = slug ? `agents/${slug}` : 'agents';
+      const res = await fetch('/api/open-folder', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ path }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        addLog(`📂 Opened folder: ${path}`);
+      } else {
+        addLog(`❌ Failed to open folder: ${data.error}`);
+      }
+    } catch (e: any) {
+      addLog(`❌ Error opening folder: ${e.message}`);
+    }
+  };
+
   const formatLastUpdated = (timestamp: string | null) => {
     if (!timestamp) return 'Never';
     const date = new Date(timestamp);
@@ -191,26 +215,46 @@ export default function Home() {
 
   return (
     <div className="p-8">
-      <header className="mb-8 flex justify-between items-end">
+      <header className="mb-8 flex justify-between items-center">
         <div>
-          <h1 className="text-3xl font-bold text-slate-800 tracking-tight">🏗️ X AGENT FACTORY</h1>
-          <p className="text-slate-500 font-mono">
-            SYSTEM STATUS: ONLINE | LAST UPDATED: {formatLastUpdated(state?.last_run_timestamp || null)}
+          <div className="flex items-center gap-3">
+            <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-orange-400 to-red-600 truncate">
+              🏭 X AGENT FACTORY
+            </h1>
+            <span className="bg-slate-800 text-slate-400 text-xs px-2 py-1 rounded border border-slate-700">v2.1</span>
+          </div>
+          <p className="text-xs text-slate-500 font-mono mt-1">
+            SYSTEM STATUS: <span className="text-green-500">ONLINE</span> | LAST UPDATED: {formatLastUpdated(state?.last_run_timestamp || null)}
           </p>
         </div>
-        <div className="flex gap-3">
-          <Link href="/admin/usage" className="bg-slate-700 hover:bg-slate-600 text-white px-4 py-2 rounded-lg font-bold transition-colors text-sm">
-            ⚙️ System Status
+        <div className="flex gap-4">
+          <Link href="/api/state" target="_blank">
+            <button className="bg-slate-800 hover:bg-slate-700 text-slate-300 px-4 py-2 rounded text-sm font-bold transition-colors">
+              ⚙️ System Status
+            </button>
           </Link>
-          <Link href="/growth" className="bg-blue-600 hover:bg-blue-500 text-white px-6 py-2 rounded-lg font-bold transition-colors">
-            🚀 LAUNCH HUNTER
-          </Link>
+          <a href="https://github.com/aifusionlabs25/X-Agent-Factory/actions" target="_blank" rel="noopener noreferrer">
+            <button className="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded text-sm font-bold transition-colors shadow-lg shadow-blue-900/20">
+              🚀 LAUNCH HUNTER
+            </button>
+          </a>
         </div>
       </header>
 
       {/* NEW PROSPECT CARD */}
-      <div className="bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl p-6 mb-8 text-white">
+      <div className="bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl p-6 mb-8 text-white relative">
         <h2 className="text-lg font-bold mb-4">✨ NEW PROSPECT</h2>
+        {/* Progress Indicator Overlay */}
+        {prospectProcessing && (
+          <div className="absolute inset-0 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center z-10 rounded-xl">
+            <div className="text-center">
+              <div className="inline-block w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mb-2"></div>
+              <p className="text-white font-bold animate-pulse">Initializing Agent Pipeline...</p>
+              <p className="text-xs text-slate-400 mt-1">Check Factory Console for logs</p>
+            </div>
+          </div>
+        )}
+
         <div className="flex gap-4 items-end">
           <div className="flex-1">
             <label className="text-xs font-bold uppercase opacity-80 block mb-2">Prospect Website URL</label>
@@ -224,6 +268,26 @@ export default function Home() {
             />
           </div>
           <div className="flex items-center gap-3">
+            <label className="flex items-center gap-2 text-sm cursor-pointer border-r border-white/20 pr-4">
+              <input
+                type="checkbox"
+                checked={expertMode}
+                onChange={(e) => setExpertMode(e.target.checked)}
+                disabled={prospectProcessing}
+                className="w-4 h-4 accent-yellow-400"
+              />
+              <span className="font-bold text-yellow-300">⚡ Expert Mode</span>
+            </label>
+            <label className="flex items-center gap-2 text-sm cursor-pointer border-r border-white/20 pr-4">
+              <input
+                type="checkbox"
+                checked={buildKb}
+                onChange={(e) => setBuildKb(e.target.checked)}
+                disabled={prospectProcessing}
+                className="w-4 h-4 accent-green-400"
+              />
+              <span className="font-bold text-green-300">📚 Build KB</span>
+            </label>
             <label className="flex items-center gap-2 text-sm cursor-pointer">
               <input
                 type="checkbox"
@@ -249,17 +313,22 @@ export default function Home() {
         {prospectStatus && (
           <div className="mt-3 text-sm font-mono opacity-90">
             {prospectStatus}
-            {workflowInfo && (
-              <a
-                href={workflowInfo.html_url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="ml-2 underline hover:no-underline"
-              >
-                View on GitHub →
-              </a>
-            )}
           </div>
+        )}
+        {/* Workflow Progress Bar */}
+        {workflowInfo && (
+          <WorkflowProgress
+            runId={workflowInfo.id.toString()}
+            onComplete={(success) => {
+              if (success) {
+                addLog('✅ Pipeline completed successfully!');
+                fetchAgents();
+                fetchState();
+              } else {
+                addLog('❌ Pipeline failed. Check GitHub for details.');
+              }
+            }}
+          />
         )}
       </div>
 
@@ -370,7 +439,7 @@ export default function Home() {
                   ) : (
                     agents.map((agent) => (
                       <option key={agent.slug} value={agent.slug}>
-                        {agent.name || agent.slug} {agent.deployed ? '✅' : '⏳'}
+                        {agent.expert_mode ? '⚡ ' : ''}{agent.name || agent.slug} {agent.deployed ? '✅' : '⏳'}
                       </option>
                     ))
                   )}
@@ -384,6 +453,22 @@ export default function Home() {
               >
                 {deploying ? '🚀 DEPLOYING...' : '🚀 DEPLOY TO STAGING'}
               </button>
+
+              <div className="flex gap-2 mt-2">
+                <button
+                  onClick={() => handleOpenFolder(selectedAgent)}
+                  disabled={!selectedAgent}
+                  className="flex-1 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs py-2 rounded font-mono transition-colors disabled:opacity-50"
+                >
+                  📂 OPEN AGENT FOLDER
+                </button>
+                <button
+                  onClick={() => handleOpenFolder()}
+                  className="flex-1 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs py-2 rounded font-mono transition-colors border border-slate-700"
+                >
+                  📂 ALL AGENTS
+                </button>
+              </div>
 
               {deployWorkflow && (
                 <a
