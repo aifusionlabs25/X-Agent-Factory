@@ -1,0 +1,17 @@
+{
+  "env": "staging",
+  "deployed_at": "2026-01-19T07:26:56.082785Z",
+  "success": true,
+  "external_ids": {
+    "tavus_replica_id": "dry_run_your_most_trusted_hvac_technicians_larson_air_co_staging",
+    "conversation_url": "https://tavus.io/demo/dry_run_staging"
+  },
+  "artifacts_deployed": [
+    "system_prompt.txt",
+    "kb_seed.md",
+    "tavus_pack/README.md"
+  ],
+  "manifest_hash": "6a195422311d32fe",
+  "run_id": "ce62d93918ae",
+  "dry_run": true
+}
