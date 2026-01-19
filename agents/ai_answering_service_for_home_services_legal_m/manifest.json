@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "client_slug": "ai_answering_service_for_home_services_legal_m",
-  "generated_at": "2026-01-19T18:49:23.559428Z",
+  "generated_at": "2026-01-19T19:26:09.828066Z",
   "input_dossier_path": "/home/runner/work/X-Agent-Factory/X-Agent-Factory/ingested_clients/ai_answering_service_for_home_services_l/dossier.json",
   "input_dossier_sha256": "0ef7dec71175d3ec243702e20266bc621c7499f099fd6e79d370406e381897a3",
   "artifacts": [
@@ -24,6 +24,6 @@
   "has_kb_library": true,
   "kb_stats": {
     "file_count": 12,
-    "generated_at": "2026-01-19T18:49:24.686742"
+    "generated_at": "2026-01-19T19:26:10.498023"
   }
 }
