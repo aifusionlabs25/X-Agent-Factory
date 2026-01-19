@@ -68,9 +68,23 @@ jobs:
           # Add deployment.json if it exists
           if [ -f "$AGENT_PATH/deployment.json" ]; then
             git add "$AGENT_PATH/deployment.json"
-            git commit -m "Deploy: ${{ github.event.inputs.slug }} to ${{ github.event.inputs.env }}" || echo "No changes to commit"
-            git push
-            echo "✅ Deployment record committed"
+            
+            # Check for changes before committing
+            if git diff --staged --quiet; then
+              echo "✅ No changes (already deployed)"
+            else
+              git commit -m "Deploy: ${{ github.event.inputs.slug }} to ${{ github.event.inputs.env }}"
+              git push
+              echo "✅ Deployment record committed"
+            fi
           else
             echo "⚠️ No deployment.json found, skipping commit"
           fi
+
+      - name: Upload Run Logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: deployment-logs-${{ github.run_id }}
+          path: runs/
+          retention-days: 5
