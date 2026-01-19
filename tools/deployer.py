@@ -280,7 +280,7 @@ def main():
     
     # Run with logging
     if RunLogger and not args.no_log:
-        with RunLogger("deployer", disabled=False) as logger:
+        with RunLogger("deployer", {"agent": agent_path.name, "env": args.env}) as logger:
             logger.log(f"Deploying {agent_path.name} to {args.env}")
             result = deployer.deploy(agent_path, args.env, run_id=logger.run_id)
             logger.set_output("deployment", result)
