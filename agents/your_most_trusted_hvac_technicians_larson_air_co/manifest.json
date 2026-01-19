@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "client_slug": "your_most_trusted_hvac_technicians_larson_air_co",
+  "generated_at": "2026-01-19T07:07:19.686405Z",
+  "input_dossier_path": "/home/runner/work/X-Agent-Factory/X-Agent-Factory/ingested_clients/your_most_trusted_hvac_technicians_larso/dossier.json",
+  "input_dossier_sha256": "bbf86287edeff2e8abdc53882b2791e1762f3305f400002affa03b752f22f19a",
+  "artifacts": [
+    {
+      "path": "system_prompt.txt",
+      "sha256": "42a98c41713af0320fede78a9d4b22bc4d32a728d53b59e3e6966e34f13caf42",
+      "bytes": 1190
+    },
+    {
+      "path": "kb_seed.md",
+      "sha256": "720cb0083f68f2950286fc870dc408ff3869494ea8877a928cac6c1c0ef600e9",
+      "bytes": 950
+    },
+    {
+      "path": "tavus_pack/README.md",
+      "sha256": "b67e3987c9df20be52c2d2f32345c593303a4f5b27dbfb45602e802f2e3d45e6",
+      "bytes": 465
+    }
+  ]
+}

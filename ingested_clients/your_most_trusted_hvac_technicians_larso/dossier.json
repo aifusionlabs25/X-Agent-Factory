@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0",
+  "client_profile": {
+    "name": "Your Most Trusted HVAC Technicians | Larson Air Co",
+    "industry": "HVAC",
+    "region": "TBD",
+    "url": "https://larsonairaz.com/why-larson/"
+  },
+  "target_audience": {
+    "role": "Decision Maker",
+    "sector": "HVAC",
+    "pain_points": [
+      "Emergency repairs disrupting daily operations",
+      "High energy costs from inefficient systems",
+      "Difficulty scheduling timely maintenance"
+    ]
+  },
+  "value_proposition": {
+    "core_benefit": "Streamlined hvac operations",
+    "metric_proof": "TBD - Requires discovery call",
+    "software_integration": "TBD"
+  },
+  "offer": {
+    "type": "Demo",
+    "details": "Free consultation and needs assessment"
+  }
+}
