@@ -1,6 +1,6 @@
 {
   "env": "staging",
-  "deployed_at": "2026-01-19T18:35:50.350231Z",
+  "deployed_at": "2026-01-19T18:49:24.856951Z",
   "success": true,
   "external_ids": {
     "tavus_replica_id": "dry_run_ai_answering_service_for_home_services_legal_m_staging",
@@ -11,7 +11,7 @@
     "kb_seed.md",
     "tavus_pack/README.md"
   ],
-  "manifest_hash": "1063e8928df5f34f",
-  "run_id": "a715d916fa7d",
+  "manifest_hash": "57cc134b0091b1c9",
+  "run_id": null,
   "dry_run": true
 }

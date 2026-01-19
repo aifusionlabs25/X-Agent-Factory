@@ -1,6 +1,6 @@
 # Intake Notes: AI Answering Service for Home Services, Legal, & M
 
-**Processed:** 2026-01-19T18:41:44.460981Z
+**Processed:** 2026-01-19T18:49:23.290504Z
 **Source URL:** https://www.zyratalk.com/
 
 ## Inferred Fields (from scrape)
