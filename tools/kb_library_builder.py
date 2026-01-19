@@ -203,27 +203,115 @@ class KBLibraryBuilder:
         logger.info(f"Generated KB file: {filename}")
 
     def build_core_files(self, dossier: Dict):
-        """Generates the required set 00-55 from Dossier."""
+        """Generates the required set 00-55 from Dossier with proper field mapping."""
         logger.info("Building Core KB Files from Dossier...")
+        
+        # Define explicit dossier field mappings to KB topics
+        field_mappings = {
+            "00_overview": {
+                "keys": ["client_profile", "company_profile", "overview", "description", "about"],
+                "nested_keys": ["name", "industry", "region", "url", "description", "mission"],
+                "fallback_text": "Company overview information from prospect intake."
+            },
+            "05_ICP_and_personas": {
+                "keys": ["target_audience", "icp", "persona", "ideal_customer", "audience"],
+                "nested_keys": ["role", "sector", "pain_points", "demographics", "characteristics"],
+                "fallback_text": "Ideal customer profile and target personas."
+            },
+            "10_services_and_offerings": {
+                "keys": ["value_proposition", "services", "offerings", "products", "solutions"],
+                "nested_keys": ["core_benefit", "features", "benefits", "software_integration"],
+                "fallback_text": "Services and offerings information."
+            },
+            "15_pricing_and_packages": {
+                "keys": ["offer", "pricing", "packages", "plans", "costs"],
+                "nested_keys": ["type", "details", "price", "tiers"],
+                "fallback_text": "Pricing and package information."
+            },
+            "20_FAQ": {
+                "keys": ["faq", "questions", "qa"],
+                "nested_keys": [],
+                "fallback_text": "Frequently asked questions."
+            },
+            "25_objections_and_rebuttals": {
+                "keys": ["objections", "rebuttals", "concerns", "pain_points"],
+                "nested_keys": [],
+                "fallback_text": "Common objections and how to address them."
+            },
+            "30_competitors_and_positioning": {
+                "keys": ["competitors", "competition", "positioning", "differentiation"],
+                "nested_keys": [],
+                "fallback_text": "Competitive positioning and differentiation."
+            },
+            "35_integrations_and_stack": {
+                "keys": ["integrations", "tech_stack", "technology", "software"],
+                "nested_keys": ["software_integration"],
+                "fallback_text": "Technology integrations and stack."
+            },
+            "40_process_and_workflows": {
+                "keys": ["process", "workflow", "steps", "methodology"],
+                "nested_keys": [],
+                "fallback_text": "Process and workflow information."
+            },
+            "45_compliance_and_security": {
+                "keys": ["compliance", "security", "privacy", "certifications"],
+                "nested_keys": [],
+                "fallback_text": "Compliance and security information."
+            },
+            "50_case_studies_and_proof": {
+                "keys": ["case_studies", "testimonials", "proof", "metric_proof", "results"],
+                "nested_keys": ["metric_proof"],
+                "fallback_text": "Case studies and proof points."
+            },
+            "55_contact_next_steps": {
+                "keys": ["contact", "next_steps", "cta", "offer"],
+                "nested_keys": ["type", "details"],
+                "fallback_text": "Contact information and next steps."
+            }
+        }
         
         for filename, info in self.file_map.items():
             keywords = info["keywords"]
             canonical_tags = info["tags"]
+            mapping = field_mappings.get(filename, {})
             
-            content_accumulator = []
+            content_parts = []
             
-            # 1. Search in Dossier top-level keys
-            for key, val in dossier.items():
-                if isinstance(val, dict) or isinstance(val, str):
-                    str_val = str(val)
-                    if any(k.lower() in key.lower() for k in keywords):
-                         content_accumulator.append(f"## From {key}\n{str_val}\n")
+            # 1. Search for mapped keys in dossier (both top-level and nested)
+            for key in mapping.get("keys", []):
+                if key in dossier:
+                    val = dossier[key]
+                    content_parts.append(self._format_dossier_value(key, val))
+                    
+            # 2. Also search nested within common top-level structures
+            for top_key in ["client_profile", "target_audience", "value_proposition", "offer"]:
+                if top_key in dossier and isinstance(dossier[top_key], dict):
+                    for nested_key in mapping.get("nested_keys", []):
+                        if nested_key in dossier[top_key]:
+                            nested_val = dossier[top_key][nested_key]
+                            content_parts.append(self._format_dossier_value(nested_key, nested_val))
             
-            # If we found content, write it. If not, write a placeholder (to meet "Required Set")
-            if content_accumulator:
-                final_content = f"# {keywords[0]}\n\n" + "\n".join(content_accumulator)
+            # 3. If nothing found, use the kb_seed.md or source_bundle as fallback
+            if not content_parts:
+                source_bundle = self._try_load_source_bundle()
+                if source_bundle and any(k.lower() in source_bundle.lower() for k in keywords):
+                    # Extract relevant section from source bundle
+                    for keyword in keywords:
+                        patterns = [
+                            rf"#{1,3}\s*{keyword}.*?(?=#{1,3}|\Z)",
+                            rf"\*\*{keyword}\*\*.*?(?=\*\*|\n\n|\Z)",
+                        ]
+                        for pattern in patterns:
+                            match = re.search(pattern, source_bundle, re.IGNORECASE | re.DOTALL)
+                            if match:
+                                content_parts.append(f"## From Website Content\n{match.group(0).strip()}")
+                                break
+            
+            # Build final content
+            if content_parts:
+                final_content = f"# {keywords[0]}\n\n" + "\n\n".join(content_parts)
             else:
-                final_content = f"# {keywords[0]}\n\n*No specific data found in intake dossier for {keywords[0]}.*\n"
+                final_content = f"# {keywords[0]}\n\n*{mapping.get('fallback_text', 'No specific data found in intake dossier.')}*\n"
             
             # Sanitize final content
             final_content = self._sanitize_text(final_content)
@@ -231,10 +319,32 @@ class KBLibraryBuilder:
             self._write_kb_file(f"{filename}.md", final_content, {
                 "title": keywords[0],
                 "tags": canonical_tags,
-                "source_urls": [dossier.get("target_url", "internal")],
+                "source_urls": [dossier.get("target_url", dossier.get("client_profile", {}).get("url", "internal"))],
                 "summary": f"Core {keywords[0]} extracted from dossier.",
-                "provenance": "safe_summary" # Dossier derived is considered safer
+                "provenance": "safe_summary"
             })
+    
+    def _format_dossier_value(self, key: str, value) -> str:
+        """Formats a dossier value for markdown output."""
+        title = key.replace("_", " ").title()
+        if isinstance(value, list):
+            items = "\n".join([f"- {item}" for item in value])
+            return f"## {title}\n{items}"
+        elif isinstance(value, dict):
+            items = "\n".join([f"- **{k.replace('_', ' ').title()}**: {v}" for k, v in value.items()])
+            return f"## {title}\n{items}"
+        else:
+            return f"## {title}\n{value}"
+    
+    def _try_load_source_bundle(self) -> Optional[str]:
+        """Attempts to load the source_bundle.md from ingested_clients."""
+        bundle_path = self.ingested_dir / self.slug / "extracted" / "source_bundle.md"
+        if bundle_path.exists():
+            try:
+                return bundle_path.read_text(encoding='utf-8')
+            except:
+                pass
+        return None
 
     def run_crawler(self, base_url: str):
         """Crawls standard paths to augment KB."""

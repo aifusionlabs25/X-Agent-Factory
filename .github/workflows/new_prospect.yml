@@ -148,8 +148,8 @@ jobs:
             fi
           done
           
-          # Detect actual agent folder created (may differ from intake slug)
-          ACTUAL_SLUG=$(ls -d agents/*/ 2>/dev/null | head -1 | xargs basename)
+          # Detect actual agent folder created (find NEWEST by modification time, not alphabetically)
+          ACTUAL_SLUG=$(ls -dt agents/*/ 2>/dev/null | head -1 | xargs basename)
           if [ -z "$ACTUAL_SLUG" ]; then
             echo "❌ No agent folder found after build!"
             exit 1
