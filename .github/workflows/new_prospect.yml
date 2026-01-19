@@ -219,8 +219,9 @@ jobs:
         run: |
           echo "::group::KB Library Builder"
           echo "Building KB for: ${{ steps.build.outputs.agent_slug }}"
+          echo "Using dossier: ${{ steps.intake.outputs.dossier_path }}"
           
-          if python tools/kb_library_builder.py --slug "${{ steps.build.outputs.agent_slug }}"; then
+          if python tools/kb_library_builder.py --slug "${{ steps.build.outputs.agent_slug }}" --dossier "${{ steps.intake.outputs.dossier_path }}"; then
              echo "kb_success=true" >> $GITHUB_OUTPUT
              echo "KB Build Complete"
           else

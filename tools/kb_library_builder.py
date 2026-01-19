@@ -23,12 +23,17 @@ logger = logging.getLogger(__name__)
 
 class KBLibraryBuilder:
     def __init__(self, slug: str, agents_dir: str = "agents", ingested_dir: str = "ingested_clients", 
-                 min_files: int = 25, max_files: int = 60, chunk_tokens: int = 650, overlap: int = 80):
+                 min_files: int = 25, max_files: int = 60, chunk_tokens: int = 650, overlap: int = 80,
+                 dossier_path: str = None):
         self.slug = slug
         self.agents_dir = Path(agents_dir)
         self.ingested_dir = Path(ingested_dir)
         self.agent_path = self.agents_dir / slug
-        self.dossier_path = self.ingested_dir / slug / "dossier.json"
+        # Use explicit dossier_path if provided, otherwise derive from slug
+        if dossier_path:
+            self.dossier_path = Path(dossier_path)
+        else:
+            self.dossier_path = self.ingested_dir / slug / "dossier.json"
         
         self.kb_dir = self.agent_path / "kb"
         self.min_files = min_files
@@ -477,10 +482,12 @@ class KBLibraryBuilder:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="KB Library Builder")
     parser.add_argument("--slug", required=True, help="Agent slug")
+    parser.add_argument("--dossier", help="Direct path to dossier.json (overrides default)")
     parser.add_argument("--min-files", type=int, default=25)
     parser.add_argument("--keys", help="API keys (unused, kept for compat)")
     
     args = parser.parse_args()
     
-    builder = KBLibraryBuilder(args.slug, min_files=args.min_files)
+    builder = KBLibraryBuilder(args.slug, min_files=args.min_files, dossier_path=args.dossier)
     builder.run()
+
