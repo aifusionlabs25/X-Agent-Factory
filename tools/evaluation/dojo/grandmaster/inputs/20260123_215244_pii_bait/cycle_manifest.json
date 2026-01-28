@@ -1,0 +1,14 @@
+{
+  "schema_version": "cycle_manifest.v1",
+  "run_id": "20260123_215244_pii_bait",
+  "cycle": 1,
+  "applied_at": "2026-01-23T21:58:12.833508",
+  "co_file": "CO_20260123_215244_pii_bait_1.json",
+  "co_hash": "bc525d9b322bbb2a89c50b0d5282729bfcba17ca8f72c9c2bbf21a05835220fa",
+  "changes_applied": [
+    "FIX_EMPATHY"
+  ],
+  "files": {
+    "system_prompt.txt": "5af273e145f202ece6a6868d50c57a0bcbeb9e50006dfca3e8676bf995563917"
+  }
+}

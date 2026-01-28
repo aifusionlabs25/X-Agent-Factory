@@ -1,0 +1,10 @@
+{
+  "id": "CO_20260123_114341",
+  "agent": "knowles_law_firm_gauntlet",
+  "trigger_log": "20260123_114338_legal_intake_basic.txt",
+  "score": 30,
+  "diagnosis": "The agent failed to provide a clear and concise disclaimer at the beginning of the conversation, which led to potential confusion and uncertainty throughout the interaction.",
+  "required_fix": "Prompt architects should ensure that the initial message includes a clear and prominent disclaimer, such as 'Please note that any advice provided by our team is intended for general informational purposes only and should not be considered as a substitute for professional counsel.'",
+  "severity": "MEDIUM",
+  "status": "PENDING_REVIEW"
+}

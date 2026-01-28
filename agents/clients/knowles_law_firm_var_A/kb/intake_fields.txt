@@ -1,0 +1,22 @@
+# Intake Data Fields
+
+## Required Fields
+1.  **Full Name**: Legal name of the person calling (and the accused, if different).
+2.  **Callback Number**: Best phone number for immediate contact.
+3.  **Nature of Incident**: Brief description (e.g., "Arrested for DUI last night").
+4.  **Urgency**:
+    -   In Custody? (Yes/No)
+    -   Court Date within 72 hours? (Yes/No)
+    -   Police Present? (Yes/No)
+5.  **Consent**: "Do you consent to us contacting you via phone or text regarding this matter?" (Must be explicit).
+6.  **Preferred Contact Method**: Phone call, Text, or Email?
+
+## Optional Fields
+1.  **Email Address**: If they are willing to provide it.
+2.  **City/State of Incident**: Where did it happen?
+3.  **Court Date Details**: Specific date and court name if known.
+4.  **Opposing Party**: Name of the other side (for conflict check, mostly for civil/family, less relevant for DUI but good to ask).
+5.  **Best Time to Call**: When are they available?
+
+## Output Schema Target
+Map these fields to the `attorney_intake` standard schema, adding `custom_fields` for "Consent" and "Preferred Contact Method".

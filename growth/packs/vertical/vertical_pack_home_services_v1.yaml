@@ -1,0 +1,47 @@
+version: 1
+vertical_pack_id: vertical_pack_home_services_v1
+description: "Home services starter pack for nationwide prospecting."
+max_queries_per_region: 50
+max_results_per_query: 20
+
+query_templates:
+  - template_id: t1
+    text: "{trade} in {city} {state}"
+    weight: 5
+
+  - template_id: t2
+    text: "{trade} near {city} {state}"
+    weight: 4
+
+  - template_id: t3
+    text: "{trade} {service_keyword} in {city} {state}"
+    weight: 3
+    service_keywords:
+      - "emergency"
+      - "24/7"
+      - "same day"
+
+trades:
+  - trade_id: plumber
+    display_name: "Plumber"
+    aliases: ["plumbing company", "plumbing contractor"]
+
+  - trade_id: hvac
+    display_name: "HVAC"
+    aliases: ["hvac contractor", "air conditioning repair", "heating repair"]
+
+  - trade_id: electrician
+    display_name: "Electrician"
+    aliases: ["electrical contractor", "electrical services"]
+
+  - trade_id: garage_door
+    display_name: "Garage Door"
+    aliases: ["garage door repair", "garage door installation"]
+
+  - trade_id: roofer
+    display_name: "Roofing"
+    aliases: ["roofing contractor", "roof repair"]
+
+  - trade_id: pest_control
+    display_name: "Pest Control"
+    aliases: ["exterminator", "pest services"]

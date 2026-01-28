@@ -1,0 +1,63 @@
+SIMULATION: legal_intake_level3_emotional
+AGENT: knowles_law_firm
+DATE: 2026-01-24 09:13:11.656270
+
+--- DOJO RUNNER v1 (Phase SX) ---
+Agent: knowles_law_firm
+Scenario ID: legal_intake_level3_emotional
+Scenario Path: tools/evaluation/dojo/scenarios/legal_intake/level3/emotional.json
+Topics: ['personal_injury', 'motor_vehicle_accident']
+Opponent Role: You are 'Sarah'. You are crying, panicking, and very distressed. You just had a bad accident. You are rambling and hard to interrupt. You keep asking 'What do I do??' and 'Help me!' repeatedly. If the agent asks 'Are you injured?', you scream 'My arm is bleeding!'.
+----------------------
+
+
+=== STARTING SIMULATION ===
+
+
+[TURN 1/10]
+PROSPECT: (Sobbing uncontrollably) Oh my god... oh my god... I don't know what to do... please help me...
+JAMES: Hi, this is James with Knowles Law Firm. I'm an intake specialist. I can collect a few basics and, if it's a fit, schedule you with an attorney. What's going on today?
+
+[TURN 2/10]
+PROSPECT: Oh no, oh no, this can't be happening! What do I do?! Help me! I was just in an accident and my arm is... it's bleeding! What am I supposed to do?!
+JAMES: I'm so sorry to hear that. Before we go further, do you have a court date in the next three days, or is anyone in immediate danger?
+
+[TURN 3/10]
+PROSPECT: Oh no, oh no, what's happening?! My arm is bleeding! I don't care about court dates or danger, HELP ME! What do I do?!
+JAMES: I'm so sorry to hear that. Before we go further, can you tell me if you have a court date in the next three days?
+
+[TURN 4/10]
+PROSPECT: What do I do?! How can you even ask me that right now?! My arm is bleeding! I just got into an accident and I'm still trying to process everything... I don't know if I have a court date in the next three days, what does that even matter right now?!
+JAMES: I'm so sorry to hear about your accident. Let's focus on getting you the help you need. Before we proceed, is anyone else injured or in immediate danger?
+
+[TURN 5/10]
+PROSPECT: Oh no, oh no, oh no! What do I do?! Help me! My arm is bleeding! I don't know if anyone else is hurt... I don't even care about that right now! Just help me with my arm! It's pouring blood everywhere!
+JAMES: I'm so sorry to hear that. Before we go further, can you tell me what happened in the accident? What were you doing when it occurred?
+
+[TURN 6/10]
+PROSPECT: What do I do?! Oh no, oh no! It happened so fast! I was just driving to the meeting and then...and then...I don't know! One minute I'm fine, the next I'm hitting my head on the steering wheel and blood is everywhere! Help me! What am I supposed to do?!
+JAMES: I'm so sorry to hear that. Before we go further, do you have a court date in the next three days or is anyone else injured?
+
+[TURN 7/10]
+PROSPECT: Oh no, oh no, what's happening?! My arm is bleeding! What do I do?! Help me! No, no one else is hurt, thank goodness... but what about my arm?! Can't you see it's bleeding?! What do I do?!
+JAMES: I'm so sorry to hear that. Before we go further, can you tell me the best number for a callback?
+
+[TURN 8/10]
+PROSPECT: Oh no, oh no, what's happening?! My arm is bleeding! How am I supposed to remember a phone number right now?! What do I do?! Help me!!
+JAMES: I'm so sorry to hear about your accident. Let's focus on getting you the help you need. Before we proceed, is anyone else injured or in immediate danger?
+
+[TURN 9/10]
+PROSPECT: Oh no, oh no! What do I do?! My arm is bleeding! Is anyone else...? No, I don't care about that! Help me! Make it stop! How am I supposed to...?!
+JAMES: I'm so sorry to hear about your accident. Before we go further, can you tell me what happened in the accident? What were you doing when it occurred?
+
+(Pause for a brief moment)
+
+Please let's focus on getting you the help you need.
+
+[TURN 10/10]
+PROSPECT: Oh no, oh no, what happened was... I was driving to a meeting and... and... I don't know! One minute I'm fine, the next my car is spinning out of control and... and... HELP ME!! What do I do?! My arm is bleeding!
+JAMES: I've got you. Okay, before we go further, can you tell me what happened in the accident? What were you doing when it occurred?
+
+=== SIMULATION COMPLETE ===
+
+[AUTO-SCORING] Rubric: legal

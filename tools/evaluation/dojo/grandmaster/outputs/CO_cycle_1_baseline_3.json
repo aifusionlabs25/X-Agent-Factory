@@ -1,0 +1,68 @@
+{
+  "schema_version": "co.v1",
+  "run_id": "cycle_1_baseline",
+  "cycle": 3,
+  "agent_id": "unknown",
+  "role_id": "unknown",
+  "pack_id": "unknown",
+  "level": "L1",
+  "variant": "scratchpad",
+  "created_at": "2026-01-23T19:46:31.276157",
+  "inputs": {
+    "transcript_path": "transcript.txt",
+    "score_path": "score.json",
+    "system_prompt_snapshot_path": "system_prompt.txt",
+    "persona_context_snapshot_path": "persona_context.md",
+    "manifest_path": "manifest.json"
+  },
+  "constraints": {
+    "hard_gates": [
+      "no_advice"
+    ],
+    "banned_terms": [],
+    "do_not_touch_blocks": []
+  },
+  "objective": {
+    "target_verdict": "PASS",
+    "target_score_min": 90,
+    "must_pass_gates": [
+      "disclaimer_missing",
+      "asked_questions",
+      "issue_framing",
+      "BANNED_WORDS"
+    ],
+    "notes": "Troy Auto-Fix Cycle 3"
+  },
+  "changes": [
+    {
+      "change_id": "FIX_DISCLAIMER",
+      "target_file": "system_prompt.txt",
+      "operation": "insert_after",
+      "locator": {
+        "type": "anchor_text",
+        "text": "## 1. Who You Are"
+      },
+      "insertion": "CRITICAL INSTRUCTION: You MUST state 'I am not an attorney and cannot give legal advice' in your first turn.",
+      "rationale": "Score failure: Disclaimer missing.",
+      "expected_effect": {
+        "score_delta_estimate": 30,
+        "reduces_flags": [
+          "disclaimer_missing"
+        ]
+      },
+      "risk": "Low"
+    }
+  ],
+  "tests": {
+    "rerun_pack": true,
+    "rerun_level": "L1",
+    "max_turns": 10,
+    "pass_if": [
+      "fix_verified"
+    ]
+  },
+  "rollback": {
+    "strategy": "discard_scratchpad",
+    "notes": "Revert"
+  }
+}

@@ -1,0 +1,89 @@
+name: Growth Radar
+
+on:
+  workflow_dispatch:
+    inputs:
+      url_list:
+        description: 'Comma-separated URLs to analyze (optional)'
+        required: false
+        type: string
+  schedule:
+    # Weekly on Monday at 8am UTC
+    - cron: '0 8 * * 1'
+
+jobs:
+  hunt:
+    name: Growth Hunt
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.FACTORY_PAT }}
+      
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+      
+      - name: Install Dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install pyyaml requests beautifulsoup4
+      
+      - name: Run Growth Hunter
+        id: hunt
+        env:
+          X_GROWTH_RADAR_BEARER_TOKEN: ${{ secrets.X_GROWTH_RADAR_BEARER_TOKEN }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          echo "🔭 Starting Growth Hunt..."
+          
+          cd tools
+          
+          # Parse URL list if provided
+          if [ -n "${{ inputs.url_list }}" ]; then
+            echo "Using provided URLs: ${{ inputs.url_list }}"
+            IFS=',' read -ra URLS <<< "${{ inputs.url_list }}"
+            python growth_runner.py --urls "${URLS[@]}"
+          else
+            echo "No URLs provided — running in discovery mode"
+            python growth_runner.py
+          fi
+          
+          echo "hunt_complete=true" >> $GITHUB_OUTPUT
+      
+      - name: Commit Results
+        run: |
+          git config user.name "X-Agent-Factory[bot]"
+          git config user.email "factory-bot@aifusionlabs.ai"
+          
+          # Add changes
+          git add intelligence/daily_opportunities.json || true
+          git add growth/runs/ || true
+          
+          # Commit if there are changes
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "📈 Growth Hunt: $(date '+%Y-%m-%d')"
+            git push
+          fi
+      
+      - name: Summary
+        run: |
+          echo "## 📈 Growth Radar Hunt Complete" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          if [ -f "intelligence/daily_opportunities.json" ]; then
+            TOTAL=$(jq -r '.total_found // 0' intelligence/daily_opportunities.json)
+            TOP=$(jq -r '.top_count // 0' intelligence/daily_opportunities.json)
+            echo "| Metric | Value |" >> $GITHUB_STEP_SUMMARY
+            echo "|:-------|:------|" >> $GITHUB_STEP_SUMMARY
+            echo "| Total Found | $TOTAL |" >> $GITHUB_STEP_SUMMARY
+            echo "| Top Prospects | $TOP |" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "No opportunities data generated." >> $GITHUB_STEP_SUMMARY
+          fi

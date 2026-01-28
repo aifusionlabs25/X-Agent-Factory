@@ -1,0 +1,27 @@
+{
+  "status": "success",
+  "site_type": "UNKNOWN",
+  "site_reason": "insufficient_signals",
+  "persona_type": "UNKNOWN",
+  "persona_reasons": [],
+  "icp_lane": "legal_office_intake",
+  "icp_boost": 2,
+  "final_url": "https://accidentlawyersarizona.com/",
+  "status_code": 200,
+  "page_title": "Experienced Personal Injury Attorney | Law Offices of William W. Black, P.C.",
+  "has_phone": true,
+  "has_email": false,
+  "has_contact_page": false,
+  "has_address": true,
+  "industry_hint": "Legal",
+  "location_hint": "Arizona",
+  "services_detected": [],
+  "evidence_signals": [
+    "phone_found",
+    "address_found",
+    "industry:Legal",
+    "icp:legal_office_intake"
+  ],
+  "penalties": [],
+  "enriched_at": "2026-01-21T17:59:59.859433"
+}

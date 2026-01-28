@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "site_type": "VENDOR",
+  "site_reason": "vendor_markers:8",
+  "final_url": "https://blueoceanapplications.com/",
+  "status_code": 200,
+  "page_title": "Blue Ocean Applications - AI-Powered Automation & Mobile Apps",
+  "has_phone": true,
+  "has_email": true,
+  "has_contact_page": true,
+  "industry_hint": null,
+  "location_hint": null,
+  "services_detected": [
+    "24/7"
+  ],
+  "business_keywords_found": [],
+  "enriched_at": "2026-01-21T08:28:57.217907"
+}

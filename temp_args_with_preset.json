@@ -1,0 +1,22 @@
+{
+    "clientName": "Knowles Law Firm",
+    "clientSlug": "knowles_law_firm",
+    "domain": "legal",
+    "region": "US",
+    "agentName": "James",
+    "roleTitle": "Intake Specialist",
+    "reasoning_profile": {
+        "preset_id": "legal_intake_v1",
+        "mode_stack": [
+            "hermeneutic",
+            "legal",
+            "compliance"
+        ],
+        "artifacts_expected": [
+            "referral_decision"
+        ],
+        "failure_checks": [
+            "unauthorized_advice"
+        ]
+    }
+}

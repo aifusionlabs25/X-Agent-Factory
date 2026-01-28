@@ -1,0 +1,14 @@
+[
+  {
+    "file": "test_batch.csv",
+    "total": 1,
+    "matched_id": 1,
+    "matched_domain": 0,
+    "matched_phone": 0,
+    "matched_fuzzy": 0,
+    "unmatched": 0,
+    "outcomes": {
+      "won": 1
+    }
+  }
+]

@@ -1,0 +1,23 @@
+{
+  "status": "success",
+  "site_type": "BUSINESS",
+  "site_reason": "nav_indicators:4",
+  "final_url": "https://plumbingofdallas.com/",
+  "status_code": 200,
+  "page_title": "Dallas Plumbing Company - #1 Professional Plumbings Repair Services",
+  "has_phone": true,
+  "has_email": true,
+  "has_contact_page": true,
+  "industry_hint": "Plumbing",
+  "location_hint": null,
+  "services_detected": [
+    "repair",
+    "emergency service",
+    "commercial",
+    "24/7"
+  ],
+  "business_keywords_found": [
+    "professional"
+  ],
+  "enriched_at": "2026-01-21T08:28:56.718544"
+}

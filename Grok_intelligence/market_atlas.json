@@ -1078,11 +1078,5 @@
         "deal_size_mrr": 399,
         "complexity": 2,
         "outreach_hook": "Your sharpener just saved 67 chef knives this month."
-    },
-    {
-        "category": "Training & Onboarding",
-        "vertical": "Bakeries",
-        "sub_vertical": "Artisan & Retail",
-        "use_case": "Virtual baker trainer teaches dough handling and lamination",
-        "pain_point": "New bakers ruin $500 of butter first week",
-        "buyer_persona": "Head Baker
+    }
+]

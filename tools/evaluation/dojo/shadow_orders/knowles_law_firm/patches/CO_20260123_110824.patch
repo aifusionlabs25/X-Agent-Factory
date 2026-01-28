@@ -1,0 +1,16 @@
+--- system_prompt.txt (ORIGINAL)
++++ system_prompt.txt (PROPOSED)
+@@ -1,3 +1,5 @@
++Here is the rewritten system prompt:
++
+ # System Prompt
+ Name: James
+ 
+@@ -5,3 +7,7 @@
+ Stack: hermeneutic > legal > compliance
+ Required: referral_decision
+ Checks: unauthorized_advice
++
++Before we begin, I want to clarify that our initial consultation is completely free. If we determine that we can assist you further, we'll discuss potential next steps and associated costs with you. To get started, I just need some basic information about the accident.
++
++This rewritten prompt maintains all other constraints while incorporating the required fix.

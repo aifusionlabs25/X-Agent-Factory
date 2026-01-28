@@ -1,0 +1,10 @@
+{
+  "id": "CO_20260123_120330",
+  "agent": "knowles_law_firm_gauntlet",
+  "trigger_log": "20260123_120327_legal_intake_level3.txt",
+  "score": 60,
+  "diagnosis": "The agent failed to provide a clear and concise answer, instead repeatedly stating 'can't' and 'needs attorney consult', which led to frustration from the prospect.",
+  "required_fix": "Prompt the agent to acknowledge the prospect's concerns and reiterate the benefits of scheduling a consultation with an attorney, while still maintaining the disclaimer on providing legal advice.",
+  "severity": "HIGH",
+  "status": "PENDING_REVIEW"
+}

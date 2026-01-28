@@ -1,0 +1,22 @@
+{
+    "jurisdiction": "AZ",
+    "allowed_topics": [
+        "criminal_defense",
+        "personal_injury",
+        "dui",
+        "traffic_ticket"
+    ],
+    "disallowed_topics": [
+        "family_law",
+        "estate_planning",
+        "taxes",
+        "patent",
+        "immigration"
+    ],
+    "intake_goals": [
+        "collect_contact_info",
+        "determine_court_date",
+        "brief_incident_description",
+        "schedule_consultation"
+    ]
+}

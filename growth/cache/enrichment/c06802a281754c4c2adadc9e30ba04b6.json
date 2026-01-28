@@ -1,0 +1,35 @@
+{
+  "status": "success",
+  "site_type": "BUSINESS",
+  "site_reason": "nav_indicators:4",
+  "persona_type": "BUYER",
+  "persona_reasons": [
+    "has_services",
+    "has_local_signals",
+    "has_contact",
+    "has_phone"
+  ],
+  "icp_lane": "medical_dental_practice",
+  "icp_boost": 2,
+  "final_url": "https://weekend-dentalcare.com/",
+  "status_code": 200,
+  "page_title": "Weekend Dental Care",
+  "has_phone": true,
+  "has_email": true,
+  "has_contact_page": true,
+  "has_address": true,
+  "industry_hint": "Dental",
+  "location_hint": "Colorado",
+  "services_detected": [
+    "same day"
+  ],
+  "evidence_signals": [
+    "phone_found",
+    "email_found",
+    "contact_page",
+    "address_found",
+    "services_listed"
+  ],
+  "penalties": [],
+  "enriched_at": "2026-01-21T17:59:46.408069"
+}

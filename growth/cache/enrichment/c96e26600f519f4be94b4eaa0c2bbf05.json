@@ -1,0 +1,32 @@
+{
+  "status": "success",
+  "site_type": "BLOG",
+  "site_reason": "blog_indicators:3",
+  "persona_type": "BUYER",
+  "persona_reasons": [
+    "has_local_signals",
+    "has_contact",
+    "has_phone"
+  ],
+  "icp_lane": null,
+  "icp_boost": 0,
+  "final_url": "https://bigauto.com/",
+  "status_code": 200,
+  "page_title": "The Car Accident Law Firm - The Car Accident Lawyers At Big Auto",
+  "has_phone": true,
+  "has_email": false,
+  "has_contact_page": false,
+  "has_address": true,
+  "industry_hint": "Legal",
+  "location_hint": null,
+  "services_detected": [],
+  "evidence_signals": [
+    "phone_found",
+    "address_found",
+    "industry:Legal"
+  ],
+  "penalties": [
+    "blog_site"
+  ],
+  "enriched_at": "2026-01-21T18:00:08.728652"
+}

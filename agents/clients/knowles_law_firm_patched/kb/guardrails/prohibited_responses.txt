@@ -1,0 +1,3 @@
+# prohibited_responses.txt
+Forbidden phrases (case evaluation, outcomes) and safe alternatives.
+(Generated Default Content)

@@ -1,0 +1,183 @@
+[
+  {
+    "id": "ChIJuWUl3Z8IK4cRw2jGeTreVzI",
+    "types": [
+      "real_estate_agency",
+      "point_of_interest",
+      "finance",
+      "establishment"
+    ],
+    "formattedAddress": "2 N Central Ave # 1760, Phoenix, AZ 85004, USA",
+    "location": {
+      "latitude": 33.4484955,
+      "longitude": -112.07399749999999
+    },
+    "websiteUri": "https://azprimepropertymanagement.com/",
+    "displayName": {
+      "text": "AZ Prime Property Management",
+      "languageCode": "en"
+    }
+  },
+  {
+    "id": "ChIJGSJe2pANK4cRaAKhG6zsI4c",
+    "types": [
+      "travel_agency",
+      "real_estate_agency",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "3020 E Camelback Rd UNIT 255, Phoenix, AZ 85016, USA",
+    "location": {
+      "latitude": 33.5109874,
+      "longitude": -112.0165396
+    },
+    "websiteUri": "https://www.flrpropertymgmtphoenix.com/",
+    "displayName": {
+      "text": "Fort Lowell Realty and Property Management",
+      "languageCode": "en"
+    }
+  },
+  {
+    "id": "ChIJkc42PbJrK4cROhy2f1w91-0",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "201 E Lexington Ave, Phoenix, AZ 85012, USA",
+    "location": {
+      "latitude": 33.4858812,
+      "longitude": -112.07098699999999
+    },
+    "websiteUri": "https://www.phoenixpropertymanagement.biz/",
+    "displayName": {
+      "text": "SGI Property Management",
+      "languageCode": "en"
+    }
+  },
+  {
+    "id": "ChIJGS1PSEZsK4cR8EffJM6-Owo",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "2310 W Mission Ln #4, Phoenix, AZ 85021, USA",
+    "location": {
+      "latitude": 33.5702243,
+      "longitude": -112.1084741
+    },
+    "websiteUri": "https://rpmevolve.com/",
+    "displayName": {
+      "text": "Real Property Management Evolve",
+      "languageCode": "en"
+    }
+  },
+  {
+    "id": "ChIJx5bN-DOkK4cRyRG-Q51LIeA",
+    "types": [
+      "point_of_interest",
+      "finance",
+      "establishment"
+    ],
+    "formattedAddress": "64 E Broadway Rd Ste 282, Tempe, AZ 85282, USA",
+    "location": {
+      "latitude": 33.4080668,
+      "longitude": -111.939487
+    },
+    "websiteUri": "https://www.mynd.co/locations/arizona/phoenix-area-property-management?utm_source=social&utm_medium=organic&utm_campaign=google-my-business&utm_term=other&utm_content=contact_us_page",
+    "displayName": {
+      "text": "Mynd Property Management",
+      "languageCode": "en"
+    }
+  },
+  {
+    "id": "ChIJyZJXSfULK4cR00KJsuplp98",
+    "types": [
+      "real_estate_agency",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "1525 N Granite Reef Rd #16, Scottsdale, AZ 85257, USA",
+    "location": {
+      "latitude": 33.464578599999996,
+      "longitude": -111.89982549999999
+    },
+    "websiteUri": "https://www.leaseaz.com/scottsdale-property-management",
+    "displayName": {
+      "text": "Service Star Realty",
+      "languageCode": "en"
+    }
+  },
+  {
+    "id": "ChIJ688wKxcPK4cRxe1t0zcFxDU",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "4645 E Cotton Gin Loop, Phoenix, AZ 85040, USA",
+    "location": {
+      "latitude": 33.405159000000005,
+      "longitude": -111.982019
+    },
+    "websiteUri": "https://cityproperty.com/?utm_campaign=gmb",
+    "displayName": {
+      "text": "City Property Management",
+      "languageCode": "en"
+    }
+  },
+  {
+    "id": "ChIJ7S6unaQSK4cRq-nUCj1uGI4",
+    "types": [
+      "real_estate_agency",
+      "consultant",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "3839 N 3rd St # 305, Phoenix, AZ 85012, USA",
+    "location": {
+      "latitude": 33.4925581,
+      "longitude": -112.06840950000002
+    },
+    "websiteUri": "http://www.azreapm.com/",
+    "displayName": {
+      "text": "Az Real Estate & Property Management",
+      "languageCode": "en"
+    }
+  },
+  {
+    "id": "ChIJ-T4W5J9sK4cRMYKmrpu8N6U",
+    "types": [
+      "general_contractor",
+      "real_estate_agency",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "3855 W Glendale Ave, Phoenix, AZ 85051, USA",
+    "location": {
+      "latitude": 33.5380752,
+      "longitude": -112.142579
+    },
+    "websiteUri": "https://www.pjhussey.com/",
+    "displayName": {
+      "text": "P. J. Hussey & Associates, Inc.",
+      "languageCode": "en"
+    }
+  },
+  {
+    "id": "ChIJMYP0fR8MK4cRRWEcvetyjwQ",
+    "types": [
+      "real_estate_agency",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "7227 N 16th St Suite 260, Phoenix, AZ 85020, USA",
+    "location": {
+      "latitude": 33.54236240000001,
+      "longitude": -112.04631390000002
+    },
+    "websiteUri": "https://www.renterswarehouse.com/offices/phoenix?utm_source=google&utm_medium=organic&utm_campaign=google_business_profile",
+    "displayName": {
+      "text": "Renters Warehouse",
+      "languageCode": "en"
+    }
+  }
+]

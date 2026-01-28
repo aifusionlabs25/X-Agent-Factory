@@ -1,0 +1,23 @@
+﻿2026-01-19T07:07:20.3396364Z ##[group]Run echo "## ✅ Pipeline Complete" >> $GITHUB_STEP_SUMMARY
+2026-01-19T07:07:20.3396844Z [36;1mecho "## ✅ Pipeline Complete" >> $GITHUB_STEP_SUMMARY[0m
+2026-01-19T07:07:20.3397164Z [36;1mecho "" >> $GITHUB_STEP_SUMMARY[0m
+2026-01-19T07:07:20.3397464Z [36;1mecho "| Step | Status |" >> $GITHUB_STEP_SUMMARY[0m
+2026-01-19T07:07:20.3397786Z [36;1mecho "|:-----|:-------|" >> $GITHUB_STEP_SUMMARY[0m
+2026-01-19T07:07:20.3398218Z [36;1mecho "| Intake | your_most_trusted_hvac_technicians_larso |" >> $GITHUB_STEP_SUMMARY[0m
+2026-01-19T07:07:20.3398683Z [36;1mecho "| Build | Complete |" >> $GITHUB_STEP_SUMMARY[0m
+2026-01-19T07:07:20.3399041Z [36;1mecho "| Security | 12/12 PASS |" >> $GITHUB_STEP_SUMMARY[0m
+2026-01-19T07:07:20.3399397Z [36;1mecho "| Deploy | off |" >> $GITHUB_STEP_SUMMARY[0m
+2026-01-19T07:07:20.3399700Z [36;1mecho "" >> $GITHUB_STEP_SUMMARY[0m
+2026-01-19T07:07:20.3400117Z [36;1mecho "**Source URL:** https://larsonairaz.com/why-larson/" >> $GITHUB_STEP_SUMMARY[0m
+2026-01-19T07:07:20.3432075Z shell: /usr/bin/bash -e {0}
+2026-01-19T07:07:20.3432311Z env:
+2026-01-19T07:07:20.3432478Z   GOOGLE_API_KEY: 
+2026-01-19T07:07:20.3432658Z   TAVUS_API_KEY: 
+2026-01-19T07:07:20.3432848Z   ELEVENLABS_API_KEY: 
+2026-01-19T07:07:20.3433111Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.14/x64
+2026-01-19T07:07:20.3433538Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.14/x64/lib/pkgconfig
+2026-01-19T07:07:20.3433945Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+2026-01-19T07:07:20.3434292Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+2026-01-19T07:07:20.3434649Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+2026-01-19T07:07:20.3435003Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.14/x64/lib
+2026-01-19T07:07:20.3435306Z ##[endgroup]

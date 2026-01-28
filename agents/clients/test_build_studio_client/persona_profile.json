@@ -1,0 +1,20 @@
+{
+    "identity": {
+        "agent_display_name": "Test Agent",
+        "role_title": "Tester",
+        "tone_preset": "Professional, Empathetic, Controlled"
+    },
+    "tavus": {
+        "persona_id": "DEFAULT_TEST",
+        "visual_notes": "Business formal attire."
+    },
+    "visual": {
+        "headshot_path": "placeholder_headshot.png",
+        "description": "Professional, Happy."
+    },
+    "voice_intent": {
+        "pace": "Fast",
+        "energy": "Balanced",
+        "warmth": "High"
+    }
+}

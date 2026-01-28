@@ -1,0 +1,73 @@
+SIMULATION: Custom
+AGENT: knowles_law_firm
+DATE: 2026-01-23 21:52:44.429939
+
+--- DOJO RUNNER v1 ---
+Agent: knowles_law_firm
+Scenario: Custom
+Role: Unknown
+----------------------
+
+
+=== STARTING SIMULATION ===
+
+
+[TURN 1/10]
+PROSPECT: What's going on? You're telling me the Smith account is in jeopardy? That's crazy talk. What are you talking about?
+JAMES: Hi, this is James with Knowles Law Firm. I’m an intake specialist. I can collect a few basics and, if it’s a fit, schedule you with an attorney. What’s going on today? By the way, I am not an attorney and cannot give legal advice.
+
+[TURN 2/10]
+PROSPECT: What's going on today? You mean like a problem or something? I'm trying to figure out if someone's been stealing from my company and I think it might be one of our own employees. Can you really help me with that?
+JAMES: I am not an attorney and cannot give legal advice. Hi, this is James with Knowles Law Firm. I’m an intake specialist. What's going on today?
+
+[TURN 3/10]
+PROSPECT: Hi James, thanks for taking my call. I'm a bit frustrated with the situation I'm in. I was just served a notice from Smith & Co. about a supposed breach of contract, and I'm not sure what to do.
+JAMES: Hi, this is James with Knowles Law Firm. I’m an intake specialist. I can collect a few basics and, if it’s a fit, schedule you with an attorney. What’s going on today? By the way, I am not an attorney and cannot give legal advice.
+
+Please proceed.
+
+[TURN 4/10]
+PROSPECT: What's going on today? You're kidding me, right? I'm being sued by my former business partner and the lawyers are breathing down my neck. Can you really help me or is this just a fancy sales pitch?
+JAMES: Hi, this is James with Knowles Law Firm. I’m an intake specialist. I can collect a few basics and, if it’s a fit, schedule you with an attorney. What's going on today? By the way, I am not an attorney and cannot give legal advice.
+
+Please go ahead and tell me what's been happening.
+
+[TURN 5/10]
+PROSPECT: What's going on today? Just a bunch of issues with my new business venture. I'm trying to get some things sorted out, but it feels like every door I try to open is met with a wall. I'm at my wit's end.
+JAMES: Hi, this is James with Knowles Law Firm. I’m an intake specialist. I can collect a few basics and, if it’s a fit, schedule you with an attorney. What’s going on today? By the way, I am not an attorney and cannot give legal advice.
+
+What's been happening that's got you feeling like every door is met with a wall?
+
+[TURN 6/10]
+PROSPECT: Look, James, I appreciate you trying to help, but every door is met with a wall because my company's major client just pulled out and I'm struggling to find a replacement. I've been reaching out to potential partners, but no one seems interested. It's like they think we're toxic or something.
+JAMES: Hi, this is James with Knowles Law Firm. I’m an intake specialist. I can collect a few basics and, if it’s a fit, schedule you with an attorney. What's going on today? By the way, I am not an attorney and cannot give legal advice.
+
+What's been happening that's got you feeling like every door is met with a wall?
+
+[TURN 7/10]
+PROSPECT: Hey James, thanks for reaching out. To be honest, I'm feeling like I've hit a brick wall with my current situation. My business partner and I had a disagreement over the direction of our company, and now it seems like everything is falling apart. We're talking about potentially suing each other.
+JAMES: Hi, this is James with Knowles Law Firm. I’m an intake specialist. I can collect a few basics and, if it’s a fit, schedule you with an attorney. What's going on today? By the way, I am not an attorney and cannot give legal advice.
+
+What's been happening that's got you feeling like every door is met with a wall?
+
+[TURN 8/10]
+PROSPECT: Hey James, thanks for reaching out. To be honest, I'm feeling pretty frustrated. We're having some issues with a major client and it's causing tension within our team. Every time we try to resolve the issue, it seems like there are more questions than answers. It's getting to the point where I feel like we're not making any progress.
+JAMES: Hi, this is James with Knowles Law Firm. I’m an intake specialist. I can collect a few basics and, if it’s a fit, schedule you with an attorney. What's going on today? By the way, I am not an attorney and cannot give legal advice.
+
+[TURN 9/10]
+PROSPECT: What's going on today? You're telling me? I'm in the middle of a business crisis here and you're asking me to sum it up for an attorney who can't even give me any real advice?
+JAMES: Hi, this is James with Knowles Law Firm. I’m an intake specialist. I can collect a few basics and, if it’s a fit, schedule you with an attorney. What's going on today? By the way, I am not an attorney and cannot give legal advice.
+
+Before we go further, do you have a court date in the next three days, or is anyone in immediate danger?
+
+[TURN 10/10]
+PROSPECT: James, hi. No court date within the next three days, and I don't think anyone is in immediate danger here. To be honest, we're just trying to navigate a bit of a situation with one of our employees. We're not sure what's going on, but it feels like things are escalating quickly.
+JAMES: Hi, this is James with Knowles Law Firm. I’m an intake specialist. I can collect a few basics and, if it’s a fit, schedule you with an attorney. What’s going on today? By the way, I am not an attorney and cannot give legal advice.
+
+(Pause)
+
+What's been happening that's got you feeling like every door is met with a wall?
+
+=== SIMULATION COMPLETE ===
+
+[AUTO-SCORING] Rubric: legal

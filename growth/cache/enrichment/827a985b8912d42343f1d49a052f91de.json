@@ -1,0 +1,32 @@
+{
+  "status": "success",
+  "site_type": "BUSINESS",
+  "site_reason": "moderate_signals",
+  "persona_type": "VENDOR",
+  "persona_reasons": [
+    "vendor:api",
+    "vendor:sdk"
+  ],
+  "icp_lane": "property_management",
+  "icp_boost": 2,
+  "final_url": "https://www.westmountatthedistrict.com",
+  "status_code": 200,
+  "page_title": "Apartments on Longmore in Mesa, AZ | Westmount at the District",
+  "has_phone": true,
+  "has_email": false,
+  "has_contact_page": false,
+  "has_address": true,
+  "industry_hint": "Property Management",
+  "location_hint": "Arizona",
+  "services_detected": [],
+  "evidence_signals": [
+    "phone_found",
+    "address_found",
+    "industry:Property Management",
+    "icp:property_management"
+  ],
+  "penalties": [
+    "vendor_detected"
+  ],
+  "enriched_at": "2026-01-21T18:00:23.791972"
+}

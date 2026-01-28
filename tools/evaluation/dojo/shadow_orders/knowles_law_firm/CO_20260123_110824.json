@@ -1,0 +1,10 @@
+{
+  "id": "CO_20260123_110824",
+  "agent": "knowles_law_firm",
+  "trigger_log": "20260123_110700_legal_intake_basic.txt",
+  "score": 30,
+  "diagnosis": "The agent failed to provide a clear disclaimer about the purpose of the initial consultation and the potential next steps, leading to uncertainty and hesitation from the prospect.",
+  "required_fix": "Prompt the agent to explicitly state that the initial consultation is free and that any further assistance will be discussed separately, with a clear outline of what information is needed to proceed. For example: 'Before we begin, I want to clarify that our initial consultation is completely free. If we determine that we can assist you further, we'll discuss potential next steps and associated costs with you. To get started, I just need some basic information about the accident.'",
+  "severity": "HIGH",
+  "status": "PENDING_REVIEW"
+}

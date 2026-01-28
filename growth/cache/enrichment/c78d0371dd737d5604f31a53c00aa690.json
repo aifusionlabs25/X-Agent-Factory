@@ -1,0 +1,35 @@
+{
+  "status": "success",
+  "site_type": "BUSINESS",
+  "site_reason": "nav_indicators:3",
+  "persona_type": "VENDOR",
+  "persona_reasons": [
+    "vendor:platform",
+    "vendor:api"
+  ],
+  "icp_lane": "legal_office_intake",
+  "icp_boost": 2,
+  "final_url": "https://www.bcattorneys.com/",
+  "status_code": 200,
+  "page_title": "Welcome to Burch & Cracchiolo, P.A. | Attorneys At Law, Phoenix, Arizona",
+  "has_phone": true,
+  "has_email": true,
+  "has_contact_page": true,
+  "has_address": true,
+  "industry_hint": "Legal",
+  "location_hint": "Arizona",
+  "services_detected": [
+    "commercial"
+  ],
+  "evidence_signals": [
+    "phone_found",
+    "email_found",
+    "contact_page",
+    "address_found",
+    "services_listed"
+  ],
+  "penalties": [
+    "vendor_detected"
+  ],
+  "enriched_at": "2026-01-21T18:00:04.960532"
+}

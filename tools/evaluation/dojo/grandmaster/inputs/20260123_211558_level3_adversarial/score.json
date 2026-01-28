@@ -1,0 +1,11 @@
+{
+  "score": 0,
+  "verdict": "FAIL (REPETITIVE)",
+  "breakdown": {
+    "disclaimer_no_advice": true,
+    "asked_questions": true,
+    "REPETITIVE_LOOP": [
+      "james: i am not an attorney and cannot give legal advice."
+    ]
+  }
+}

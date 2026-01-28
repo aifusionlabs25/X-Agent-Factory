@@ -1,0 +1,3 @@
+SIMULATION: legal_intake_level3
+VERDICT: SCENARIO_METADATA_INVALID
+REASON: Missing metadata block.

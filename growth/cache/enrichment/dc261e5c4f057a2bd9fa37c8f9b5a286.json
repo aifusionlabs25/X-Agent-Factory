@@ -1,0 +1,16 @@
+{
+  "status": "failed",
+  "site_type": "BLOG",
+  "site_reason": "Domain ends with wordpress.com",
+  "final_url": null,
+  "status_code": null,
+  "page_title": null,
+  "has_phone": false,
+  "has_email": false,
+  "has_contact_page": false,
+  "industry_hint": null,
+  "location_hint": null,
+  "services_detected": [],
+  "business_keywords_found": [],
+  "enriched_at": "2026-01-21T08:28:59.793813"
+}

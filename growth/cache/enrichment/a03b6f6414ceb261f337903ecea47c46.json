@@ -1,0 +1,33 @@
+{
+  "status": "success",
+  "site_type": "BLOG",
+  "site_reason": "blog_indicators:3",
+  "persona_type": "CREATOR",
+  "persona_reasons": [
+    "creator:creator",
+    "creator:newsletter"
+  ],
+  "icp_lane": "medical_dental_practice",
+  "icp_boost": 2,
+  "final_url": "https://southmountainfamilydental.com/",
+  "status_code": 200,
+  "page_title": "Dentist | Tempe, AZ | South Mountain Family Dental",
+  "has_phone": true,
+  "has_email": false,
+  "has_contact_page": false,
+  "has_address": true,
+  "industry_hint": "Dental",
+  "location_hint": null,
+  "services_detected": [],
+  "evidence_signals": [
+    "phone_found",
+    "address_found",
+    "industry:Dental",
+    "icp:medical_dental_practice"
+  ],
+  "penalties": [
+    "creator_detected",
+    "blog_site"
+  ],
+  "enriched_at": "2026-01-21T17:59:53.039998"
+}

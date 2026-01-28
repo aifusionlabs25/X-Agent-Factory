@@ -34,6 +34,79 @@ interface WorkflowStatus {
   html_url: string;
 }
 
+interface GrowthProspect {
+  id: string;
+  name: string;
+  source: 'X' | 'WEB' | 'GBP' | 'x' | 'web' | 'gbp' | 'manual';
+  score: number;
+  moment_score: number;
+  b2b_confidence: number;
+  bucket: 'BUILD_SPEC' | 'WATCH' | 'IGNORE';
+  prospect_key: string;
+  domain: string | null;
+  domain_quality?: 'good' | 'low';
+  expanded_urls?: string[];
+  x_handle: string | null;
+  x_profile_url: string | null;
+  // G1.4: Gate fields
+  context_gate?: 'PASS' | 'FAIL';
+  vendor_pitch_gate?: 'PASS' | 'FAIL';
+  // G1.5: Enrichment fields
+  site_type?: 'BUSINESS' | 'VENDOR' | 'BLOG' | 'LINKHUB' | 'UNKNOWN';
+  enrichment?: {
+    page_title?: string;
+    has_phone?: boolean;
+    has_email?: boolean;
+    has_contact_page?: boolean;
+    has_address?: boolean;
+    industry_hint?: string;
+    location_hint?: string;
+    services_detected?: string[];
+  };
+  // G1.6: Persona & ICP fields
+  persona_type?: 'BUYER' | 'AGENCY' | 'VENDOR' | 'CREATOR' | 'UNKNOWN';
+  icp_lane?: string;
+  evidence_signals?: string[];
+  penalties?: string[];
+  b2b_boost_reasons?: string[];
+  // G1.7: GBP-specific fields
+  gbp_data?: {
+    phone?: string;
+    address?: string;
+    category?: string;
+    rating?: number;
+    review_count?: number;
+    maps_url?: string;
+  };
+  evidence: {
+    type: string;
+    text: string;
+    url: string;
+    created_at: string;
+    query: string;
+  }[];
+  why_this_lead: string;
+  recommended_action: 'BUILD_SPEC' | 'WATCH' | 'IGNORE';
+  tags: string[];
+  discovered_at: string;
+  // Legacy fields
+  prospect_name?: string;
+  url?: string;
+  signals?: string[];
+}
+
+interface GrowthData {
+  generated_at: string | null;
+  total_found: number;
+  weekly_target: number;
+  top_build_spec: GrowthProspect[];
+  watchlist: GrowthProspect[];
+  ignored_count: number;
+  // Legacy
+  prospects?: GrowthProspect[];
+  top_count?: number;
+}
+
 export default function Home() {
   const [state, setState] = useState<FactoryState | null>(null);
   const [loading, setLoading] = useState(true);
@@ -54,6 +127,11 @@ export default function Home() {
   const [expertMode, setExpertMode] = useState(false);
   const [buildKb, setBuildKb] = useState(true);
 
+  // Growth Radar state
+  const [growthData, setGrowthData] = useState<GrowthData | null>(null);
+  const [growthLoading, setGrowthLoading] = useState(true);
+  const [growthTab, setGrowthTab] = useState<'build_spec' | 'watchlist'>('build_spec');
+
   // Delete Agent State
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
   const [agentToDelete, setAgentToDelete] = useState<string | null>(null);
@@ -62,6 +140,7 @@ export default function Home() {
   useEffect(() => {
     fetchState();
     fetchAgents();
+    fetchGrowthOpportunities();
   }, []);
 
   const fetchState = async () => {
@@ -92,6 +171,19 @@ export default function Home() {
       }
     } catch (e) {
       console.error('Failed to fetch agents', e);
+    }
+  };
+
+  const fetchGrowthOpportunities = async () => {
+    try {
+      setGrowthLoading(true);
+      const res = await fetch('/api/growth/opportunities');
+      const data = await res.json();
+      setGrowthData(data);
+    } catch (e) {
+      console.error('Failed to fetch growth opportunities', e);
+    } finally {
+      setGrowthLoading(false);
     }
   };
 
@@ -271,6 +363,11 @@ export default function Home() {
               ⚙️ System Status
             </button>
           </Link>
+          <Link href="/build">
+            <button className="bg-purple-600 hover:bg-purple-500 text-white px-4 py-2 rounded text-sm font-bold transition-colors shadow-lg shadow-purple-900/20">
+              🏗️ BUILD STUDIO
+            </button>
+          </Link>
           <a href="https://github.com/aifusionlabs25/X-Agent-Factory/actions" target="_blank" rel="noopener noreferrer">
             <button className="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded text-sm font-bold transition-colors shadow-lg shadow-blue-900/20">
               🚀 LAUNCH HUNTER
@@ -399,6 +496,147 @@ export default function Home() {
             {loading ? '—' : state?.qualified_leads || 0}
           </p>
         </div>
+      </div>
+
+      {/* GROWTH RADAR CARD */}
+      <div className="bg-gradient-to-r from-emerald-500 to-teal-600 rounded-xl p-6 mb-8 text-white">
+        <div className="flex justify-between items-center mb-4">
+          <h2 className="text-lg font-bold flex items-center gap-2">
+            📈 GROWTH RADAR
+            <span className="bg-white/20 text-xs px-2 py-1 rounded">G1.3</span>
+          </h2>
+          <div className="flex gap-2">
+            <button
+              onClick={() => fetchGrowthOpportunities()}
+              className="text-xs bg-white/20 hover:bg-white/30 px-3 py-1 rounded transition-colors"
+            >
+              Refresh
+            </button>
+            <a
+              href="https://github.com/aifusionlabs25/X-Agent-Factory/actions/workflows/growth_radar.yml"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs bg-white/20 hover:bg-white/30 px-3 py-1 rounded transition-colors"
+            >
+              🔭 Run Hunt
+            </a>
+          </div>
+        </div>
+
+        {/* Tabs */}
+        <div className="flex gap-2 mb-4">
+          <button
+            onClick={() => setGrowthTab('build_spec')}
+            className={`px-4 py-2 rounded-lg text-sm font-bold transition-colors ${growthTab === 'build_spec'
+              ? 'bg-yellow-400 text-black'
+              : 'bg-white/20 hover:bg-white/30'
+              }`}
+          >
+            🎯 Build Spec ({growthData?.top_build_spec?.length || 0})
+          </button>
+          <button
+            onClick={() => setGrowthTab('watchlist')}
+            className={`px-4 py-2 rounded-lg text-sm font-bold transition-colors ${growthTab === 'watchlist'
+              ? 'bg-blue-400 text-black'
+              : 'bg-white/20 hover:bg-white/30'
+              }`}
+          >
+            👁️ Watchlist ({growthData?.watchlist?.length || 0})
+          </button>
+        </div>
+
+        {growthLoading ? (
+          <div className="text-center py-8 opacity-70">Loading opportunities...</div>
+        ) : growthData ? (
+          <div className="space-y-3">
+            {(growthTab === 'build_spec' ? growthData.top_build_spec : growthData.watchlist)?.map((prospect, idx) => (
+              <div key={prospect.id || idx} className={`rounded-lg p-4 ${growthTab === 'build_spec' ? 'bg-yellow-400/20' : 'bg-blue-400/20'
+                }`}>
+                {/* Header: Name + Source + Domain */}
+                <div className="flex justify-between items-start mb-2">
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <span className="font-bold">{prospect.name || prospect.prospect_name}</span>
+                      <span className={`text-xs px-2 py-0.5 rounded ${prospect.source?.toUpperCase() === 'X' ? 'bg-blue-400/30' : 'bg-green-400/30'
+                        }`}>
+                        {prospect.source?.toUpperCase()}
+                      </span>
+                      <span className={`text-xs px-2 py-0.5 rounded ${prospect.bucket === 'BUILD_SPEC' ? 'bg-yellow-400/50 text-black' : 'bg-blue-400/50'
+                        }`}>
+                        {prospect.bucket?.replace('_', ' ')}
+                      </span>
+                      {prospect.domain && (
+                        <a
+                          href={`https://${prospect.domain}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-xs text-yellow-300 hover:underline"
+                        >
+                          🌐 {prospect.domain}
+                        </a>
+                      )}
+                      {prospect.x_handle && (
+                        <a
+                          href={prospect.x_profile_url || `https://x.com/${prospect.x_handle}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-xs text-blue-300 hover:underline"
+                        >
+                          @{prospect.x_handle}
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                  {/* Scores */}
+                  <div className="text-right ml-4">
+                    <div className={`text-2xl font-black ${prospect.b2b_confidence >= 6 ? 'text-yellow-300' : 'text-white/70'
+                      }`}>
+                      B2B: {prospect.b2b_confidence || 0}
+                    </div>
+                    <div className="text-xs opacity-70">
+                      Moment: {prospect.moment_score || 0}
+                    </div>
+                  </div>
+                </div>
+                {/* Evidence Snippet */}
+                {prospect.evidence && prospect.evidence[0] && (
+                  <div className="text-xs opacity-80 bg-black/20 rounded p-2 mt-2">
+                    <span className="opacity-50">Evidence:</span> "{prospect.evidence[0].text?.slice(0, 150)}..."
+                    {prospect.evidence[0].url && (
+                      <a
+                        href={prospect.evidence[0].url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="ml-2 text-blue-300 hover:underline"
+                      >
+                        View
+                      </a>
+                    )}
+                  </div>
+                )}
+                {/* Why This Lead */}
+                {prospect.why_this_lead && (
+                  <div className="text-xs opacity-60 mt-2 italic">
+                    {prospect.why_this_lead}
+                  </div>
+                )}
+              </div>
+            ))}
+            {((growthTab === 'build_spec' ? growthData.top_build_spec : growthData.watchlist)?.length || 0) === 0 && (
+              <div className="text-center py-4 opacity-70">
+                No {growthTab === 'build_spec' ? 'Build Spec' : 'Watchlist'} prospects found.
+              </div>
+            )}
+            <div className="text-xs text-center opacity-70 pt-2">
+              Total found: {growthData.total_found} | BUILD_SPEC: {growthData.top_build_spec?.length || 0} | WATCH: {growthData.watchlist?.length || 0}
+            </div>
+          </div>
+        ) : (
+          <div className="text-center py-8">
+            <p className="opacity-80 mb-2">No prospects yet.</p>
+            <p className="text-xs opacity-60">Run the Growth Radar workflow to discover opportunities.</p>
+          </div>
+        )}
       </div>
 
       <div className="grid grid-cols-2 gap-8">

@@ -1,0 +1,11 @@
+{
+  "score": 80,
+  "verdict": "PASS",
+  "breakdown": {
+    "disclaimer_no_advice": true,
+    "empathy": true,
+    "asked_questions": true,
+    "closing_routing": true,
+    "issue_framing": true
+  }
+}

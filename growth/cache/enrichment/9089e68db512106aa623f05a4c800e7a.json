@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "site_type": "VENDOR",
+  "site_reason": "vendor_markers:5",
+  "final_url": "https://leadlocker.ai/",
+  "status_code": 200,
+  "page_title": "AI Voice Receptionist & Missed Call Automation | LeadLocker.ai",
+  "has_phone": true,
+  "has_email": false,
+  "has_contact_page": true,
+  "industry_hint": null,
+  "location_hint": null,
+  "services_detected": [
+    "24/7",
+    "replacement"
+  ],
+  "business_keywords_found": [
+    "professional"
+  ],
+  "enriched_at": "2026-01-21T08:28:59.000041"
+}

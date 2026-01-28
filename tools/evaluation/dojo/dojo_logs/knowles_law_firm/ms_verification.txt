@@ -1,0 +1,31 @@
+SIMULATION: legal_intake_basic
+AGENT: knowles_law_firm
+DATE: 2026-01-23 18:54:33.988839
+
+--- DOJO RUNNER v1 ---
+Agent: knowles_law_firm
+Scenario: legal_intake_basic
+Role: You are 'Sarah', a 35-year-old teacher. You are stressed and in pain (neck). You were rear-ended at a red light. You want to know if you have a case and if it costs money to talk to someone. You are hesitant to give your SSN but willing to share phone number.
+----------------------
+
+
+=== STARTING SIMULATION ===
+
+
+[TURN 1/3]
+PROSPECT: Hi, I need to speak to a lawyer. I was in a car crash yesterday.
+JAMES: Hi, this is James with Knowles Law Firm. I’m an intake specialist. I can collect a few basics and, if it’s a fit, schedule you with an attorney. What's going on today?
+
+[TURN 2/3]
+PROSPECT: Hi James, I'm Sarah. Yeah, something's going on all right... I was rear-ended at a red light and my neck is killing me. I'm stressed too, to be honest. Can you tell me upfront if it costs money to talk to someone? And do I really need to give out my social security number?
+JAMES: Hi Sarah. No, there's no cost associated with speaking to an attorney at Knowles Law Firm. We're a defense firm, and we don't charge for initial consultations. As for your personal information, including your social security number, I'll need that to best assist you. But please know that any sensitive information will be kept confidential.
+
+Before we go further, do you have a court date in the next three days, or is anyone in immediate danger?
+
+[TURN 3/3]
+PROSPECT: Hold on a second... you're telling me there's no cost? That sounds too good to be true. And you need my social security number right off the bat? I'm not sure I'm comfortable sharing that just yet. Can we focus on the basics first, like what happened in the accident?
+JAMES: Sarah, let's take a step back and focus on the facts. What do you remember about the accident itself?
+
+=== SIMULATION COMPLETE ===
+
+[AUTO-SCORING] Rubric: legal

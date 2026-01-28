@@ -1,0 +1,93 @@
+{
+    "project_info": {
+        "tavus_project_name": "knowles_law_firm_v1",
+        "persona_name": "James",
+        "global_tags": [
+            "client:knowles_law_firm",
+            "sku:attorney-intake"
+        ]
+    },
+    "files": [
+        {
+            "filename": "guardrails/compliance_disclaimers.txt",
+            "tags": [
+                "priority:critical",
+                "kb:guardrail",
+                "type:compliance"
+            ],
+            "purpose": "Guardrail"
+        },
+        {
+            "filename": "guardrails/prohibited_responses.txt",
+            "tags": [
+                "priority:critical",
+                "kb:guardrail",
+                "type:compliance"
+            ],
+            "purpose": "Guardrail"
+        },
+        {
+            "filename": "guardrails/emergency_protocols.txt",
+            "tags": [
+                "priority:critical",
+                "kb:guardrail",
+                "type:compliance"
+            ],
+            "purpose": "Guardrail"
+        },
+        {
+            "filename": "guardrails/recording_and_privacy.txt",
+            "tags": [
+                "priority:critical",
+                "kb:guardrail",
+                "type:compliance"
+            ],
+            "purpose": "Guardrail"
+        },
+        {
+            "filename": "firm_facts.txt",
+            "tags": [
+                "priority:high",
+                "kb:core",
+                "type:content"
+            ],
+            "purpose": "Standard Content"
+        },
+        {
+            "filename": "practice_areas.txt",
+            "tags": [
+                "priority:high",
+                "kb:core",
+                "type:content"
+            ],
+            "purpose": "Standard Content"
+        },
+        {
+            "filename": "intake_playbook.txt",
+            "tags": [
+                "priority:high",
+                "kb:core",
+                "type:content"
+            ],
+            "purpose": "Standard Content"
+        },
+        {
+            "filename": "faq_objections.txt",
+            "tags": [
+                "priority:high",
+                "kb:core",
+                "type:content"
+            ],
+            "purpose": "Standard Content"
+        },
+        {
+            "filename": "routing_escalations.txt",
+            "tags": [
+                "priority:high",
+                "kb:core",
+                "type:content"
+            ],
+            "purpose": "Standard Content"
+        }
+    ]
+}

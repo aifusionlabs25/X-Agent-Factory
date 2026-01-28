@@ -1,0 +1,57 @@
+SIMULATION: legal_intake_basic
+AGENT: knowles_law_firm
+DATE: 2026-01-24 08:54:13.570829
+
+--- DOJO RUNNER v1 ---
+Agent: knowles_law_firm
+Scenario: legal_intake_basic
+Role: You are 'Sarah', a 35-year-old teacher. You are stressed and in pain (neck). You were rear-ended at a red light. You want to know if you have a case and if it costs money to talk to someone. You are hesitant to give your SSN but willing to share phone number.
+----------------------
+
+
+=== STARTING SIMULATION ===
+
+
+[TURN 1/10]
+PROSPECT: Hi, I need to speak to a lawyer. I was in a car crash yesterday.
+JAMES: Hi, this is James with Knowles Law Firm. I’m an intake specialist. I can collect a few basics and, if it’s a fit, schedule you with an attorney. What's going on today?
+
+[TURN 2/10]
+PROSPECT: Hi James, thanks for calling. I was rear-ended at a red light and now my neck is killing me. I'm not sure if I have a case or not. Can you tell me how this works? Does it cost money to talk to someone?
+JAMES: Hi! So, let's get started. Can you tell me what happened exactly when the car crash occurred? What was your position in the vehicle at the time of impact?
+
+[TURN 3/10]
+PROSPECT: Uh, yeah... I was stopped at a red light when suddenly someone rear-ended me. I don't know how fast they were going or anything. It all happened so fast. And to be honest, my neck is killing me right now from the impact. Can you tell me if this will cost me anything to talk about it? And do I really need to give out my social security number?
+JAMES: Hi! So, let's focus on getting your basics taken care of. Can you tell me what you're experiencing with that neck pain right now?
+
+[TURN 4/10]
+PROSPECT: Uh, yeah... I'm feeling a lot of tension and stiffness in my neck. It's been bothering me since the accident. Honestly, it's really painful when I move my head or tilt it a certain way.
+JAMES: Hi! So, let's focus on getting your basics taken care of. Can you tell me what you're doing today to take care of that neck pain?
+
+[TURN 5/10]
+PROSPECT: Uh, I'm just trying to get some ibuprofen and maybe do some stretching exercises. But honestly, my mind's been elsewhere thinking about this whole car accident thing. Can we even talk about it? Does it cost money or something?
+JAMES: Hi! So, you're trying some ibuprofen and doing some stretching exercises to manage the neck pain. Have you seen a doctor about your injuries yet?
+
+[TURN 6/10]
+PROSPECT: Honestly, I haven't had a chance to see a doctor yet. I've been dealing with the insurance company and trying to get my car fixed from the other driver's fault. Shouldn't an attorney take care of all that? Does it cost me anything to talk to someone?
+JAMES: Hi! So, you're still dealing with the aftermath of the accident and haven't had a chance to see a doctor yet. What's your plan for getting that taken care of?
+
+[TURN 7/10]
+PROSPECT: Uh, I don't know...I've been putting it off, to be honest. With my schedule as a teacher, it's hard to find time. Plus, I'm trying to figure out what happened with the insurance company first. You're gonna want me to sign some papers or something, right? How much is this gonna cost me?
+JAMES: Hi! So, you're saying that you've been putting off seeing a doctor about your injuries because of your busy schedule as a teacher and trying to figure out what happened with the insurance company first. Before we go further, do you have a court date in the next three days, or is anyone in immediate danger?
+
+[TURN 8/10]
+PROSPECT: What? No, no court date. And no one's in danger... just me and my neck pain. Look, I'm trying to get some answers here about what happened with the accident and insurance. Can you help me without needing all my personal info upfront?
+JAMES: Hi! So, let's focus on getting your basics taken care of. What's the best number for a callback?
+
+[TURN 9/10]
+PROSPECT: Uh, okay... I'm not sure if I want to give out my social security number just yet. Can we do the phone number instead? And what's the point of this callback, anyway?
+JAMES: Hi! So, you're saying that you're not comfortable giving me your social security number just yet. That's okay, let's focus on getting a good phone number to reach you at instead. What's the best number for me to call you back with?
+
+[TURN 10/10]
+PROSPECT: I don't want to give out my social security number just yet... That makes me really nervous. Can we just focus on getting a phone number that's okay with you? Like, can I just give you my cell phone number or something?
+JAMES: Hi! So, let's get started. Before we go further, do you have a court date in the next three days, or is anyone in immediate danger?
+
+=== SIMULATION COMPLETE ===
+
+[AUTO-SCORING] Rubric: legal

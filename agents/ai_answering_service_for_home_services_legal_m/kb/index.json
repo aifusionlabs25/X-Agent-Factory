@@ -1,6 +1,380 @@
 {
   "files": [
     {
+      "path": "kb/60_crawled_homepage.md",
+      "title": "Crawled - homepage",
+      "tags": [
+        "web",
+        "raw_crawl"
+      ],
+      "source_urls": [
+        "https://www.zyratalk.com"
+      ],
+      "summary": "Crawled content from https://www.zyratalk.com",
+      "provenance": "crawler",
+      "chunk_meta": {
+        "approx_tokens": 781,
+        "chunk_strategy": "heading_semantic"
+      },
+      "file_hash": "b040cc8300ac4ee2b448fe5df1380ae81ff15f3c01c5f666b56340dbdd066774",
+      "document_tags": [
+        "web",
+        "raw_crawl"
+      ]
+    },
+    {
+      "path": "kb/60_crawled_faq.md",
+      "title": "Crawled - faq",
+      "tags": [
+        "web",
+        "raw_crawl"
+      ],
+      "source_urls": [
+        "https://www.zyratalk.com/faq"
+      ],
+      "summary": "Crawled content from https://www.zyratalk.com/faq",
+      "provenance": "crawler",
+      "chunk_meta": {
+        "approx_tokens": 452,
+        "chunk_strategy": "heading_semantic"
+      },
+      "file_hash": "873d30ee56bf236d7a5273d75ebfb363f23870e69c64505249fb39d36b4d06b1",
+      "document_tags": [
+        "web",
+        "raw_crawl"
+      ]
+    },
+    {
+      "path": "kb/60_crawled_terms.md",
+      "title": "Crawled - terms",
+      "tags": [
+        "web",
+        "raw_crawl"
+      ],
+      "source_urls": [
+        "https://www.zyratalk.com/terms"
+      ],
+      "summary": "Crawled content from https://www.zyratalk.com/terms",
+      "provenance": "crawler",
+      "chunk_meta": {
+        "approx_tokens": 5358,
+        "chunk_strategy": "heading_semantic"
+      },
+      "file_hash": "1390bdb864635ae8d2f6d07c25f4123655fda29f27051ba079dd2cf70e09e0eb",
+      "document_tags": [
+        "web",
+        "raw_crawl"
+      ]
+    },
+    {
+      "path": "kb/60_crawled_homepage.md",
+      "title": "Crawled - homepage",
+      "tags": [
+        "web",
+        "raw_crawl"
+      ],
+      "source_urls": [
+        "https://www.zyratalk.com/"
+      ],
+      "summary": "Crawled content from https://www.zyratalk.com/",
+      "provenance": "crawler",
+      "chunk_meta": {
+        "approx_tokens": 781,
+        "chunk_strategy": "heading_semantic"
+      },
+      "file_hash": "9956d50be354c85ba3d112103873a830952f7093413d6ff21573d8fb982ad1c0",
+      "document_tags": [
+        "web",
+        "raw_crawl"
+      ]
+    },
+    {
+      "path": "kb/60_crawled_request-demo.md",
+      "title": "Crawled - request-demo",
+      "tags": [
+        "web",
+        "raw_crawl"
+      ],
+      "source_urls": [
+        "https://www.zyratalk.com/request-demo"
+      ],
+      "summary": "Crawled content from https://www.zyratalk.com/request-demo",
+      "provenance": "crawler",
+      "chunk_meta": {
+        "approx_tokens": 437,
+        "chunk_strategy": "heading_semantic"
+      },
+      "file_hash": "bc3f4b3a4f8dc232d9c603e2aa23e55f6bcd4dcc34c005bee77b6fe1a1e9c0cc",
+      "document_tags": [
+        "web",
+        "raw_crawl"
+      ]
+    },
+    {
+      "path": "kb/60_crawled_home-services.md",
+      "title": "Crawled - home-services",
+      "tags": [
+        "web",
+        "raw_crawl"
+      ],
+      "source_urls": [
+        "https://www.zyratalk.com/home-services"
+      ],
+      "summary": "Crawled content from https://www.zyratalk.com/home-services",
+      "provenance": "crawler",
+      "chunk_meta": {
+        "approx_tokens": 368,
+        "chunk_strategy": "heading_semantic"
+      },
+      "file_hash": "1840199e1b4d528d5e4fec9eb5a05c4d47f31223dbb0b667b58a53365869527c",
+      "document_tags": [
+        "web",
+        "raw_crawl"
+      ]
+    },
+    {
+      "path": "kb/60_crawled_legal.md",
+      "title": "Crawled - legal",
+      "tags": [
+        "web",
+        "raw_crawl"
+      ],
+      "source_urls": [
+        "https://www.zyratalk.com/legal"
+      ],
+      "summary": "Crawled content from https://www.zyratalk.com/legal",
+      "provenance": "crawler",
+      "chunk_meta": {
+        "approx_tokens": 335,
+        "chunk_strategy": "heading_semantic"
+      },
+      "file_hash": "7018cec93cae526a5a16f62b5aca8a55e60728e2cfd684d93a5e47ce32d0793f",
+      "document_tags": [
+        "web",
+        "raw_crawl"
+      ]
+    },
+    {
+      "path": "kb/60_crawled_health-care.md",
+      "title": "Crawled - health-care",
+      "tags": [
+        "web",
+        "raw_crawl"
+      ],
+      "source_urls": [
+        "https://www.zyratalk.com/health-care"
+      ],
+      "summary": "Crawled content from https://www.zyratalk.com/health-care",
+      "provenance": "crawler",
+      "chunk_meta": {
+        "approx_tokens": 413,
+        "chunk_strategy": "heading_semantic"
+      },
+      "file_hash": "8fbb33132a4e27489dc264eeab5e92c0fbdd7b9bded8f62b964f6f909af64edd",
+      "document_tags": [
+        "web",
+        "raw_crawl"
+      ]
+    },
+    {
+      "path": "kb/60_crawled_use-ai-as-your-frontline.md",
+      "title": "Crawled - use-ai-as-your-frontline",
+      "tags": [
+        "web",
+        "raw_crawl"
+      ],
+      "source_urls": [
+        "https://www.zyratalk.com/use-ai-as-your-frontline"
+      ],
+      "summary": "Crawled content from https://www.zyratalk.com/use-ai-as-your-frontline",
+      "provenance": "crawler",
+      "chunk_meta": {
+        "approx_tokens": 297,
+        "chunk_strategy": "heading_semantic"
+      },
+      "file_hash": "7a6f373eeb41342f3f344485636d2a1afcc2bf5e421fd4cdf144a4ac2dc92ae2",
+      "document_tags": [
+        "web",
+        "raw_crawl"
+      ]
+    },
+    {
+      "path": "kb/60_crawled_ai-webchat.md",
+      "title": "Crawled - ai-webchat",
+      "tags": [
+        "web",
+        "raw_crawl"
+      ],
+      "source_urls": [
+        "https://www.zyratalk.com/ai-webchat"
+      ],
+      "summary": "Crawled content from https://www.zyratalk.com/ai-webchat",
+      "provenance": "crawler",
+      "chunk_meta": {
+        "approx_tokens": 400,
+        "chunk_strategy": "heading_semantic"
+      },
+      "file_hash": "31c03bdc1a1f698d17c84d49981e526ea9219b6d8628e799056d48cc2883bf69",
+      "document_tags": [
+        "web",
+        "raw_crawl"
+      ]
+    },
+    {
+      "path": "kb/60_crawled_analytics-that-tell-a-story.md",
+      "title": "Crawled - analytics-that-tell-a-story",
+      "tags": [
+        "web",
+        "raw_crawl"
+      ],
+      "source_urls": [
+        "https://www.zyratalk.com/analytics-that-tell-a-story"
+      ],
+      "summary": "Crawled content from https://www.zyratalk.com/analytics-that-tell-a-story",
+      "provenance": "crawler",
+      "chunk_meta": {
+        "approx_tokens": 331,
+        "chunk_strategy": "heading_semantic"
+      },
+      "file_hash": "1d04858d69841a8fc46268c7db2b5687a650e25d663ff3e2ec3a69df16f0fcaa",
+      "document_tags": [
+        "web",
+        "raw_crawl"
+      ]
+    },
+    {
+      "path": "kb/60_crawled_partners.md",
+      "title": "Crawled - partners",
+      "tags": [
+        "web",
+        "raw_crawl"
+      ],
+      "source_urls": [
+        "https://www.zyratalk.com/partners"
+      ],
+      "summary": "Crawled content from https://www.zyratalk.com/partners",
+      "provenance": "crawler",
+      "chunk_meta": {
+        "approx_tokens": 269,
+        "chunk_strategy": "heading_semantic"
+      },
+      "file_hash": "80927e967e56d6294770e4bd60d1b3c46a28d1e2fab67e6a48f15b234683a7c4",
+      "document_tags": [
+        "web",
+        "raw_crawl"
+      ]
+    },
+    {
+      "path": "kb/60_crawled_contactus.md",
+      "title": "Crawled - contactus",
+      "tags": [
+        "web",
+        "raw_crawl"
+      ],
+      "source_urls": [
+        "https://www.zyratalk.com/contactus"
+      ],
+      "summary": "Crawled content from https://www.zyratalk.com/contactus",
+      "provenance": "crawler",
+      "chunk_meta": {
+        "approx_tokens": 142,
+        "chunk_strategy": "heading_semantic"
+      },
+      "file_hash": "67526772a006a3eecbd8bb047ca300d8ff8ae013811a5cda28de0415f7b4cf61",
+      "document_tags": [
+        "web",
+        "raw_crawl"
+      ]
+    },
+    {
+      "path": "kb/60_crawled_ai-webchat-for-industries.md",
+      "title": "Crawled - ai-webchat-for-industries",
+      "tags": [
+        "web",
+        "raw_crawl"
+      ],
+      "source_urls": [
+        "https://www.zyratalk.com/ai-webchat-for-industries"
+      ],
+      "summary": "Crawled content from https://www.zyratalk.com/ai-webchat-for-industries",
+      "provenance": "crawler",
+      "chunk_meta": {
+        "approx_tokens": 395,
+        "chunk_strategy": "heading_semantic"
+      },
+      "file_hash": "f2e65bcdfd1ecca75925233ed0847ea8730a9a8ea292ff592cf07a74a97cdf58",
+      "document_tags": [
+        "web",
+        "raw_crawl"
+      ]
+    },
+    {
+      "path": "kb/60_crawled_partnerterms.md",
+      "title": "Crawled - partnerterms",
+      "tags": [
+        "web",
+        "raw_crawl"
+      ],
+      "source_urls": [
+        "https://www.zyratalk.com/partnerterms"
+      ],
+      "summary": "Crawled content from https://www.zyratalk.com/partnerterms",
+      "provenance": "crawler",
+      "chunk_meta": {
+        "approx_tokens": 7783,
+        "chunk_strategy": "heading_semantic"
+      },
+      "file_hash": "fa42825ac92269c3f6903b07b91765b3c472cd218b02dfc28fe1b441e5bb0958",
+      "document_tags": [
+        "web",
+        "raw_crawl"
+      ]
+    },
+    {
+      "path": "kb/60_crawled_privacy-policy.md",
+      "title": "Crawled - privacy-policy",
+      "tags": [
+        "web",
+        "raw_crawl"
+      ],
+      "source_urls": [
+        "https://www.zyratalk.com/privacy-policy"
+      ],
+      "summary": "Crawled content from https://www.zyratalk.com/privacy-policy",
+      "provenance": "crawler",
+      "chunk_meta": {
+        "approx_tokens": 2814,
+        "chunk_strategy": "heading_semantic"
+      },
+      "file_hash": "d3bff82b9d13010cf797627883646bf9c3a13e2f5a0e5526884fb1d48c6b0a70",
+      "document_tags": [
+        "web",
+        "raw_crawl"
+      ]
+    },
+    {
+      "path": "kb/60_crawled_about-us.md",
+      "title": "Crawled - about-us",
+      "tags": [
+        "web",
+        "raw_crawl"
+      ],
+      "source_urls": [
+        "https://www.zyratalk.com/about-us"
+      ],
+      "summary": "Crawled content from https://www.zyratalk.com/about-us",
+      "provenance": "crawler",
+      "chunk_meta": {
+        "approx_tokens": 464,
+        "chunk_strategy": "heading_semantic"
+      },
+      "file_hash": "5cded169d3f02a8d9dbe5ef69962091d8d59a0e63a27f3e2047860e6b8d8b705",
+      "document_tags": [
+        "web",
+        "raw_crawl"
+      ]
+    },
+    {
       "path": "kb/00_overview.md",
       "title": "Overview",
       "tags": [
@@ -11,13 +385,18 @@
       "source_urls": [
         "https://www.zyratalk.com/"
       ],
-      "summary": "Core Overview extracted from dossier.",
-      "provenance": "safe_summary",
+      "summary": "Content for Overview.",
+      "provenance": "llm_enhanced",
       "chunk_meta": {
         "approx_tokens": 89,
         "chunk_strategy": "heading_semantic"
       },
-      "file_hash": "07415e74711124f1ec88d5b38a7c02dfebb23fc2801e4413130414bf5d9ba980"
+      "file_hash": "07415e74711124f1ec88d5b38a7c02dfebb23fc2801e4413130414bf5d9ba980",
+      "document_tags": [
+        "company_overview",
+        "offerings",
+        "tone_voice"
+      ]
     },
     {
       "path": "kb/05_ICP_and_personas.md",
@@ -29,13 +408,17 @@
       "source_urls": [
         "https://www.zyratalk.com/"
       ],
-      "summary": "Core ICP extracted from dossier.",
-      "provenance": "safe_summary",
+      "summary": "Content for ICP.",
+      "provenance": "llm_enhanced",
       "chunk_meta": {
         "approx_tokens": 84,
         "chunk_strategy": "heading_semantic"
       },
-      "file_hash": "44b7b6b8a4df9187a3e9db4394053ad28867c538ecc8bbdcd391a331c3d91585"
+      "file_hash": "44b7b6b8a4df9187a3e9db4394053ad28867c538ecc8bbdcd391a331c3d91585",
+      "document_tags": [
+        "icp",
+        "discovery"
+      ]
     },
     {
       "path": "kb/10_services_and_offerings.md",
@@ -46,13 +429,16 @@
       "source_urls": [
         "https://www.zyratalk.com/"
       ],
-      "summary": "Core Services extracted from dossier.",
-      "provenance": "safe_summary",
+      "summary": "Content for Services.",
+      "provenance": "llm_enhanced",
       "chunk_meta": {
         "approx_tokens": 52,
         "chunk_strategy": "heading_semantic"
       },
-      "file_hash": "4325ca019dd8aa3d405b96da8b17b7569916133b8992a91dd7083948b159e0d6"
+      "file_hash": "4325ca019dd8aa3d405b96da8b17b7569916133b8992a91dd7083948b159e0d6",
+      "document_tags": [
+        "offerings"
+      ]
     },
     {
       "path": "kb/15_pricing_and_packages.md",
@@ -61,15 +447,20 @@
         "pricing"
       ],
       "source_urls": [
-        "https://www.zyratalk.com/"
+        "https://www.zyratalk.com/",
+        "https://www.zyratalk.com/faq",
+        "https://www.zyratalk.com/terms"
       ],
-      "summary": "Core Pricing extracted from dossier.",
-      "provenance": "safe_summary",
+      "summary": "Content for Pricing.",
+      "provenance": "llm_enhanced",
       "chunk_meta": {
-        "approx_tokens": 35,
+        "approx_tokens": 598,
         "chunk_strategy": "heading_semantic"
       },
-      "file_hash": "37b4399f620fe9d31c74631ddaa0d8c57f2fa2c961ae60f99c6a6b442300dc23"
+      "file_hash": "2b174f295df8c706a23ca00f01655b177f2a8154b538c77458e41d05faf3ac16",
+      "document_tags": [
+        "pricing"
+      ]
     },
     {
       "path": "kb/20_FAQ.md",
@@ -78,15 +469,20 @@
         "faq"
       ],
       "source_urls": [
-        "https://www.zyratalk.com/"
+        "https://www.zyratalk.com/",
+        "https://www.zyratalk.com/faq",
+        "https://www.zyratalk.com/terms"
       ],
-      "summary": "Core FAQ extracted from dossier.",
-      "provenance": "safe_summary",
+      "summary": "Content for FAQ.",
+      "provenance": "llm_enhanced",
       "chunk_meta": {
-        "approx_tokens": 9,
+        "approx_tokens": 787,
         "chunk_strategy": "heading_semantic"
       },
-      "file_hash": "1c0fa9ca30bf43b6d4b3106f671e72498d04f73997447759744bd2e240642a6c"
+      "file_hash": "f1682cb671515535c5871d5eff87b5825fb7c2c53c1268e7e94481f287f30b57",
+      "document_tags": [
+        "faq"
+      ]
     },
     {
       "path": "kb/25_objections_and_rebuttals.md",
@@ -96,15 +492,21 @@
         "discovery"
       ],
       "source_urls": [
-        "https://www.zyratalk.com/"
+        "https://www.zyratalk.com/",
+        "https://www.zyratalk.com/terms",
+        "https://www.zyratalk.com/faq"
       ],
-      "summary": "Core Objections extracted from dossier.",
-      "provenance": "safe_summary",
+      "summary": "Content for Objections.",
+      "provenance": "llm_enhanced",
       "chunk_meta": {
-        "approx_tokens": 13,
+        "approx_tokens": 697,
         "chunk_strategy": "heading_semantic"
       },
-      "file_hash": "3b39514db5720908c470920c3ce9a2a1f3707214b2187af01d79d4e65598969c"
+      "file_hash": "8620967e006166f755c1daea06b4823344637e1454cd6c80499872e8451346db",
+      "document_tags": [
+        "objections",
+        "discovery"
+      ]
     },
     {
       "path": "kb/30_competitors_and_positioning.md",
@@ -115,13 +517,16 @@
       "source_urls": [
         "https://www.zyratalk.com/"
       ],
-      "summary": "Core Competitors extracted from dossier.",
-      "provenance": "safe_summary",
+      "summary": "Content for Competitors.",
+      "provenance": "llm_enhanced",
       "chunk_meta": {
-        "approx_tokens": 11,
+        "approx_tokens": 472,
         "chunk_strategy": "heading_semantic"
       },
-      "file_hash": "f64874e8b97cf4ed7a720fa88ed563dba966f1db3cdab02c97989d276adae3ad"
+      "file_hash": "42f2342adba041e6cfed9e3ee364af71391a6bd451481c496253f9c32d481264",
+      "document_tags": [
+        "competitors"
+      ]
     },
     {
       "path": "kb/35_integrations_and_stack.md",
@@ -132,13 +537,16 @@
       "source_urls": [
         "https://www.zyratalk.com/"
       ],
-      "summary": "Core Integrations extracted from dossier.",
-      "provenance": "safe_summary",
+      "summary": "Content for Integrations.",
+      "provenance": "llm_enhanced",
       "chunk_meta": {
-        "approx_tokens": 10,
+        "approx_tokens": 563,
         "chunk_strategy": "heading_semantic"
       },
-      "file_hash": "ce3b6d469f655337671cde160d3284e698e0ceacc073d4ad31362753a1effeb6"
+      "file_hash": "7f6ce21755522b81071a5335a1d051984dcb73c8021fc32fe7bf2e8ba4d760ff",
+      "document_tags": [
+        "integrations"
+      ]
     },
     {
       "path": "kb/40_process_and_workflows.md",
@@ -148,15 +556,20 @@
         "support_process"
       ],
       "source_urls": [
-        "https://www.zyratalk.com/"
+        "https://www.zyratalk.com/",
+        "https://www.zyratalk.com/terms"
       ],
-      "summary": "Core Process extracted from dossier.",
-      "provenance": "safe_summary",
+      "summary": "Content for Process.",
+      "provenance": "llm_enhanced",
       "chunk_meta": {
-        "approx_tokens": 9,
+        "approx_tokens": 668,
         "chunk_strategy": "heading_semantic"
       },
-      "file_hash": "ce9f8569539a47f2e82ede169d2fa48082ab10dc6fd066533a5fe9166dc3d71f"
+      "file_hash": "7a284b4e24f4b77558e2eb9aa4d1d3e4190587dc0c1da70dfdd944f014f9174e",
+      "document_tags": [
+        "workflow",
+        "support_process"
+      ]
     },
     {
       "path": "kb/45_compliance_and_security.md",
@@ -166,15 +579,20 @@
         "policies"
       ],
       "source_urls": [
-        "https://www.zyratalk.com/"
+        "https://www.zyratalk.com/",
+        "https://www.zyratalk.com/terms"
       ],
-      "summary": "Core Compliance extracted from dossier.",
-      "provenance": "safe_summary",
+      "summary": "Content for Compliance.",
+      "provenance": "llm_enhanced",
       "chunk_meta": {
-        "approx_tokens": 10,
+        "approx_tokens": 684,
         "chunk_strategy": "heading_semantic"
       },
-      "file_hash": "1fa75d0fb2283e057737d666b8a9a24d5caec4dc87167c8887ef537af5f90fcf"
+      "file_hash": "3fe38d6c0ff4253a1d7904de7e4363a1f71fa0171a91b4e1353b0badb3a6fda3",
+      "document_tags": [
+        "compliance",
+        "policies"
+      ]
     },
     {
       "path": "kb/50_case_studies_and_proof.md",
@@ -183,15 +601,19 @@
         "proof"
       ],
       "source_urls": [
-        "https://www.zyratalk.com/"
+        "https://www.zyratalk.com/",
+        "https://www.zyratalk.com/faq"
       ],
-      "summary": "Core Case Studies extracted from dossier.",
-      "provenance": "safe_summary",
+      "summary": "Content for Case Studies.",
+      "provenance": "llm_enhanced",
       "chunk_meta": {
-        "approx_tokens": 14,
+        "approx_tokens": 556,
         "chunk_strategy": "heading_semantic"
       },
-      "file_hash": "97b825087c7ecca376b4da9d60fd222342a43b7f4254682e53848f0d9ff82985"
+      "file_hash": "f2ed314596112e9971c1f11c581c82c891da80154d1555dabe9aa73e9b4b2ddd",
+      "document_tags": [
+        "proof"
+      ]
     },
     {
       "path": "kb/55_contact_next_steps.md",
@@ -201,25 +623,32 @@
         "locations"
       ],
       "source_urls": [
-        "https://www.zyratalk.com/"
+        "https://www.zyratalk.com/",
+        "https://www.zyratalk.com/faq",
+        "https://www.zyratalk.com/terms"
       ],
-      "summary": "Core Contact extracted from dossier.",
-      "provenance": "safe_summary",
+      "summary": "Content for Contact.",
+      "provenance": "llm_enhanced",
       "chunk_meta": {
-        "approx_tokens": 35,
+        "approx_tokens": 657,
         "chunk_strategy": "heading_semantic"
       },
-      "file_hash": "128ae75ad69a9cd2dde042129bae5f6afb9a27b205187ca86e7f6d3feaeb7142"
+      "file_hash": "933eaf635bb3b6d4078ddd62cd4070a32ebf944f6baed553594298bf93bdc7aa",
+      "document_tags": [
+        "next_steps",
+        "locations"
+      ]
     }
   ],
   "coverage": {
-    "total_files": 12,
+    "total_files": 29,
     "required_topics_met": 12,
     "missing_topics": []
   },
+  "discovery_required": false,
   "build_metadata": {
     "slug": "ai_answering_service_for_home_services_legal_m",
-    "generated_at": "2026-01-19T18:49:24.686133",
+    "generated_at": "2026-01-19T16:18:00.514961",
     "tool_version": "1.1.0"
   }
 }

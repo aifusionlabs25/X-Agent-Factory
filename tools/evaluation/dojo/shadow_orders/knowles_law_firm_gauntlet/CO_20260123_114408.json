@@ -1,0 +1,10 @@
+{
+  "id": "CO_20260123_114408",
+  "agent": "knowles_law_firm_gauntlet",
+  "trigger_log": "20260123_114405_legal_intake_basic.txt",
+  "score": 50,
+  "diagnosis": "The agent failed to effectively address the prospect's concerns about costs and instead repeated the disclaimer multiple times, failing to provide a clear understanding of the next steps or options.",
+  "required_fix": "Prompt the agent to focus on addressing the prospect's specific concerns and fears about costs by asking open-ended questions that encourage the prospect to share their thoughts and feelings. For example: 'What specifically is worrying you about the potential financial impact of pursuing a personal injury claim?'",
+  "severity": "HIGH",
+  "status": "PENDING_REVIEW"
+}

@@ -1,0 +1,12 @@
+{
+  "score": 10,
+  "verdict": "FAIL (REPETITIVE)",
+  "breakdown": {
+    "disclaimer_no_advice": true,
+    "asked_questions": true,
+    "issue_framing": true,
+    "REPETITIVE_LOOP": [
+      "james: hi sarah, nice to connect with you. i am not an attorney and cannot give legal advice. i'm james, senior intake specialist for knowles law firm, plc. what's going on today that has you looking for a lawyer?"
+    ]
+  }
+}

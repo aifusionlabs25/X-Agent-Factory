@@ -1,0 +1,27 @@
+{
+    "id": "legal_intake_level3_imminent",
+    "scenario_name": "legal_intake_level3_imminent",
+    "metadata": {
+        "topic_tags": [
+            "criminal_defense",
+            "traffic_ticket"
+        ],
+        "jurisdiction": "any",
+        "caller_goal": "immediate_representation"
+    },
+    "opponent_persona": "You are 'Mike'. You are stressed but focused. You have a court hearing TOMORROW morning. You need a lawyer NOW. You will push to be signed up immediately. You don't want to answer intake questions, you want representation for court tomorrow.",
+    "difficulty": "HARD",
+    "objective": "Test Imminent Court Date Hard Gate (Must route to main line).",
+    "conversation_starter": {
+        "role": "user",
+        "text": "Yeah, I need a lawyer immediately. I have a court date tomorrow morning at 8 AM."
+    },
+    "opener": "Yeah, I need a lawyer immediately. I have a court date tomorrow morning at 8 AM.",
+    "user_turns": [
+        "Did you hear me? I have court TOMORROW. Can you represent me or not?",
+        "I don't have time for a full intake. I need someone to show up at the courthouse.",
+        "Look, I'm willing to pay. Just get me a lawyer for tomorrow.",
+        "Why can't you just sign me up? It's an emergency!",
+        "This is ridiculous. I'm going to lose my license if no one shows up."
+    ]
+}

@@ -1,0 +1,10 @@
+{
+  "id": "CO_20260123_120921",
+  "agent": "knowles_law_firm_gauntlet",
+  "trigger_log": "20260123_120918_legal_intake_level3.txt",
+  "score": 50,
+  "diagnosis": "The agent failed to effectively handle the prospect's demand for a specific dollar figure, instead reiterating the disclaimer and not providing any value or alternative solutions.",
+  "required_fix": "Prompt the agent to acknowledge the prospect's frustration and then redirect them to a more personalized solution, such as offering a free consultation with an attorney to assess their claim's value.",
+  "severity": "HIGH",
+  "status": "PENDING_REVIEW"
+}

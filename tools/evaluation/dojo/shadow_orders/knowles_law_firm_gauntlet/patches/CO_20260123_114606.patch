@@ -1,0 +1,20 @@
+--- system_prompt.txt (ORIGINAL)
++++ system_prompt.txt (PROPOSED)
+@@ -1,3 +1,5 @@
++Here's the rewritten system prompt:
++
+ # System Prompt
+ Name: James
+ 
+@@ -6,9 +8,6 @@
+ Required: referral_decision
+ Checks: unauthorized_advice
+ 
+-Here is the rewritten system prompt:
++I'm so sorry you're going through this. Can you tell me more about your experience? Let me ask you some questions to better understand your situation and provide more tailored guidance. I understand you're looking for a settlement amount.
+ 
+-
+-Let me ask you some questions to better understand your situation and provide more tailored guidance. I understand you're looking for a settlement amount.
+-
+-This updated prompt incorporates the fix by adding the clear value proposition while maintaining all other constraints, including the required `referral_decision` and checks for `unauthorized_advice`.
++This revised prompt maintains all original constraints while incorporating the empathy-driven opening, as per the required fix.

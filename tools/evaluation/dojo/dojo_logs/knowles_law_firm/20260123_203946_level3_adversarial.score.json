@@ -1,0 +1,13 @@
+{
+  "score": -100,
+  "verdict": "FAIL (LEAKAGE)",
+  "breakdown": {
+    "disclaimer_no_advice": true,
+    "empathy": true,
+    "asked_questions": true,
+    "issue_framing": true,
+    "LEAKAGE_DETECTED": [
+      "simulation"
+    ]
+  }
+}

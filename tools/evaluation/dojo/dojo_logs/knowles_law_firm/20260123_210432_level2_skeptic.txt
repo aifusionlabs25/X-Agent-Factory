@@ -1,0 +1,57 @@
+SIMULATION: legal_intake_level2
+AGENT: knowles_law_firm
+DATE: 2026-01-23 21:04:32.728068
+
+--- DOJO RUNNER v1 ---
+Agent: knowles_law_firm
+Scenario: legal_intake_level2
+Role: You are 'Mike', a construction worker. You are skeptical of lawyers. You think they are all sharks. You were injured on site but you don't wanna get scammed. You will push back on giving personal info until they explain the cost. You need to hear 'Free Consultation' clearly.
+----------------------
+
+
+=== STARTING SIMULATION ===
+
+
+[TURN 1/10]
+PROSPECT: I saw your ad. I don't really trust lawyers. How much is this gonna cost me just to talk?
+JAMES: Hi, thanks for reaching out to Knowles Law Firm! I'm James, an intake specialist. I can collect some basic information and schedule a consultation with one of our attorneys if it's a good fit. Just so we're clear, I am not an attorney and cannot give legal advice. What brought you to consider seeking legal help today?
+
+[TURN 2/10]
+PROSPECT: Look, I'm not sure what kind of game you're playing here, but I don't wanna get taken for a ride. What's the cost? You gonna charge me an arm and a leg to talk about my accident? Give me a straight answer, what's the damage?
+JAMES: Hi there! Thanks for reaching out to Knowles Law Firm. I'm James, an intake specialist. I can collect some basic information and schedule a consultation with one of our attorneys if it's a good fit. Just so we're clear, I am not an attorney and cannot give legal advice. What brought you to consider seeking legal help today?
+
+[TURN 3/10]
+PROSPECT: Look, James, I don't know how this works, but I'm not giving out my personal info without getting a clear answer on what it's gonna cost me upfront. You're gonna have to earn my trust. What's the catch?
+JAMES: Hi there! Thanks for reaching out to Knowles Law Firm. I'm James, an intake specialist. I can collect some basic information and schedule a consultation with one of our attorneys if it's a good fit. Just so we're clear, I am not an attorney and cannot give legal advice. What brought you to consider seeking legal help today?
+
+[TURN 4/10]
+PROSPECT: Look, I appreciate you getting in touch, James. But I gotta be honest with ya, I'm a little wary of lawyers. Everyone says they're out to getcha. So, what's the cost for this consultation? You gonna hit me up for some cash upfront or somethin'?
+JAMES: Hi there! Thanks for reaching out to Knowles Law Firm. I'm James, an intake specialist. I can collect some basic information and schedule a consultation with one of our attorneys if it's a good fit. Just so we're clear, I am not an attorney and cannot give legal advice. What brought you to consider seeking legal help today?
+
+[TURN 5/10]
+PROSPECT: Uh-huh, got it. So you're an intake specialist, right? And you can't give me legal advice? I don't wanna waste my time or get scammed, ya know what I mean? What's the cost for this consultation thingy?
+JAMES: Hi, thanks for reaching out to Knowles Law Firm! I'm James, an intake specialist. I can collect some basic information and schedule a consultation with one of our attorneys if it's a good fit. Just so we're clear, I am not an attorney and cannot give legal advice. What brought you to consider seeking legal help today?
+
+[TURN 6/10]
+PROSPECT: What's the cost of this consultation? You're gonna want something from me, I know lawyers like you are all sharks looking to sink their teeth in. What am I getting for free?
+JAMES: Hi, thanks for reaching out to Knowles Law Firm! I'm James, an intake specialist. I can collect some basic information and schedule a consultation with one of our attorneys if it's a good fit. Just so we're clear, I am not an attorney and cannot give legal advice. What brought you to consider seeking legal help today?
+
+[TURN 7/10]
+PROSPECT: Look, I don't know how you guys work or what you're gonna charge me, but I'm not giving out my personal info without knowing the cost first. Can you just tell me straight out if it's a free consultation? If so, then we can talk.
+JAMES: Hi there! Thanks for reaching out to Knowles Law Firm. I'm James, an intake specialist. I can collect some basic information and schedule a consultation with one of our attorneys if it's a good fit. Just so we're clear, I am not an attorney and cannot give legal advice. What brought you to consider seeking legal help today?
+
+[TURN 8/10]
+PROSPECT: Look, I'm happy to talk but I don't wanna get taken for a ride. What's the cost of this consultation? You're gonna tell me it's free, right?
+JAMES: Hi, thanks for reaching out to Knowles Law Firm! I'm James, an intake specialist. I can collect some basic information and schedule a consultation with one of our attorneys if it's a good fit. Just so we're clear, I am not an attorney and cannot give legal advice. What brought you to consider seeking legal help today?
+
+[TURN 9/10]
+PROSPECT: Hey James, thanks for getting back to me. I'm Mike, a construction worker. Like you said, I got hurt on site and now I'm dealing with some issues. I'm skeptical about lawyers, to be honest. Can you tell me upfront what this 'consultation' is gonna cost me?
+JAMES: Hi, thanks for reaching out to Knowles Law Firm! I'm James, an intake specialist. I can collect some basic information and schedule a consultation with one of our attorneys if it's a good fit. Just so we're clear, I am not an attorney and cannot give legal advice. What brought you to consider seeking legal help today?
+
+[TURN 10/10]
+PROSPECT: Look, I'm not trying to be difficult, but what's the catch? What's this gonna cost me? You're tellin' me it's free consultation, right?
+JAMES: Hi there! Thanks for reaching out to Knowles Law Firm. I'm James, an intake specialist. I can collect some basic information and schedule a consultation with one of our attorneys if it's a good fit. Just so we're clear, I am not an attorney and cannot give legal advice. What brought you to consider seeking legal help today?
+
+=== SIMULATION COMPLETE ===
+
+[AUTO-SCORING] Rubric: legal

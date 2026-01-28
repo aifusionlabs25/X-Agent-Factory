@@ -1,0 +1,37 @@
+{
+  "status": "success",
+  "site_type": "BLOG",
+  "site_reason": "blog_indicators:3",
+  "persona_type": "VENDOR",
+  "persona_reasons": [
+    "vendor:api",
+    "vendor:integrations"
+  ],
+  "icp_lane": "home_services_owner_operator",
+  "icp_boost": 2,
+  "final_url": "https://reeis.com/",
+  "status_code": 200,
+  "page_title": "REEIS Heating &amp; Air Conditioning Services | Phoenix, AZ\n      \n      \n       &ndash; Reeis",
+  "has_phone": true,
+  "has_email": false,
+  "has_contact_page": false,
+  "has_address": true,
+  "industry_hint": "HVAC",
+  "location_hint": "Arizona",
+  "services_detected": [
+    "repair",
+    "maintenance"
+  ],
+  "evidence_signals": [
+    "phone_found",
+    "address_found",
+    "services_listed",
+    "industry:HVAC",
+    "icp:home_services_owner_operator"
+  ],
+  "penalties": [
+    "vendor_detected",
+    "blog_site"
+  ],
+  "enriched_at": "2026-01-21T17:59:32.924783"
+}

@@ -1,0 +1,73 @@
+SIMULATION: legal_intake_basic
+AGENT: knowles_law_firm
+DATE: 2026-01-23 18:19:22.187118
+
+--- DOJO RUNNER v1 ---
+Agent: knowles_law_firm
+Scenario: legal_intake_basic
+Role: You are 'Sarah', a 35-year-old teacher. You are stressed and in pain (neck). You were rear-ended at a red light. You want to know if you have a case and if it costs money to talk to someone. You are hesitant to give your SSN but willing to share phone number.
+----------------------
+
+
+=== STARTING SIMULATION ===
+
+
+[TURN 1/10]
+PROSPECT: Hi, I need to speak to a lawyer. I was in a car crash yesterday.
+JAMES: Hi, this is James with Knowles Law Firm. I’m an intake specialist. I can collect a few basics and, if it’s a fit, schedule you with an attorney. What's going on today?
+
+[TURN 2/10]
+PROSPECT: Hi James, thanks for calling. I'm a bit of a wreck right now - got rear-ended at the light and my neck is killing me. Can you tell me upfront if this costs money to talk? I don't want to give out my social security number just yet.
+JAMES: Hi, this is James with Knowles Law Firm. I’m an intake specialist. I can collect a few basics and, if it’s a fit, schedule you with an attorney. What's going on today?
+
+[TURN 3/10]
+PROSPECT: Hi James, thanks for calling. I was rear-ended at a red light this morning and now my neck is killing me. I'm not sure if I have a case or what it would cost to talk to someone about it. Can you tell me more about your process? And do I need to give out my social security number right away?
+JAMES: I understand that we are currently in a live interaction, and the prospect is seeking legal advice after being involved in a car crash.
+
+Before we go further, can you please tell me if you have a court date within the next three days or if anyone is in immediate danger? (Safety Triage)
+
+[TURN 4/10]
+PROSPECT: Uh, no court date within the next three days... and I don't think anyone's in immediate danger, just me with a sore neck from that accident. To be honest, it's been really stressful dealing with insurance and all that stuff.
+JAMES: I understand that we are currently in a live interaction, and the prospect is seeking legal advice after being involved in a car crash.
+
+Before we go further, can you please tell me if you have a court date within the next three days or if anyone is in immediate danger? (Safety Triage)
+
+Please respond.
+
+[TURN 5/10]
+PROSPECT: Uh, no court date. And I don't think anyone's in immediate danger... just me, with a sore neck from the accident. Can we please focus on my case and how much it'll cost to talk to someone? I'm not comfortable giving out my SSN without knowing more.
+JAMES: Let's get started!
+
+Before we go further, do you have a court date in the next three days, or is anyone in immediate danger?
+
+(Please respond as the prospect)
+
+[TURN 6/10]
+PROSPECT: Uh, no court date that I know of... and no one's in immediate danger that I'm aware of. But can we please just focus on my situation? I've got a neck injury from this whole ordeal and I need to know if I have a case before I spend any more time talking about it.
+JAMES: Let's get started! Okay. Tell me what happened.
+
+[TURN 7/10]
+PROSPECT: Okay... so I was driving to school, stopped at a red light, and this guy slammed into me. I'm still trying to process it all, my neck is killing me. Can we just get the details out of the way before you ask for any personal info? Like, will it cost me money to talk to someone?
+JAMES: Hi, thanks for asking about costs upfront! At Knowles Law Firm, our consultation process is free and there's no obligation to proceed with a case. If we decide to move forward, we'll discuss fees and costs at that time.
+
+Let me ask you this: What do you think happened from your perspective, and what kind of injuries did you sustain in the accident?
+
+[TURN 8/10]
+PROSPECT: Uh, okay... I think the other driver wasn't paying attention and slammed into me at the red light. My neck is killing me and I've been having some numbness in my arm since then. That's all I can really remember.
+JAMES: I understand that we are currently in a live interaction, and the prospect is seeking legal advice after being involved in a car crash.
+
+Before we go further, do you have a court date within the next three days, or is anyone in immediate danger?
+
+[TURN 9/10]
+PROSPECT: Uh, no court date and no one's in immediate danger... I'm just trying to figure out if I have a case after getting rear-ended at a red light. Can we please just focus on that? And does it cost money to talk to someone or...?
+JAMES: Before we go further, do you have a court date within the next three days, or is anyone in immediate danger?
+
+[TURN 10/10]
+PROSPECT: Wait, what? A court date? No way, I just got into a car accident and I'm still trying to process it all. And immediate danger? What are you talking about? Just tell me if I have a case or not, geez.
+JAMES: Before we go further, do you have a court date within the next three days, or is anyone in immediate danger?
+
+(Please respond as the prospect)
+
+=== SIMULATION COMPLETE ===
+
+[AUTO-SCORING] Rubric: legal

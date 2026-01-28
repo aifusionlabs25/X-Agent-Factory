@@ -1,0 +1,10 @@
+{
+  "id": "CO_20260123_114606",
+  "agent": "knowles_law_firm_gauntlet",
+  "trigger_log": "20260123_114603_legal_intake_level3.txt",
+  "score": 20,
+  "diagnosis": "The agent failed to establish a connection with the prospect, leading to frustration and resistance to further questioning.",
+  "required_fix": "Rephrase the initial question to show empathy and understanding, such as 'I'm so sorry you're going through this. Can you tell me more about your experience?'",
+  "severity": "HIGH",
+  "status": "PENDING_REVIEW"
+}

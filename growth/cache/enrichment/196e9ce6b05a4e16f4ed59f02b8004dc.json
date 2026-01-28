@@ -1,0 +1,26 @@
+{
+  "status": "success",
+  "site_type": "UNKNOWN",
+  "site_reason": "insufficient_signals",
+  "persona_type": "UNKNOWN",
+  "persona_reasons": [],
+  "icp_lane": "legal_office_intake",
+  "icp_boost": 2,
+  "final_url": "https://phxinjurylaw.com/",
+  "status_code": 200,
+  "page_title": "Rated Best Personal Injury Attorney PHOENIX, ARIZONA | Phoenix Accident &amp; Injury Law",
+  "has_phone": false,
+  "has_email": false,
+  "has_contact_page": false,
+  "has_address": true,
+  "industry_hint": "Legal",
+  "location_hint": "Arizona",
+  "services_detected": [],
+  "evidence_signals": [
+    "address_found",
+    "industry:Legal",
+    "icp:legal_office_intake"
+  ],
+  "penalties": [],
+  "enriched_at": "2026-01-21T18:00:05.929750"
+}

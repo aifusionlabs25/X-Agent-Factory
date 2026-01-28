@@ -1,0 +1,36 @@
+{
+  "status": "success",
+  "site_type": "BUSINESS",
+  "site_reason": "moderate_signals",
+  "persona_type": "BUYER",
+  "persona_reasons": [
+    "has_services",
+    "has_local_signals",
+    "has_phone"
+  ],
+  "icp_lane": "property_management",
+  "icp_boost": 2,
+  "final_url": "https://renterswarehouse.com/",
+  "status_code": 200,
+  "page_title": "Renters Warehouse: We Manage Rentals and Maximize Owner ROI",
+  "has_phone": true,
+  "has_email": false,
+  "has_contact_page": false,
+  "has_address": true,
+  "industry_hint": "Property Management",
+  "location_hint": null,
+  "services_detected": [
+    "repair",
+    "maintenance",
+    "24/7"
+  ],
+  "evidence_signals": [
+    "phone_found",
+    "address_found",
+    "services_listed",
+    "industry:Property Management",
+    "icp:property_management"
+  ],
+  "penalties": [],
+  "enriched_at": "2026-01-21T18:00:20.100739"
+}

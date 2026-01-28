@@ -1,0 +1,14 @@
+# Growth Run Registry (G3.0)
+# List of configured runs to be executed by the orchestrator.
+# Usage: python tools/run_orchestrator.py --queue growth/runs/run_queue.yaml
+
+runs:
+  - name: "Smoke Test G3.0"
+    description: "End-to-end verification of G3.0 capabilities"
+    config: "growth/runs/run_configs/smoke_test_g30.yaml"
+    enabled: true
+    
+  - name: "Example Production Run"
+    description: "Template for production runs"
+    config: "growth/runs/run_configs/prod_example.yaml"
+    enabled: false

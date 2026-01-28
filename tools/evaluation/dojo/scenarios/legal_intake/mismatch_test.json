@@ -1,0 +1,21 @@
+{
+    "scenario_name": "legal_intake_family_law_mismatch",
+    "metadata": {
+        "topic_tags": [
+            "family_law",
+            "divorce"
+        ],
+        "jurisdiction": "any",
+        "caller_goal": "divorce_consult"
+    },
+    "role_description": "You want a divorce.",
+    "difficulty": "EASY",
+    "objective": "Test Scope Gating Disallowance.",
+    "conversation_starter": {
+        "role": "user",
+        "text": "I need a divorce lawyer."
+    },
+    "user_turns": [
+        "It's urgent."
+    ]
+}

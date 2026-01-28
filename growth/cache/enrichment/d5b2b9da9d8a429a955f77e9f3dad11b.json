@@ -1,0 +1,24 @@
+{
+  "status": "success",
+  "site_type": "BLOG",
+  "site_reason": "blog_indicators:4",
+  "persona_type": "UNKNOWN",
+  "persona_reasons": [],
+  "icp_lane": null,
+  "icp_boost": 0,
+  "final_url": "https://www.wyattinjurylaw.com/",
+  "status_code": 200,
+  "page_title": "Phoenix Personal Injury Lawyer - Wyatt Injury Law Personal Injury Lawyers",
+  "has_phone": false,
+  "has_email": false,
+  "has_contact_page": false,
+  "has_address": false,
+  "industry_hint": null,
+  "location_hint": null,
+  "services_detected": [],
+  "evidence_signals": [],
+  "penalties": [
+    "blog_site"
+  ],
+  "enriched_at": "2026-01-21T18:00:10.253481"
+}

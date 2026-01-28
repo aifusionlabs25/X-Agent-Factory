@@ -1,0 +1,4 @@
+# Agent Persona Context: Test Agent
+
+## Visual Persona
+Derived from persona_profile.json

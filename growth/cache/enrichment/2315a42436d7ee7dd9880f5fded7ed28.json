@@ -1,0 +1,27 @@
+{
+  "status": "success",
+  "site_type": "BLOG",
+  "site_reason": "blog_indicators:3",
+  "persona_type": "BUYER",
+  "persona_reasons": [
+    "has_local_signals",
+    "has_contact"
+  ],
+  "icp_lane": null,
+  "icp_boost": 0,
+  "final_url": "https://azdentalclub.com/",
+  "status_code": 200,
+  "page_title": "Home - AZ Dental Club",
+  "has_phone": false,
+  "has_email": false,
+  "has_contact_page": false,
+  "has_address": false,
+  "industry_hint": null,
+  "location_hint": "Maine",
+  "services_detected": [],
+  "evidence_signals": [],
+  "penalties": [
+    "blog_site"
+  ],
+  "enriched_at": "2026-01-21T17:59:48.144372"
+}

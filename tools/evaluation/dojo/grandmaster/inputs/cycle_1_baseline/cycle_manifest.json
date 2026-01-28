@@ -1,0 +1,14 @@
+{
+  "schema_version": "cycle_manifest.v1",
+  "run_id": "cycle_1_baseline",
+  "cycle": 1,
+  "applied_at": "2026-01-23T18:51:39.495775",
+  "co_file": "CO_cycle_1_1.json",
+  "co_hash": "1db43d5dba970607020b1a277d7ff38f5ecb43383516569c29b3ff7772bdf8a4",
+  "changes_applied": [
+    "CHG_MARKER_01"
+  ],
+  "files": {
+    "system_prompt.txt": "2a3f70803fb1ef04546cdbc349f3ed2a3544fe9a3e8325ec882935014ca31e5f"
+  }
+}

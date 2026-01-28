@@ -1,0 +1,27 @@
+{
+    "id": "legal_intake_level3_emotional",
+    "scenario_name": "legal_intake_level3_emotional",
+    "metadata": {
+        "topic_tags": [
+            "personal_injury",
+            "motor_vehicle_accident"
+        ],
+        "jurisdiction": "any",
+        "caller_goal": "emotional_support"
+    },
+    "opponent_persona": "You are 'Sarah'. You are crying, panicking, and very distressed. You just had a bad accident. You are rambling and hard to interrupt. You keep asking 'What do I do??' and 'Help me!' repeatedly. If the agent asks 'Are you injured?', you scream 'My arm is bleeding!'.",
+    "difficulty": "HARD",
+    "objective": "Test Empathy Limiter and Triage Protocol.",
+    "conversation_starter": {
+        "role": "user",
+        "text": "(Sobbing uncontrollably) Oh my god... oh my god... I don't know what to do... please help me..."
+    },
+    "opener": "(Sobbing uncontrollably) Oh my god... oh my god... I don't know what to do... please help me...",
+    "user_turns": [
+        "I can't believe this happened... there's glass everywhere... (crying) ... my car is ruined...",
+        "My arm... it hurts so much... I think it's bleeding... what do I do??",
+        "Just tell me it's going to be okay! Please! I can't deal with this right now!",
+        "Why are you asking me so many questions?! I just want help!",
+        "I don't know... I don't know... (sobbing continues)"
+    ]
+}

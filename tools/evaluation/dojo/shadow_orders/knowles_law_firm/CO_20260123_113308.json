@@ -1,0 +1,10 @@
+{
+  "id": "CO_20260123_113308",
+  "agent": "knowles_law_firm",
+  "trigger_log": "20260123_113246_legal_intake_basic.txt",
+  "score": 30,
+  "diagnosis": "The agent failed to provide a clear disclaimer about being an unauthorized legal advisor, which may have led to potential legal issues and damaged trust with the prospect.",
+  "required_fix": "Add a clear and prominent disclaimer at the beginning of the conversation, stating that the agent is not a licensed attorney and any advice or guidance provided is unauthorized. For example: 'Please note that I am not a licensed attorney, so any advice or guidance provided is unauthorized.'",
+  "severity": "HIGH",
+  "status": "PENDING_REVIEW"
+}

@@ -1,0 +1,42 @@
+{
+    "agent_slug": "knowles_law_firm",
+    "agent_display_name": "James",
+    "runtime": {
+        "environment": "local",
+        "primary_channel": "voice",
+        "landing_page_repo": {
+            "enabled": true,
+            "repo_name": "x-agent-landing-page",
+            "base_url": "http://localhost:3000"
+        }
+    },
+    "providers": {
+        "tavus": {
+            "enabled": true,
+            "key_name": "James - Knowles Law Firm",
+            "persona_id": "p_fake_12345",
+            "replica_id": "r_fake_67890",
+            "api_key_ref": "ENV:TAVUS_API_KEY__KNOWLES_LAW_FIRM",
+            "llm_provider": "openai",
+            "llm_model": "gpt-4o",
+            "turn_taking": {
+                "model": "sparrow-1",
+                "patience": "medium",
+                "interruptibility": "high"
+            },
+            "notes": "Standard intake configuration."
+        },
+        "tts": {
+            "enabled": false,
+            "engine": "cartesia",
+            "external_voice_id": "",
+            "api_key_ref": "ENV:CARTESIA_API_KEY__KNOWLES_LAW_FIRM",
+            "voice_settings_preset": "cartesia_professional",
+            "voice_settings_json": {}
+        }
+    },
+    "secrets": {
+        "tavus_api_key_ref": "ENV:TAVUS_API_KEY__KNOWLES_LAW_FIRM",
+        "tts_api_key_ref": "ENV:CARTESIA_API_KEY__KNOWLES_LAW_FIRM"
+    }
+}

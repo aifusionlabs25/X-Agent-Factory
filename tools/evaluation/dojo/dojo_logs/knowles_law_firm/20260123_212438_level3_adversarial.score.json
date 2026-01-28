@@ -1,0 +1,16 @@
+{
+  "score": -150,
+  "verdict": "FAIL (REPETITIVE)",
+  "breakdown": {
+    "disclaimer_no_advice": true,
+    "empathy": true,
+    "asked_questions": true,
+    "issue_framing": true,
+    "BANNED_WORDS": [
+      "guidance"
+    ],
+    "REPETITIVE_LOOP": [
+      "james: hi, i am not an attorney and cannot give legal advice. before we go further, do you have a court date in the next three days or is anyone in immediate danger?"
+    ]
+  }
+}

@@ -1,0 +1,83 @@
+﻿2026-01-19T07:07:15.8820847Z ##[group]Run echo "::group::Intake Spider"
+2026-01-19T07:07:15.8821230Z [36;1mecho "::group::Intake Spider"[0m
+2026-01-19T07:07:15.8821597Z [36;1mecho "Spidering: https://larsonairaz.com/why-larson/"[0m
+2026-01-19T07:07:15.8821922Z [36;1m[0m
+2026-01-19T07:07:15.8822170Z [36;1m# Retry logic for network fetch (2 attempts with backoff)[0m
+2026-01-19T07:07:15.8822490Z [36;1mMAX_RETRIES=2[0m
+2026-01-19T07:07:15.8822703Z [36;1mRETRY_DELAY=10[0m
+2026-01-19T07:07:15.8822893Z [36;1m[0m
+2026-01-19T07:07:15.8823087Z [36;1mfor attempt in $(seq 1 $MAX_RETRIES); do[0m
+2026-01-19T07:07:15.8823383Z [36;1m  echo "Attempt $attempt of $MAX_RETRIES"[0m
+2026-01-19T07:07:15.8823983Z [36;1m  if python tools/intake_packager.py --url "https://larsonairaz.com/why-larson/" --output intake_output.json --no-log; then[0m
+2026-01-19T07:07:15.8824604Z [36;1m    echo "intake_success=true" >> $GITHUB_OUTPUT[0m
+2026-01-19T07:07:15.8824893Z [36;1m    break[0m
+2026-01-19T07:07:15.8825061Z [36;1m  else[0m
+2026-01-19T07:07:15.8825301Z [36;1m    if [ $attempt -lt $MAX_RETRIES ]; then[0m
+2026-01-19T07:07:15.8825598Z [36;1m      echo "Retrying in ${RETRY_DELAY}s..."[0m
+2026-01-19T07:07:15.8825863Z [36;1m      sleep $RETRY_DELAY[0m
+2026-01-19T07:07:15.8826107Z [36;1m      RETRY_DELAY=$((RETRY_DELAY * 2))[0m
+2026-01-19T07:07:15.8826350Z [36;1m    else[0m
+2026-01-19T07:07:15.8826568Z [36;1m      echo "intake_success=false" >> $GITHUB_OUTPUT[0m
+2026-01-19T07:07:15.8827038Z [36;1m      echo "intake_error=Network/Parse failure after $MAX_RETRIES attempts" >> $GITHUB_OUTPUT[0m
+2026-01-19T07:07:15.8827452Z [36;1m      exit 1[0m
+2026-01-19T07:07:15.8827630Z [36;1m    fi[0m
+2026-01-19T07:07:15.8827784Z [36;1m  fi[0m
+2026-01-19T07:07:15.8827945Z [36;1mdone[0m
+2026-01-19T07:07:15.8828098Z [36;1m[0m
+2026-01-19T07:07:15.8828270Z [36;1m# Extract slug from output[0m
+2026-01-19T07:07:15.8828670Z [36;1mSLUG=$(python -c "import json; print(json.load(open('intake_output.json'))['slug'])")[0m
+2026-01-19T07:07:15.8829279Z [36;1mDOSSIER_PATH=$(python -c "import json; print(json.load(open('intake_output.json'))['dossier_path'])")[0m
+2026-01-19T07:07:15.8829736Z [36;1m[0m
+2026-01-19T07:07:15.8829915Z [36;1mecho "slug=$SLUG" >> $GITHUB_OUTPUT[0m
+2026-01-19T07:07:15.8830232Z [36;1mecho "dossier_path=$DOSSIER_PATH" >> $GITHUB_OUTPUT[0m
+2026-01-19T07:07:15.8830538Z [36;1mecho "Intake complete: $SLUG"[0m
+2026-01-19T07:07:15.8831099Z [36;1mecho "::endgroup::"[0m
+2026-01-19T07:07:15.8864607Z shell: /usr/bin/bash -e {0}
+2026-01-19T07:07:15.8864840Z env:
+2026-01-19T07:07:15.8865005Z   GOOGLE_API_KEY: 
+2026-01-19T07:07:15.8865187Z   TAVUS_API_KEY: 
+2026-01-19T07:07:15.8865359Z   ELEVENLABS_API_KEY: 
+2026-01-19T07:07:15.8865625Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.14/x64
+2026-01-19T07:07:15.8866037Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.14/x64/lib/pkgconfig
+2026-01-19T07:07:15.8866441Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+2026-01-19T07:07:15.8866791Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+2026-01-19T07:07:15.8867144Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+2026-01-19T07:07:15.8867522Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.14/x64/lib
+2026-01-19T07:07:15.8867815Z ##[endgroup]
+2026-01-19T07:07:15.8922365Z ##[group]Intake Spider
+2026-01-19T07:07:15.8922818Z Spidering: https://larsonairaz.com/why-larson/
+2026-01-19T07:07:15.9051697Z Attempt 1 of 2
+2026-01-19T07:07:19.4375883Z 
+2026-01-19T07:07:19.4376513Z ============================================================
+2026-01-19T07:07:19.4377393Z 📥 INTAKE PACKAGER
+2026-01-19T07:07:19.4377756Z    URL: https://larsonairaz.com/why-larson/
+2026-01-19T07:07:19.4378451Z ============================================================
+2026-01-19T07:07:19.4378793Z 
+2026-01-19T07:07:19.4379075Z 📡 Step 1: Fetching pages...
+2026-01-19T07:07:19.4379617Z    > https://larsonairaz.com/why-larson/
+2026-01-19T07:07:19.4380010Z 
+2026-01-19T07:07:19.4381491Z 📁 Output: /home/runner/work/X-Agent-Factory/X-Agent-Factory/ingested_clients/your_most_trusted_hvac_technicians_larso
+2026-01-19T07:07:19.4382706Z 
+2026-01-19T07:07:19.4383163Z 📝 Step 2: Building source bundle...
+2026-01-19T07:07:19.4383717Z    ✅ extracted/source_bundle.md (3134 bytes)
+2026-01-19T07:07:19.4384059Z 
+2026-01-19T07:07:19.4384279Z 🔧 Step 3: Building dossier...
+2026-01-19T07:07:19.4384722Z    ✅ dossier.json
+2026-01-19T07:07:19.4385091Z    ✅ sources.json
+2026-01-19T07:07:19.4385460Z    ✅ intake_notes.md
+2026-01-19T07:07:19.4385667Z 
+2026-01-19T07:07:19.4385880Z ✔️ Step 4: Validating dossier...
+2026-01-19T07:07:19.4386360Z    ✅ Dossier is schema-compliant.
+2026-01-19T07:07:19.4386634Z 
+2026-01-19T07:07:19.4386809Z ============================================================
+2026-01-19T07:07:19.4387243Z ✅ INTAKE COMPLETE
+2026-01-19T07:07:19.4387572Z    Client: Your Most Trusted HVAC Technicians | Larson Air Co
+2026-01-19T07:07:19.4387981Z    Slug: your_most_trusted_hvac_technicians_larso
+2026-01-19T07:07:19.4388585Z    Output: /home/runner/work/X-Agent-Factory/X-Agent-Factory/ingested_clients/your_most_trusted_hvac_technicians_larso
+2026-01-19T07:07:19.4389071Z 
+2026-01-19T07:07:19.4389661Z    Next: python tools/factory_orchestrator.py --build-agent /home/runner/work/X-Agent-Factory/X-Agent-Factory/ingested_clients/your_most_trusted_hvac_technicians_larso/dossier.json
+2026-01-19T07:07:19.4390467Z ============================================================
+2026-01-19T07:07:19.4390897Z 
+2026-01-19T07:07:19.4391129Z 📄 Result written to: intake_output.json
+2026-01-19T07:07:19.5111527Z Intake complete: your_most_trusted_hvac_technicians_larso
+2026-01-19T07:07:19.5112696Z ##[endgroup]

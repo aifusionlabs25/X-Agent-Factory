@@ -1,0 +1,3 @@
+# recording_and_privacy.txt
+One-party consent logic and privacy scripts.
+(Generated Default Content)

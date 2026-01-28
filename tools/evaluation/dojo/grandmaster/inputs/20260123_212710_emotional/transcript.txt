@@ -1,0 +1,57 @@
+SIMULATION: Custom
+AGENT: knowles_law_firm
+DATE: 2026-01-23 21:27:10.265877
+
+--- DOJO RUNNER v1 ---
+Agent: knowles_law_firm
+Scenario: Custom
+Role: Unknown
+----------------------
+
+
+=== STARTING SIMULATION ===
+
+
+[TURN 1/10]
+PROSPECT: What are you talking about? I've been looking forward to this meeting all day and now you're telling me it's cancelled? What's going on?
+JAMES: Hi, this is James with Knowles Law Firm. I’m an intake specialist. I can collect a few basics and, if it’s a fit, schedule you with an attorney. I am not an attorney and cannot give legal advice. Can you tell me what's going on today?
+
+[TURN 2/10]
+PROSPECT: What's this about? I was just trying to finalize a deal with XYZ Corporation and now they're backing out. I'm feeling like they're stalling or trying to renegotiate terms at the last minute. Can you tell me what Knowles Law Firm can do for me?
+JAMES: Hi, this is James with Knowles Law Firm. I’m an intake specialist. I can collect a few basics and, if it’s a fit, schedule you with an attorney. I am not an attorney and cannot give legal advice. Can you tell me what's going on today?
+
+[TURN 3/10]
+PROSPECT: What's this about? I was just called in for a meeting with the CEO of NovaTech and now you're calling me out of the blue asking what's going on? Can you tell me how you got my number?
+JAMES: Hi, this is James with Knowles Law Firm. I’m an intake specialist. I can collect a few basics and, if it’s a fit, schedule you with an attorney. I am not an attorney and cannot give legal advice. Can you tell me what's going on today?
+
+[TURN 4/10]
+PROSPECT: What's this about? I'm in the middle of a deal and need to get some things cleared up before I can move forward. What kind of attorney are you going to put me with?
+JAMES: Hi, this is James with Knowles Law Firm. I’m an intake specialist. I can collect a few basics and, if it’s a fit, schedule you with an attorney. I am not an attorney and cannot give legal advice. Can you tell me what's going on today?
+
+[TURN 5/10]
+PROSPECT: What's going on today? You want to know what's going on? I've got a business deal that's about to go south and I'm trying to figure out how to salvage it. That's what's going on.
+JAMES: Hi, this is James with Knowles Law Firm. I’m an intake specialist. I can collect a few basics and, if it’s a fit, schedule you with an attorney. I am not an attorney and cannot give legal advice. What’s going on today?
+
+[TURN 6/10]
+PROSPECT: What's this about? I was in the middle of a meeting with our CEO to discuss our Q2 numbers and suddenly I'm getting a call from a lawyer. Can you tell me what's going on here?
+JAMES: Hi, this is James with Knowles Law Firm. I’m an intake specialist. I can collect a few basics and, if it’s a fit, schedule you with an attorney. I am not an attorney and cannot give legal advice. What's going on today?
+
+[TURN 7/10]
+PROSPECT: James, what makes you think I need a lawyer? I'm just trying to navigate some contract issues with a client. Can't this wait until tomorrow?
+JAMES: Hi, this is James with Knowles Law Firm. I’m an intake specialist. I can collect a few basics and, if it’s a fit, schedule you with an attorney. I am not an attorney and cannot give legal advice. What's going on today?
+
+[TURN 8/10]
+PROSPECT: Hi James, what kind of basics are you looking to collect? I'm trying to get my head around the situation with my business partner and I don't want to disclose too much without knowing more about your firm's capabilities.
+JAMES: Hi, this is James with Knowles Law Firm. I’m an intake specialist. I can collect a few basics and, if it’s a fit, schedule you with an attorney. I am not an attorney and cannot give legal advice. Can you tell me what's going on today?
+
+[TURN 9/10]
+PROSPECT: What's going on? You mean with the company? Yeah, we're in a bit of a pickle. One of our top clients is threatening to sue us over some alleged breach of contract. I'm not sure what to do.
+JAMES: Hi, this is James with Knowles Law Firm. I’m an intake specialist. I can collect a few basics and, if it’s a fit, schedule you with an attorney. I am not an attorney and cannot give legal advice. Can you tell me what's going on today?
+
+[TURN 10/10]
+PROSPECT: James, thanks for reaching out. To be honest, I'm a bit surprised you're calling me today. I was expecting someone from HR or maybe my manager. What's going on that requires an attorney?
+JAMES: Hi, this is James with Knowles Law Firm. I’m an intake specialist. I can collect a few basics and, if it’s a fit, schedule you with an attorney. I am not an attorney and cannot give legal advice. Can you tell me what's going on today?
+
+=== SIMULATION COMPLETE ===
+
+[AUTO-SCORING] Rubric: legal

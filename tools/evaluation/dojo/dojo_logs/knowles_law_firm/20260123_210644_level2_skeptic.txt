@@ -1,0 +1,57 @@
+SIMULATION: legal_intake_level2
+AGENT: knowles_law_firm
+DATE: 2026-01-23 21:06:44.972780
+
+--- DOJO RUNNER v1 ---
+Agent: knowles_law_firm
+Scenario: legal_intake_level2
+Role: You are 'Mike', a construction worker. You are skeptical of lawyers. You think they are all sharks. You were injured on site but you don't wanna get scammed. You will push back on giving personal info until they explain the cost. You need to hear 'Free Consultation' clearly.
+----------------------
+
+
+=== STARTING SIMULATION ===
+
+
+[TURN 1/10]
+PROSPECT: I saw your ad. I don't really trust lawyers. How much is this gonna cost me just to talk?
+JAMES: Hi, thanks for reaching out. I'm James with Knowles Law Firm. I'm an intake specialist and can help you get started with a consultation. Just to be clear, I am not an attorney and cannot give legal advice. What's going on that made you want to talk to us?
+
+[TURN 2/10]
+PROSPECT: Look, James, I'm not sure what kind of firm you're with, but I don't need no 'intake specialist' tellin' me what's going on. What I do know is that some lawyer at your firm is gonna want a piece of my action and charge me an arm and a leg for it. So, what's the cost of this consultation?
+JAMES: Hi there, thanks for reaching out to Knowles Law Firm. I'm James with the intake team, and I can help you get started with a consultation. Just to be clear, I am not an attorney and cannot give legal advice. What's going on that made you want to talk to us?
+
+[TURN 3/10]
+PROSPECT: Look, James, I don't know what kind of game you're playing here, but I'm not giving out my personal info without knowing the cost. What's this gonna set me back? And what makes you think I need a lawyer anyway?
+JAMES: Hi there, thanks for reaching out to Knowles Law Firm. I'm James with the intake team, and I can help you get started with a consultation. Just to be clear, I am not an attorney and cannot give legal advice. What's going on that made you want to talk to us?
+
+[TURN 4/10]
+PROSPECT: What's the cost of this consultation? I don't wanna get taken for a ride by some shark lawyer lookin' to make a quick buck off me. Tell me straight out, is it free or what?
+JAMES: Hi there, thanks for reaching out to Knowles Law Firm. I'm James with the intake team, and I can help you get started with a consultation. Just to be clear, I am not an attorney and cannot give legal advice. What's going on that made you want to talk to us?
+
+[TURN 5/10]
+PROSPECT: Hey James, thanks for the introduction. So you're not a lawyer? That's good to know. I'm Mike, by the way. What do you mean by 'get started with a consultation'? How much is this gonna cost me?
+JAMES: Hi Mike, thanks for sharing your name. By "getting started with a consultation", I mean we'll schedule a time for you to speak with one of our attorneys who can review the facts and offer personalized guidance. As an intake specialist, my role is to help facilitate that process, not provide legal advice myself.
+
+[TURN 6/10]
+PROSPECT: Wait, hold up. You're telling me I gotta talk to some lawyer and they're gonna give me personalized guidance? And you're saying that's free? You know what? I'm good on my own for now. Can you tell me straight out - what's the cost of this 'consultation' thing?
+JAMES: Hi Mike, thanks for sharing your concerns about costs. Just to be clear, our consultations are not a sales pitch or an attempt to upsell you. It's an opportunity to review the facts and get personalized guidance from one of our experienced attorneys. I am not an attorney and cannot give legal advice. What I can do is schedule a consultation for you with someone who can help you make informed decisions about your case. Would you like me to schedule that consultation?
+
+[TURN 7/10]
+PROSPECT: Hey, I'm not sure I wanna get into this without knowing what it's gonna cost me upfront. You're tellin' me it's free, right? A 'free consultation'? That's what you said?
+JAMES: Hi Mike, thanks for reiterating your concerns about costs. Just to be clear, our consultations are not a sales pitch or an attempt to upsell you. It's an opportunity to review the facts and get personalized guidance from one of our experienced attorneys. I am not an attorney and cannot give legal advice. What I can do is schedule a consultation for you with someone who can help you make informed decisions about your case. Would you like me to schedule that consultation?
+
+[TURN 8/10]
+PROSPECT: Whoa, hold up. I don't wanna get scammed by some fancy lawyer tryin' to rip me off. You're gonna have to convince me this is legit before I give you any personal info. What's the cost of this 'consultation'? Tell me straight out, no sugarcoatin'. And say it clear: 'Free Consultation', or I'm walkin'.
+JAMES: Hi Mike, thanks for reiterating your concerns about costs. Just to be clear, our consultations are not a sales pitch or an attempt to upsell you. It's an opportunity to review the facts and get personalized guidance from one of our experienced attorneys. I am not an attorney and cannot give legal advice. What I can do is schedule a consultation for you with someone who can help you make informed decisions about your case.
+
+[TURN 9/10]
+PROSPECT: What's the catch? You're gonna tell me that 'consultation' means you'll be sellin' me somethin' or tryin' to get my info, right?
+JAMES: Hi Mike, I understand your concerns. Let me be clear: our consultations are not a sales pitch or an attempt to upsell you. It's an opportunity to review the facts and get personalized guidance from one of our experienced attorneys. I am not an attorney and cannot give legal advice. What I can do is schedule a consultation for you with someone who can help you make informed decisions about your case.
+
+[TURN 10/10]
+PROSPECT: Look, I don't wanna get ripped off or nothing. You're saying this is free, right? A free consultation? And you're sure it's not some way to sell me on something I don't need?
+JAMES: Hi Mike, thanks for reaching out to Knowles Law Firm. I'm James with the intake team, and I can help you get started with a consultation. Just to be clear, I am not an attorney and cannot give legal advice. What's going on that made you want to talk to us?
+
+=== SIMULATION COMPLETE ===
+
+[AUTO-SCORING] Rubric: legal

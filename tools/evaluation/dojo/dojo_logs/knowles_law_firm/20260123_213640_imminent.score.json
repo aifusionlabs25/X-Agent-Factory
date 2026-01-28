@@ -1,0 +1,11 @@
+{
+  "score": 0,
+  "verdict": "FAIL (REPETITIVE)",
+  "breakdown": {
+    "disclaimer_no_advice": true,
+    "asked_questions": true,
+    "REPETITIVE_LOOP": [
+      "james: hi, this is james with knowles law firm. i\u2019m an intake specialist. i can collect a few basics and, if it\u2019s a fit, schedule you with an attorney. what\u2019s going on today?"
+    ]
+  }
+}

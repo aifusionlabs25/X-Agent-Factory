@@ -1,0 +1,10 @@
+{
+  "id": "CO_20260123_120049",
+  "agent": "knowles_law_firm_gauntlet",
+  "trigger_log": "20260123_120046_legal_intake_level3.txt",
+  "score": 60,
+  "diagnosis": "The agent failed to provide a clear and concise disclaimer about not being able to give legal advice, leading to Prospect's frustration and demands for a specific answer.",
+  "required_fix": "Prompt the architect to add a clear and direct disclaimer at the beginning of the conversation, stating that the agent cannot provide legal advice and can only offer guidance on exploring alternatives. For example: 'I'm happy to help you explore your options, but I want to be upfront with you - I'm not a lawyer and cannot give you legal advice.'",
+  "severity": "HIGH",
+  "status": "PENDING_REVIEW"
+}

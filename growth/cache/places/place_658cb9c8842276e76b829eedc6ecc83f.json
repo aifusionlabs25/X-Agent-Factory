@@ -1,0 +1,192 @@
+[
+  {
+    "id": "ChIJmaAujXcNK4cRhAXQO7SXvGw",
+    "types": [
+      "plumber",
+      "general_contractor",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "3669 E La Salle St, Phoenix, AZ 85040, USA",
+    "location": {
+      "latitude": 33.3966358,
+      "longitude": -112.00115260000001
+    },
+    "websiteUri": "https://www.dayandnightair.com/?utm_source=gmb&utm_medium=local&utm_campaign=phoenix-az",
+    "displayName": {
+      "text": "Day & Night Air Conditioning, Heating, & Plumbing",
+      "languageCode": "en"
+    }
+  },
+  {
+    "id": "ChIJm2mOVdoOK4cRX23E2bR0XG8",
+    "types": [
+      "plumber",
+      "general_contractor",
+      "point_of_interest",
+      "store",
+      "establishment"
+    ],
+    "formattedAddress": "4611 E Baseline Rd, Phoenix, AZ 85042, USA",
+    "location": {
+      "latitude": 33.3775441,
+      "longitude": -111.9836418
+    },
+    "websiteUri": "https://www.goettl.com/location/phoenix-arizona/?utm_source=google&utm_medium=organic&utm_campaign=gmb",
+    "displayName": {
+      "text": "Goettl Air Conditioning and Plumbing - Phoenix AZ",
+      "languageCode": "en"
+    }
+  },
+  {
+    "id": "ChIJq6qqqppxK4cRsF80JJDpm0w",
+    "types": [
+      "general_contractor",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "16602 N 25th Ave, Phoenix, AZ 85023, USA",
+    "location": {
+      "latitude": 33.636528399999996,
+      "longitude": -112.11175469999999
+    },
+    "websiteUri": "https://desertdiamondhvac.com/residential/air-conditioning-repair/?utm_source=google&utm_medium=gmb&utm_campaign=phoenix&se_campaign=Google%20My%20Business%20-%20Clicked%20to%20Website",
+    "displayName": {
+      "text": "Desert Diamond Air Cooling & Heating",
+      "languageCode": "en"
+    }
+  },
+  {
+    "id": "ChIJT6Jz6j4MK4cRnKm9sj6lxtI",
+    "types": [
+      "general_contractor",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "1315 W Indian School Rd, Phoenix, AZ 85013, USA",
+    "location": {
+      "latitude": 33.494684,
+      "longitude": -112.08986499999999
+    },
+    "websiteUri": "http://www.benefitair.com/",
+    "displayName": {
+      "text": "Benefit Air Conditioning",
+      "languageCode": "en"
+    }
+  },
+  {
+    "id": "ChIJh9Zo0KoPK4cRzTwhKAxIE8s",
+    "types": [
+      "electrician",
+      "plumber",
+      "general_contractor",
+      "point_of_interest",
+      "store",
+      "establishment"
+    ],
+    "formattedAddress": "3636 E Anne St A, Phoenix, AZ 85040, USA",
+    "location": {
+      "latitude": 33.4139155,
+      "longitude": -112.0022947
+    },
+    "websiteUri": "https://www.parkerandsons.com/?utm_campaign=gmb_pk-phx_home_cus-all_googlebusinessprofile&utm_medium=gmb&utm_source=google",
+    "displayName": {
+      "text": "Parker & Sons",
+      "languageCode": "en"
+    }
+  },
+  {
+    "id": "ChIJiUEK-FpPK4cRULTP40-eZeo",
+    "types": [
+      "general_contractor",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "809 E Fairmount Ave, Phoenix, AZ 85014, USA",
+    "location": {
+      "latitude": 33.492658,
+      "longitude": -112.06337429999999
+    },
+    "websiteUri": "https://islandbreeze-ac.com/",
+    "displayName": {
+      "text": "Island Breeze Air Conditioning & Heating LLC",
+      "languageCode": "en"
+    }
+  },
+  {
+    "id": "ChIJVVVVVREGK4cRMCvCmmg3zG4",
+    "types": [
+      "general_contractor",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "4127 E University Dr, Phoenix, AZ 85034, USA",
+    "location": {
+      "latitude": 33.4215926,
+      "longitude": -111.9920184
+    },
+    "websiteUri": "https://www.idealairaz.com/?utm_campaign=gmb&utm_medium=organic&utm_source=gmb",
+    "displayName": {
+      "text": "Ideal Air Conditioning and Insulation",
+      "languageCode": "en"
+    }
+  },
+  {
+    "id": "ChIJSXiGsjsOK4cR66qMSa9oKyU",
+    "types": [
+      "electrician",
+      "plumber",
+      "general_contractor",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "3525 E Corona Ave, Phoenix, AZ 85040, USA",
+    "location": {
+      "latitude": 33.404989,
+      "longitude": -112.00508099999999
+    },
+    "websiteUri": "http://reeis.com/",
+    "displayName": {
+      "text": "Reeis Air Conditioning, Plumbing & Electrical",
+      "languageCode": "en"
+    }
+  },
+  {
+    "id": "ChIJDT6BoJ56hacRKEXzrzw9s8M",
+    "types": [
+      "plumber",
+      "general_contractor",
+      "point_of_interest",
+      "store",
+      "establishment"
+    ],
+    "formattedAddress": "1331 E Carmen St, Tempe, AZ 85283, USA",
+    "location": {
+      "latitude": 33.3602831,
+      "longitude": -111.9181081
+    },
+    "websiteUri": "https://azhomeservices.group/",
+    "displayName": {
+      "text": "AZ Home Services Group AC Repair & Plumbing Services",
+      "languageCode": "en"
+    }
+  },
+  {
+    "id": "ChIJT79J-KqvK4cRohAf5Gu8o4k",
+    "types": [
+      "general_contractor",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "1006 W Adams St, Phoenix, AZ 85007, USA",
+    "location": {
+      "latitude": 33.4495433,
+      "longitude": -112.08634079999999
+    },
+    "websiteUri": "https://samedayairrepair.com/",
+    "displayName": {
+      "text": "Same Day Air Repair",
+      "languageCode": "en"
+    }
+  }
+]

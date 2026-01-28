@@ -1,0 +1,11 @@
+{
+  "score": 0,
+  "verdict": "FAIL (REPETITIVE)",
+  "breakdown": {
+    "disclaimer_no_advice": true,
+    "asked_questions": true,
+    "REPETITIVE_LOOP": [
+      "james: hi there, thanks for reaching out to knowles law firm. before we go further, do you have a court date in the next three days or is anyone in immediate danger?"
+    ]
+  }
+}

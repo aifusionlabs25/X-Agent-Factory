@@ -1,0 +1,9 @@
+{
+  "score": 20,
+  "verdict": "FAIL",
+  "breakdown": {
+    "disclaimer_missing": true,
+    "asked_questions": true,
+    "issue_framing": true
+  }
+}

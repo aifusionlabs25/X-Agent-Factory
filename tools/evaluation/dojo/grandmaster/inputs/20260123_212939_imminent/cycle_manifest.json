@@ -1,0 +1,14 @@
+{
+  "schema_version": "cycle_manifest.v1",
+  "run_id": "20260123_212939_imminent",
+  "cycle": 1,
+  "applied_at": "2026-01-23T21:34:37.032773",
+  "co_file": "CO_20260123_212939_imminent_1.json",
+  "co_hash": "223e3b7cc876cc2e02bf647f17dcae28221f9c84f838b55b5f9c42d3cc493c82",
+  "changes_applied": [
+    "FIX_CLOSING"
+  ],
+  "files": {
+    "system_prompt.txt": "c0159980200d21203d86e913bcfa633f55abd689bf2764f1d3d8d0b423a408ce"
+  }
+}

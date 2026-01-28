@@ -1,0 +1,200 @@
+[
+  {
+    "id": "ChIJ_1BnLTIbK4cROFo95fiJ3kk",
+    "types": [
+      "dentist",
+      "doctor",
+      "health",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "1345 E Chandler Blvd STE 121, Phoenix, AZ 85048, USA",
+    "location": {
+      "latitude": 33.3047822,
+      "longitude": -112.0529109
+    },
+    "websiteUri": "https://www.desertfoothillsdental.com/",
+    "displayName": {
+      "text": "Desert Foothills Dental",
+      "languageCode": "en"
+    }
+  },
+  {
+    "id": "ChIJC5sAMDkRK4cR0WvXOyCuj2M",
+    "types": [
+      "dentist",
+      "dental_clinic",
+      "health",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "610 W Buckeye Rd, Phoenix, AZ 85003, USA",
+    "location": {
+      "latitude": 33.437258199999995,
+      "longitude": -112.0818135
+    },
+    "websiteUri": "https://1800dentist.com/emergency-dentist-phoenix-520651/",
+    "displayName": {
+      "text": "1800 Emergency Dentist Phoenix 24 Hour",
+      "languageCode": "en"
+    }
+  },
+  {
+    "id": "ChIJoyKLfp0TK4cR7m6Yq9IYGh4",
+    "types": [
+      "dentist",
+      "health",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "45 W Jefferson St Suite L, Phoenix, AZ 85003, USA",
+    "location": {
+      "latitude": 33.4470044,
+      "longitude": -112.07478549999999
+    },
+    "websiteUri": "http://downtownsmilesphx.com/",
+    "displayName": {
+      "text": "Downtown Smiles Phoenix Dental Care",
+      "languageCode": "en"
+    }
+  },
+  {
+    "id": "ChIJV06leVwTK4cRLyeVCoXY3xo",
+    "types": [
+      "dentist",
+      "dental_clinic",
+      "health",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "10 W Adams St, Phoenix, AZ 85003, USA",
+    "location": {
+      "latitude": 33.4494904,
+      "longitude": -112.0740896
+    },
+    "websiteUri": "https://www.anytimedentalphx.com/?utm_campaign=gmb",
+    "displayName": {
+      "text": "Anytime Dental",
+      "languageCode": "en"
+    }
+  },
+  {
+    "id": "ChIJP0wMZEUEK4cR1dqT32IL0fM",
+    "types": [
+      "dentist",
+      "dental_clinic",
+      "health",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "4530 E Ray Rd #170, Phoenix, AZ 85044, USA",
+    "location": {
+      "latitude": 33.3209556,
+      "longitude": -111.98613999999999
+    },
+    "websiteUri": "http://www.trusmilenow.com/",
+    "displayName": {
+      "text": "TruSmile Now",
+      "languageCode": "en"
+    }
+  },
+  {
+    "id": "ChIJLz4QPnUTK4cR2vMP0qGcy4s",
+    "types": [
+      "health",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "346 N 3rd Ave, Phoenix, AZ 85003, USA",
+    "location": {
+      "latitude": 33.4533414,
+      "longitude": -112.07805789999999
+    },
+    "websiteUri": "https://1800dentist.com/emergency-dentist-phoenix-520651/",
+    "displayName": {
+      "text": "1800 Emergency Dentist Phoenix 24 Hour",
+      "languageCode": "en"
+    }
+  },
+  {
+    "id": "ChIJGQphlWYEK4cRR2FlxZ7bJwc",
+    "types": [
+      "dentist",
+      "health",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "4609 E Chandler Blvd, Phoenix, AZ 85048, USA",
+    "location": {
+      "latitude": 33.3049657,
+      "longitude": -111.98300400000001
+    },
+    "websiteUri": "https://desertdentistry.com/",
+    "displayName": {
+      "text": "Desert Dentistry",
+      "languageCode": "en"
+    }
+  },
+  {
+    "id": "ChIJ44t_umsEK4cRt8CQRslK1CU",
+    "types": [
+      "dentist",
+      "dental_clinic",
+      "health",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "15215 S 48th St #175, Phoenix, AZ 85044, USA",
+    "location": {
+      "latitude": 33.3085703,
+      "longitude": -111.9801438
+    },
+    "websiteUri": "https://drmowdds.com/",
+    "displayName": {
+      "text": "Mountain Park Dentistry,LLC",
+      "languageCode": "en"
+    }
+  },
+  {
+    "id": "ChIJp-F3YScQK4cRqbWms1lnIrI",
+    "types": [
+      "dentist",
+      "dental_clinic",
+      "doctor",
+      "health",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "6034 S 16th St, Phoenix, AZ 85042, USA",
+    "location": {
+      "latitude": 33.3909179,
+      "longitude": -112.04778329999999
+    },
+    "websiteUri": "https://risasdental.com/locations/az/Phoenix/6034-South-16th-street",
+    "displayName": {
+      "text": "Risas Dental and Braces - South Mountain",
+      "languageCode": "en"
+    }
+  },
+  {
+    "id": "ChIJ559aWLUFK4cR2imBnTIkKSk",
+    "types": [
+      "dentist",
+      "dental_clinic",
+      "doctor",
+      "health",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "4350 E Ray Rd Suite 105, Phoenix, AZ 85044, USA",
+    "location": {
+      "latitude": 33.320575999999996,
+      "longitude": -111.99090699999999
+    },
+    "websiteUri": "https://www.adhaz.com/",
+    "displayName": {
+      "text": "Advanced Dental Health",
+      "languageCode": "en"
+    }
+  }
+]

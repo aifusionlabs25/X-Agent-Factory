@@ -1,0 +1,24 @@
+{
+  "status": "success",
+  "site_type": "UNKNOWN",
+  "site_reason": "insufficient_signals",
+  "persona_type": "UNKNOWN",
+  "persona_reasons": [],
+  "icp_lane": null,
+  "icp_boost": 0,
+  "final_url": "https://www.jkphoenixpersonalinjuryattorney.com/",
+  "status_code": 200,
+  "page_title": null,
+  "has_phone": false,
+  "has_email": false,
+  "has_contact_page": false,
+  "has_address": true,
+  "industry_hint": null,
+  "location_hint": null,
+  "services_detected": [],
+  "evidence_signals": [
+    "address_found"
+  ],
+  "penalties": [],
+  "enriched_at": "2026-01-21T18:00:01.040785"
+}

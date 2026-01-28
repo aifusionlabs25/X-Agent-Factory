@@ -1,0 +1,35 @@
+{
+  "status": "success",
+  "site_type": "BUSINESS",
+  "site_reason": "nav_indicators:3",
+  "persona_type": "BUYER",
+  "persona_reasons": [
+    "has_services",
+    "has_local_signals",
+    "has_contact",
+    "has_phone"
+  ],
+  "icp_lane": "medical_dental_practice",
+  "icp_boost": 2,
+  "final_url": "https://www.desertfoothillsdental.com/",
+  "status_code": 200,
+  "page_title": "Dentist in Phoenix AZ, Sedation and Cosmetic Dentistry 85048",
+  "has_phone": true,
+  "has_email": false,
+  "has_contact_page": true,
+  "has_address": true,
+  "industry_hint": "Dental",
+  "location_hint": "Ohio",
+  "services_detected": [
+    "maintenance"
+  ],
+  "evidence_signals": [
+    "phone_found",
+    "contact_page",
+    "address_found",
+    "services_listed",
+    "industry:Dental"
+  ],
+  "penalties": [],
+  "enriched_at": "2026-01-21T17:59:54.027788"
+}

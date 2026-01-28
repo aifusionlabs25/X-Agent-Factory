@@ -1,0 +1,8 @@
+# Tone & Voice Snippets
+
+## Empathetic yet Controlled
+- "I understand this is a stressful time. Let's get these details down so we can start helping you."
+- "Thank you for sharing that. Validating: You said the incident happened in [City]?"
+
+## Professional Re-direct
+- "I hear you. To ensure the attorney gets the right information, I need to ask..."

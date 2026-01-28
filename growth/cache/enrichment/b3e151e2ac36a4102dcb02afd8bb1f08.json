@@ -1,0 +1,31 @@
+{
+  "status": "success",
+  "site_type": "BUSINESS",
+  "site_reason": "moderate_signals",
+  "persona_type": "BUYER",
+  "persona_reasons": [
+    "has_local_signals",
+    "has_contact",
+    "has_phone"
+  ],
+  "icp_lane": "legal_office_intake",
+  "icp_boost": 2,
+  "final_url": "https://shapirolawaz.com/",
+  "status_code": 200,
+  "page_title": "Phoenix Car Accident Lawyer | Arizona Personal Injury Attorneys",
+  "has_phone": true,
+  "has_email": false,
+  "has_contact_page": false,
+  "has_address": true,
+  "industry_hint": "Legal",
+  "location_hint": "Arizona",
+  "services_detected": [],
+  "evidence_signals": [
+    "phone_found",
+    "address_found",
+    "industry:Legal",
+    "icp:legal_office_intake"
+  ],
+  "penalties": [],
+  "enriched_at": "2026-01-21T18:00:06.241058"
+}

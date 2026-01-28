@@ -1,0 +1,200 @@
+[
+  {
+    "id": "ChIJlagK1nanK4cRCehNepb84ME",
+    "types": [
+      "apartment_complex",
+      "real_estate_agency",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "1930 N Country Club Dr, Mesa, AZ 85201, USA",
+    "location": {
+      "latitude": 33.4483704,
+      "longitude": -111.84191109999999
+    },
+    "websiteUri": "http://www.aspensquare.com/apartments/arizona/mesa/luxe-1930?utm_source=google&utm_medium=referral",
+    "displayName": {
+      "text": "Luxe 1930",
+      "languageCode": "en"
+    }
+  },
+  {
+    "id": "ChIJTxp7RD-nK4cR9miKggFbd2U",
+    "types": [
+      "apartment_complex",
+      "real_estate_agency",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "435 E Main St #101, Mesa, AZ 85203, USA",
+    "location": {
+      "latitude": 33.414826999999995,
+      "longitude": -111.822638
+    },
+    "websiteUri": "https://www.thegroveonmain.com/?rcstdid=Mg%3D%3D-YRjTEizZPgM%3D&utm_source=gmb&utm_medium=organic",
+    "displayName": {
+      "text": "The Grove On Main",
+      "languageCode": "en"
+    }
+  },
+  {
+    "id": "ChIJC3NqWwcIK4cRcXzEc4-3ACc",
+    "types": [
+      "apartment_complex",
+      "real_estate_agency",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "949 S Longmore, Mesa, AZ 85202, USA",
+    "location": {
+      "latitude": 33.3972749,
+      "longitude": -111.864835
+    },
+    "websiteUri": "https://www.westmountatthedistrict.com/?rccustomid=NTU2MjA%3D-XbCvWP1NRu4%3D&utm_source=gmb&utm_medium=organic",
+    "displayName": {
+      "text": "Westmount at The District",
+      "languageCode": "en"
+    }
+  },
+  {
+    "id": "ChIJf2-OWAGoK4cRtHzf4JHE0W4",
+    "types": [
+      "apartment_complex",
+      "apartment_building",
+      "real_estate_agency",
+      "finance",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "960 W Southern Ave, Mesa, AZ 85210, USA",
+    "location": {
+      "latitude": 33.3942932,
+      "longitude": -111.85187719999999
+    },
+    "websiteUri": "http://www.fiestavillageapts.com/?rcstdid=Mg%3D%3D-YRjTEizZPgM%3D",
+    "displayName": {
+      "text": "Fiesta Village Furnished Apartments",
+      "languageCode": "en"
+    }
+  },
+  {
+    "id": "ChIJC8S3TAqnK4cRZ8_01WOfJEw",
+    "types": [
+      "apartment_complex",
+      "apartment_building",
+      "real_estate_agency",
+      "finance",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "145 E Main St, Mesa, AZ 85201, USA",
+    "location": {
+      "latitude": 33.4136695,
+      "longitude": -111.8275451
+    },
+    "websiteUri": "https://melodyonmainapts.com/",
+    "displayName": {
+      "text": "Melody on Main",
+      "languageCode": "en"
+    }
+  },
+  {
+    "id": "ChIJAcaxhhmoK4cRO1T2j8hYihA",
+    "types": [
+      "apartment_complex",
+      "real_estate_agency",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "1711 S Ext Rd, Mesa, AZ 85210, USA",
+    "location": {
+      "latitude": 33.382914899999996,
+      "longitude": -111.846986
+    },
+    "websiteUri": "https://www.thejoshuaapts.com/?rccustomid=Mjk4NDQ%3D-tPAbw7yfUPo%3D&utm_source=gmb&utm_medium=organic",
+    "displayName": {
+      "text": "The Joshua Apartments",
+      "languageCode": "en"
+    }
+  },
+  {
+    "id": "ChIJfYWgqhMHK4cRWAd1ffqe4vs",
+    "types": [
+      "apartment_complex",
+      "apartment_building",
+      "real_estate_agency",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "1310 W Southern Ave, Mesa, AZ 85202, USA",
+    "location": {
+      "latitude": 33.3942364,
+      "longitude": -111.859411
+    },
+    "websiteUri": "https://www.landingfiestavillage.com/?utm_source=gbp&utm_medium=organic&utm_id=Google.com",
+    "displayName": {
+      "text": "The Landing at Fiesta Village",
+      "languageCode": "en"
+    }
+  },
+  {
+    "id": "ChIJJ3k_ggkIK4cRTK3BpHiLOYY",
+    "types": [
+      "apartment_complex",
+      "apartment_building",
+      "real_estate_agency",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "901 S Dobson Rd, Mesa, AZ 85202, USA",
+    "location": {
+      "latitude": 33.3980836,
+      "longitude": -111.8729905
+    },
+    "websiteUri": "http://www.sorrentoazapts.com/",
+    "displayName": {
+      "text": "Sorrento Apartments",
+      "languageCode": "en"
+    }
+  },
+  {
+    "id": "ChIJFc0ibOOnK4cRu3dRBp9xrO8",
+    "types": [
+      "apartment_complex",
+      "real_estate_agency",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "546 S Country Club Dr, Mesa, AZ 85210, USA",
+    "location": {
+      "latitude": 33.4048401,
+      "longitude": -111.8402878
+    },
+    "websiteUri": "https://www.liveatthejulia.com/?rccustomid=NTQ0NzU%3D-KiE%2FR8EYdIk%3D&utm_source=gmb&utm_medium=organic",
+    "displayName": {
+      "text": "The Julia",
+      "languageCode": "en"
+    }
+  },
+  {
+    "id": "ChIJ9Q2iqtgHK4cRC-0jFsGr9zQ",
+    "types": [
+      "apartment_complex",
+      "apartment_building",
+      "real_estate_agency",
+      "finance",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "1666 S Dobson Rd, Mesa, AZ 85202, USA",
+    "location": {
+      "latitude": 33.3845715,
+      "longitude": -111.8760021
+    },
+    "websiteUri": "https://arizona.weidner.com/apartments/az/mesa/reflect-at-dobson-ranch/index.aspx?rcstdid=Mg%3D%3D-YRjTEizZPgM%3D",
+    "displayName": {
+      "text": "Reflect at Dobson Ranch",
+      "languageCode": "en"
+    }
+  }
+]

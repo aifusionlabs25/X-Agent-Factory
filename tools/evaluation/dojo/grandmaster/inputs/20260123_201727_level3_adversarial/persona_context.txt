@@ -1,0 +1,4 @@
+# Agent Persona Context: James
+
+## Visual Persona
+Derived from persona_profile.json

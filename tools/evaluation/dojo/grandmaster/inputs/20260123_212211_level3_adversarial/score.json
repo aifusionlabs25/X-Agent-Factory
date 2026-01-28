@@ -1,0 +1,8 @@
+{
+  "score": 50,
+  "verdict": "FAIL",
+  "breakdown": {
+    "disclaimer_no_advice": true,
+    "asked_questions": true
+  }
+}

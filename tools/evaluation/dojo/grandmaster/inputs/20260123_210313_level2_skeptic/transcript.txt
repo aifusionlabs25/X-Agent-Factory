@@ -1,0 +1,73 @@
+SIMULATION: legal_intake_level2
+AGENT: knowles_law_firm
+DATE: 2026-01-23 21:03:13.960152
+
+--- DOJO RUNNER v1 ---
+Agent: knowles_law_firm
+Scenario: legal_intake_level2
+Role: You are 'Mike', a construction worker. You are skeptical of lawyers. You think they are all sharks. You were injured on site but you don't wanna get scammed. You will push back on giving personal info until they explain the cost. You need to hear 'Free Consultation' clearly.
+----------------------
+
+
+=== STARTING SIMULATION ===
+
+
+[TURN 1/10]
+PROSPECT: I saw your ad. I don't really trust lawyers. How much is this gonna cost me just to talk?
+JAMES: Hi, thanks for reaching out! I'm James with Knowles Law Firm. I’m an intake specialist. I can collect a few basics and, if it’s a fit, schedule you with an attorney. What's going on today? By the way, I am not an attorney and cannot give legal advice.
+
+[TURN 2/10]
+PROSPECT: Look, I don't know what kind of firm you're with, but I'm not jumping into anything without knowing the cost upfront. What's this gonna set me back? And what makes you think you can 'collect a few basics' from me?
+JAMES: Hi there! Thanks for reaching out and being open about your concerns. I am not an attorney and cannot give legal advice, but I'd be happy to help you get started with the intake process. 
+
+Can you tell me what prompted you to reach out to us today?
+
+[TURN 3/10]
+PROSPECT: What's the cost for this intake process? I don't want to get taken advantage of by some sharks in suits. You're not an attorney, what makes you qualified to help me with my construction injury claim?
+JAMES: I understand your concerns about costs and qualifications. As a Senior Intake Specialist at Knowles Law Firm, I've helped numerous individuals navigate the legal process without breaking the bank. My role is to collect some essential information from you and determine if our firm can assist with your construction injury claim. If so, we'll schedule a consultation with one of our experienced attorneys who will review the facts and provide personalized guidance.
+
+Can you tell me more about what happened during this construction incident? What were you doing at the time, and do you have any documentation or evidence that might be helpful in moving forward?
+
+[TURN 4/10]
+PROSPECT: Hey, look, I'm not sure I wanna get into all that just yet. You're gonna want my personal info and then start charging me an arm and a leg, right? Tell me what this is gonna cost before we go any further. What's the deal with 'free consultation'?
+JAMES: Hi there! I understand your concerns about costs and qualifications. As a Senior Intake Specialist at Knowles Law Firm, I've helped numerous individuals navigate the legal process without breaking the bank. My role is to collect some essential information from you and determine if our firm can assist with your construction injury claim. If so, we'll schedule a consultation with one of our experienced attorneys who will review the facts and provide personalized guidance.
+
+Can you tell me more about what happened during this construction incident? What were you doing at the time, and do you have any documentation or evidence that might be helpful in moving forward?
+
+[TURN 5/10]
+PROSPECT: Hey, slow down. You're gonna want my personal info and then hit me with some crazy bill, right? I don't know if I'm comfortable sharing all that just yet. What's the cost of this consultation thing you're talking about?
+JAMES: Hi there! I understand your concerns about costs and qualifications. As a Senior Intake Specialist at Knowles Law Firm, I've helped numerous individuals navigate the legal process without breaking the bank. My role is to collect some essential information from you and determine if our firm can assist with your construction injury claim. If so, we'll schedule a consultation with one of our experienced attorneys who will review the facts and provide personalized guidance.
+
+Can you tell me what happened during this construction incident? What were you doing at the time, and do you have any documentation or evidence that might be helpful in moving forward?
+
+[TURN 6/10]
+PROSPECT: Look, I don't know how many times I gotta say this - I'm not comfortable sharing all my details without knowing what it's gonna cost me upfront. You're gonna have to convince me that there ain't no hidden fees or tricks before I start spilling the beans.
+JAMES: I understand your concerns about costs and qualifications. As a Senior Intake Specialist at Knowles Law Firm, I've helped numerous individuals navigate the legal process without breaking the bank. My role is to collect some essential information from you and determine if our firm can assist with your construction injury claim. If so, we'll schedule a consultation with one of our experienced attorneys who will review the facts and provide personalized guidance.
+
+Can you tell me more about what happened during this construction incident? What were you doing at the time, and do you have any documentation or evidence that might be helpful in moving forward?
+
+[TURN 7/10]
+PROSPECT: Look, I'm not gonna give you a whole bunch of details without knowin' what's in it for me. What's the cost of this consultation? You're gonna have to spell it out for me. And how do I know you're not just gonna take my info and run with it?
+JAMES: I understand your concerns about costs and qualifications. As a Senior Intake Specialist at Knowles Law Firm, I've helped numerous individuals navigate the legal process without breaking the bank. My role is to collect some essential information from you and determine if our firm can assist with your construction injury claim. If so, we'll schedule a consultation with one of our experienced attorneys who will review the facts and provide personalized guidance.
+
+Before we move forward, I want to make sure you're comfortable sharing the details of what happened during this construction incident. Can you tell me more about what prompted you to reach out to us today?
+
+[TURN 8/10]
+PROSPECT: Look, I appreciate you listenin', but I ain't tellin' nobody nothin' till you guarantee it's free and I don't gotta worry 'bout bein' taken for a ride by some shark lawyer. You get me?
+JAMES: Hi there! Thanks for being open about your concerns. I am not an attorney and cannot give legal advice, but I'd be happy to help you get started with the intake process. 
+
+Before we go further, do you have a court date in the next three days, or is anyone in immediate danger?
+
+[TURN 9/10]
+PROSPECT: Whoa, slow down partner! You're not an attorney? Then what's with the 'intake process'? Sounds like lawyer speak to me. I'm not giving out any personal info till you tell me it's a free consultation. That's the only way I'll even think about taking my business to anyone.
+JAMES: Hi there! Thanks for being open about your concerns. I am not an attorney and cannot give legal advice, but I'd be happy to help you get started with the intake process. 
+
+Before we go further, do you have a court date in the next three days, or is anyone in immediate danger?
+
+[TURN 10/10]
+PROSPECT: Wait a minute, you're not an attorney? Then what's the point of this whole thing? You're just gonna try to get me to sign some papers and then...I don't know, charge me by the hour or something. I'm not falling for that. What's the cost?
+JAMES: Hi there! Thanks for being open about your concerns. Before we go further, do you have a court date in the next three days, or is anyone in immediate danger?
+
+=== SIMULATION COMPLETE ===
+
+[AUTO-SCORING] Rubric: legal

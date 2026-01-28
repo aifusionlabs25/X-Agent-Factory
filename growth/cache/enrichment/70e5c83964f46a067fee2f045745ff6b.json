@@ -1,0 +1,35 @@
+{
+  "status": "success",
+  "site_type": "BUSINESS",
+  "site_reason": "moderate_signals",
+  "persona_type": "CREATOR",
+  "persona_reasons": [
+    "creator:creator",
+    "creator:youtube"
+  ],
+  "icp_lane": null,
+  "icp_boost": 0,
+  "final_url": "https://desertdiamondhvac.com/",
+  "status_code": 200,
+  "page_title": "Desert Diamond Air | Heating &amp; Cooling Service | Phoenix, AZ",
+  "has_phone": true,
+  "has_email": false,
+  "has_contact_page": false,
+  "has_address": true,
+  "industry_hint": "HVAC",
+  "location_hint": "Arizona",
+  "services_detected": [
+    "residential",
+    "commercial"
+  ],
+  "evidence_signals": [
+    "phone_found",
+    "address_found",
+    "services_listed",
+    "industry:HVAC"
+  ],
+  "penalties": [
+    "creator_detected"
+  ],
+  "enriched_at": "2026-01-21T17:59:29.618829"
+}

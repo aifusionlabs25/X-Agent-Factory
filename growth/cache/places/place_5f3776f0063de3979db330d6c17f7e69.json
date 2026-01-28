@@ -1,0 +1,192 @@
+[
+  {
+    "id": "ChIJP6hZlSESK4cRZW6zfd58djA",
+    "types": [
+      "lawyer",
+      "consultant",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "1 E Washington St #1520, Phoenix, AZ 85004, USA",
+    "location": {
+      "latitude": 33.4480003,
+      "longitude": -112.0730318
+    },
+    "websiteUri": "https://www.jkphoenixpersonalinjuryattorney.com/?utm_source=google&utm_medium=organic&utm_campaign=gmb-phoenix",
+    "displayName": {
+      "text": "Kelly Law Team Phoenix",
+      "languageCode": "en"
+    }
+  },
+  {
+    "id": "ChIJPSt5lK4AK4cRBhYn1D4kFfs",
+    "types": [
+      "lawyer",
+      "consultant",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "3100 W Ray Rd, Chandler, AZ 85226, USA",
+    "location": {
+      "latitude": 33.320854,
+      "longitude": -111.89566
+    },
+    "websiteUri": "https://phxinjurylaw.com/locations/chandler-car-accident-lawyers/",
+    "displayName": {
+      "text": "Phoenix Accident and Injury Law Firm",
+      "languageCode": "en"
+    }
+  },
+  {
+    "id": "ChIJzevGAq4LK4cRoOl6cmFDw7w",
+    "types": [
+      "lawyer",
+      "consultant",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "4203 E Indian School Rd #300, Phoenix, AZ 85018, USA",
+    "location": {
+      "latitude": 33.4945279,
+      "longitude": -111.99083239999999
+    },
+    "websiteUri": "https://shapirolawaz.com/?utm_campaign=gmb&utm_medium=local&utm_source=gmb",
+    "displayName": {
+      "text": "Shapiro Law Team",
+      "languageCode": "en"
+    }
+  },
+  {
+    "id": "ChIJQYka4GQhF6IRhISqnoLpF1s",
+    "types": [
+      "lawyer",
+      "consultant",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "3030 N Central Ave Suite 1109, Phoenix, AZ 85012, USA",
+    "location": {
+      "latitude": 33.4819538,
+      "longitude": -112.0743086
+    },
+    "websiteUri": "https://nationalinjuryattorneys.com/phoenix-personal-injury-lawyer/?utm_source=organic&utm_medium=gbp",
+    "displayName": {
+      "text": "National Injury Attorneys, LLC",
+      "languageCode": "en"
+    }
+  },
+  {
+    "id": "ChIJUfJhKl4SK4cRxD6GXSNY6Bg",
+    "types": [
+      "lawyer",
+      "consultant",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "4428 N 12th St, Phoenix, AZ 85014, USA",
+    "location": {
+      "latitude": 33.500783999999996,
+      "longitude": -112.0566113
+    },
+    "websiteUri": "https://lloydbakerinjuryattorneys.com/phoenix-az/?utm_source=google&utm_medium=organic&utm_campaign=gbp",
+    "displayName": {
+      "text": "Lloyd Baker Injury Attorneys",
+      "languageCode": "en"
+    }
+  },
+  {
+    "id": "ChIJn-3slvcEK4cR8ZZe-bNUcKI",
+    "types": [
+      "lawyer",
+      "consultant",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "3840 E Ray Rd, Phoenix, AZ 85044, USA",
+    "location": {
+      "latitude": 33.3173415,
+      "longitude": -112.0021682
+    },
+    "websiteUri": "https://husbandandwifelawteam.com/office-locations/arizona/east-valley-phoenix?utm_source=yext&utm_medium=Google_My_Business&utm_campaign=rayrd",
+    "displayName": {
+      "text": "The Husband & Wife Law Team",
+      "languageCode": "en"
+    }
+  },
+  {
+    "id": "ChIJ5YwtVkcSK4cRbV4fVdUroVY",
+    "types": [
+      "lawyer",
+      "consultant",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "333 W Roosevelt St, Phoenix, AZ 85003, USA",
+    "location": {
+      "latitude": 33.4584896,
+      "longitude": -112.0787422
+    },
+    "websiteUri": "https://www.torgensonlaw.com/?utm_campaign=gmb",
+    "displayName": {
+      "text": "Torgenson Law",
+      "languageCode": "en"
+    }
+  },
+  {
+    "id": "ChIJQYIqcP11K4cRtkxwA3WnwYU",
+    "types": [
+      "lawyer",
+      "consultant",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "3550 N Central Ave Suite 550, Phoenix, AZ 85012, USA",
+    "location": {
+      "latitude": 33.4890471,
+      "longitude": -112.0742463
+    },
+    "websiteUri": "https://bigauto.com/?utm_campaign=gmb",
+    "displayName": {
+      "text": "Big Auto Accident Attorneys",
+      "languageCode": "en"
+    }
+  },
+  {
+    "id": "ChIJayKEyV8SK4cRvCr4be5bMvo",
+    "types": [
+      "lawyer",
+      "consultant",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "3101 N Central Ave # 1500, Phoenix, AZ 85012, USA",
+    "location": {
+      "latitude": 33.48419,
+      "longitude": -112.0731785
+    },
+    "websiteUri": "https://phillipslaw.com/?utm_source=GBP&utm_medium=GBP&utm_campaign=GBP_Phoenix&utm_id=GBP_Phoenix",
+    "displayName": {
+      "text": "Phillips Law Group - Injury Lawyers",
+      "languageCode": "en"
+    }
+  },
+  {
+    "id": "ChIJryt_YaFzK4cRPrmuRcNlaX8",
+    "types": [
+      "lawyer",
+      "consultant",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "5333 N 7th St Suite A-210, Phoenix, AZ 85014, USA",
+    "location": {
+      "latitude": 33.515201499999996,
+      "longitude": -112.0634726
+    },
+    "websiteUri": "https://www.wyattinjurylaw.com/?utm_campaign=gmb",
+    "displayName": {
+      "text": "Wyatt Injury Law Personal Injury Lawyers",
+      "languageCode": "en"
+    }
+  }
+]

@@ -1,0 +1,11 @@
+{
+  "score": 0,
+  "verdict": "FAIL (REPETITIVE)",
+  "breakdown": {
+    "disclaimer_no_advice": true,
+    "asked_questions": true,
+    "REPETITIVE_LOOP": [
+      "james: hi, can you start by telling me what happened? what's going on today?"
+    ]
+  }
+}

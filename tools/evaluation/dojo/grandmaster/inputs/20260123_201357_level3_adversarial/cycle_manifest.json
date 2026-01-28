@@ -1,0 +1,14 @@
+{
+  "schema_version": "cycle_manifest.v1",
+  "run_id": "20260123_201357_level3_adversarial",
+  "cycle": 1,
+  "applied_at": "2026-01-23T20:16:03.225802",
+  "co_file": "CO_20260123_201357_level3_adversarial_1.json",
+  "co_hash": "199038d9c108acbad656db450cade683a22249d88cb7eeb9c42567a11c7ed677",
+  "changes_applied": [
+    "FIX_CLOSING"
+  ],
+  "files": {
+    "system_prompt.txt": "868cdce4ea1d01d5a152d224c1d26fa1edede8dcb5aff526c01c6b553f4c2931"
+  }
+}

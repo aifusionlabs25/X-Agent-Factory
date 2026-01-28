@@ -1,0 +1,30 @@
+{
+  "status": "success",
+  "site_type": "BUSINESS",
+  "site_reason": "moderate_signals",
+  "persona_type": "BUYER",
+  "persona_reasons": [
+    "has_local_signals",
+    "has_contact",
+    "has_phone"
+  ],
+  "icp_lane": "property_management",
+  "icp_boost": 2,
+  "final_url": "https://thegroveonmain.com/",
+  "status_code": 200,
+  "page_title": "Mesa apartments for rent | The Grove on Main",
+  "has_phone": true,
+  "has_email": false,
+  "has_contact_page": false,
+  "has_address": true,
+  "industry_hint": null,
+  "location_hint": "Alaska",
+  "services_detected": [],
+  "evidence_signals": [
+    "phone_found",
+    "address_found",
+    "icp:property_management"
+  ],
+  "penalties": [],
+  "enriched_at": "2026-01-21T18:00:22.161181"
+}

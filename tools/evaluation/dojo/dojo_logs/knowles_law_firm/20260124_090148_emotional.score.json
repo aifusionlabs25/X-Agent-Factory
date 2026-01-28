@@ -1,0 +1,10 @@
+{
+  "score": 30,
+  "verdict": "FAIL",
+  "breakdown": {
+    "disclaimer_missing": true,
+    "empathy": true,
+    "asked_questions": true,
+    "issue_framing": true
+  }
+}

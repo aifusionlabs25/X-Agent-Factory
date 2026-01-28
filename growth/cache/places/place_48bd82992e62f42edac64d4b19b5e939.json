@@ -1,0 +1,190 @@
+[
+  {
+    "id": "ChIJDf2anCESK4cRwz4SOd3pBhk",
+    "types": [
+      "lawyer",
+      "point_of_interest",
+      "consultant",
+      "establishment"
+    ],
+    "formattedAddress": "2 N Central Ave 2600 26th floor, Phoenix, AZ 85004, USA",
+    "location": {
+      "latitude": 33.4485482,
+      "longitude": -112.07409709999999
+    },
+    "websiteUri": "https://www.alcocklaw.com/",
+    "displayName": {
+      "text": "The Law Offices Of Alcock & Associates P.C.",
+      "languageCode": "en"
+    }
+  },
+  {
+    "id": "ChIJ7S6unaQSK4cRNWFNF-5ICEI",
+    "types": [
+      "lawyer",
+      "point_of_interest",
+      "consultant",
+      "establishment"
+    ],
+    "formattedAddress": "5225 N Central Ave Suite 101, Phoenix, AZ 85012, USA",
+    "location": {
+      "latitude": 33.5140476,
+      "longitude": -112.07348250000001
+    },
+    "websiteUri": "https://accidentlawyersarizona.com/",
+    "displayName": {
+      "text": "Blake Law Firm",
+      "languageCode": "en"
+    }
+  },
+  {
+    "id": "ChIJP6hZlSESK4cRZW6zfd58djA",
+    "types": [
+      "lawyer",
+      "point_of_interest",
+      "consultant",
+      "establishment"
+    ],
+    "formattedAddress": "1 E Washington St #1520, Phoenix, AZ 85004, USA",
+    "location": {
+      "latitude": 33.4480003,
+      "longitude": -112.0730318
+    },
+    "websiteUri": "https://www.jkphoenixpersonalinjuryattorney.com/?utm_source=google&utm_medium=organic&utm_campaign=gmb-phoenix",
+    "displayName": {
+      "text": "Kelly Law Team Phoenix",
+      "languageCode": "en"
+    }
+  },
+  {
+    "id": "ChIJIYw6cnwTK4cRQuebTbg5X48",
+    "types": [
+      "lawyer",
+      "point_of_interest",
+      "consultant",
+      "establishment"
+    ],
+    "formattedAddress": "1052 E Indian School Rd, Phoenix, AZ 85014, USA",
+    "location": {
+      "latitude": 33.4949333,
+      "longitude": -112.05874209999999
+    },
+    "websiteUri": "https://solorzanolawfirm.com/",
+    "displayName": {
+      "text": "Solorzano Law Firm",
+      "languageCode": "en"
+    }
+  },
+  {
+    "id": "ChIJuR3Pu7ASK4cR-PU2bzxkXfY",
+    "types": [
+      "lawyer",
+      "point_of_interest",
+      "consultant",
+      "establishment"
+    ],
+    "formattedAddress": "3101 N Central Ave Ste. 1470, Phoenix, AZ 85012, USA",
+    "location": {
+      "latitude": 33.4842987,
+      "longitude": -112.07331839999999
+    },
+    "websiteUri": "https://thevalleylawgroup.com/about-us/phoenix-office/?utm_source=gbpphoenix",
+    "displayName": {
+      "text": "The Valley Law Group",
+      "languageCode": "en"
+    }
+  },
+  {
+    "id": "ChIJn-3slvcEK4cR8ZZe-bNUcKI",
+    "types": [
+      "lawyer",
+      "point_of_interest",
+      "consultant",
+      "establishment"
+    ],
+    "formattedAddress": "3840 E Ray Rd, Phoenix, AZ 85044, USA",
+    "location": {
+      "latitude": 33.3173415,
+      "longitude": -112.0021682
+    },
+    "websiteUri": "https://husbandandwifelawteam.com/office-locations/arizona/east-valley-phoenix?utm_source=yext&utm_medium=Google_My_Business&utm_campaign=rayrd",
+    "displayName": {
+      "text": "The Husband & Wife Law Team",
+      "languageCode": "en"
+    }
+  },
+  {
+    "id": "ChIJfxegRjcSK4cRev2x7XsTvMw",
+    "types": [
+      "point_of_interest",
+      "consultant",
+      "establishment"
+    ],
+    "formattedAddress": "814 W Roosevelt St, Phoenix, AZ 85007, USA",
+    "location": {
+      "latitude": 33.458951899999995,
+      "longitude": -112.08452799999999
+    },
+    "websiteUri": "http://www.azlaw.com/",
+    "displayName": {
+      "text": "Curry Pearson & Wooten PLC",
+      "languageCode": "en"
+    }
+  },
+  {
+    "id": "ChIJ_UXPYeVsK4cRx7FSDhRdNs0",
+    "types": [
+      "lawyer",
+      "point_of_interest",
+      "consultant",
+      "establishment"
+    ],
+    "formattedAddress": "4201 N 24th St STE 200, Phoenix, AZ 85016, USA",
+    "location": {
+      "latitude": 33.4966702,
+      "longitude": -112.02983340000002
+    },
+    "websiteUri": "http://www.allenlawaz.com/",
+    "displayName": {
+      "text": "Tyler Allen Law Firm",
+      "languageCode": "en"
+    }
+  },
+  {
+    "id": "ChIJ7cP_BGISK4cRIU4EV5u9SyQ",
+    "types": [
+      "point_of_interest",
+      "consultant",
+      "establishment"
+    ],
+    "formattedAddress": "1850 N Central Ave #1700, Phoenix, AZ 85004, USA",
+    "location": {
+      "latitude": 33.468431900000006,
+      "longitude": -112.07503589999999
+    },
+    "websiteUri": "https://www.bcattorneys.com/",
+    "displayName": {
+      "text": "Burch & Cracchiolo, P.A.",
+      "languageCode": "en"
+    }
+  },
+  {
+    "id": "ChIJK3QWXK0TK4cRfzvllM0-oe0",
+    "types": [
+      "lawyer",
+      "point_of_interest",
+      "consultant",
+      "establishment"
+    ],
+    "formattedAddress": "4747 N 22nd St Suite 300, Phoenix, AZ 85016, USA",
+    "location": {
+      "latitude": 33.5073539,
+      "longitude": -112.0337428
+    },
+    "websiteUri": "https://esquirelaw.com/?y_source=1_MjY3MjIzODktNzE1LWxvY2F0aW9uLndlYnNpdGU%3D",
+    "displayName": {
+      "text": "Esquire Law",
+      "languageCode": "en"
+    }
+  }
+]

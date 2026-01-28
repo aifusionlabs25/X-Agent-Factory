@@ -1,0 +1,15 @@
+name: "Smoke Test Vertical (HVAC)"
+vertical_pack_id: "vp_smoke_v1"
+max_queries_per_region: 20
+max_results_per_query: 5
+
+query_templates:
+  - template_id: "hvac_emergency"
+    text: "Emergency HVAC in {city} {state}"
+    weight: 1.0
+    service_keywords: ["emergency", "24/7"]
+
+trades:
+  - trade_id: "hvac"
+    display_name: "HVAC"
+    aliases: ["heating", "cooling"]

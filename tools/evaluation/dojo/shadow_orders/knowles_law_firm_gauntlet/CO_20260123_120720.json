@@ -1,0 +1,10 @@
+{
+  "id": "CO_20260123_120720",
+  "agent": "knowles_law_firm_gauntlet",
+  "trigger_log": "20260123_120717_legal_intake_level3.txt",
+  "score": 50,
+  "diagnosis": "The agent failed to provide a clear and concise explanation of their limitations, leading to frustration from the prospect.",
+  "required_fix": "Prompt the agent to explicitly state their limitations and the value they can bring to the prospect, such as 'I'm not an attorney, but I can help you get in touch with one who can review your case.'",
+  "severity": "MEDIUM",
+  "status": "PENDING_REVIEW"
+}

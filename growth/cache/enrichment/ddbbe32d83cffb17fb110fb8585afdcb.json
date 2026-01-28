@@ -1,0 +1,38 @@
+{
+  "status": "success",
+  "site_type": "BUSINESS",
+  "site_reason": "moderate_signals",
+  "persona_type": "VENDOR",
+  "persona_reasons": [
+    "vendor:platform",
+    "vendor:api",
+    "vendor:sdk"
+  ],
+  "icp_lane": null,
+  "icp_boost": 0,
+  "final_url": "https://www.parkerandsons.com/",
+  "status_code": 200,
+  "page_title": "Parker &amp; Sons \u2013 Air Conditioning Phoenix - HVAC, Plumbing &amp; Electrical",
+  "has_phone": true,
+  "has_email": false,
+  "has_contact_page": false,
+  "has_address": true,
+  "industry_hint": "HVAC",
+  "location_hint": "Arizona",
+  "services_detected": [
+    "repair",
+    "installation",
+    "maintenance",
+    "commercial"
+  ],
+  "evidence_signals": [
+    "phone_found",
+    "address_found",
+    "services_listed",
+    "industry:HVAC"
+  ],
+  "penalties": [
+    "vendor_detected"
+  ],
+  "enriched_at": "2026-01-21T17:59:31.408457"
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": "cycle_manifest.v1",
+  "run_id": "20260123_212549_emotional",
+  "cycle": 1,
+  "applied_at": "2026-01-23T21:27:08.189381",
+  "co_file": "CO_20260123_212549_emotional_1.json",
+  "co_hash": "dc285f4f82b2d416cea8704845cf08a517886fa64a636ed62000547ddc2ef5c9",
+  "changes_applied": [
+    "FIX_CLOSING"
+  ],
+  "files": {
+    "system_prompt.txt": "d53a25cc9608ef3413e52b6945fc5641164eac20d46a6aead6b892fc3ce7829f"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "run_id": "20260123_175516_legal_intake_basic",
+  "timestamp": "2026-01-23T17:55:36.183671",
+  "verdict": "FAIL",
+  "score": 20,
+  "files": {
+    "log": "20260123_175516_legal_intake_basic.txt",
+    "score": "20260123_175516_legal_intake_basic.score.json",
+    "system_prompt": "system_prompt.txt",
+    "persona_context": "persona_context.md"
+  }
+}

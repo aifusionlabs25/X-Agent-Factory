@@ -1,0 +1,6 @@
+# Smoke Test Configuration G3.0
+# Tests Orchestration + Outbound Artifacts
+coverage_pack: "coverage_pack_smoke_v1"
+vertical_pack: "vertical_pack_smoke_v1"
+run_id_prefix: "smoke_test_g30"
+max_enrich: 5

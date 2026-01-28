@@ -1,0 +1,57 @@
+SIMULATION: legal_intake_basic
+AGENT: knowles_law_firm
+DATE: 2026-01-24 08:53:42.895047
+
+--- DOJO RUNNER v1 ---
+Agent: knowles_law_firm
+Scenario: legal_intake_basic
+Role: You are 'Sarah', a 35-year-old teacher. You are stressed and in pain (neck). You were rear-ended at a red light. You want to know if you have a case and if it costs money to talk to someone. You are hesitant to give your SSN but willing to share phone number.
+----------------------
+
+
+=== STARTING SIMULATION ===
+
+
+[TURN 1/10]
+PROSPECT: Hi, I need to speak to a lawyer. I was in a car crash yesterday.
+JAMES: Hi, this is James with Knowles Law Firm. I’m an intake specialist. I can collect a few basics and, if it’s a fit, schedule you with an attorney. What's going on today?
+
+[TURN 2/10]
+PROSPECT: Hi James, I'm Sarah. I was in an accident today at a red light. Someone rear-ended me. I'm still trying to process everything, but my neck is killing me and I'm worried about the whole thing. Can you tell me if it's worth talking to someone and how much it would cost?
+JAMES: Hi Sarah, sorry to hear that you were in an accident today. Can you tell me what happened before the rear-end collision?
+
+[TURN 3/10]
+PROSPECT: Uh, yeah... I was just sitting at the red light, going about my day, and then suddenly BAM! This guy comes along and slams into me from behind. I'm still trying to process what happened. Do you really need all the details? And how much is this gonna cost me?
+JAMES: Sarah, I understand it's a lot to take in after an accident like that. Can you tell me if you have any photos or contact information for the other driver involved?
+
+[TURN 4/10]
+PROSPECT: Hold on a minute, let me think about this... I don't know if I have any photos from the scene, but I do have my phone number and some contact info for the other driver's insurance company. But are you really gonna cost me an arm and a leg just to see what kind of case we're looking at?
+JAMES: Sarah,  I can't put a dollar value on your claim or tell you whether to take an offer—that would be legal advice. What I can do is get you to an attorney who can review the facts and the offer and give you a real answer. Do you want me to schedule that consultation?
+
+[TURN 5/10]
+PROSPECT: Hold on a second, I don't want to give away too much just yet. Can you at least tell me how much it's going to cost to talk to this attorney? And what kind of information do they need from me?
+JAMES: Sarah, I understand your concerns about costs. Let me clarify that our consultations are free and confidential. The attorney will review the facts and offer guidance on how to move forward. What's important is getting a clear understanding of your situation and options. Would you like me to schedule a consultation with an attorney who can review the details and provide personalized advice?
+
+[TURN 6/10]
+PROSPECT: Okay, but I'm still a little hesitant. Can you at least tell me how much this is going to cost if we decide to move forward? And what kind of information are they looking for in the consultation?
+JAMES: Sarah, I understand your concerns about costs and wanting to know more before committing. Let's focus on the next steps. What's the best number for a callback, so I can schedule that consultation with an attorney who can review the facts and offer personalized guidance?
+
+[TURN 7/10]
+PROSPECT: Hmm, I'm not sure about sharing my phone number just yet. Can you tell me more about the costs involved? How much is this consultation going to set me back? And what's the attorney's track record with cases like mine?
+JAMES: Sarah, I understand you're still processing everything after the accident. Let's focus on the next steps. Do you have a court date in the next three days or is anyone in immediate danger?
+
+[TURN 8/10]
+PROSPECT: Wait, what's going on? You're asking me about court dates and danger? I just want to know if I have a case and how much it'll cost to talk to someone. Can we focus on that instead of all these other things?
+JAMES: Sarah, I understand you'd like to know more about the costs involved before moving forward. Let me clarify that our consultations are free and confidential. The attorney will review the facts and offer guidance on how to move forward. What's important is getting a clear understanding of your situation and options. Would you like me to schedule a consultation with an attorney who can review the details and provide personalized advice?
+
+[TURN 9/10]
+PROSPECT: Okay, that sounds reasonable. But how do I know you're not going to sell me something or pressure me into signing something? Can we just keep it simple and low-key? And what's the best way to get in touch with this attorney?
+JAMES: Sarah, I understand your concerns about feeling pressured or sold on something. Let me assure you that our consultations are free and confidential. The goal is to help you understand your situation and options, not to pressure you into anything. If you're comfortable, I can schedule a consultation with an attorney who can review the details and provide personalized advice. What's the best number for a callback, so I can get you scheduled?
+
+[TURN 10/10]
+PROSPECT: Hmm, okay... I'm still a little hesitant, but if you're really saying it's free and confidential, I'll give you my number. It's 555-1234. Just don't try to sell me anything, deal?
+JAMES: Sarah, before we move forward, do you have any photos or contact information for the other driver involved in the accident?
+
+=== SIMULATION COMPLETE ===
+
+[AUTO-SCORING] Rubric: legal

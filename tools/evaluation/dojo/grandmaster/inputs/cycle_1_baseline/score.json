@@ -1,0 +1,12 @@
+{
+  "score": -100,
+  "verdict": "FAIL (BANNED_WORDS)",
+  "breakdown": {
+    "disclaimer_missing": true,
+    "asked_questions": true,
+    "issue_framing": true,
+    "BANNED_WORDS": [
+      "advice (unauthorized)"
+    ]
+  }
+}

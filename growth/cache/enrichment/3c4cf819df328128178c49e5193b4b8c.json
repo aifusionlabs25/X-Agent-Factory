@@ -1,0 +1,38 @@
+{
+  "status": "success",
+  "site_type": "BUSINESS",
+  "site_reason": "nav_indicators:4",
+  "persona_type": "BUYER",
+  "persona_reasons": [
+    "has_services",
+    "has_local_signals",
+    "has_contact",
+    "has_phone"
+  ],
+  "icp_lane": null,
+  "icp_boost": 0,
+  "final_url": "https://azprimepropertymanagement.com/",
+  "status_code": 200,
+  "page_title": "AZ Prime Property Management rentals and property management",
+  "has_phone": true,
+  "has_email": false,
+  "has_contact_page": true,
+  "has_address": true,
+  "industry_hint": "Property Management",
+  "location_hint": "Arizona",
+  "services_detected": [
+    "repair",
+    "maintenance",
+    "residential",
+    "commercial"
+  ],
+  "evidence_signals": [
+    "phone_found",
+    "contact_page",
+    "address_found",
+    "services_listed",
+    "industry:Property Management"
+  ],
+  "penalties": [],
+  "enriched_at": "2026-01-21T18:00:10.854999"
+}

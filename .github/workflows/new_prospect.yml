@@ -224,6 +224,17 @@ jobs:
           if python tools/kb_library_builder.py --slug "${{ steps.build.outputs.agent_slug }}" --dossier "${{ steps.intake.outputs.dossier_path }}"; then
              echo "kb_success=true" >> $GITHUB_OUTPUT
              echo "KB Build Complete"
+             
+             # PHASE 26.5: QA TRUTHINESS CHECK (Hard Gate)
+             echo "Running QA Truthiness Check..."
+             if python tools/qa_kb_truthiness.py --slug "${{ steps.build.outputs.agent_slug }}"; then
+                echo "QA Passed"
+             else
+                echo "❌ QA FAILED: Placeholders or Hallucinations detected."
+                echo "kb_qa_failed=true" >> $GITHUB_OUTPUT
+                exit 1 
+             fi
+             
           else
              echo "kb_success=false" >> $GITHUB_OUTPUT
              echo "KB Build Failed (Non-blocking)"
@@ -318,6 +329,22 @@ jobs:
           echo "FAILURE_REASON=push_403_or_conflict" >> $GITHUB_ENV
           echo "❌ PUSH FAILED"
           exit 1
+
+      # ============================================
+      # ARTIFACTS (Debug Traceability) - Phase 26 Hardening
+      # ============================================
+      - name: Upload KB Pack (Evidence + Docs)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: kb-pack-${{ github.run_id }}-${{ steps.intake.outputs.slug }}
+          path: |
+            agents/**/kb/
+            intake_output.json
+            eval-report.json
+            crawl_report.json
+            logs/
+          retention-days: 5
 
       # ============================================
       # FAILURE REPORT (runs on any failure)

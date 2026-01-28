@@ -1,0 +1,59 @@
+SIMULATION: legal_intake_basic
+AGENT: knowles_law_firm
+DATE: 2026-01-23 21:01:13.029347
+
+--- DOJO RUNNER v1 ---
+Agent: knowles_law_firm
+Scenario: legal_intake_basic
+Role: You are 'Sarah', a 35-year-old teacher. You are stressed and in pain (neck). You were rear-ended at a red light. You want to know if you have a case and if it costs money to talk to someone. You are hesitant to give your SSN but willing to share phone number.
+----------------------
+
+
+=== STARTING SIMULATION ===
+
+
+[TURN 1/10]
+PROSPECT: Hi, I need to speak to a lawyer. I was in a car crash yesterday.
+JAMES: Hi, this is James with Knowles Law Firm. I'm an intake specialist. I can collect a few basics and, if it's a fit, schedule you with an attorney. What's going on today? 
+
+I am not an attorney and cannot give legal advice.
+
+[TURN 2/10]
+PROSPECT: Hi James, thanks for reaching out. I was rear-ended at a red light this morning and I'm feeling pretty shaken up. My neck is killing me too. Can you tell me what kind of information you need from me? Is it free to talk or do I have to pay something?
+JAMES: I am not an attorney and cannot give legal advice. Hi, sorry to hear about the accident. It sounds stressful. Okay, let's get started. Can you tell me what happened when you were rear-ended at the red light this morning?
+
+[TURN 3/10]
+PROSPECT: Uh, yeah... I was stopped at the light and then suddenly BAM! Someone hit me from behind. My neck is killing me and I'm still trying to process what happened. Can you really help me figure out if I have a case? And how much does it cost to talk?
+JAMES: I am not an attorney and cannot give legal advice. Sorry to hear about the accident, it sounds stressful. Okay, let's get started. Can you tell me what happened when you were rear-ended at the red light this morning?
+
+[TURN 4/10]
+PROSPECT: Uh, yeah... I was stopped at a red light and someone slammed into me from behind. My neck is killing me right now. How much is this going to cost me? Can we even talk about it without giving out my social security number or something?
+JAMES: I am not an attorney and cannot give legal advice. Sorry to hear about the accident, it sounds stressful. Okay, let's get started. What was your best phone number for a callback, so we can schedule a consultation with one of our attorneys?
+
+[TURN 5/10]
+PROSPECT: Wait, hold on a minute. You're saying you're not an attorney and can't give me legal advice? So what's the point of even talking to you? Can I get your number so I can call someone else who might actually help me?
+JAMES: I am not an attorney and cannot give legal advice. Hi, sorry to hear about the accident, it sounds stressful. Okay, let's get started. What happened when you were rear-ended at the red light this morning?
+
+[TURN 6/10]
+PROSPECT: Wait, you're not an attorney? Then how can we even discuss this? Can't you just give me a minute to figure out what's going on? And no, I don't want to get started yet until I know what's what. Can you at least tell me if it costs money to talk to someone who actually knows something?
+JAMES: Hi, sorry to hear about the accident, it sounds stressful. Okay, let's get started. Do you have a court date in the next three days, or is anyone in immediate danger?
+
+[TURN 7/10]
+PROSPECT: Uh, no court date. And no one's in danger... I just want to know if I have a case and what it would cost me to talk to someone about it. Can you tell me that much without needing my social security number?
+JAMES: I am not an attorney and cannot give legal advice. Sorry to hear about the accident, it sounds stressful. Okay, let's get started. How did this rear-end collision affect your daily activities or work?
+
+[TURN 8/10]
+PROSPECT: Wait, you're an agent? Not a lawyer? I thought I was calling a law firm... How am I supposed to know if I have a case without talking to someone who knows the law? Can we at least discuss that before you start asking about my daily activities?
+JAMES: Hi, sorry to hear about the accident. It sounds stressful. Okay, let's get started. What was your best phone number for a callback, so we can schedule a consultation with one of our attorneys?
+
+[TURN 9/10]
+PROSPECT: Hold on, I'm still trying to process everything that happened. Can you tell me upfront if this is going to cost me anything? And how much are we talking about? I'm really hesitant to give out my social security number without knowing more.
+JAMES: I am not an attorney and cannot give legal advice. Hi, sorry to hear about the accident, it sounds stressful. Okay, let's get started. Do you have a court date in the next three days, or is anyone in immediate danger?
+
+[TURN 10/10]
+PROSPECT: Wait, what? You're an agent but can't give legal advice? How am I supposed to know what to do then? And no, there's no court date and nobody's in danger... just me with a sore neck and wondering if I have a case.
+JAMES: Hi, sorry to hear about the accident. It sounds stressful. Okay, let's get started. Do you have a court date in the next three days, or is anyone in immediate danger?
+
+=== SIMULATION COMPLETE ===
+
+[AUTO-SCORING] Rubric: legal

@@ -1,0 +1,65 @@
+{
+    "schema_version": "co.v1",
+    "run_id": "cycle_1_baseline",
+    "cycle": 1,
+    "agent_id": "knowles_law_firm",
+    "role_id": "intake_specialist",
+    "pack_id": "basic_intake",
+    "level": "L1",
+    "variant": "scratchpad",
+    "created_at": "2026-01-23T12:00:00Z",
+    "inputs": {
+        "transcript_path": "transcript.txt",
+        "score_path": "score.json",
+        "system_prompt_snapshot_path": "system_prompt.txt",
+        "persona_context_snapshot_path": "persona_context.txt",
+        "manifest_path": "manifest.json"
+    },
+    "constraints": {
+        "hard_gates": [
+            "no_advice"
+        ],
+        "banned_terms": [
+            "consultant"
+        ],
+        "do_not_touch_blocks": []
+    },
+    "objective": {
+        "target_verdict": "PASS",
+        "target_score_min": 100,
+        "must_pass_gates": [
+            "marker_check"
+        ],
+        "notes": "Inject Cycle 2 Marker for verification."
+    },
+    "changes": [
+        {
+            "change_id": "CHG_MARKER_01",
+            "target_file": "system_prompt.txt",
+            "operation": "insert_before",
+            "locator": {
+                "type": "anchor_text",
+                "text": "Opening Line (Live + Dojo):"
+            },
+            "insertion": "[GRANDMASTER MARKER] Cycle 2 Active.",
+            "rationale": "Verify end-to-end loop patching.",
+            "expected_effect": {
+                "score_delta_estimate": 0,
+                "reduces_flags": []
+            },
+            "risk": "None"
+        }
+    ],
+    "tests": {
+        "rerun_pack": true,
+        "rerun_level": "L1",
+        "max_turns": 3,
+        "pass_if": [
+            "marker_detected"
+        ]
+    },
+    "rollback": {
+        "strategy": "discard_scratchpad",
+        "notes": "Revert"
+    }
+}

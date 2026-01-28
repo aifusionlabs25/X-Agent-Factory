@@ -1,0 +1,30 @@
+{
+  "status": "success",
+  "site_type": "BUSINESS",
+  "site_reason": "moderate_signals",
+  "persona_type": "BUYER",
+  "persona_reasons": [
+    "has_local_signals",
+    "has_contact",
+    "has_phone"
+  ],
+  "icp_lane": null,
+  "icp_boost": 0,
+  "final_url": "https://fiestavillageapts.com/",
+  "status_code": 200,
+  "page_title": "Contact Us - Fiesta Village Furnished ApartmentsFiesta Village Furnished Apartments",
+  "has_phone": true,
+  "has_email": false,
+  "has_contact_page": true,
+  "has_address": true,
+  "industry_hint": null,
+  "location_hint": null,
+  "services_detected": [],
+  "evidence_signals": [
+    "phone_found",
+    "contact_page",
+    "address_found"
+  ],
+  "penalties": [],
+  "enriched_at": "2026-01-21T18:00:24.505622"
+}

@@ -16,6 +16,7 @@ from typing import List, Dict, Any, Optional
 import trafilatura
 from bs4 import BeautifulSoup
 import tiktoken
+from llm_client import LLMClient
 
 # Set up logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -42,7 +43,21 @@ class KBLibraryBuilder:
         self.overlap = overlap
         
         self.enc = tiktoken.get_encoding("cl100k_base")
+        self.enc = tiktoken.get_encoding("cl100k_base")
         self.generated_files: List[Dict] = [] # Track file metadata
+
+        # Initialize LLM Client
+        self.llm = LLMClient()
+        
+        # Crawler Stats
+        self.crawl_stats = {
+            "pages_fetched": 0,
+            "urls": [],
+            "blocked_urls": [],
+            "status_codes": {},
+            "crawl_depth": 0,
+            "elapsed_ms": 0
+        }
 
         # Standard Topics (Required Set) with Canonical Tags
         self.file_map = {
@@ -136,8 +151,22 @@ class KBLibraryBuilder:
         for pattern in self.injection_patterns:
             text = re.sub(pattern, "[REDACTED_INJECTION_ATTEMPT]", text, flags=re.IGNORECASE)
         
-        # 2. Strip excess whitespace but preserve paragraph structure
-        # (Replacing naive implementation to keep newlines for semantic chunking)
+        # 2. Strip LLM Markdown Code Fences (Common error)
+        # Robust regex to find the content inside ```markdown ... ``` even if there is surrounding text
+        # If the text contains ```markdown, we assume it's a wrapper and try to extract the inside.
+        if "```markdown" in text:
+             pattern = r"```markdown\s*(.*?)\s*```"
+             match = re.search(pattern, text, re.DOTALL)
+             if match:
+                 text = match.group(1)
+        elif "```" in text and text.strip().startswith("```"):
+             # Handle generic code block wrapper
+             pattern = r"^```\s*(.*?)\s*```$"
+             match = re.search(pattern, text.strip(), re.DOTALL)
+             if match:
+                 text = match.group(1)
+
+        # 3. Strip excess whitespace but preserve paragraph structure
         text = re.sub(r'[ \t]+', ' ', text) # Collapse horizontal whitespace
         text = re.sub(r'\n{3,}', '\n\n', text) # Collapse multiple newlines
         return text.strip()
@@ -207,10 +236,69 @@ class KBLibraryBuilder:
         })
         logger.info(f"Generated KB file: {filename}")
 
+    def _generate_with_llm(self, topic: str, context: str, dossier: Dict) -> str:
+        """Uses LLM to synthesize a missing KB file from raw context."""
+        company_name = dossier['client_profile']['name']
+        industry = dossier['client_profile']['industry']
+        
+        system_prompt = f"""You are a senior technical writer for {company_name}, a leader in {industry}.
+Your task is to write a comprehensive internal knowledge base document about "{topic}".
+Use the provided raw collected data and the company dossier as your ONLY sources.
+Write in a professional, clear, and authoritative tone suitable for training AI agents or new employees.
+Format in valid Markdown. Use headers (##), bullet points, and bold text for emphasis.
+
+CRITICAL EVIDENCE RULE:
+- You must cite the Source URL for every major claim using [Source](url).
+- If the provided context does not contain specific information about {topic}, YOU MUST WRITE: "Unknown / Confirm on discovery call".
+- DO NOT invent, guess, or hallucinate pricing, specific metrics, or timelines.
+"""
+        
+        user_prompt = f"""
+[RAW CONTEXT FROM WEBSITE]
+{context[:25000]}  # Increased context limit for better evidence finding
+
+[DOSSIER SUMMARY]
+Name: {company_name}
+Industry: {industry}
+Description: {dossier['client_profile'].get('description', 'N/A')}
+
+[TASK]
+Write the KB document: "{topic}" (Filename: {topic}.md)
+Make it detailed (at least 300 words if possible) unless data is missing.
+Remember: "Unknown" is better than a lie.
+"""
+        logger.info(f"✨ Invoking LLM for topic: {topic}")
+        return self.llm.generate(system_prompt, user_prompt)
+
     def build_core_files(self, dossier: Dict):
         """Generates the required set 00-55 from Dossier with proper field mapping."""
         logger.info("Building Core KB Files from Dossier...")
         
+        # 1. Load the source bundle
+        context_text = self._try_load_source_bundle() or ""
+
+        # 2. Append Crawled Content (if any)
+        # We look at self.generated_files which now contains crawled pages
+        crawled_text = []
+        for f in self.generated_files:
+            if "raw_crawl" in f.get("tags", []):
+                try:
+                    p = self.agent_path / f["path"]
+                    if p.exists():
+                        crawled_text.append(p.read_text(encoding='utf-8'))
+                except:
+                    pass
+        
+        if crawled_text:
+            context_text += "\n\n[ADDITIONAL CRAWLED CONTEXT]\n" + "\n".join(crawled_text)
+        
+        # Statistics Check & Discovery Mode
+        # If we have very few pages, we flag "Discovery Mode" and warn the LLM.
+        is_discovery_mode = self.crawl_stats["pages_fetched"] < 5
+        if is_discovery_mode:
+            logger.warning(f"⚠️ Low Evidence Warning: Only crawled {self.crawl_stats['pages_fetched']} pages. Enabling Discovery Mode.")
+            context_text += "\n\n[SYSTEM WARNING]: DATA IS SCARCE. DO NOT INVENT FACTS. IF INFORMATION IS MISSING, STATE 'Unknown / Discovery Required'."
+
         # Define explicit dossier field mappings to KB topics
         field_mappings = {
             "00_overview": {
@@ -296,21 +384,24 @@ class KBLibraryBuilder:
                             nested_val = dossier[top_key][nested_key]
                             content_parts.append(self._format_dossier_value(nested_key, nested_val))
             
-            # 3. If nothing found, use the kb_seed.md or source_bundle as fallback
+            # 3. If nothing found OR content is very thin, attempting LLM Generation using COMBINED Context
+            # Logic: If content length < 200 chars AND we have context, let the LLM write it.
+            current_content_len = sum(len(c) for c in content_parts)
+            
+            if (not content_parts or current_content_len < 200) and context_text:
+                 generated_text = self._generate_with_llm(keywords[0], context_text, dossier)
+                 if generated_text and not generated_text.startswith("[Error"):
+                     # Sanitize ONLY the generated text to strip markdown wrappers
+                     generated_text = self._sanitize_text(generated_text)
+                     content_parts.append(generated_text)
+            
+            # 4. Fallback (if LLM failed or no source bundle)
             if not content_parts:
-                source_bundle = self._try_load_source_bundle()
-                if source_bundle and any(k.lower() in source_bundle.lower() for k in keywords):
-                    # Extract relevant section from source bundle
-                    for keyword in keywords:
-                        patterns = [
-                            rf"#{1,3}\s*{keyword}.*?(?=#{1,3}|\Z)",
-                            rf"\*\*{keyword}\*\*.*?(?=\*\*|\n\n|\Z)",
-                        ]
-                        for pattern in patterns:
-                            match = re.search(pattern, source_bundle, re.IGNORECASE | re.DOTALL)
-                            if match:
-                                content_parts.append(f"## From Website Content\n{match.group(0).strip()}")
-                                break
+                final_content = f"# {keywords[0]}\n\n*{mapping.get('fallback_text', 'No specific data found in intake dossier.')}*\n"
+                provenance = "fallback"
+            else:
+                final_content = f"# {keywords[0]}\n\n" + "\n\n".join(content_parts)
+                provenance = "llm_enhanced" if context_text else "dossier_extract"
             
             # Build final content
             if content_parts:
@@ -321,12 +412,21 @@ class KBLibraryBuilder:
             # Sanitize final content
             final_content = self._sanitize_text(final_content)
 
+            # Extract actual cited sources from the content
+            cited_urls = re.findall(r'\[Source\]\((http.*?)\)', final_content)
+            all_sources = [dossier.get("target_url", dossier.get("client_profile", {}).get("url", "internal"))]
+            if cited_urls:
+                all_sources.extend(cited_urls)
+            
+            # Uniquify while preserving order
+            all_sources = list(dict.fromkeys(all_sources))
+
             self._write_kb_file(f"{filename}.md", final_content, {
                 "title": keywords[0],
                 "tags": canonical_tags,
-                "source_urls": [dossier.get("target_url", dossier.get("client_profile", {}).get("url", "internal"))],
-                "summary": f"Core {keywords[0]} extracted from dossier.",
-                "provenance": "safe_summary"
+                "source_urls": all_sources,
+                "summary": f"Content for {keywords[0]}.",
+                "provenance": provenance
             })
     
     def _format_dossier_value(self, key: str, value) -> str:
@@ -343,6 +443,17 @@ class KBLibraryBuilder:
     
     def _try_load_source_bundle(self) -> Optional[str]:
         """Attempts to load the source_bundle.md from ingested_clients."""
+        # 1. Try relative to dossier (most reliable if dossier was passed explicitly)
+        if self.dossier_path:
+            bundle_path = self.dossier_path.parent / "extracted" / "source_bundle.md"
+            if bundle_path.exists():
+                logger.info(f"Found source bundle at: {bundle_path}")
+                try:
+                    return bundle_path.read_text(encoding='utf-8')
+                except:
+                    pass
+
+        # 2. Try standard path logic
         bundle_path = self.ingested_dir / self.slug / "extracted" / "source_bundle.md"
         if bundle_path.exists():
             try:
@@ -352,53 +463,127 @@ class KBLibraryBuilder:
         return None
 
     def run_crawler(self, base_url: str):
-        """Crawls standard paths to augment KB."""
-        logger.info(f"Starting Crawler for {base_url}...")
+        """Recursive crawler to find more evidence (Depth 2)."""
+        logger.info(f"Starting Recursive Crawler for {base_url}...")
+        start_time = datetime.datetime.now()
         
-        paths = [
-            "pricing", "services", "solutions", "industries", "faq", "docs", 
-            "blog", "case-studies", "about", "contact", "security", "terms", "privacy",
-            "careers", "team"
-        ]
+        # Initialize Stats (Enriched)
+        self.crawl_stats["assets"] = []
+        self.crawl_stats["status_codes"] = {}
         
         # Normalize base URL (strip trailing slash)
         if base_url.endswith("/"): base_url = base_url[:-1]
+        domain = urlparse(base_url).netloc
 
-        for path in paths:
-             # Stop if we hit max files
-            if len(self.generated_files) >= self.max_files:
-                logger.warning("Max KB files reached. Stopping crawler.")
-                break
+        # Initial Queue: (url, depth)
+        queue = [(base_url, 0)]
+        
+        # Add standard paths to queue (depth 1 equivalents)
+        standard_paths = [
+            "pricing", "services", "solutions", "faq", "docs", 
+            "about", "contact", "privacy", "terms"
+        ]
+        for p in standard_paths:
+            queue.append((f"{base_url}/{p}", 1))
 
-            target_url = f"{base_url}/{path}"
+        visited = set()
+        
+        # Use a session for connection pooling
+        import requests
+        session = requests.Session()
+        session.headers.update({"User-Agent": "X-Agent-Factory/1.0"})
+        
+        while queue and len(self.generated_files) < self.max_files:
+            url, depth = queue.pop(0)
+            
+            if url in visited: continue
+            visited.add(url)
+            
+            # Depth Gate
+            if depth > 2: continue
+
             try:
-                # Basic Rate Limiting sleep could go here
+                logger.info(f"Crawling: {url} (Depth {depth})")
                 
-                downloaded = trafilatura.fetch_url(target_url)
-                if downloaded:
-                    text = trafilatura.extract(downloaded)
-                    if text and len(text) > 200: # Min content filter
-                        # Chunk it
-                        chunks = self._chunk_text(text, target_url, path.capitalize())
+                # Fetch content and Code
+                try:
+                    resp = session.get(url, timeout=10)
+                    code = resp.status_code
+                    self.crawl_stats["status_codes"][url] = code
+                    
+                    if code != 200:
+                        self.crawl_stats["blocked_urls"].append(url)
+                        continue
                         
-                        for i, chunk in enumerate(chunks):
-                             if len(self.generated_files) >= self.max_files: break
-                             
-                             filename = f"60_crawled_{path}_part{i+1}.md"
-                             safe_content = f"# {path.capitalize()} (Part {i+1})\n\nSource: {target_url}\n\n{chunk['text']}"
-                             
-                             self._write_kb_file(filename, safe_content, {
-                                 "title": f"{path.capitalize()} - Part {i+1}",
-                                 "tags": ["web", path.lower()],
-                                 "source_urls": [target_url],
-                                 "summary": f"Crawled content from {path}"
-                             })
+                    content_type = resp.headers.get('Content-Type', '').lower()
+                    
+                    # Asset Filter
+                    if 'text/html' not in content_type:
+                        self.crawl_stats["assets"].append(url)
+                        continue
+                        
+                    downloaded = resp.text
+                    
+                except Exception as req_err:
+                    logger.warning(f"Request failed for {url}: {req_err}")
+                    self.crawl_stats["blocked_urls"].append(url)
+                    continue
+                
+                self.crawl_stats["pages_fetched"] += 1
+                self.crawl_stats["urls"].append(url)
+                self.crawl_stats["crawl_depth"] = max(self.crawl_stats["crawl_depth"], depth)
+
+                # Extract Text
+                text = trafilatura.extract(downloaded)
+                if text and len(text) > 200:
+                    path_slug = urlparse(url).path.strip('/').replace('/', '_') or "homepage"
+                    filename = f"60_crawled_{path_slug[:50]}.md"
+                    
+                    safe_content = f"# Crawled: {url}\n\nSource: {url}\nDepth: {depth}\n\n{text}"
+                    self._write_kb_file(filename, safe_content, {
+                        "title": f"Crawled - {path_slug}",
+                        "tags": ["web", "raw_crawl"],
+                        "source_urls": [url],
+                        "summary": f"Crawled content from {url}",
+                        "provenance": "crawler"
+                    })
+
+                # Extract Links for Depth < 2
+                if depth < 2:
+                    soup = BeautifulSoup(downloaded, 'html.parser')
+                    for link in soup.find_all('a', href=True):
+                        href = link['href']
+                        
+                        # Normalize Link
+                        full_url = urljoin(url, href)
+                        parsed = urlparse(full_url)
+                        
+                        # Internal Logic: Same Domain, HTTP/S
+                        if parsed.netloc == domain and parsed.scheme in ['http', 'https']:
+                            # Filter out typically useless paths
+                            if not any(x in full_url.lower() for x in ['login', 'signup', 'javascript:', 'mailto:']):
+                                # Asset extensions check
+                                if any(full_url.lower().endswith(ext) for ext in ['.pdf', '.jpg', '.png', '.svg']):
+                                     self.crawl_stats["assets"].append(full_url)
+                                     continue
+                                     
+                                if full_url not in visited:
+                                    queue.append((full_url, depth + 1))
+            
             except Exception as e:
-                logger.warning(f"Failed to crawl {target_url}: {e}")
+                logger.warning(f"Failed to crawl {url}: {e}")
+        
+        elapsed = (datetime.datetime.now() - start_time).total_seconds() * 1000
+        self.crawl_stats["elapsed_ms"] = int(elapsed)
 
     def generate_indices(self):
         """Generates index.json and kb_pack_manifest.json."""
         
+        # Tavus Compatibility: Ensure document_tags is populated
+        for f in self.generated_files:
+            if "document_tags" not in f:
+                f["document_tags"] = f.get("tags", [])
+
         # 1. index.json
         missing_topics = []
         # Check coverage
@@ -415,6 +600,7 @@ class KBLibraryBuilder:
                 "required_topics_met": len(self.file_map) - len(missing_topics),
                 "missing_topics": missing_topics
             },
+            "discovery_required": self.crawl_stats.get("pages_fetched", 0) < 5,
             "build_metadata": {
                 "slug": self.slug,
                 "generated_at": datetime.datetime.now().isoformat(),
@@ -425,10 +611,15 @@ class KBLibraryBuilder:
         with open(self.kb_dir / "index.json", 'w', encoding='utf-8') as f:
             json.dump(index_data, f, indent=2)
             
+        # 1.5 Write Crawl Report
+        with open(self.kb_dir / "crawl_report.json", 'w', encoding='utf-8') as f:
+            json.dump(self.crawl_stats, f, indent=2)
+
         # 2. kb_pack_manifest.json (Hashes)
         manifest_data = {
             os.path.basename(f["path"]): f["file_hash"] for f in self.generated_files
         }
+        
         # Add index.json hash
         with open(self.kb_dir / "index.json", 'rb') as f:
              manifest_data["index.json"] = hashlib.sha256(f.read()).hexdigest()
@@ -462,16 +653,16 @@ class KBLibraryBuilder:
         self.kb_dir.mkdir(parents=True)
         
         dossier = self._load_dossier()
-        base_url = dossier.get("target_url")
+        base_url = dossier.get("target_url") or dossier.get("client_profile", {}).get("url")
         
-        # 1. Build Core (Required)
-        self.build_core_files(dossier)
-        
-        # 2. Crawl Web (Augment)
+        # 1. Crawl Web First (Harvest Evidence)
         if base_url:
             self.run_crawler(base_url)
         else:
             logger.warning("No target_url in dossier, skipping crawler.")
+            
+        # 2. Build Core (Synthesize using Evidence)
+        self.build_core_files(dossier)
 
         # 3. Indices & Manifests
         self.generate_indices()

@@ -1,0 +1,14 @@
+{
+  "score": 50,
+  "verdict": "FAIL (REPETITIVE)",
+  "breakdown": {
+    "disclaimer_no_advice": true,
+    "empathy": true,
+    "asked_questions": true,
+    "closing_routing": true,
+    "issue_framing": true,
+    "REPETITIVE_LOOP": [
+      "james: hi! so you've been in an accident and are wondering if this case is worth pursuing. can you tell me what happened when you got hit?"
+    ]
+  }
+}

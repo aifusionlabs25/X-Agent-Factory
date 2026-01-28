@@ -1,0 +1,469 @@
+version: "1.6"
+weekly_target: 5
+max_queries_per_run: 4
+
+# Industries to hunt in
+industries:
+  - HVAC
+  - Plumbing
+  - Electrical
+  - Legal
+  - Medical
+  - Home Services
+  - Roofing
+  - Pest Control
+  - Veterinary
+  - Towing
+  - Cleaning
+  - Property Management
+  - Dental
+  - Landscaping
+  - Contractor
+
+# ============================================
+# PHASE G1.6: ICP LANES SYSTEM
+# ============================================
+
+icp_lanes:
+  home_services_owner_operator:
+    description: "HVAC, plumbing, electrical, roofing, pest control - owner operators"
+    positive_keywords:
+      - "hvac"
+      - "plumbing"
+      - "plumber"
+      - "electrician"
+      - "electrical"
+      - "roofing"
+      - "roofer"
+      - "pest control"
+      - "exterminator"
+      - "landscaping"
+      - "lawn care"
+      - "cleaning"
+      - "janitorial"
+      - "towing"
+      - "contractor"
+      - "home services"
+    negative_keywords:
+      - "franchise"
+      - "corporate"
+      - "national"
+    must_have:
+      - "phone"
+      - "contact_page"
+    score_boost: 2
+  
+  medical_dental_practice:
+    description: "Dental offices, clinics, medical practices"
+    positive_keywords:
+      - "dental"
+      - "dentist"
+      - "dentistry"
+      - "clinic"
+      - "practice"
+      - "orthodontics"
+      - "medical"
+      - "healthcare"
+      - "physician"
+      - "doctor"
+      - "veterinary"
+      - "vet"
+      - "animal hospital"
+    negative_keywords:
+      - "consulting"
+      - "agency"
+      - "marketing"
+    must_have:
+      - "phone"
+      - "contact_page"
+    score_boost: 2
+  
+  legal_office_intake:
+    description: "Law firms, attorneys needing intake support"
+    positive_keywords:
+      - "law firm"
+      - "attorney"
+      - "lawyer"
+      - "legal"
+      - "legal services"
+      - "paralegal"
+      - "litigation"
+      - "personal injury"
+      - "family law"
+    negative_keywords:
+      - "marketing"
+      - "seo"
+      - "lead gen"
+    must_have:
+      - "phone"
+    score_boost: 2
+  
+  property_management:
+    description: "Property managers, rental offices"
+    positive_keywords:
+      - "property management"
+      - "rentals"
+      - "real estate"
+      - "apartments"
+      - "leasing"
+      - "maintenance"
+      - "tenant"
+    negative_keywords:
+      - "agent"
+      - "broker"
+      - "realtor"
+    must_have:
+      - "phone"
+      - "contact_page"
+    score_boost: 2
+
+# ============================================
+# PHASE G1.6: PERSONA CLASSIFICATION
+# ============================================
+
+persona_markers:
+  agency:
+    - "agency"
+    - "consulting"
+    - "consultant"
+    - "marketing services"
+    - "lead gen"
+    - "lead generation"
+    - "growth"
+    - "growth marketing"
+    - "seo"
+    - "seo services"
+    - "funnels"
+    - "our clients"
+    - "clients include"
+    - "case studies"
+    - "book a call"
+    - "schedule a call"
+    - "digital marketing"
+    - "ppc"
+    - "marketing agency"
+    - "automation agency"
+  
+  vendor:
+    - "platform"
+    - "saas"
+    - "software"
+    - "api"
+    - "integrations"
+    - "pricing per seat"
+    - "developers"
+    - "sdk"
+    - "enterprise"
+    - "startup"
+    - "ai-powered"
+    - "automation platform"
+    - "try for free"
+    - "free trial"
+    - "book a demo"
+    - "pricing tiers"
+  
+  creator:
+    - "creator"
+    - "influencer"
+    - "content creator"
+    - "youtube"
+    - "youtuber"
+    - "podcast"
+    - "podcaster"
+    - "newsletter"
+    - "substack"
+    - "blogger"
+    - "vlogger"
+
+# ============================================
+# PHASE G1.6: EXPANDED DOMAIN DENYLIST
+# ============================================
+
+domain_denylist:
+  # Link-in-bio platforms
+  - "linktr.ee"
+  - "beacons.ai"
+  - "campsite.bio"
+  - "bio.link"
+  - "linkin.bio"
+  - "tap.bio"
+  - "linktree.com"
+  # Scheduling/payment platforms
+  - "cal.com"
+  - "calendly.com"
+  - "buymeacoffee.com"
+  - "ko-fi.com"
+  - "gumroad.com"
+  - "stan.store"
+  - "podia.com"
+  # Website builders (personal)
+  - "carrd.co"
+  - "notion.site"
+  - "notion.so"
+  # Blog platforms
+  - "blogspot.com"
+  - "wordpress.com"
+  - "substack.com"
+  - "medium.com"
+  - "tumblr.com"
+  - "ghost.io"
+  # Social/content
+  - "twitter.com"
+  - "x.com"
+  - "t.co"
+  - "instagram.com"
+  - "facebook.com"
+  - "linkedin.com"
+  - "youtube.com"
+  - "tiktok.com"
+  # URL shorteners
+  - "bit.ly"
+  - "ow.ly"
+  - "tinyurl.com"
+  - "goo.gl"
+  - "buff.ly"
+
+# ============================================
+# PHASE G1.4: Business-Context Queries
+# ============================================
+
+x_scout:
+  enabled: true
+  auth_mode: "bearer_only"
+  
+  queries:
+    business_pain:
+      - '("missed calls" OR "calls going to voicemail" OR "no one answered the phone") ("customer" OR "client" OR "appointment" OR "booking" OR "estimate" OR "dispatch" OR "front desk" OR "office") -is:retweet'
+      - '("need someone to answer" OR "need answering service" OR "need receptionist" OR "need call answering") ("my business" OR "our business" OR "our office" OR "my office" OR "shop" OR "clinic") -is:retweet'
+      - '("after hours calls" OR "lost a lead" OR "lost business" OR "lost a customer") ("phone" OR "call" OR "voicemail" OR "inquiries") -is:retweet'
+      - '("HVAC" OR "plumbing" OR "electrician" OR "roofing" OR "pest control" OR "cleaning" OR "towing" OR "landscaping" OR "contractor") ("missed calls" OR "answer the phone" OR "voicemail" OR "call volume") -is:retweet'
+  
+  query_selection:
+    business_pain: 4
+  
+  max_results_per_query: 15
+  cache_ttl_hours: 24
+  
+  read_only: true
+  no_posting: true
+  no_dms: true
+  no_engagement: true
+
+# ============================================
+# PHASE G1.4: Context Gates
+# ============================================
+
+context_gates:
+  sports_keywords:
+    - "ref"
+    - "refs"
+    - "officiating"
+    - "game"
+    - "home game"
+    - "back to back"
+    - "team"
+    - "season"
+    - "playoffs"
+    - "touchdown"
+    - "basketball"
+    - "football"
+    - "nba"
+    - "nfl"
+    - "mlb"
+    - "nhl"
+  
+  meme_keywords:
+    - "he comes back"
+    - "she comes back"
+    - "boyfriend"
+    - "girlfriend"
+    - "husband"
+    - "wife"
+    - "14 missed calls"
+    - "when he"
+    - "when she"
+    - "babe"
+    - "ex"
+  
+  business_markers:
+    - "customer"
+    - "client"
+    - "booking"
+    - "appointment"
+    - "office"
+    - "estimate"
+    - "dispatch"
+    - "front desk"
+    - "business"
+    - "shop"
+    - "clinic"
+    - "service"
+    - "company"
+    - "patient"
+  
+  vendor_pitch_markers:
+    - "roi"
+    - "calculate yours"
+    - "free trial"
+    - "book a call"
+    - "numbers don't lie"
+    - "voice ai costs"
+    - "4x"
+    - "pipeline"
+    - "lead gen"
+
+# ============================================
+# PHASE G1.2: Account Filtering
+# ============================================
+
+filters:
+  hard_negatives:
+    - "founder"
+    - "builder"
+    - "open source"
+    - "oss"
+    - "prompt"
+    - "LLM"
+    - "AI engineer"
+    - "growth hacker"
+    - "web3"
+    - "crypto"
+  
+  vendor_patterns:
+    - "we help"
+    - "free trial"
+    - "saas"
+    - "platform"
+  
+  operator_keywords:
+    - "owner"
+    - "co-owner"
+    - "operator"
+    - "manager"
+    - "office"
+    - "dispatcher"
+    - "receptionist"
+    - "practice manager"
+    - "director"
+  
+  business_keywords:
+    - "HVAC"
+    - "plumbing"
+    - "dental"
+    - "vet"
+    - "law firm"
+    - "electrician"
+    - "pest"
+    - "towing"
+    - "roofing"
+    - "cleaning"
+    - "home services"
+    - "property management"
+  
+  min_followers_no_website: 500
+
+# ============================================
+# PHASE G1.6: Scoring Weights (Updated)
+# ============================================
+
+moment_scoring:
+  pain_phrase_weight: 4
+  operational_phrase_weight: 2
+  recency_24h_weight: 2
+  recency_72h_weight: 1
+  website_present_weight: 2
+  operator_keyword_weight: 1
+  vendor_penalty: -4
+  spam_hashtag_penalty: -2
+  denylist_domain_penalty: -2
+
+# G1.6 Buyer-focused scoring
+buyer_scoring:
+  # Positive signals
+  has_phone_boost: 2
+  has_address_boost: 2
+  has_services_boost: 1
+  has_contact_page_boost: 1
+  hiring_language_boost: 2  # "hiring dispatcher", "need receptionist"
+  icp_lane_match_boost: 2
+  
+  # Negative signals (personas)
+  agency_penalty: -4
+  vendor_penalty: -3
+  creator_penalty: -2
+  
+  # Additional penalties
+  agency_language_penalty: -3  # "book a call" + "clients"
+
+# Action thresholds
+action_thresholds:
+  ignore: 3
+  review: 6
+  build_spec: 10
+
+# Web Scout settings
+web_scout:
+  enabled: true
+  seed_sources:
+    - "google_maps"
+    - "yelp"
+    - "bbb"
+  max_prospects_per_run: 20
+
+# ============================================
+# PHASE G1.7: GOOGLE BUSINESS PROFILE SCOUT
+# ============================================
+
+# ============================================
+# PHASE G1.8: GOOGLE PLACES API (NEW)
+# ============================================
+
+sources:
+  google_places:
+    enabled: true
+    weekly_budget_usd: 10.00
+    max_search_requests_per_day: 50
+    rate_limit_seconds: 1.0
+    field_mask: "places.id,places.displayName,places.formattedAddress,places.types,places.location,places.websiteUri"
+    
+    # Queries organized by ICP lane
+    queries:
+      home_services:
+        - "hvac contractor phoenix"
+        - "plumber mesa"
+        - "electrician scottsdale"
+        - "roofing company phoenix"
+        - "pest control phoenix"
+      medical_dental:
+        - "dental clinic tempe"
+        - "dentist phoenix"
+        - "veterinarian phoenix"
+        - "family doctor mesa"
+      legal:
+        - "law firm phoenix"
+        - "personal injury attorney phoenix"
+        - "divorce lawyer scottsdale"
+      property_management:
+        - "property management phoenix"
+        - "apartment rental mesa"
+    
+    # Geo targets for bias (optional for API, strict for scraping)
+    geo_targets:
+      - city: "Phoenix"
+        state: "AZ"
+        radius_miles: 25
+
+
+# Manual import settings (fallback)
+manual_import:
+  enabled: true
+  directory: "growth/manual_import"
+  supported_formats:
+    - "csv"
+  required_columns:
+    - "name"
+    - "website"
+  optional_columns:
+    - "phone"
+    - "address"
+    - "category"

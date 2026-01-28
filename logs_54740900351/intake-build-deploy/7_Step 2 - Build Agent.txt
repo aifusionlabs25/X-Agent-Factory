@@ -1,0 +1,71 @@
+﻿2026-01-19T07:07:19.5164304Z ##[group]Run echo "::group::Build Agent"
+2026-01-19T07:07:19.5164639Z [36;1mecho "::group::Build Agent"[0m
+2026-01-19T07:07:19.5164991Z [36;1mecho "Building agent for: your_most_trusted_hvac_technicians_larso"[0m
+2026-01-19T07:07:19.5165353Z [36;1m[0m
+2026-01-19T07:07:19.5165606Z [36;1m# Retry logic for build (1 retry for transient AI API issues)[0m
+2026-01-19T07:07:19.5165947Z [36;1mMAX_RETRIES=2[0m
+2026-01-19T07:07:19.5166148Z [36;1mRETRY_DELAY=5[0m
+2026-01-19T07:07:19.5166327Z [36;1m[0m
+2026-01-19T07:07:19.5166524Z [36;1mfor attempt in $(seq 1 $MAX_RETRIES); do[0m
+2026-01-19T07:07:19.5166829Z [36;1m  echo "Attempt $attempt of $MAX_RETRIES"[0m
+2026-01-19T07:07:19.5167687Z [36;1m  if python tools/factory_orchestrator.py --build-agent "/home/runner/work/X-Agent-Factory/X-Agent-Factory/ingested_clients/your_most_trusted_hvac_technicians_larso/dossier.json" --no-log; then[0m
+2026-01-19T07:07:19.5168728Z [36;1m    echo "build_success=true" >> $GITHUB_OUTPUT[0m
+2026-01-19T07:07:19.5169001Z [36;1m    break[0m
+2026-01-19T07:07:19.5169214Z [36;1m  else[0m
+2026-01-19T07:07:19.5169425Z [36;1m    if [ $attempt -lt $MAX_RETRIES ]; then[0m
+2026-01-19T07:07:19.5169723Z [36;1m      echo "Retrying in ${RETRY_DELAY}s..."[0m
+2026-01-19T07:07:19.5170006Z [36;1m      sleep $RETRY_DELAY[0m
+2026-01-19T07:07:19.5170258Z [36;1m      RETRY_DELAY=$((RETRY_DELAY * 2))[0m
+2026-01-19T07:07:19.5170501Z [36;1m    else[0m
+2026-01-19T07:07:19.5170875Z [36;1m      echo "build_success=false" >> $GITHUB_OUTPUT[0m
+2026-01-19T07:07:19.5171305Z [36;1m      echo "build_error=Build failed after $MAX_RETRIES attempts" >> $GITHUB_OUTPUT[0m
+2026-01-19T07:07:19.5171697Z [36;1m      exit 1[0m
+2026-01-19T07:07:19.5171873Z [36;1m    fi[0m
+2026-01-19T07:07:19.5172045Z [36;1m  fi[0m
+2026-01-19T07:07:19.5172204Z [36;1mdone[0m
+2026-01-19T07:07:19.5172364Z [36;1m[0m
+2026-01-19T07:07:19.5172530Z [36;1mecho "Agent built"[0m
+2026-01-19T07:07:19.5172742Z [36;1mecho "::endgroup::"[0m
+2026-01-19T07:07:19.5204466Z shell: /usr/bin/bash -e {0}
+2026-01-19T07:07:19.5204697Z env:
+2026-01-19T07:07:19.5204857Z   GOOGLE_API_KEY: 
+2026-01-19T07:07:19.5205038Z   TAVUS_API_KEY: 
+2026-01-19T07:07:19.5205211Z   ELEVENLABS_API_KEY: 
+2026-01-19T07:07:19.5205475Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.14/x64
+2026-01-19T07:07:19.5205870Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.14/x64/lib/pkgconfig
+2026-01-19T07:07:19.5206270Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+2026-01-19T07:07:19.5206623Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+2026-01-19T07:07:19.5206968Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+2026-01-19T07:07:19.5207325Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.14/x64/lib
+2026-01-19T07:07:19.5207623Z ##[endgroup]
+2026-01-19T07:07:19.5257574Z ##[group]Build Agent
+2026-01-19T07:07:19.5258129Z Building agent for: your_most_trusted_hvac_technicians_larso
+2026-01-19T07:07:19.5270382Z Attempt 1 of 2
+2026-01-19T07:07:19.6867802Z 
+2026-01-19T07:07:19.6868246Z ============================================================
+2026-01-19T07:07:19.6869153Z 🏭 FACTORY ORCHESTRATOR - BUILD AGENT MODE
+2026-01-19T07:07:19.6870311Z    Dossier: /home/runner/work/X-Agent-Factory/X-Agent-Factory/ingested_clients/your_most_trusted_hvac_technicians_larso/dossier.json
+2026-01-19T07:07:19.6871695Z ============================================================
+2026-01-19T07:07:19.6872065Z 
+2026-01-19T07:07:19.6872373Z 📋 Step 1: Validating dossier...
+2026-01-19T07:07:19.6872873Z    ✅ Dossier is valid.
+2026-01-19T07:07:19.6873514Z    📛 Client Slug: your_most_trusted_hvac_technicians_larson_air_co
+2026-01-19T07:07:19.6874821Z    📁 Output: /home/runner/work/X-Agent-Factory/X-Agent-Factory/agents/your_most_trusted_hvac_technicians_larson_air_co
+2026-01-19T07:07:19.6875718Z 
+2026-01-19T07:07:19.6875996Z 🔧 Step 2: Generating artifacts...
+2026-01-19T07:07:19.6876510Z    ✅ system_prompt.txt (1190 bytes)
+2026-01-19T07:07:19.6876999Z    ✅ kb_seed.md (950 bytes)
+2026-01-19T07:07:19.6877902Z    ✅ tavus_pack/README.md
+2026-01-19T07:07:19.6878182Z 
+2026-01-19T07:07:19.6878426Z 📜 Step 3: Generating manifest...
+2026-01-19T07:07:19.6878911Z    ✅ manifest.json
+2026-01-19T07:07:19.6879116Z 
+2026-01-19T07:07:19.6879292Z ============================================================
+2026-01-19T07:07:19.6879829Z ✅ BUILD COMPLETE
+2026-01-19T07:07:19.6880285Z    Agent: your_most_trusted_hvac_technicians_larson_air_co
+2026-01-19T07:07:19.6881568Z    Output: /home/runner/work/X-Agent-Factory/X-Agent-Factory/agents/your_most_trusted_hvac_technicians_larson_air_co
+2026-01-19T07:07:19.6882587Z    Artifacts: 3
+2026-01-19T07:07:19.6882938Z ============================================================
+2026-01-19T07:07:19.6883557Z 
+2026-01-19T07:07:19.7078723Z Agent built
+2026-01-19T07:07:19.7079572Z ##[endgroup]

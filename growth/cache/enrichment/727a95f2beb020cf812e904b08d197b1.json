@@ -1,0 +1,37 @@
+{
+  "status": "success",
+  "site_type": "BUSINESS",
+  "site_reason": "nav_indicators:4",
+  "persona_type": "BUYER",
+  "persona_reasons": [
+    "has_services",
+    "has_local_signals",
+    "has_contact",
+    "has_phone"
+  ],
+  "icp_lane": "home_services_owner_operator",
+  "icp_boost": 2,
+  "final_url": "https://www.mesaplumbingcompany.com/",
+  "status_code": 200,
+  "page_title": "Mesa Plumbing: Plumber | Mesa Arizona | Lowest Price - Mesa Plumbing",
+  "has_phone": true,
+  "has_email": false,
+  "has_contact_page": true,
+  "has_address": true,
+  "industry_hint": "Plumbing",
+  "location_hint": "Arizona",
+  "services_detected": [
+    "residential",
+    "commercial",
+    "free estimate"
+  ],
+  "evidence_signals": [
+    "phone_found",
+    "contact_page",
+    "address_found",
+    "services_listed",
+    "industry:Plumbing"
+  ],
+  "penalties": [],
+  "enriched_at": "2026-01-21T17:59:38.554698"
+}

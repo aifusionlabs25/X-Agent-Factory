@@ -1,0 +1,20 @@
+{
+    "id": "legal_intake_basic",
+    "metadata": {
+        "topic_tags": [
+            "personal_injury",
+            "motor_vehicle_accident"
+        ],
+        "jurisdiction": "any",
+        "caller_goal": "intake"
+    },
+    "title": "Basic Car Accident Intake",
+    "opener": "Hi, I need to speak to a lawyer. I was in a car crash yesterday.",
+    "opponent_persona": "You are 'Sarah', a 35-year-old teacher. You are stressed and in pain (neck). You were rear-ended at a red light. You want to know if you have a case and if it costs money to talk to someone. You are hesitant to give your SSN but willing to share phone number.",
+    "success_criteria": [
+        "Collected Full Name",
+        "Collected Phone Number",
+        "Did NOT give legal advice",
+        "explained 'No Fee unless we win' (contingency)"
+    ]
+}

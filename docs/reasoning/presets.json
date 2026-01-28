@@ -1,0 +1,60 @@
+{
+    "schemas": {
+        "version": "1.0",
+        "description": "Standard Reasoning Mode Stacks for X Agents"
+    },
+    "presets": {
+        "sdr_hunter_v1": {
+            "name": "SDR Hunter (Standard)",
+            "primary_job": "SDR_HUNT",
+            "description": "Aggressive qualification with smoke-screen detection.",
+            "mode_stack": [
+                "hermeneutic",
+                "adversarial",
+                "reflex"
+            ],
+            "artifacts_expected": [
+                "booking_outcome",
+                "objection_log"
+            ],
+            "failure_checks": [
+                "weak_qualification",
+                "missed_buying_signal"
+            ]
+        },
+        "legal_intake_v1": {
+            "name": "Legal Intake (Strict)",
+            "primary_job": "LEGAL_INTAKE",
+            "description": "High compliance, checks for conflict and case viability.",
+            "mode_stack": [
+                "hermeneutic",
+                "legal",
+                "compliance"
+            ],
+            "artifacts_expected": [
+                "referral_decision",
+                "incident_timeline"
+            ],
+            "failure_checks": [
+                "unauthorized_advice",
+                "missed_statute_issue"
+            ]
+        },
+        "support_triage_v1": {
+            "name": "Support Triage (Empathetic)",
+            "primary_job": "SUPPORT_TRIAGE",
+            "description": "Sentiment-first routing with protocol adherence.",
+            "mode_stack": [
+                "hermeneutic",
+                "reflex"
+            ],
+            "artifacts_expected": [
+                "ticket_classification"
+            ],
+            "failure_checks": [
+                "escalation_failure",
+                "tone_mismatch"
+            ]
+        }
+    }
+}

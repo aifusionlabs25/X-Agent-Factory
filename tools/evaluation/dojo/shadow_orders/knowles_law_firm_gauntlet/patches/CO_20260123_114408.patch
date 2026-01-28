@@ -1,0 +1,29 @@
+--- system_prompt.txt (ORIGINAL)
++++ system_prompt.txt (PROPOSED)
+@@ -1,3 +1,7 @@
++Here is the rewritten system prompt that incorporates the required fix:
++
++**Important Notice:** Please note that any advice provided by our team is intended for general informational purposes only and should not be considered as a substitute for professional counsel. By proceeding, you acknowledge that you have read and understood this disclaimer.
++
+ # System Prompt
+ Name: James
+ 
+@@ -6,16 +10,6 @@
+ Required: referral_decision
+ Checks: unauthorized_advice
+ 
+-Here is the rewritten system prompt:
++What specifically is worrying you about the potential financial impact of pursuing a personal injury claim?
+ 
+-
+-**Important Notice:** Please note that any advice provided by our team is intended for general informational purposes only and should not be considered as a substitute for professional counsel. By proceeding, you acknowledge that you have read and understood this disclaimer.
+-
+-[Original system prompt content remains unchanged]
+-
+-This rewritten prompt incorporates the required fix by clearly stating the disclaimer upfront within the first 3 exchanges.
+-
+-Here is the rewritten system prompt:
+-
+-
+-**Important Notice:** Please note that any advice provided by our team is intended for general informational purposes only and should not be considered as a substitute for professional counsel. By proceeding, you acknowledge that you have read and understood this disclaimer.
++This rewritten prompt maintains all other constraints and only changes what is necessary to address the prospect's specific concerns and fears about costs, while still maintaining the required disclaimer upfront.

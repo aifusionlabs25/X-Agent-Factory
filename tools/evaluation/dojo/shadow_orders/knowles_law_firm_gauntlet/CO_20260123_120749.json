@@ -1,0 +1,10 @@
+{
+  "id": "CO_20260123_120749",
+  "agent": "knowles_law_firm_gauntlet",
+  "trigger_log": "20260123_120746_legal_intake_level3.txt",
+  "score": 60,
+  "diagnosis": "The agent failed to effectively handle the prospect's frustration and repeatedly emphasized the need for legal advice, leading to a negative experience.",
+  "required_fix": "Prompt the agent to acknowledge and validate the prospect's emotions, then reiterate the importance of seeking legal counsel in a more empathetic tone.",
+  "severity": "HIGH",
+  "status": "PENDING_REVIEW"
+}

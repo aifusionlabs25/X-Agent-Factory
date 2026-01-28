@@ -1,0 +1,10 @@
+{
+  "id": "CO_20260123_114541",
+  "agent": "knowles_law_firm_gauntlet",
+  "trigger_log": "20260123_114538_legal_intake_level3.txt",
+  "score": 40,
+  "diagnosis": "The agent failed to provide a clear and concise value proposition, instead getting bogged down in explaining why they couldn't give a specific dollar figure upfront.",
+  "required_fix": "Prompt the prospect with a clear value proposition, such as 'I understand you're looking for a settlement amount. Let me ask you some questions to better understand your situation and provide more tailored guidance.'",
+  "severity": "MEDIUM",
+  "status": "PENDING_REVIEW"
+}

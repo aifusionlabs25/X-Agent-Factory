@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "site_type": "VENDOR",
+  "site_reason": "vendor_markers:5",
+  "final_url": "https://skipcalls.com/",
+  "status_code": 200,
+  "page_title": "SkipCalls - AI Receptionist for Small Businesses | 24/7",
+  "has_phone": true,
+  "has_email": false,
+  "has_contact_page": false,
+  "industry_hint": "Electrical",
+  "location_hint": null,
+  "services_detected": [
+    "repair",
+    "24/7"
+  ],
+  "business_keywords_found": [
+    "trusted"
+  ],
+  "enriched_at": "2026-01-21T08:28:59.301695"
+}

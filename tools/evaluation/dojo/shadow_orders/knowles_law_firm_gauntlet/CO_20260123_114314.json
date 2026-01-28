@@ -1,0 +1,10 @@
+{
+  "id": "CO_20260123_114314",
+  "agent": "knowles_law_firm_gauntlet",
+  "trigger_log": "20260123_114311_legal_intake_basic.txt",
+  "score": 30,
+  "diagnosis": "The agent failed to provide a clear and concise disclaimer about the contingency fee structure, leading to uncertainty and mistrust from the prospect.",
+  "required_fix": "Prompt architects should ensure that the disclaimer is clearly stated upfront, ideally within the first 2-3 exchanges, to establish transparency and build trust with prospects.",
+  "severity": "MEDIUM",
+  "status": "PENDING_REVIEW"
+}

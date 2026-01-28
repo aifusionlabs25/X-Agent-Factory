@@ -1,0 +1,15 @@
+{
+  "score": -150,
+  "verdict": "FAIL (REPETITIVE)",
+  "breakdown": {
+    "disclaimer_no_advice": true,
+    "empathy": true,
+    "asked_questions": true,
+    "BANNED_WORDS": [
+      "guidance"
+    ],
+    "REPETITIVE_LOOP": [
+      "james: hi there! i'm james with knowles law firm. i am not an attorney and cannot give legal advice. can you tell me what happened when you got hit?"
+    ]
+  }
+}

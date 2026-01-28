@@ -1,0 +1,14 @@
+{
+  "total": 4,
+  "matched_id": 4,
+  "matched_domain": 0,
+  "matched_phone": 0,
+  "matched_fuzzy": 0,
+  "unmatched": 0,
+  "outcomes": {
+    "won": 1,
+    "dead": 1,
+    "meeting": 1,
+    "dnc": 1
+  }
+}

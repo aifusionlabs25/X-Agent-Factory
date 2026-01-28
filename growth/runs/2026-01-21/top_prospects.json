@@ -1,0 +1,131 @@
+[
+  {
+    "id": "6a9a7531bfee",
+    "name": "Press8 Telecom + IT",
+    "source": "X",
+    "score": 10,
+    "moment_score": 8,
+    "prospect_key": "t.co",
+    "domain": "t.co",
+    "x_handle": "Press8",
+    "x_profile_url": "https://x.com/Press8",
+    "evidence": [
+      {
+        "type": "tweet",
+        "text": "Most businesses don\u2019t lose customers because of bad products.\n\nThey lose them because no one answered the phone.\n\nHere\u2019s what actually happens when every call is answered: https://t.co/PD17xkc32L",
+        "url": "https://x.com/Press8/status/2013714921523982771",
+        "created_at": "2026-01-20T20:47:04.000Z",
+        "query": "\"no one answered the phone\" -is:retweet",
+        "query_type": "pain"
+      }
+    ],
+    "why_this_lead": "Posted about call overflow/missed calls pain. in last 24h. Profile includes website. Score: 10/10.",
+    "recommended_action": "BUILD_SPEC",
+    "tags": [
+      "has_website"
+    ],
+    "discovered_at": "2026-01-21T00:17:57.087050"
+  },
+  {
+    "id": "891e70379316",
+    "name": "VoiceDesk",
+    "source": "X",
+    "score": 4,
+    "moment_score": 3,
+    "prospect_key": "x:AElkhalil1315",
+    "domain": null,
+    "x_handle": "AElkhalil1315",
+    "x_profile_url": "https://x.com/AElkhalil1315",
+    "evidence": [
+      {
+        "type": "tweet",
+        "text": "I replaced website contact forms with an AI receptionist.\n\nI replaced website contact forms with an AI receptionist. It answers calls.\nBooks appointments.\nWorks 24/7.\nNever takes breaks.Businesses are quietly switching.\n\ud83d\udc47\nEmail us : voicedesk34@gmail.com",
+        "url": "https://x.com/AElkhalil1315/status/2013690616182358022",
+        "created_at": "2026-01-20T19:10:30.000Z",
+        "query": "\"AI receptionist\" -is:retweet",
+        "query_type": "product"
+      }
+    ],
+    "why_this_lead": "in last 24h. appears to be business operator. Score: 4/10.",
+    "recommended_action": "IGNORE",
+    "tags": [
+      "receptionist"
+    ],
+    "discovered_at": "2026-01-21T00:17:57.087554"
+  },
+  {
+    "id": "7715147a035a",
+    "name": "Uma",
+    "source": "X",
+    "score": 3,
+    "moment_score": 6,
+    "prospect_key": "x:Uma2072750",
+    "domain": null,
+    "x_handle": "Uma2072750",
+    "x_profile_url": "https://x.com/Uma2072750",
+    "evidence": [
+      {
+        "type": "tweet",
+        "text": "Political name Mack or math Middleton claim to be MAGA - When I called to his office no one answered the phone \ud83d\udcf1.",
+        "url": "https://x.com/Uma2072750/status/2013772876202008696",
+        "created_at": "2026-01-21T00:37:22.000Z",
+        "query": "\"no one answered the phone\" -is:retweet",
+        "query_type": "pain"
+      }
+    ],
+    "why_this_lead": "Posted about call overflow/missed calls pain. in last 24h. Score: 3/10.",
+    "recommended_action": "IGNORE",
+    "tags": [],
+    "discovered_at": "2026-01-21T00:17:57.087050"
+  },
+  {
+    "id": "d41fc26314e9",
+    "name": "Kerilyn Conrad",
+    "source": "X",
+    "score": 2,
+    "moment_score": 5,
+    "prospect_key": "x:ConradKeri53516",
+    "domain": null,
+    "x_handle": "ConradKeri53516",
+    "x_profile_url": "https://x.com/ConradKeri53516",
+    "evidence": [
+      {
+        "type": "tweet",
+        "text": "This is the response I received after filling out the contact form on Senator Chuck Grassley\u2019s website.  I had to do this because no one answered the phone when I called, and the voicemail was full\ud83d\ude44.  \n\nI went to his website and filled out the contact form and I\u2019ve attached the h",
+        "url": "https://x.com/ConradKeri53516/status/2013310030452265441",
+        "created_at": "2026-01-19T17:58:11.000Z",
+        "query": "\"no one answered the phone\" -is:retweet",
+        "query_type": "pain"
+      }
+    ],
+    "why_this_lead": "Posted about call overflow/missed calls pain. in last 3 days. Score: 2/10.",
+    "recommended_action": "IGNORE",
+    "tags": [],
+    "discovered_at": "2026-01-21T00:17:57.087050"
+  },
+  {
+    "id": "e1a95cfef893",
+    "name": "Jacob",
+    "source": "X",
+    "score": 0,
+    "moment_score": 0,
+    "prospect_key": "x:jacobmessika",
+    "domain": null,
+    "x_handle": "jacobmessika",
+    "x_profile_url": "https://x.com/jacobmessika",
+    "evidence": [
+      {
+        "type": "tweet",
+        "text": "@HuntersOfNazis I can\u2019t respond fast enough to how the IDF are eliminating these rats. \ud83d\udc00 https://t.co/YGMVOAXiOB",
+        "url": "https://x.com/jacobmessika/status/2012581592372306412",
+        "created_at": "2026-01-17T17:43:38.000Z",
+        "query": "\"can't respond fast enough\" -is:retweet",
+        "query_type": "operational"
+      }
+    ],
+    "why_this_lead": "Found via X search. Score: 0/10.",
+    "recommended_action": "IGNORE",
+    "tags": [],
+    "discovered_at": "2026-01-21T00:17:57.087050"
+  }
+]

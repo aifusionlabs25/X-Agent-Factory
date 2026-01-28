@@ -1,0 +1,31 @@
+{
+  "status": "success",
+  "site_type": "BLOG",
+  "site_reason": "blog_indicators:3",
+  "persona_type": "BUYER",
+  "persona_reasons": [
+    "has_services",
+    "has_local_signals",
+    "has_contact",
+    "has_phone"
+  ],
+  "icp_lane": null,
+  "icp_boost": 0,
+  "final_url": "https://cityproperty.com/",
+  "status_code": 200,
+  "page_title": "HOA Management Company in Phoenix - City Property Management",
+  "has_phone": true,
+  "has_email": false,
+  "has_contact_page": false,
+  "has_address": false,
+  "industry_hint": null,
+  "location_hint": "Arizona",
+  "services_detected": [],
+  "evidence_signals": [
+    "phone_found"
+  ],
+  "penalties": [
+    "blog_site"
+  ],
+  "enriched_at": "2026-01-21T18:00:15.238188"
+}

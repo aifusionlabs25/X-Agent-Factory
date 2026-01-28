@@ -1,0 +1,35 @@
+{
+  "status": "success",
+  "site_type": "BUSINESS",
+  "site_reason": "nav_indicators:4",
+  "persona_type": "BUYER",
+  "persona_reasons": [
+    "has_services",
+    "has_local_signals",
+    "has_contact",
+    "has_phone"
+  ],
+  "icp_lane": null,
+  "icp_boost": 0,
+  "final_url": "https://esquirelaw.com/",
+  "status_code": 200,
+  "page_title": "Arizona Personal Injury &amp; Car Accident Lawyers | 24/7 Help &amp; Free Consultation",
+  "has_phone": true,
+  "has_email": false,
+  "has_contact_page": true,
+  "has_address": true,
+  "industry_hint": "Legal",
+  "location_hint": "Arizona",
+  "services_detected": [
+    "24/7"
+  ],
+  "evidence_signals": [
+    "phone_found",
+    "contact_page",
+    "address_found",
+    "services_listed",
+    "industry:Legal"
+  ],
+  "penalties": [],
+  "enriched_at": "2026-01-21T18:00:05.353538"
+}

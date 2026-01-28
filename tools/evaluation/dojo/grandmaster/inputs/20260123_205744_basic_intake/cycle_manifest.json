@@ -1,0 +1,14 @@
+{
+  "schema_version": "cycle_manifest.v1",
+  "run_id": "20260123_205744_basic_intake",
+  "cycle": 1,
+  "applied_at": "2026-01-23T21:00:50.623805",
+  "co_file": "CO_20260123_205744_basic_intake_1.json",
+  "co_hash": "d2fc5ede38329620036218d33d30fb024a96f41beb437624a2f7d738c027867c",
+  "changes_applied": [
+    "FIX_EMPATHY"
+  ],
+  "files": {
+    "system_prompt.txt": "79c35c1c2eb1d78a4dc285bd437e9d0eb249f9848c8ea5b915b3e8cef3b36f9c"
+  }
+}

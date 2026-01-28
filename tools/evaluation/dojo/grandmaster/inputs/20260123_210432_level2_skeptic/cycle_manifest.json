@@ -1,0 +1,14 @@
+{
+  "schema_version": "cycle_manifest.v1",
+  "run_id": "20260123_210432_level2_skeptic",
+  "cycle": 1,
+  "applied_at": "2026-01-23T21:06:41.705648",
+  "co_file": "CO_20260123_210432_level2_skeptic_1.json",
+  "co_hash": "af2d94686eedc748b783ae4140427979a7b81c720b6bceb4df0514b6adcefd9d",
+  "changes_applied": [
+    "FIX_EMPATHY"
+  ],
+  "files": {
+    "system_prompt.txt": "6b2229283692e00cc4996a66eb40cffe6305b620ba2ec71d4e537d87f0bb35e2"
+  }
+}

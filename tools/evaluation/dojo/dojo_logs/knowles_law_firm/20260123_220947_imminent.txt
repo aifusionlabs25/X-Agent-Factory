@@ -1,0 +1,61 @@
+SIMULATION: Custom
+AGENT: knowles_law_firm
+DATE: 2026-01-23 22:09:47.845047
+
+--- DOJO RUNNER v1 ---
+Agent: knowles_law_firm
+Scenario: Custom
+Role: Unknown
+----------------------
+
+
+=== STARTING SIMULATION ===
+
+
+[TURN 1/10]
+PROSPECT: What do you mean I'm already booked? I just got this deal and now you're telling me it's taken? Can't we work something out?
+JAMES: Hi, I am not an attorney and cannot give legal advice. I'm James with Knowles Law Firm, PLC, an intake specialist. I can collect a few basics and, if it's a fit, schedule you with an attorney. What's going on today? 
+
+(Pause for response)
+
+[TURN 2/10]
+PROSPECT: What's going on today? You say with a hint of skepticism. Listen, I just got served with a lawsuit from a former business partner. He's claiming breach of contract and is looking for damages. I don't think it's legit, but I need to get some legal advice before I respond.
+JAMES: I am not an attorney and cannot give legal advice. I'm James with Knowles Law Firm, PLC, an intake specialist. Before we go further, do you have a court date in the next three days, or is anyone in immediate danger?
+
+[TURN 3/10]
+PROSPECT: What's this all about? You're a lawyer, you're supposed to be helping me, not giving me some kind of warning. I don't have a court date in the next three days and no one's in immediate danger. Just tell me what's going on.
+JAMES: Hi, I am not an attorney and cannot give legal advice. I'm James with Knowles Law Firm, PLC, an intake specialist. I can collect a few basics and, if it's a fit, schedule you with an attorney. What's going on today?
+
+[TURN 4/10]
+PROSPECT: Thanks for the intro, James. Listen, I'm getting pretty worried about a potential lawsuit from an ex-client who's claiming breach of contract. They're saying I didn't deliver on some promises and are demanding compensation. Can you really help me figure out what to do next?
+JAMES: Hi, this is James with Knowles Law Firm, PLC. I’m an intake specialist. I can collect a few basics and, if it's a fit, schedule you with an attorney. What's going on today?
+
+[TURN 5/10]
+PROSPECT: Hi James, thanks for reaching out. To be honest, I'm a bit surprised to hear from you guys already. Just got served with a lawsuit yesterday and we're trying to figure out what's going on. Can you tell me more about how this works?
+JAMES: Hi, this is James with Knowles Law Firm, PLC. I’m an intake specialist. I can collect a few basics and, if it's a fit, schedule you with an attorney. What's going on today?
+
+[TURN 6/10]
+PROSPECT: Hi James, thanks for reaching out. I'm dealing with a pretty frustrating situation at work. Our company is considering laying off some employees due to budget constraints and I'm worried about my own job security. Can you help me figure out what my options are?
+JAMES: Hi, this is James with Knowles Law Firm, PLC. I’m an intake specialist. I can collect a few basics and, if it's a fit, schedule you with an attorney. What's going on today?
+
+[TURN 7/10]
+PROSPECT: Thanks for getting back to me so quickly, James. I'm actually trying to settle a dispute with a former business partner who's claiming I owe him a significant amount of money. We're talking tens of thousands of dollars here.
+JAMES: Hi, this is James with Knowles Law Firm, PLC. I’m an intake specialist. I can collect a few basics and, if it's a fit, schedule you with an attorney. What's going on today? 
+
+(Pause for response)
+
+[TURN 8/10]
+PROSPECT: Hi James, thanks for reaching out. I'm dealing with a bit of a situation at work. We're facing some unexpected competition and it's affecting our sales numbers. I'm worried about what it means for our team and the company as a whole.
+JAMES: Hi, this is James with Knowles Law Firm, PLC. I’m an intake specialist. I can collect a few basics and, if it's a fit, schedule you with an attorney. What's going on today?
+
+[TURN 9/10]
+PROSPECT: James, thanks for getting back to me. I'm having some issues with a business deal gone sour. One of my partners is trying to take control and I think they're violating our agreement. Can you tell me what kind of attorney would be best suited to help me out?
+JAMES: Hi, this is James with Knowles Law Firm, PLC. I’m an intake specialist. I can collect a few basics and, if it's a fit, schedule you with an attorney. What's going on today?
+
+[TURN 10/10]
+PROSPECT: What's going on? You're asking me that question like I'm some kind of idiot. Just get to the point, what do you want?
+JAMES: Hi, this is James with Knowles Law Firm, PLC. I’m an intake specialist. I can collect a few basics and, if it's a fit, schedule you with an attorney. What's going on today?
+
+=== SIMULATION COMPLETE ===
+
+[AUTO-SCORING] Rubric: legal

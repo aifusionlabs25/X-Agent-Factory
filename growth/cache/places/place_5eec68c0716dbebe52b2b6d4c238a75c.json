@@ -1,0 +1,204 @@
+[
+  {
+    "id": "ChIJKR1DwksGK4cRToHabYlGe_0",
+    "types": [
+      "dentist",
+      "dental_clinic",
+      "health",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "5801 S McClintock Dr STE 101, Tempe, AZ 85283, USA",
+    "location": {
+      "latitude": 33.3708733,
+      "longitude": -111.9109929
+    },
+    "websiteUri": "http://www.tempedentalcare.com/",
+    "displayName": {
+      "text": "Tempe Dental Care",
+      "languageCode": "en"
+    }
+  },
+  {
+    "id": "ChIJp4vip64JK4cReWTCN8XB2oE",
+    "types": [
+      "dentist",
+      "health",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "408 E Southern Ave #1, Tempe, AZ 85282, USA",
+    "location": {
+      "latitude": 33.393729199999996,
+      "longitude": -111.93354749999999
+    },
+    "websiteUri": "https://www.weekend-dentalcare.com/",
+    "displayName": {
+      "text": "Weekend Dental Care Tempe",
+      "languageCode": "en"
+    }
+  },
+  {
+    "id": "ChIJzccodYYHK4cRI1AbHbhriNQ",
+    "types": [
+      "dentist",
+      "health",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "1700 E Elliot Rd Suite 7, Tempe, AZ 85284, USA",
+    "location": {
+      "latitude": 33.3495614,
+      "longitude": -111.9135063
+    },
+    "websiteUri": "https://comfortdental.com/office/az-tempe",
+    "displayName": {
+      "text": "Comfort Dental - Tempe",
+      "languageCode": "en"
+    }
+  },
+  {
+    "id": "ChIJsxc-dYEIK4cRMYDK2fzQZIk",
+    "types": [
+      "dentist",
+      "dental_clinic",
+      "doctor",
+      "health",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "3401 S McClintock Dr, Tempe, AZ 85282, USA",
+    "location": {
+      "latitude": 33.392087,
+      "longitude": -111.9087342
+    },
+    "websiteUri": "https://risasdental.com/locations/az/tempe/3401-s-mcclintock-dr/",
+    "displayName": {
+      "text": "Risas Dental and Braces - Tempe",
+      "languageCode": "en"
+    }
+  },
+  {
+    "id": "ChIJ8z69MBUJK4cRrip-eYyqfPo",
+    "types": [
+      "dentist",
+      "dental_clinic",
+      "doctor",
+      "health",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "1823 N Scottsdale Rd, Tempe, AZ 85288, USA",
+    "location": {
+      "latitude": 33.4493821,
+      "longitude": -111.9256442
+    },
+    "websiteUri": "https://azdentalclub.com/our-locations/az-dental-club-tempe/",
+    "displayName": {
+      "text": "AZ Dental Club - Tempe (Dr. Jason Nordean)",
+      "languageCode": "en"
+    }
+  },
+  {
+    "id": "ChIJOaTXR9UIK4cRgPKc-bjXgRI",
+    "types": [
+      "dentist",
+      "dental_clinic",
+      "doctor",
+      "health",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "2626 S Rural Rd, Tempe, AZ 85282, USA",
+    "location": {
+      "latitude": 33.4004307,
+      "longitude": -111.9266349
+    },
+    "websiteUri": "http://aandndentalcenter.com/",
+    "displayName": {
+      "text": "A&N Dental",
+      "languageCode": "en"
+    }
+  },
+  {
+    "id": "ChIJ0594pjIGK4cRxhhbpY0W3go",
+    "types": [
+      "dental_clinic",
+      "dentist",
+      "doctor",
+      "health",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "7660 S McClintock Dr Ste 101, Tempe, AZ 85284, USA",
+    "location": {
+      "latitude": 33.347963899999996,
+      "longitude": -111.91162329999999
+    },
+    "websiteUri": "http://www.mytempesmiles.com/",
+    "displayName": {
+      "text": "Tempe Smiles Family Dental",
+      "languageCode": "en"
+    }
+  },
+  {
+    "id": "ChIJD8qXmOgHK4cRMEpwjLrxxII",
+    "types": [
+      "dentist",
+      "dental_clinic",
+      "health",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "2139 E Southern Ave, Tempe, AZ 85282, USA",
+    "location": {
+      "latitude": 33.3926586,
+      "longitude": -111.8949086
+    },
+    "websiteUri": "https://www.tempe-dental.com/book-an-appointment/",
+    "displayName": {
+      "text": "Tempe Dental",
+      "languageCode": "en"
+    }
+  },
+  {
+    "id": "ChIJmVMqg18PK4cRDqes-iuBrqs",
+    "types": [
+      "dentist",
+      "dental_clinic",
+      "health",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "2233 W Baseline Rd STE 104, Tempe, AZ 85283, USA",
+    "location": {
+      "latitude": 33.377858599999996,
+      "longitude": -111.9733952
+    },
+    "websiteUri": "https://southmountainfamilydental.com/?utm_source=google.com&utm_medium=business+profile&utm_campaign=",
+    "displayName": {
+      "text": "South Mountain Family Dental",
+      "languageCode": "en"
+    }
+  },
+  {
+    "id": "ChIJRS2HmEkGK4cR-BSh-9fvVSE",
+    "types": [
+      "dentist",
+      "doctor",
+      "health",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "2161 E Warner Rd, Tempe, AZ 85284, USA",
+    "location": {
+      "latitude": 33.3343716,
+      "longitude": -111.89448089999999
+    },
+    "websiteUri": "http://tempefamilydentistry.com/",
+    "displayName": {
+      "text": "Tempe Family Dentistry",
+      "languageCode": "en"
+    }
+  }
+]

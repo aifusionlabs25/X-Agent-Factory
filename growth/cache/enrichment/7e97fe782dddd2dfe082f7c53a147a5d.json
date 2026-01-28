@@ -1,0 +1,36 @@
+{
+  "status": "success",
+  "site_type": "BUSINESS",
+  "site_reason": "moderate_signals",
+  "persona_type": "CREATOR",
+  "persona_reasons": [
+    "creator:creator",
+    "creator:youtube"
+  ],
+  "icp_lane": "home_services_owner_operator",
+  "icp_boost": 2,
+  "final_url": "https://www.dayandnightair.com/",
+  "status_code": 200,
+  "page_title": "Phoenix HVAC, Air Conditioning, and Plumbing Services",
+  "has_phone": true,
+  "has_email": true,
+  "has_contact_page": false,
+  "has_address": true,
+  "industry_hint": "HVAC",
+  "location_hint": "Arizona",
+  "services_detected": [
+    "repair",
+    "installation"
+  ],
+  "evidence_signals": [
+    "phone_found",
+    "email_found",
+    "address_found",
+    "services_listed",
+    "industry:HVAC"
+  ],
+  "penalties": [
+    "creator_detected"
+  ],
+  "enriched_at": "2026-01-21T17:59:29.009267"
+}

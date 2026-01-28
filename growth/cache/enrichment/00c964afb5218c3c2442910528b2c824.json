@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "site_type": "BUSINESS",
+  "site_reason": "moderate_signals",
+  "final_url": "https://www.digitalgrowthgenius.com/",
+  "status_code": 200,
+  "page_title": "Home | Digital Growth Genius",
+  "has_phone": true,
+  "has_email": false,
+  "has_contact_page": false,
+  "industry_hint": null,
+  "location_hint": null,
+  "services_detected": [],
+  "business_keywords_found": [],
+  "enriched_at": "2026-01-21T08:28:58.613619"
+}

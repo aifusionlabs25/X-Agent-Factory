@@ -1,0 +1,108 @@
+{
+    "name": "attorney_intake_form",
+    "description": "Schema for capturing legal intake details during an initial call.",
+    "parameters": {
+        "type": "object",
+        "properties": {
+            "caller_vitals": {
+                "type": "object",
+                "properties": {
+                    "full_name": {
+                        "type": "string",
+                        "description": "Full legal name of the caller."
+                    },
+                    "callback_number": {
+                        "type": "string",
+                        "description": "Best phone number to reach them."
+                    },
+                    "email": {
+                        "type": "string",
+                        "description": "Email address (optional but preferred)."
+                    },
+                    "relationship_to_accused": {
+                        "type": "string",
+                        "enum": [
+                            "Self",
+                            "Spouse",
+                            "Parent",
+                            "Friend/Other"
+                        ],
+                        "description": "Is the caller the one in trouble, or calling for someone else?"
+                    }
+                },
+                "required": [
+                    "full_name",
+                    "callback_number",
+                    "relationship_to_accused"
+                ]
+            },
+            "case_details": {
+                "type": "object",
+                "properties": {
+                    "practice_area": {
+                        "type": "string",
+                        "enum": [
+                            "DUI",
+                            "Criminal Defense",
+                            "Domestic/Family",
+                            "Personal Injury",
+                            "Civil/Business",
+                            "Other"
+                        ],
+                        "description": "The category of the legal issue."
+                    },
+                    "incident_date": {
+                        "type": "string",
+                        "description": "When did this happen?"
+                    },
+                    "location": {
+                        "type": "string",
+                        "description": "City/County where the incident occurred."
+                    },
+                    "brief_narrative": {
+                        "type": "string",
+                        "description": "A 1-2 sentence summary of the event."
+                    }
+                },
+                "required": [
+                    "practice_area",
+                    "brief_narrative"
+                ]
+            },
+            "urgency_assessment": {
+                "type": "object",
+                "properties": {
+                    "in_custody": {
+                        "type": "boolean",
+                        "description": "Is the person currently in jail/detained?"
+                    },
+                    "court_date_imminent": {
+                        "type": "boolean",
+                        "description": "Is there a court appearance in (<48 hours)?"
+                    },
+                    "law_enforcement_presence": {
+                        "type": "boolean",
+                        "description": "Are police actively investigating/present?"
+                    }
+                },
+                "required": [
+                    "in_custody"
+                ]
+            },
+            "marketing_data": {
+                "type": "object",
+                "properties": {
+                    "source": {
+                        "type": "string",
+                        "description": "How did they hear about the firm?"
+                    }
+                }
+            }
+        },
+        "required": [
+            "caller_vitals",
+            "case_details",
+            "urgency_assessment"
+        ]
+    }
+}

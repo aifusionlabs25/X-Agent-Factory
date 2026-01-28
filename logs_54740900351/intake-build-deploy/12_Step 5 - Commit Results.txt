@@ -1,0 +1,62 @@
+﻿2026-01-19T07:07:19.7999402Z ##[group]Run echo "::group::Commit Results"
+2026-01-19T07:07:19.7999761Z [36;1mecho "::group::Commit Results"[0m
+2026-01-19T07:07:19.8000047Z [36;1mgit config user.name "X Agent Factory Bot"[0m
+2026-01-19T07:07:19.8000396Z [36;1mgit config user.email "factory-bot@aifusionlabs.ai"[0m
+2026-01-19T07:07:19.8000973Z [36;1m[0m
+2026-01-19T07:07:19.8001162Z [36;1m# Add generated files[0m
+2026-01-19T07:07:19.8001487Z [36;1mgit add agents/ ingested_clients/ runs/ eval-report.json || true[0m
+2026-01-19T07:07:19.8001831Z [36;1m[0m
+2026-01-19T07:07:19.8002061Z [36;1m# Check if there are changes to commit[0m
+2026-01-19T07:07:19.8002350Z [36;1mif git diff --staged --quiet; then[0m
+2026-01-19T07:07:19.8002621Z [36;1m  echo "No changes to commit"[0m
+2026-01-19T07:07:19.8002916Z [36;1m  echo "commit_success=true" >> $GITHUB_OUTPUT[0m
+2026-01-19T07:07:19.8003192Z [36;1melse[0m
+2026-01-19T07:07:19.8003411Z [36;1m  # Retry push with pull-rebase for conflicts[0m
+2026-01-19T07:07:19.8003698Z [36;1m  MAX_RETRIES=2[0m
+2026-01-19T07:07:19.8003964Z [36;1m  for attempt in $(seq 1 $MAX_RETRIES); do[0m
+2026-01-19T07:07:19.8004277Z [36;1m    echo "Push attempt $attempt of $MAX_RETRIES"[0m
+2026-01-19T07:07:19.8004871Z [36;1m    git commit -m "New Agent: your_most_trusted_hvac_technicians_larso from https://larsonairaz.com/why-larson/" || true[0m
+2026-01-19T07:07:19.8005458Z [36;1m    if git push origin main; then[0m
+2026-01-19T07:07:19.8005769Z [36;1m      echo "commit_success=true" >> $GITHUB_OUTPUT[0m
+2026-01-19T07:07:19.8006093Z [36;1m      echo "Changes committed and pushed"[0m
+2026-01-19T07:07:19.8006359Z [36;1m      break[0m
+2026-01-19T07:07:19.8006535Z [36;1m    else[0m
+2026-01-19T07:07:19.8006748Z [36;1m      if [ $attempt -lt $MAX_RETRIES ]; then[0m
+2026-01-19T07:07:19.8007070Z [36;1m        echo "Push failed, pulling with rebase..."[0m
+2026-01-19T07:07:19.8007383Z [36;1m        git pull --rebase origin main[0m
+2026-01-19T07:07:19.8007641Z [36;1m      else[0m
+2026-01-19T07:07:19.8007877Z [36;1m        echo "commit_success=false" >> $GITHUB_OUTPUT[0m
+2026-01-19T07:07:19.8008167Z [36;1m        exit 1[0m
+2026-01-19T07:07:19.8008354Z [36;1m      fi[0m
+2026-01-19T07:07:19.8008524Z [36;1m    fi[0m
+2026-01-19T07:07:19.8008683Z [36;1m  done[0m
+2026-01-19T07:07:19.8008845Z [36;1mfi[0m
+2026-01-19T07:07:19.8009014Z [36;1mecho "::endgroup::"[0m
+2026-01-19T07:07:19.8041102Z shell: /usr/bin/bash -e {0}
+2026-01-19T07:07:19.8041341Z env:
+2026-01-19T07:07:19.8041516Z   GOOGLE_API_KEY: 
+2026-01-19T07:07:19.8041696Z   TAVUS_API_KEY: 
+2026-01-19T07:07:19.8041879Z   ELEVENLABS_API_KEY: 
+2026-01-19T07:07:19.8042139Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.14/x64
+2026-01-19T07:07:19.8042545Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.14/x64/lib/pkgconfig
+2026-01-19T07:07:19.8042942Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+2026-01-19T07:07:19.8043296Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+2026-01-19T07:07:19.8043645Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+2026-01-19T07:07:19.8043999Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.14/x64/lib
+2026-01-19T07:07:19.8044295Z ##[endgroup]
+2026-01-19T07:07:19.8096636Z ##[group]Commit Results
+2026-01-19T07:07:19.8721131Z Push attempt 1 of 2
+2026-01-19T07:07:19.8788266Z [main f08ac92] New Agent: your_most_trusted_hvac_technicians_larso from https://larsonairaz.com/why-larson/
+2026-01-19T07:07:19.8789344Z  9 files changed, 232 insertions(+), 13 deletions(-)
+2026-01-19T07:07:19.8790220Z  create mode 100644 agents/your_most_trusted_hvac_technicians_larson_air_co/kb_seed.md
+2026-01-19T07:07:19.8791438Z  create mode 100644 agents/your_most_trusted_hvac_technicians_larson_air_co/manifest.json
+2026-01-19T07:07:19.8792438Z  create mode 100644 agents/your_most_trusted_hvac_technicians_larson_air_co/system_prompt.txt
+2026-01-19T07:07:19.8793237Z  create mode 100644 agents/your_most_trusted_hvac_technicians_larson_air_co/tavus_pack/README.md
+2026-01-19T07:07:19.8794014Z  create mode 100644 ingested_clients/your_most_trusted_hvac_technicians_larso/dossier.json
+2026-01-19T07:07:19.8795013Z  create mode 100644 ingested_clients/your_most_trusted_hvac_technicians_larso/extracted/source_bundle.md
+2026-01-19T07:07:19.8795843Z  create mode 100644 ingested_clients/your_most_trusted_hvac_technicians_larso/intake_notes.md
+2026-01-19T07:07:19.8796596Z  create mode 100644 ingested_clients/your_most_trusted_hvac_technicians_larso/sources.json
+2026-01-19T07:07:20.3296686Z To https://github.com/aifusionlabs25/X-Agent-Factory
+2026-01-19T07:07:20.3297317Z    cde048b..f08ac92  main -> main
+2026-01-19T07:07:20.3341435Z Changes committed and pushed
+2026-01-19T07:07:20.3342412Z ##[endgroup]

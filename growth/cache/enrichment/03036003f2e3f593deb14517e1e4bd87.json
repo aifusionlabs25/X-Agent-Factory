@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "site_type": "BUSINESS",
+  "site_reason": "moderate_signals",
+  "final_url": "https://medconnectusa.com/",
+  "status_code": 200,
+  "page_title": "24/7 Medical Answering Services - HIPAA-Compliant Healthcare Call Answering",
+  "has_phone": true,
+  "has_email": false,
+  "has_contact_page": false,
+  "industry_hint": "Medical",
+  "location_hint": "Indiana",
+  "services_detected": [
+    "24/7"
+  ],
+  "business_keywords_found": [
+    "serving",
+    "trusted"
+  ],
+  "enriched_at": "2026-01-21T08:28:56.471721"
+}

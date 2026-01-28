@@ -1,0 +1,3 @@
+# emergency_protocols.txt
+Trigger words and scripts for 911, violence, and medical emergencies.
+(Generated Default Content)

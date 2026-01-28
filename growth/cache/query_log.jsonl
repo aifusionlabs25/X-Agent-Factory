@@ -1,0 +1,68 @@
+{"timestamp": "2026-01-20T21:40:58.703421", "query": "missed calls small business", "result_count": 0, "status": "error_HTTPError"}
+{"timestamp": "2026-01-20T21:40:58.776497", "query": "need answering service", "result_count": 0, "status": "error_HTTPError"}
+{"timestamp": "2026-01-20T21:40:58.847917", "query": "AI receptionist", "result_count": 0, "status": "error_HTTPError"}
+{"timestamp": "2026-01-20T21:41:51.092619", "query": "missed calls small business", "result_count": 0, "status": "auth_failed_401"}
+{"timestamp": "2026-01-20T21:41:51.150897", "query": "need answering service", "result_count": 0, "status": "auth_failed_401"}
+{"timestamp": "2026-01-20T21:41:51.209848", "query": "AI receptionist", "result_count": 0, "status": "auth_failed_401"}
+{"timestamp": "2026-01-20T21:48:46.543774", "query": "missed calls small business", "result_count": 0, "status": "auth_failed_401"}
+{"timestamp": "2026-01-20T21:48:46.602985", "query": "need answering service", "result_count": 0, "status": "auth_failed_401"}
+{"timestamp": "2026-01-20T21:48:46.659108", "query": "AI receptionist", "result_count": 0, "status": "auth_failed_401"}
+{"timestamp": "2026-01-20T21:56:27.303517", "query": "missed calls small business", "result_count": 0, "status": "auth_failed_401"}
+{"timestamp": "2026-01-20T21:56:27.426374", "query": "need answering service", "result_count": 0, "status": "auth_failed_401"}
+{"timestamp": "2026-01-20T21:56:27.561053", "query": "AI receptionist", "result_count": 0, "status": "auth_failed_401"}
+{"timestamp": "2026-01-20T21:57:17.683890", "query": "missed calls small business", "result_count": 0, "status": "auth_failed_401"}
+{"timestamp": "2026-01-20T21:57:17.741029", "query": "need answering service", "result_count": 0, "status": "auth_failed_401"}
+{"timestamp": "2026-01-20T21:57:17.795720", "query": "AI receptionist", "result_count": 0, "status": "auth_failed_401"}
+{"timestamp": "2026-01-20T23:30:20.655164", "query": "missed calls small business", "result_count": 0, "status": "auth_failed_401"}
+{"timestamp": "2026-01-20T23:30:20.709757", "query": "need answering service", "result_count": 0, "status": "auth_failed_401"}
+{"timestamp": "2026-01-20T23:30:20.766070", "query": "AI receptionist", "result_count": 0, "status": "auth_failed_401"}
+{"timestamp": "2026-01-20T23:31:28.129632", "query": "missed calls small business", "result_count": 0, "status": "auth_failed_401"}
+{"timestamp": "2026-01-20T23:31:28.185247", "query": "need answering service", "result_count": 0, "status": "auth_failed_401"}
+{"timestamp": "2026-01-20T23:31:28.240361", "query": "AI receptionist", "result_count": 0, "status": "auth_failed_401"}
+{"timestamp": "2026-01-20T23:33:28.513528", "query": "missed calls small business", "result_count": 0, "status": "auth_failed_401"}
+{"timestamp": "2026-01-20T23:33:28.626588", "query": "need answering service", "result_count": 0, "status": "auth_failed_401"}
+{"timestamp": "2026-01-20T23:33:28.746272", "query": "AI receptionist", "result_count": 0, "status": "auth_failed_401"}
+{"timestamp": "2026-01-20T23:34:27.250223", "query": "missed calls small business", "result_count": 5, "status": "success"}
+{"timestamp": "2026-01-20T23:34:27.506657", "query": "need answering service", "result_count": 10, "status": "success"}
+{"timestamp": "2026-01-20T23:34:27.727426", "query": "AI receptionist", "result_count": 10, "status": "success"}
+{"timestamp": "2026-01-20T23:37:16.939102", "query": "missed calls small business -is:retweet", "result_count": 5, "status": "success"}
+{"timestamp": "2026-01-20T23:37:17.105149", "query": "need answering service -is:retweet", "result_count": 10, "status": "success"}
+{"timestamp": "2026-01-20T23:37:17.234801", "query": "AI receptionist small business -is:retweet", "result_count": 3, "status": "success"}
+{"timestamp": "2026-01-20T23:37:17.412037", "query": "\"after hours\" calls help -is:retweet", "result_count": 3, "status": "success"}
+{"timestamp": "2026-01-20T23:37:17.564224", "query": "voicemail hell -is:retweet", "result_count": 8, "status": "success"}
+{"timestamp": "2026-01-21T00:17:56.532668", "query": "\"can't keep up with calls\" -is:retweet", "query_type": "pain", "result_count": 0, "status": "success"}
+{"timestamp": "2026-01-21T00:17:56.702750", "query": "\"no one answered the phone\" -is:retweet", "query_type": "pain", "result_count": 9, "status": "success"}
+{"timestamp": "2026-01-21T00:17:56.861478", "query": "\"can't respond fast enough\" -is:retweet", "query_type": "operational", "result_count": 9, "status": "success"}
+{"timestamp": "2026-01-21T00:17:57.082281", "query": "\"AI receptionist\" -is:retweet", "query_type": "product", "result_count": 15, "status": "success"}
+{"timestamp": "2026-01-21T00:40:12.163029", "query": "\"missed calls\" -is:retweet", "query_type": "pain", "result_count": 15, "status": "success"}
+{"timestamp": "2026-01-21T00:40:12.253115", "query": "\"front desk overwhelmed\" -is:retweet", "query_type": "pain", "result_count": 0, "status": "success"}
+{"timestamp": "2026-01-21T00:40:12.365275", "query": "\"my business\" (\"need receptionist\" OR \"answering calls\") -is:retweet", "query_type": "business_owner", "result_count": 0, "status": "success"}
+{"timestamp": "2026-01-21T00:40:12.366275", "query": "\"can't respond fast enough\" -is:retweet", "query_type": "operational", "result_count": 9, "status": "cache_hit"}
+{"timestamp": "2026-01-21T00:53:36.579867", "query": "(\"HVAC\" OR \"plumbing\" OR \"electrician\" OR \"roofing\" OR \"pest control\" OR \"cleaning\" OR \"towing\" OR \"", "query_type": "business_pain", "result_count": 15, "status": "success"}
+{"timestamp": "2026-01-21T00:53:36.715825", "query": "(\"need someone to answer\" OR \"need answering service\" OR \"need receptionist\" OR \"need call answering", "query_type": "business_pain", "result_count": 0, "status": "success"}
+{"timestamp": "2026-01-21T00:53:36.916228", "query": "(\"missed calls\" OR \"calls going to voicemail\" OR \"no one answered the phone\") (\"customer\" OR \"client", "query_type": "business_pain", "result_count": 15, "status": "success"}
+{"timestamp": "2026-01-21T00:53:37.177179", "query": "(\"after hours calls\" OR \"lost a lead\" OR \"lost business\" OR \"lost a customer\") (\"phone\" OR \"call\" OR", "query_type": "business_pain", "result_count": 15, "status": "success"}
+{"timestamp": "2026-01-21T08:28:37.022266", "query": "(\"HVAC\" OR \"plumbing\" OR \"electrician\" OR \"roofing\" OR \"pest control\" OR \"cleaning\" OR \"towing\" OR \"", "query_type": "business_pain", "result_count": 15, "status": "cache_hit"}
+{"timestamp": "2026-01-21T08:28:37.022266", "query": "(\"need someone to answer\" OR \"need answering service\" OR \"need receptionist\" OR \"need call answering", "query_type": "business_pain", "result_count": 0, "status": "cache_hit"}
+{"timestamp": "2026-01-21T08:28:37.027779", "query": "(\"missed calls\" OR \"calls going to voicemail\" OR \"no one answered the phone\") (\"customer\" OR \"client", "query_type": "business_pain", "result_count": 15, "status": "cache_hit"}
+{"timestamp": "2026-01-21T08:28:37.032788", "query": "(\"after hours calls\" OR \"lost a lead\" OR \"lost business\" OR \"lost a customer\") (\"phone\" OR \"call\" OR", "query_type": "business_pain", "result_count": 15, "status": "cache_hit"}
+{"timestamp": "2026-01-21T10:19:49.631138", "query": "(\"after hours calls\" OR \"lost a lead\" OR \"lost business\" OR \"lost a customer\") (\"phone\" OR \"call\" OR", "query_type": "business_pain", "result_count": 15, "status": "cache_hit"}
+{"timestamp": "2026-01-21T10:19:49.631638", "query": "(\"missed calls\" OR \"calls going to voicemail\" OR \"no one answered the phone\") (\"customer\" OR \"client", "query_type": "business_pain", "result_count": 15, "status": "cache_hit"}
+{"timestamp": "2026-01-21T10:19:49.632140", "query": "(\"HVAC\" OR \"plumbing\" OR \"electrician\" OR \"roofing\" OR \"pest control\" OR \"cleaning\" OR \"towing\" OR \"", "query_type": "business_pain", "result_count": 15, "status": "cache_hit"}
+{"timestamp": "2026-01-21T10:19:49.632642", "query": "(\"need someone to answer\" OR \"need answering service\" OR \"need receptionist\" OR \"need call answering", "query_type": "business_pain", "result_count": 0, "status": "cache_hit"}
+{"timestamp": "2026-01-21T11:19:23.918561", "query": "(\"HVAC\" OR \"plumbing\" OR \"electrician\" OR \"roofing\" OR \"pest control\" OR \"cleaning\" OR \"towing\" OR \"", "query_type": "business_pain", "result_count": 15, "status": "cache_hit"}
+{"timestamp": "2026-01-21T11:19:23.919565", "query": "(\"missed calls\" OR \"calls going to voicemail\" OR \"no one answered the phone\") (\"customer\" OR \"client", "query_type": "business_pain", "result_count": 15, "status": "cache_hit"}
+{"timestamp": "2026-01-21T11:19:23.920069", "query": "(\"need someone to answer\" OR \"need answering service\" OR \"need receptionist\" OR \"need call answering", "query_type": "business_pain", "result_count": 0, "status": "cache_hit"}
+{"timestamp": "2026-01-21T11:19:23.920569", "query": "(\"after hours calls\" OR \"lost a lead\" OR \"lost business\" OR \"lost a customer\") (\"phone\" OR \"call\" OR", "query_type": "business_pain", "result_count": 15, "status": "cache_hit"}
+{"timestamp": "2026-01-21T17:58:53.932829", "query": "(\"missed calls\" OR \"calls going to voicemail\" OR \"no one answered the phone\") (\"customer\" OR \"client", "query_type": "business_pain", "result_count": 15, "status": "cache_hit"}
+{"timestamp": "2026-01-21T17:58:53.938339", "query": "(\"HVAC\" OR \"plumbing\" OR \"electrician\" OR \"roofing\" OR \"pest control\" OR \"cleaning\" OR \"towing\" OR \"", "query_type": "business_pain", "result_count": 15, "status": "cache_hit"}
+{"timestamp": "2026-01-21T17:58:53.943841", "query": "(\"after hours calls\" OR \"lost a lead\" OR \"lost business\" OR \"lost a customer\") (\"phone\" OR \"call\" OR", "query_type": "business_pain", "result_count": 15, "status": "cache_hit"}
+{"timestamp": "2026-01-21T17:58:53.943841", "query": "(\"need someone to answer\" OR \"need answering service\" OR \"need receptionist\" OR \"need call answering", "query_type": "business_pain", "result_count": 0, "status": "cache_hit"}
+{"timestamp": "2026-01-21T18:01:20.929146", "query": "(\"HVAC\" OR \"plumbing\" OR \"electrician\" OR \"roofing\" OR \"pest control\" OR \"cleaning\" OR \"towing\" OR \"", "query_type": "business_pain", "result_count": 15, "status": "cache_hit"}
+{"timestamp": "2026-01-21T18:01:20.929648", "query": "(\"after hours calls\" OR \"lost a lead\" OR \"lost business\" OR \"lost a customer\") (\"phone\" OR \"call\" OR", "query_type": "business_pain", "result_count": 15, "status": "cache_hit"}
+{"timestamp": "2026-01-21T18:01:20.930144", "query": "(\"missed calls\" OR \"calls going to voicemail\" OR \"no one answered the phone\") (\"customer\" OR \"client", "query_type": "business_pain", "result_count": 15, "status": "cache_hit"}
+{"timestamp": "2026-01-21T18:01:20.930645", "query": "(\"need someone to answer\" OR \"need answering service\" OR \"need receptionist\" OR \"need call answering", "query_type": "business_pain", "result_count": 0, "status": "cache_hit"}
+{"timestamp": "2026-01-21T18:02:53.733651", "query": "(\"after hours calls\" OR \"lost a lead\" OR \"lost business\" OR \"lost a customer\") (\"phone\" OR \"call\" OR", "query_type": "business_pain", "result_count": 15, "status": "cache_hit"}
+{"timestamp": "2026-01-21T18:02:53.735172", "query": "(\"missed calls\" OR \"calls going to voicemail\" OR \"no one answered the phone\") (\"customer\" OR \"client", "query_type": "business_pain", "result_count": 15, "status": "cache_hit"}
+{"timestamp": "2026-01-21T18:02:53.735672", "query": "(\"need someone to answer\" OR \"need answering service\" OR \"need receptionist\" OR \"need call answering", "query_type": "business_pain", "result_count": 0, "status": "cache_hit"}
+{"timestamp": "2026-01-21T18:02:53.736671", "query": "(\"HVAC\" OR \"plumbing\" OR \"electrician\" OR \"roofing\" OR \"pest control\" OR \"cleaning\" OR \"towing\" OR \"", "query_type": "business_pain", "result_count": 15, "status": "cache_hit"}

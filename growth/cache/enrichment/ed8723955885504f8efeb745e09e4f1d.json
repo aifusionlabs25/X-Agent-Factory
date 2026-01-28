@@ -1,0 +1,34 @@
+{
+  "status": "success",
+  "site_type": "BUSINESS",
+  "site_reason": "nav_indicators:3",
+  "persona_type": "BUYER",
+  "persona_reasons": [
+    "has_local_signals",
+    "has_contact",
+    "has_phone"
+  ],
+  "icp_lane": "legal_office_intake",
+  "icp_boost": 2,
+  "final_url": "https://husbandandwifelawteam.com/",
+  "status_code": 200,
+  "page_title": "The Husband &amp; Wife Law Team | Personal Injury Law Firm In AZ",
+  "has_phone": true,
+  "has_email": false,
+  "has_contact_page": true,
+  "has_address": true,
+  "industry_hint": "Legal",
+  "location_hint": "Arizona",
+  "services_detected": [
+    "24/7"
+  ],
+  "evidence_signals": [
+    "phone_found",
+    "contact_page",
+    "address_found",
+    "services_listed",
+    "industry:Legal"
+  ],
+  "penalties": [],
+  "enriched_at": "2026-01-21T18:00:02.225023"
+}

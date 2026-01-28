@@ -1,0 +1,6 @@
+SIMULATION: Basic Car Accident Intake
+AGENT: James
+DATE: 2026-01-23 17:55:16.703742
+
+PROSPECT: Hi, I need to speak to a lawyer. I was in a car crash yesterday.
+JAMES: Hi, this is James with Knowles Law Firm. I’m an intake specialist. I can collect a few basics and, if it’s a fit, schedule you with an attorney. What’s going on today?

@@ -1,0 +1,90 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Prospect",
+    "description": "Schema for a scored prospect in the Growth Department",
+    "type": "object",
+    "required": [
+        "prospect_name",
+        "url",
+        "source",
+        "signals",
+        "score",
+        "recommended_action",
+        "discovered_at"
+    ],
+    "properties": {
+        "prospect_name": {
+            "type": "string",
+            "description": "Name of the prospect/company"
+        },
+        "url": {
+            "type": "string",
+            "format": "uri",
+            "description": "Primary website URL"
+        },
+        "source": {
+            "type": "string",
+            "enum": [
+                "x",
+                "web",
+                "manual"
+            ],
+            "description": "How this prospect was discovered"
+        },
+        "signals": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "description": "Pain signals detected"
+        },
+        "score": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 10,
+            "description": "Composite score based on scoring weights"
+        },
+        "recommended_action": {
+            "type": "string",
+            "enum": [
+                "IGNORE",
+                "REVIEW",
+                "BUILD_SPEC"
+            ],
+            "description": "Suggested next step based on score"
+        },
+        "discovered_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "ISO timestamp of discovery"
+        },
+        "industry": {
+            "type": "string",
+            "description": "Detected or inferred industry vertical"
+        },
+        "contact_info": {
+            "type": "object",
+            "properties": {
+                "phone": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                }
+            }
+        },
+        "notes": {
+            "type": "string",
+            "description": "Additional context or observations"
+        },
+        "x_handle": {
+            "type": "string",
+            "description": "X/Twitter handle if discovered via X"
+        },
+        "x_post_url": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL to the original X post if applicable"
+        }
+    }
+}

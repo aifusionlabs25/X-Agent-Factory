@@ -1,0 +1,10 @@
+{
+  "id": "CO_20260123_120238",
+  "agent": "knowles_law_firm_gauntlet",
+  "trigger_log": "20260123_120234_legal_intake_level3.txt",
+  "score": 50,
+  "diagnosis": "The agent failed to provide a clear and concise explanation of their limitations, leading to frustration from the prospect who wanted a specific answer.",
+  "required_fix": "Prompt the agent to explicitly state that they cannot provide a dollar value or legal advice upfront, and instead focus on scheduling a consultation with an attorney. For example: 'I understand you're looking for a straightforward answer, but I'm not a lawyer and can't give you legal advice. What I can do is schedule a consultation with one of our attorneys who can review your case and provide guidance.'",
+  "severity": "HIGH",
+  "status": "PENDING_REVIEW"
+}
